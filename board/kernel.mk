@@ -13,7 +13,7 @@ MTK_K64_SUPPORT := yes
 
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/ulefone/t1
-TARGET_KERNEL_PREBUILT := device/ulefone/kernel
+#TARGET_KERNEL_PREBUILT := device/ulefone/kernel
 TARGET_KERNEL_CONFIG := lineage_t1_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.gz
-#MTK_APPENDED_DTB_SUPPORT := yes
+MTK_APPENDED_DTB_SUPPORT := yes
