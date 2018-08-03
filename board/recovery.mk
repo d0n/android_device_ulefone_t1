@@ -16,10 +16,9 @@ TW_INTERNAL_STORAGE_PATH := "/data/media"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd-backlight/brightness\"
-TW_NO_REBOOT_BOOTLOADER := true
+#TW_NO_REBOOT_BOOTLOADER := true
 TW_THEME := portrait_hdpi
 TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
@@ -30,15 +29,15 @@ TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 80
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_NO_USB_STORAGE := true
-BOARD_USE_FRAMEBUFFER_ALPHA_CHANNEL := true
+#BOARD_USE_FRAMEBUFFER_ALPHA_CHANNEL := true
 TARGET_DISABLE_TRIPLE_BUFFERING := false
 TW_USE_TOOLBOX := true
 TW_FLASH_FROM_STORAGE := true
 TW_NEW_ION_HEAP := true
 TWHAVE_SELINUX := true
-TW_THEME := portrait_hdpi
-TW_EXCLUDE_SUPERSU := true
-TW_EXTRA_LANGUAGES := true
+#TW_THEME := portrait_hdpi
+#TW_EXCLUDE_SUPERSU := true
+#TW_EXTRA_LANGUAGES := true
 
 # TWRP.fstab
 PRODUCT_COPY_FILES += \
@@ -52,5 +51,4 @@ else
 BOARD_RECOVERY_SWIPE := true
 BOARD_SUPPRESS_EMMC_WIPE := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 endif
