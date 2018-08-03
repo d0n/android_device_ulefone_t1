@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VENDOR=ulefone
-DEVICE=metal
+DEVICE=t1
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 

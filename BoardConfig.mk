@@ -15,13 +15,13 @@
 #
 
 # Device path
-LOCAL_PATH := device/ulefone/metal
+LOCAL_PATH := device/ulefone/t1
 
 # Device board elements
 include $(LOCAL_PATH)/board/*.mk
 
 # Device vendor board
--include vendor/ulefone/metal/BoardConfigVendor.mk
+-include vendor/ulefone/t1/BoardConfigVendor.mk
 
 #######################################################################
 

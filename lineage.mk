@@ -18,7 +18,7 @@
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
-$(call inherit-product, $(LOCAL_PATH)/device_metal.mk)
+$(call inherit-product, $(LOCAL_PATH)/device_t1.mk)
 
 # Device display
 TARGET_SCREEN_HEIGHT := 1280
@@ -26,9 +26,9 @@ TARGET_SCREEN_WIDTH := 720
 
 # Device identifier
 PRODUCT_BRAND := Ulefone
-PRODUCT_DEVICE := metal
+PRODUCT_DEVICE := t1
 PRODUCT_MANUFACTURER := Ulefone
-PRODUCT_MODEL := Metal
-PRODUCT_NAME := lineage_metal
-PRODUCT_RELEASE_NAME := metal
+PRODUCT_MODEL := T1
+PRODUCT_NAME := lineage_t1
+PRODUCT_RELEASE_NAME := t1
 PRODUCT_RESTRICT_VENDOR_FILES := false

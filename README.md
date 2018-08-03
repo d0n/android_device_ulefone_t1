@@ -1,4 +1,4 @@
-# Ulefone Metal - LineageOS 14.1 / AOSP 7.1.1
+# Ulefone T1 - LineageOS 14.1 / AOSP 7.1.1
 ==============
 
 This branch is device for building of the LineageOS 14.1 and Android Nougat 7.1.1 AOSP ROMs. For more information about building the ROM, read our [build manual](manual).
@@ -7,7 +7,7 @@ This branch is device for building of the LineageOS 14.1 and Android Nougat 7.1.
 
 # About Device
 
-![Ulefone Metal](http://ulefone.com/images/metal/buy/metal-buy.jpg "Ulefone Metal")
+![Ulefone T1](http://ulefone.com/images/t1/buy/t1-buy.jpg "Ulefone T1")
 
 
 ## Specifications

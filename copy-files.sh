@@ -7,7 +7,7 @@ exit
 fi
 
 VENDOR=ulefone
-DEVICE=metal
+DEVICE=t1
 
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 
