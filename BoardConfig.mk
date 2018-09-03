@@ -19,6 +19,7 @@ LOCAL_PATH := device/ulefone/t1
 
 # Device board elements
 include $(LOCAL_PATH)/board/*.mk
+include $(LOCAL_PATH)/PlatformConfig.mk
 
 # Device vendor board
 -include vendor/ulefone/t1/BoardConfigVendor.mk
