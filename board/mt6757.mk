@@ -25,7 +25,7 @@ USE_CAMERA_STUB := true
 #TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
 # OTA assert
-TARGET_OTA_ASSERT_DEVICE := t1
+TARGET_OTA_ASSERT_DEVICE := t1,p15v57c2k_gq_tee
 BOARD_HAS_FLIPPED_SCREEN := true
 
 # Enable Minikin text layout engine (will be the default soon)
