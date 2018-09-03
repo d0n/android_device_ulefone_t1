@@ -129,6 +129,7 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
   enableswap.sh \
+  factory_init.connectivity.rc \
   factory_init.project.rc \
   factory_init.rc \
   fstab.mt6757 \
@@ -136,14 +137,17 @@ PRODUCT_PACKAGES += \
   init.common_svc.rc \
   init.connectivity.rc \
   init.environ.rc \
-  init.microtrust.rc \
+  init.epdg.rc \
+  init.fingerprint.rc \
   init.modem.rc \
   init.mt6757.rc \
   init.mt6757.usb.rc \
   init.project.rc \
+  init.rc \
   init.recovery.mt6757.rc \
   init.rilproxy.rc \
   init.sensor.rc \
+  init.trustkernel.rc \
   init.usb.configfs.rc \
   init.usb.rc \
   init.volte.rc \
@@ -156,8 +160,7 @@ PRODUCT_PACKAGES += \
   multi_init.rc \
   recovery.fstab \
   ueventd.mt6757.rc \
-  ueventd.rc \
-  init.epdg.rc
+  ueventd.rc
 
 # Properly input of int.rc
 PRODUCT_COPY_FILES := \
