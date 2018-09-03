@@ -3,15 +3,22 @@
 VENDOR=ulefone
 DEVICE=t1
 
-BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
+BASE=$BDIR/vendor/$VENDOR/$DEVICE/proprietary
+
+rm -rf $BASE
 
 echo "Pulling $DEVICE files..."
-for FILE in `cat proprietary-blobs.txt | grep -v ^# | grep -v ^$`; do
-    DIR=`dirname $FILE`
+for I in `cat blobs.lst | grep -v ^# | grep -v ^$`; do
+    #FILE=$(echo $FILE |sed 's/^\/system\///')
+    DIR=$(dirname $(echo $I |sed 's/^\/system\///'))
+    FILE=$(basename $I)
     if [ ! -d $BASE/$DIR ]; then
         mkdir -p $BASE/$DIR
     fi
-    adb pull /system/$FILE $BASE/$FILE
+    #for i in $(find ~/and/stock -type f -iname $FILE) ;do
+    #  cp $i ${BASE}/${DIR}/${FILE}
+    #done
+    adb pull $I ${BASE}/$(echo $FILE |sed 's/^\/system\///')
 done
 
 ./setup-makefiles.sh

@@ -10,16 +10,13 @@ import init.volte.rc
 import init.mal.rc
 import init.epdg.rc
 import init.wfca.rc
-import init.trustkernel.rc
 import init.trustonic.rc
 import init.common_svc.rc
 import init.microtrust.rc
 import init.sensor_bio.rc
 import init.sensor.rc
 
-# agold guotuo for fingerprint init
-import init.fingerprint.rc
-
+import init.pnpmgr.rc
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
 import init.modem.rc
 # *** DO NOT import the new rc file after this line ***
@@ -30,9 +27,11 @@ on early-init
     write /proc/bootprof "INIT:early-init"
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
+    chmod 0644 /proc/cmdline
 
 on init
-    # Support legacy paths
+    export LD_PRELOAD "libmtk_symbols.so"
+	# Support legacy paths
     symlink /sdcard /mnt/sdcard
 
     # if primary storage is physical, set ro.vold.primary_physical to 1
@@ -166,7 +165,6 @@ on post-fs-data
     mkdir /data/misc/gps 0770 gps system
     mkdir /data/mpe_mnl 0771 gps system
     chown gps system /data/mpe_mnl
-    chmod 0775 /vendor/xbin/MPED
     chmod 0666 /dev/gps_emi
 
     # NFC
@@ -278,6 +276,9 @@ on post-fs-data
     #Charging Battery
     chown radio radio /sys/devices/platform/battery/Charging_CallState
 
+	#add by jiaqi.cai
+	chmod 0666 /sys/devices/platform/battery_meter/fg_coulomb
+
     # PMIC property
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_stop
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_ut
@@ -371,6 +372,8 @@ on post-fs-data
     chmod 0664 /sys/devices/platform/mt-pmic/pmic_access_bank1
     chmod 0664 /sys/devices/platform/mt6311-user/mt6311_access
     chmod 0664 /sys/devices/platform/mt-pmic/pmic_access
+    #add baoping.jin@reallytek.com
+    chmod 0666 /sys/devices/platform/battery/CHG_CAPACITY_TEST
 
     # EM CPU Speed Stress
     chown root radio /proc/cpu_ss/cpu_ss_debug_mode
@@ -457,12 +460,12 @@ on post-fs-data
     chmod 0660 /dev/MAIN2AF
     chmod 0660 /dev/SUBAF
     chmod 0660 /dev/CAM_CAL_DRV
-    #[AGOLD][chenpeng][20170518]
-	chmod 0777 /sys/bus/platform/drivers/flashlights-rt5081/ledduty 
-	chmod 0777 /sys/bus/platform/drivers/flashlights-rt5081/ledtimeout
-	chmod 0777 /sys/bus/platform/drivers/flashlights-rt5081/leden
-	#[AGOLD][chenpeng][20170518]
-
+    #add by qi.song 20170313 start
+    chmod 0660 /dev/CAM_CAL_DRV1
+    chmod 0660 /dev/CAM_CAL_DRV2
+    #add by qi.song 20170313 end
+    chmod 0660 /dev/GT24C64_CAM_CAL_DRV
+	
     chown system camera /dev/camera-sysram
     chown system camera /dev/camera-isp
     chown system camera /dev/camera-dpe
@@ -477,31 +480,15 @@ on post-fs-data
     chown system camera /dev/MAIN2AF
     chown system camera /dev/SUBAF
     chown system camera /dev/CAM_CAL_DRV
-
-	#agold add start
-	chmod 0660 /dev/BU64291AF
-	chmod 0660 /dev/BU6429AF
-	chmod 0660 /dev/DW9800AF
-	chmod 0660 /dev/BU64297AF
-	chmod 0660 /dev/DW9763AF
-	chmod 0660 /dev/DW9763XAF
-	chmod 0660 /dev/DW9714AF
-	chmod 0660 /dev/LC898212XDAF
-	chmod 0660 /dev/AK7371AF
-	chmod 0660 /dev/DW9790AF
-	
-	chown system camera /dev/BU64291AF
-	chown system camera /dev/BU6429AF
-	chown system camera /dev/DW9800AF
-	chown system camera /dev/DW9714AF
-	chown system camera /dev/BU64297AF
-	chown system camera /dev/DW9763AF
-	chown system camera /dev/DW9763XAF
-	chown system camera /dev/LC898212XDAF
-	chown system camera /dev/AK7371AF
-	chown system camera /dev/DW9790AF
-#agold add end
-
+    # add by qi.song 20170313 start 
+    chown system camera /dev/CAM_CAL_DRV1
+    chown system camera /dev/CAM_CAL_DRV2
+    # add by qi.song 20170313 end 
+    chown system camera /dev/GT24C64_CAM_CAL_DRV
+    #zhangpj 20170323@modify for camera 3rd function begin
+    mkdir /data/bshaders 0777 root system
+    mkdir /data/lshaders 0777 root system
+    #zhangpj 20170323@modify for camera 3rd function end
     #VOW
     chmod 0640 /dev/vow
     chown media media /dev/vow
@@ -569,11 +556,7 @@ on post-fs-data
     #otp
     chmod 0660 /proc/driver/otp
     chown root system /proc/driver/otp
-    
-    #agold ly 20170804
-    chown root system /proc/meminfo
-	#agold end
-	
+
     #sn
     chmod 0664 /sys/class/android_usb/android0/iSerial
     chown root system /sys/class/android_usb/android0/iSerial
@@ -601,7 +584,8 @@ on boot
     write /proc/sys/vm/dirty_writeback_centisecs 300
     chmod 0660 /sys/power/autosleep
 
-    chmod 0664 /sys/class/leds/lcd-backlight/brightness
+    #modify by caizhaohui for midtest 20170523
+    chmod 0666 /sys/class/leds/lcd-backlight/brightness
 
     chown system system /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chmod 0660 /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
@@ -624,28 +608,15 @@ on boot
     chown system system /sys/class/leds/red/trigger
     chown system system /sys/class/leds/green/trigger
     chown system system /sys/class/leds/blue/trigger
-
-#[AGOLD][Fengjun][2017.03.17]
-    chown system system /sys/class/leds/rt5081_pmu_led1/trigger
-    chown system system /sys/class/leds/rt5081_pmu_led2/trigger
-    chown system system /sys/class/leds/rt5081_pmu_led3/trigger
-    chown system system /sys/class/leds/rt5081_pmu_led4/trigger
-
-    chown system system /sys/class/leds/rt5081_pmu_led1/brightness
-    chown system system /sys/class/leds/rt5081_pmu_led2/brightness
-    chown system system /sys/class/leds/rt5081_pmu_led3/brightness
-    chown system system /sys/class/leds/rt5081_pmu_led4/brightness
-
-    chmod 0666 /sys/class/leds/rt5081_pmu_led1/delay_on
-    chmod 0666 /sys/class/leds/rt5081_pmu_led2/delay_on
-    chmod 0666 /sys/class/leds/rt5081_pmu_led3/delay_on
-    chmod 0666 /sys/class/leds/rt5081_pmu_led4/delay_on
-
-    chmod 0666 /sys/class/leds/rt5081_pmu_led1/delay_off
-    chmod 0666 /sys/class/leds/rt5081_pmu_led2/delay_off
-    chmod 0666 /sys/class/leds/rt5081_pmu_led3/delay_off
-    chmod 0666 /sys/class/leds/rt5081_pmu_led4/delay_off
-#[AGOLD]End
+    #add caizhaohui for midtest 20170523
+    chmod 0666 /sys/devices/platform/1100f000.i2c/i2c-5/5-0034/rt5081_pmu_rgbled/leds/green/brightness
+    chmod 0666 /sys/devices/platform/1100f000.i2c/i2c-5/5-0034/rt5081_pmu_rgbled/leds/blue/brightness
+    chmod 0666 /sys/devices/platform/1100f000.i2c/i2c-5/5-0034/rt5081_pmu_rgbled/leds/red/brightness
+    chmod root root /sys/class/torch/torch/torch_level
+    chmod 0666 /sys/class/torch/torch/torch_level
+    chmod root root /sys/class/sub_torch/sub_torch/sub_torch_level
+    chmod 0666 /sys/class/sub_torch/sub_torch/sub_torch_level
+    chmod 0664 /dev/MT_pmic_adc_cali
 
     chown system system /sys/kernel/debug/ged/hal/fps_upper_bound
     chmod 0660 /sys/kernel/debug/ged/hal/fps_upper_bound
@@ -728,6 +699,8 @@ on boot
     chmod 0660 /proc/ppm/policy/hica_settings/L_ONLY_to_4L_LL/loading_hold_time
     chown system system /proc/ppm/smart_detect_boost
     chmod 0660 /proc/ppm/smart_detect_boost
+    chown system system /proc/ppm/policy_status
+    chmod 0660 /proc/ppm//proc/ppm/policy_status    
 
 # CPU freq
     chown system system /proc/cpufreq/cpufreq_limited_by_hevc
@@ -914,6 +887,10 @@ service bugreport /system/bin/dumpstate -d -p -B \
     oneshot
     keycodes 114 115 116
 
+#start for remosaic_daemon add by yazhou
+on property:sys.boot_completed=1
+    start remosaic_daemon	
+
 # start ged_srv
 on property:sys.boot_completed=1
     start ged_srv
@@ -926,6 +903,14 @@ on property:sys.boot_completed=1
     # restore perf. parameters
     write /proc/ppm/policy/userlimit_min_cpu_freq "1 -1"
     write /proc/ppm/policy/userlimit_min_cpu_core "1 -1"
+
+#start for remosaic_daemon add by yazhou
+service remosaic_daemon /system/vendor/bin/remosaic_daemon
+    class core
+    user system
+    group system
+    oneshot
+    disabled	
 
 service ged_srv /vendor/bin/ged_srv
     class core
@@ -1132,7 +1117,7 @@ service DMAgent /vendor/bin/dm_agent_binder
 
 service PPLAgent /vendor/bin/ppl_agent
     class main
-    user root
+    user system
     group system cache
 
 service vtservice /vendor/bin/vtservice
@@ -1329,20 +1314,6 @@ service memsicd /vendor/bin/memsicd
     group system
     class main
 
-#AGold Bruce 2015.05.16
-service memsicd3524x /vendor/bin/memsicd3524x
-	user system
-    group system
-    class main   
-	oneshot 
-#endif
-
-#AGold gengdong 2016.02.23
-service st480 /vendor/bin/st480
-	 user system
-    group system
-    class main  
-#endif
 service memsicd3416x /vendor/bin/memsicd3416x
      disabled
 	 user system
@@ -1361,12 +1332,6 @@ service akmd8963 /vendor/bin/akmd8963
     class main
 
 service akmd09911 /vendor/bin/akmd09911
-    oneshot
-    user system
-    group system
-    class main
-service qmcX983d /vendor/bin/qmcX983d
-	oneshot
     disabled
     user system
     group system
@@ -1392,11 +1357,11 @@ service mc6420d /vendor/bin/mc6420d
     user system
     group system
     class main
-service qmcX983d /vendor/bin/qmcX983d
-    user system
+service qmc5983d /vendor/bin/qmc5983d
+     disabled
+	 user system
     group system
     class main
-    oneshot
 
 service orientationd /vendor/bin/orientationd
     disabled
@@ -1684,39 +1649,17 @@ on property:debug.mtk.thermalindicator=0
 on property:debug.mtk.thermalindicator=1
 	start ThermalIndicator
 
-#[AGOLD][spl][20120420] AGOLD_PROX_CALI_ENABLE
-service nvram_proximity /system/bin/nvram_proximity
-    user root
-    group system
-    oneshot
-    disabled
-
-on property:init.svc.nvram_daemon=stopped
-    start nvram_proximity
-#[AGOLD][end]
-
-
-#Laser
-chmod 
-chmod 0660 /dev/laser
+service mlock /system/bin/mlock
+        class main
+        user root
+        group root system
 	
-chown system camera /dev/laser
-chmod 0777 /dev/iraf
-chmod 0777 /dev/sn3191
-chmod 0666 /sys/agold_laser/laser
-chmod 0777 /dev/security_keros
-chmod 0777 /dev/infrared_led
+# VSIM service (vendor OSI)
 
-#[AGOLD][Fengjun][2016.10.21]Write NVRAM data of GSensor
-service ANvRAMAgent /system/bin/agoldnvram
+service osi /system/bin/osi
     class main
     user root
-    group system
     disabled
-
-on property:init.svc.nvram_daemon=stopped
-    start ANvRAMAgent
-
-#[AGOLD]End
-
+    oneshot
+    seclabel u:r:osi:s0
 
