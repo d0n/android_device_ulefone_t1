@@ -1,5 +1,5 @@
 # Platform
-TARGET_BOARD_PLATFORM := mt6753
+TARGET_BOARD_PLATFORM := mt6757
 TARGET_LDPRELOAD += libxlog.so
 
 # Architecture
