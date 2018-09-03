@@ -1,6 +1,6 @@
 # MTK audio
 BOARD_USES_MTK_AUDIO := true
-#USE_XML_AUDIO_POLICY_CONF := 1
+USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
 MTK_BT_SUPPORT := yes
@@ -81,7 +81,7 @@ BOARD_RAMDISK_OFFSET := 0x40ef8000
 BOARD_TAGS_OFFSET := 0x03f88000
 BOARD_MKBOOTIMG_ARGS := --cmdline bootopt=64S3,32N2,64N2 --base $(BOARD_KERNEL_BASE) --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_TAGS_OFFSET) --board $(BOARD_NAME) --pagesize $(BOARD_KERNEL_PAGESIZE)
 TARGET_IS_64_BIT := true
-#MTK_K64_SUPPORT := yes
+MTK_K64_SUPPORT := yes
 TARGET_KERNEL_ARCH := arm64
 
 # Kernel properties
