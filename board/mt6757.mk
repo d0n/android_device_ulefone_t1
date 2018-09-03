@@ -86,7 +86,7 @@ TARGET_KERNEL_ARCH := arm64
 
 # Kernel properties
 #TARGET_KERNEL_SOURCE := kernel/ulefone/t1
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilts/kernel
 TARGET_KERNEL_CONFIG := lineage_t1_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.gz
 MTK_APPENDED_DTB_SUPPORT := yes
@@ -157,7 +157,7 @@ ifeq ($(RECOVERY_VARIANT), twrp)
   TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd-backlight/brightness\"
   #TW_NO_REBOOT_BOOTLOADER := true
   TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
-  TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
+  #TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
   RECOVERY_GRAPHICS_USE_LINELENGTH := true
   BOARD_SUPPRESS_SECURE_ERASE := true
   TW_INCLUDE_CRYPTO := true
@@ -170,7 +170,7 @@ ifeq ($(RECOVERY_VARIANT), twrp)
   #TW_USE_TOOLBOX := true
   TW_FLASH_FROM_STORAGE := true
   TW_NEW_ION_HEAP := true
-  #TWHAVE_SELINUX := true
+  TWHAVE_SELINUX := true
   TW_THEME := portrait_hdpi
   #TW_EXCLUDE_SUPERSU := true
   #TW_EXTRA_LANGUAGES := true
