@@ -182,6 +182,7 @@ PRODUCT_COPY_FILES := \
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
+  ro.kernel.android.checkjni=0 \
   ro.telephony.ril_class=MT6757 \
   ro.telephony.ril.config=fakeiccid
 
@@ -208,6 +209,7 @@ PRODUCT_PROPERTY_OVERRIDES += ro.telephony.sim.count=$(SIM_COUNT)
 PRODUCT_PACKAGES += \
   librs_jni \
   com.android.future.usb.accessory
+
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/wide-dhcpv6/dhcp6c.conf:system/etc/wide-dhcpv6/dhcp6c.conf \
   $(LOCAL_PATH)/configs/wide-dhcpv6/dhcp6c.script:system/etc/wide-dhcpv6/dhcp6c.script \
