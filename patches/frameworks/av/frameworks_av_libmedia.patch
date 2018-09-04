@@ -5,7 +5,7 @@ index df4e4b6..19cefc7 100644
 @@ -97,6 +97,11 @@ LOCAL_C_INCLUDES := \
      $(call include-path-for, audio-effects) \
      $(call include-path-for, audio-utils)
- 
+
 +ifeq ($(BOARD_USES_MTK_HARDWARE),true)
 +LOCAL_SRC_FILES += \
 +    mtkaudio_stubs.cpp

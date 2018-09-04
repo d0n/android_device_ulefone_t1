@@ -19,7 +19,7 @@ index acf601b..b0b725e 100644
 @@ -37,6 +37,9 @@ __BEGIN_DECLS
  /** Milliseconds since January 1, 1970 */
  typedef int64_t GpsUtcTime;
- 
+
 +/** Maximum number of MTK legacy GNSS SVs for gps_sv_status_callback(). */
 +#define MTK_LEGACY_GNSS_MAX_SVS 256
 +
@@ -29,7 +29,7 @@ index acf601b..b0b725e 100644
 @@ -572,6 +575,32 @@ typedef struct {
      float   azimuth;
  } GpsSvInfo;
- 
+
 +/** Represents MTK legacy GNSS SV information. */
 +typedef struct {
 +    /** set to sizeof(MTKLegacyGnssSvInfo) */
@@ -60,9 +60,9 @@ index acf601b..b0b725e 100644
      /** set to sizeof(GnssSvInfo) */
      size_t size;
 @@ -652,6 +681,17 @@ typedef struct {
- 
+
  } GnssSvStatus;
- 
+
 +typedef struct {
 +    /** set to sizeof(MTKLegacyGnssSvStatus) */
 +    size_t          size;
@@ -77,6 +77,6 @@ index acf601b..b0b725e 100644
  /* CellID for 2G, 3G and LTE, used in AGPS. */
  typedef struct {
      AGpsRefLocationType type;
--- 
+--
 2.11.0
 

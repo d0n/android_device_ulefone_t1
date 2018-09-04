@@ -20,7 +20,6 @@
 #define LOG_TAG "lights"
 
 #include <cutils/log.h>
-
 #include <stdint.h>
 #include <string.h>
 #include <unistd.h>
@@ -31,7 +30,6 @@
 #include <stdlib.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
-
 #include <hardware/lights.h>
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
@@ -43,12 +41,51 @@ static struct light_state_t g_notification;
 
 static int g_backlight = 255;
 
-/* MEIZU LED */
-char const *const MEIZU_LED_FILE = "/sys/class/leds/button-backlight/brightness";
-char const *const MEIZU_TRIGGER_FILE = "/sys/class/leds/button-backlight/trigger";
+/* INFINIX LED */
+char const *const INFINIX_LED_FILE = "/sys/class/leds/button-backlight/brightness";
+char const *const INFINIX_TRIGGER_FILE = "/sys/class/leds/button-backlight/trigger";
 
-char const *const MEIZU_DELAY_ON_FILE = "/sys/class/leds/button-backlight/delay_on";
-char const *const MEIZU_DELAY_OFF_FILE = "/sys/class/leds/button-backlight/delay_off";
+char const *const INFINIX_DELAY_ON_FILE = "/sys/class/leds/button-backlight/delay_on";
+char const *const INFINIX_DELAY_OFF_FILE = "/sys/class/leds/button-backlight/delay_off";
+
+/* Red LED */
+char const*const RED_LED_FILE
+        = "/sys/class/leds/red/brightness";
+
+char const*const RED_TRIGGER_FILE
+        = "/sys/devices/platform/1100f000.i2c/i2c-5/5-0034/rt5081_pmu_rgbled/leds/red/trigger";
+
+char const*const RED_DELAY_ON_FILE
+        = "/sys/devices/platform/1100f000.i2c/i2c-5/5-0034/rt5081_pmu_rgbled/leds/red/delay_on";
+
+char const*const RED_DELAY_OFF_FILE
+        = "/sys/devices/platform/1100f000.i2c/i2c-5/5-0034/rt5081_pmu_rgbled/leds/red/delay_off";
+
+/* Green LED */
+char const*const GREEN_LED_FILE
+        = "/sys/class/leds/green/brightness";
+
+char const*const GREEN_TRIGGER_FILE
+        = "/sys/devices/platform/1100f000.i2c/i2c-5/5-0034/rt5081_pmu_rgbled/leds/green/trigger";
+
+char const*const GREEN_DELAY_ON_FILE
+        = "/sys/devices/platform/1100f000.i2c/i2c-5/5-0034/rt5081_pmu_rgbled/leds/green/delay_on";
+
+char const*const GREEN_DELAY_OFF_FILE
+        = "/sys/devices/platform/1100f000.i2c/i2c-5/5-0034/rt5081_pmu_rgbled/leds/green/delay_off";
+
+/* BLUE LED */
+char const*const BLUE_LED_FILE
+        = "/sys/class/leds/blue/brightness";
+
+char const*const BLUE_TRIGGER_FILE
+        = "/sys/devices/platform/1100f000.i2c/i2c-5/5-0034/rt5081_pmu_rgbled/leds/blue/trigger";
+
+char const*const BLUE_DELAY_ON_FILE
+        = "/sys/devices/platform/1100f000.i2c/i2c-5/5-0034/rt5081_pmu_rgbled/leds/blue/delay_on";
+
+char const*const BLUE_DELAY_OFF_FILE
+        = "/sys/devices/platform/1100f000.i2c/i2c-5/5-0034/rt5081_pmu_rgbled/leds/blue/delay_off";
 
 /* BACKLIGHT */
 char const *const LCD_FILE = "/sys/class/leds/lcd-backlight/brightness";
@@ -99,7 +136,7 @@ static int is_lit(struct light_state_t const *state)
     return state->color & 0x00ffffff;
 }
 
-static int meizu_blink(int level, int onMS, int offMS)
+static int INFINIX_blink(int level, int onMS, int offMS)
 {
 	static int preStatus; /* 0: off, 1: blink, 2: no blink */
 	int nowStatus;
@@ -116,18 +153,18 @@ static int meizu_blink(int level, int onMS, int offMS)
 		return -1;
 
 	if (nowStatus == 0)
-		write_int(MEIZU_LED_FILE, 0);
+		write_int(INFINIX_LED_FILE, 0);
 	else if (nowStatus == 1) {
-		write_str(MEIZU_TRIGGER_FILE, "timer");
-		while (((access(MEIZU_DELAY_OFF_FILE, F_OK) == -1) ||
-			(access(MEIZU_DELAY_OFF_FILE, R_OK|W_OK) == -1)) && i < 10) {
+		write_str(INFINIX_TRIGGER_FILE, "timer");
+		while (((access(INFINIX_DELAY_OFF_FILE, F_OK) == -1) ||
+			(access(INFINIX_DELAY_OFF_FILE, R_OK|W_OK) == -1)) && i < 10) {
 			i++;
 		}
-		write_int(MEIZU_DELAY_OFF_FILE, offMS);
-		write_int(MEIZU_DELAY_ON_FILE, onMS);
+		write_int(INFINIX_DELAY_OFF_FILE, offMS);
+		write_int(INFINIX_DELAY_ON_FILE, onMS);
 	} else {
-		write_str(MEIZU_TRIGGER_FILE, "none");
-		write_int(MEIZU_LED_FILE, 255); /* default full brightness */
+		write_str(INFINIX_TRIGGER_FILE, "none");
+		write_int(INFINIX_LED_FILE, 255); /* default full brightness */
 	}
 	preStatus = nowStatus;
 	return 0;
@@ -187,11 +224,11 @@ static int set_speaker_light_locked(struct light_device_t *dev,
     }
 
     if (red)
-	   meizu_blink(red, onMS, offMS);
+	   INFINIX_blink(red, onMS, offMS);
     else if (green)
-	meizu_blink(green, onMS, offMS);
+	INFINIX_blink(green, onMS, offMS);
     else
-	meizu_blink(0, 0, 0);
+	INFINIX_blink(0, 0, 0);
 
     return 0;
 }
@@ -295,7 +332,7 @@ struct hw_module_t HAL_MODULE_INFO_SYM = {
     .version_major = 1,
     .version_minor = 0,
     .id = LIGHTS_HARDWARE_MODULE_ID,
-    .name = "Meizu Lights Module",
+    .name = "INFINIX Lights Module",
     .author = "MediaTek",
-    .methods = &lights_module_methods,
+	.methods = &lights_module_methods,
 };

@@ -41,6 +41,7 @@ BOARD_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 
 # Disable memcpy opt (for audio libraries)
 TARGET_CPU_MEMCPY_OPT_DISABLE := true
+TARGET_PROVIDES_INIT_RC := true
 
 # EGL
 BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
