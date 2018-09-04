@@ -26,8 +26,8 @@ allow installd custom_file:dir search;
 # Operation : Development GMO Feature "Move OAT to SD Card"
 # Purpose : for GMO ROM Size Slim
 allow installd dalvikcache_data_file:lnk_file { read getattr setattr unlink create };
-allow installd sdcard_type:dir { write read remove_name search create add_name getattr setattr };
-allow installd sdcard_type:file { write getattr setattr read create unlink open };
+allow installd fuse:dir { write read remove_name search create add_name getattr setattr };
+allow installd fuse:file { write getattr setattr read create unlink open };
 
 # Date : WK14.40
 # Operation : SQC1
@@ -63,8 +63,5 @@ userdebug_or_eng(`
   allow installd dex2oat:process noatsecure;
 ')
 
-# Date : WK16.09
-# Operation : Migration
-# Purpose : copy the content in /data/media/0 to /data/media
-allow installd media_rw_data_file:file { read write create open setattr };
-allow installd shell_exec:file { read execute open execute_no_trans };
+# Nougat
+allow installd mobicore_data_file:dir { r_file_perms write remove_name rmdir };

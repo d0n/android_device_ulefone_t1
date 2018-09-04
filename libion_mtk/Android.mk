@@ -13,20 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-LOCAL_PATH:= $(call my-dir)
+LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-
-LOCAL_SRC_FILES := ion.c
-LOCAL_MODULE := libion_mtk
-LOCAL_MODULE_TAGS := optional
-
-LOCAL_C_INCLUDES += \
-	device/infinix/x603/libion_mtk/include \
-	system/core/include
-
-LOCAL_SHARED_LIBRARIES := libion liblog libdl
-
+  LOCAL_SRC_FILES := ion.c
+  LOCAL_MODULE := libion_mtk
+  LOCAL_MODULE_TAGS := optional
+  LOCAL_C_INCLUDES += $(LOCAL_PATH)/libion_mtk/include system/core/include
+  LOCAL_SHARED_LIBRARIES := libion liblog libdl
 include $(BUILD_SHARED_LIBRARY)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))

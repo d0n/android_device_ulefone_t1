@@ -1,4 +1,4 @@
-# Ramdisk
+## Ramdisk
 PRODUCT_PACKAGES += \
   enableswap.sh \
   factory_init.connectivity.rc \
@@ -31,26 +31,36 @@ PRODUCT_PACKAGES += \
   recovery.fstab \
   ueventd.mt6757.rc \
   ueventd.rc
-
-# Properly input of int.rc
-PRODUCT_COPY_FILES := \
-  $(LOCAL_PATH)/rootdir/enableswap.sh:recovery/root/enableswap.sh \
-  $(LOCAL_PATH)/rootdir/factory_init.connectivity.rc:recovery/root/factory_init.connectivity.rc \
-  $(LOCAL_PATH)/rootdir/factory_init.project.rc:recovery/root/factory_init.project.rc \
-  $(LOCAL_PATH)/rootdir/factory_init.rc:recovery/root/factory_init.rc \
-  $(LOCAL_PATH)/rootdir/fstab.mt6757:recovery/root/fstab.mt6757 \
-  $(LOCAL_PATH)/rootdir/init.rc:recovery/root/init.rc \
-  $(LOCAL_PATH)/rootdir/init.recovery.mt6757.rc:recovery/root/init.recovery.mt6757.rc \
-  $(LOCAL_PATH)/rootdir/meta_init.connectivity.rc:recovery/root/meta_init.connectivity.rc \
-  $(LOCAL_PATH)/rootdir/meta_init.modem.rc:recovery/root/meta_init.modem.rc \
-  $(LOCAL_PATH)/rootdir/meta_init.project.rc:recovery/root/meta_init.project.rc \
-  $(LOCAL_PATH)/rootdir/meta_init.rc:recovery/root/meta_init.rc \
-  $(LOCAL_PATH)/rootdir/multi_init.rc:recovery/root/multi_init.rc \
-  $(LOCAL_PATH)/rootdir/recovery.fstab:recovery/root/recovery.fstab \
-  $(LOCAL_PATH)/rootdir/ueventd.mt6757.rc:recovery/root/ueventd.mt6757.rc \
-  $(LOCAL_PATH)/rootdir/ueventd.rc:recovery/root/ueventd.rc \
-  $(LOCAL_PATH)/rootdir/init.rc:recovery/root/init.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.rc:root/init.rc
+#
+## Properly input of int.rc
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
+    $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
+    $(LOCAL_PATH)/rootdir/fstab.mt6757:root/fstab.mt6757 \
+    $(LOCAL_PATH)/rootdir/init.modem.rc:root/init.modem.rc \
+    $(LOCAL_PATH)/rootdir/init.mt6757.rc:root/init.mt6757.rc \
+    $(LOCAL_PATH)/rootdir/init.mt6757.usb.rc:root/init.mt6757.usb.rc \
+    $(LOCAL_PATH)/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
+    $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \
+    $(LOCAL_PATH)/rootdir/meta_init.rc:root/meta_init.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.mt6757.rc:root/ueventd.mt6757.rc \
+    $(LOCAL_PATH)/rootdir/init/mediaserver.rc:system/etc/init/mediaserver.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.rc:root/init.rc
+#  $(LOCAL_PATH)/rootdir/enableswap.sh:recovery/root/enableswap.sh \
+#  $(LOCAL_PATH)/rootdir/factory_init.connectivity.rc:recovery/root/factory_init.connectivity.rc \
+#  $(LOCAL_PATH)/rootdir/factory_init.project.rc:recovery/root/factory_init.project.rc \
+#  $(LOCAL_PATH)/rootdir/factory_init.rc:recovery/root/factory_init.rc \
+#  $(LOCAL_PATH)/rootdir/fstab.mt6757:recovery/root/fstab.mt6757 \
+#  $(LOCAL_PATH)/rootdir/init.rc:recovery/root/init.rc \
+#  $(LOCAL_PATH)/rootdir/init.recovery.mt6757.rc:recovery/root/init.recovery.mt6757.rc \
+#  $(LOCAL_PATH)/rootdir/meta_init.connectivity.rc:recovery/root/meta_init.connectivity.rc \
+#  $(LOCAL_PATH)/rootdir/meta_init.modem.rc:recovery/root/meta_init.modem.rc \
+#  $(LOCAL_PATH)/rootdir/meta_init.project.rc:recovery/root/meta_init.project.rc \
+#  $(LOCAL_PATH)/rootdir/meta_init.rc:recovery/root/meta_init.rc \
+#  $(LOCAL_PATH)/rootdir/multi_init.rc:recovery/root/multi_init.rc \
+#  $(LOCAL_PATH)/rootdir/recovery.fstab:recovery/root/recovery.fstab \
+#  $(LOCAL_PATH)/rootdir/ueventd.mt6757.rc:recovery/root/ueventd.mt6757.rc \
+#  $(LOCAL_PATH)/rootdir/ueventd.rc:recovery/root/ueventd.rc \
 
 # Configurations
 PRODUCT_COPY_FILES += \
@@ -199,12 +209,13 @@ PRODUCT_PACKAGES += \
 # MTK Logging functions
 PRODUCT_PACKAGES += \
     liblog_mtk
+
 # Keyboard layout
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
     $(LOCAL_PATH)/configs/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
     $(LOCAL_PATH)/configs/AVRCP.kl:system/usr/keylayout/AVRCP.kl
-	 
+
 # Keyhandler package
 PRODUCT_PACKAGES += \
     com.cyanogenmod.keyhandler
@@ -228,33 +239,8 @@ PRODUCT_PACKAGES += \
 # Power
 PRODUCT_PACKAGES += \
     power.default \
-    power.mt6755
-# Default.prop
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.service.acm.enable=0 \
-    persist.sys.dun.override=0 \
-    camera.disable_zsl_mode=1
+    power.mt6757
 
-# Ramdisk
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
-    $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
-    $(LOCAL_PATH)/rootdir/fstab.mt6735:root/fstab.mt6735 \
-    $(LOCAL_PATH)/rootdir/init.modem.rc:root/init.modem.rc \
-    $(LOCAL_PATH)/rootdir/init.mt6735.rc:root/init.mt6735.rc \
-    $(LOCAL_PATH)/rootdir/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
-    $(LOCAL_PATH)/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
-    $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \
-    $(LOCAL_PATH)/rootdir/meta_init.rc:root/meta_init.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.mt6735.rc:root/ueventd.mt6735.rc \
-    $(LOCAL_PATH)/rootdir/init/mediaserver.rc:system/etc/init/mediaserver.rc
-
-# RIL
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.kernel.android.checkjni=0 \
-    ro.telephony.ril_class=MT6753 \
-    ro.telephony.ril.config=fakeiccid \
-    ro.com.android.mobiledata=false
 # SELinux
 BOARD_SEPOLICY_DIRS := \
        $(LOCAL_PATH)/sepolicy
