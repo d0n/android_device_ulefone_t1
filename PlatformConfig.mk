@@ -1,5 +1,5 @@
 # Platform
-TARGET_BOARD_PLATFORM := mt6753
+TARGET_BOARD_PLATFORM := mt6757
 TARGET_LDPRELOAD += libxlog.so
 
 # Architecture
@@ -17,6 +17,7 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
 TARGET_BOARD_SUFFIX := _64
+TARGET_BOARD_PLATFORM_GPU := mali-t880mp2
 TARGET_USES_64_BIT_BINDER := true
 
 # Architecture Extensions

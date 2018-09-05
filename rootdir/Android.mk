@@ -1,9 +1,9 @@
 LOCAL_PATH:= $(call my-dir)
 ifneq ($(filter t1,$(TARGET_DEVICE)),)
+
 include $(CLEAR_VARS)
 
 # Device init files
-
 include $(CLEAR_VARS)
 LOCAL_MODULE       := enableswap.sh
 LOCAL_MODULE_TAGS  := optional eng

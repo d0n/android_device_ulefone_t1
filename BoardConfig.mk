@@ -19,6 +19,7 @@ LOCAL_PATH := device/ulefone/t1
 
 # Device board elements
 include $(LOCAL_PATH)/board/*.mk
+include $(LOCAL_PATH)/PlatformConfig.mk
 
 # Device vendor board
 -include vendor/ulefone/t1/BoardConfigVendor.mk
@@ -41,6 +42,7 @@ BOARD_EGL_WORKAROUND_BUG_10194508 := true
 BOARD_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 # Fonts
+BOARD_HAS_FLIPPED_SCREEN := true
 EXTENDED_FONT_FOOTPRINT := true
 
 # System.prop
