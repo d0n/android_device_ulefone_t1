@@ -24,21 +24,8 @@ USE_CAMERA_STUB := true
 # Legacy HAL
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
-# OTA assert
-<<<<<<< HEAD
-TARGET_OTA_ASSERT_DEVICE := t1
-||||||| merged common ancestors
-TARGET_OTA_ASSERT_DEVICE := t1,T1,ulefone,Ulefone,mp5-V1_even6757,T1
-BOARD_HAS_FLIPPED_SCREEN := true
-=======
-TARGET_OTA_ASSERT_DEVICE := t1,p15v57c2k_gq_tee
-BOARD_HAS_FLIPPED_SCREEN := true
->>>>>>> 96eaa590f4497496661f9ddd2e74052698823cdc
-
-# Enable Minikin text layout engine (will be the default soon)
+# Enable Minikin
 USE_MINIKIN := true
-
-# Configure jemalloc for low memory
 MALLOC_SVELTE := true
 
 # Display
@@ -103,37 +90,7 @@ TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
 # Images
 TARGET_NO_BOOTLOADER := true
-<<<<<<< HEAD
 
-||||||| merged common ancestors
-
-# Architecture
-TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := cortex-a53
-TARGET_CPU_CORTEX_A53 := true
-
-TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
-TARGET_2ND_CPU_ABI := armeabi-v7a
-TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a53
-
-TARGET_BOARD_SUFFIX := _64
-TARGET_USES_64_BIT_BINDER := true
-
-# Architecture Extensions
-TARGET_CPU_SMP := true
-ARCH_ARM_HAVE_NEON := true
-ARCH_ARM_HAVE_TLS_REGISTER := true
-ARCH_ARM_HAVE_VFP := true
-
-=======
-BLOCK_BASED_OTA := false
-
->>>>>>> 96eaa590f4497496661f9ddd2e74052698823cdc
 # Charger
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 

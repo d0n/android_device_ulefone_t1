@@ -1,20 +1,9 @@
 LOCAL_PATH:= $(call my-dir)
-<<<<<<< HEAD
-ifneq ($(filter t1,$(TARGET_DEVICE)),)
-
-include $(CLEAR_VARS)
-
-# Device init files
-||||||| merged common ancestors
-ifneq ($(filter x603,$(TARGET_DEVICE)),)
-include $(CLEAR_VARS)
 
 # Device init files
 
-=======
 ifneq ($(filter t1,$(TARGET_DEVICE)),)
 
->>>>>>> 96eaa590f4497496661f9ddd2e74052698823cdc
 include $(CLEAR_VARS)
 LOCAL_MODULE       := enableswap.sh
 LOCAL_MODULE_TAGS  := optional eng

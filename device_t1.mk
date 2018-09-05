@@ -49,26 +49,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product-if-exists, vendor/ulefone/t1/t1-vendor.mk)
 
 ADDITIONAL_DEFAULT_PROPERTIES += \
-<<<<<<< HEAD
-	ro.secure=0 \
-	ro.allow.mock.location=1 \
-	ro.debuggable=1 \
-	ro.adb.secure=0 \
-	persist.service.acm.enable=0 \
-	persist.service.adb.enable=1 \
-	ro.oem_unlock_supported=1 \
-	ro.mount.fs=EXT4 \
-	camera.disable_zsl_mode=1
-||||||| merged common ancestors
-	ro.secure=0 \
-	ro.allow.mock.location=1 \
-	ro.debuggable=1 \
-	ro.adb.secure=0 \
-	persist.service.acm.enable=0 \
-	ro.oem_unlock_supported=1 \
-	ro.mount.fs=EXT4 \
-	camera.disable_zsl_mode=1
-=======
   ro.adb.secure=0 \
   ro.oem_unlock_supported=1 \
   persist.radio.lte.chip=0 \
@@ -100,4 +80,3 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
   persist.sys.usb.config=mtp,adb \
   ro.mount.fs=EXT4 \
   camera.disable_zsl_mode=1
->>>>>>> 96eaa590f4497496661f9ddd2e74052698823cdc

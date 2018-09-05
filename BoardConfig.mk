@@ -25,7 +25,9 @@ include $(LOCAL_PATH)/PlatformConfig.mk
 -include vendor/ulefone/t1/BoardConfigVendor.mk
 
 #######################################################################
+
 # Platform
+TARGET_OTA_ASSERT_DEVICE := t1,p15v57c2k_gq_tee
 TARGET_BOOTLOADER_BOARD_NAME := mt6757
 MTK_PROJECT_CONFIG := $(LOCAL_PATH)/ProjectConfig.mk
 include $(MTK_PROJECT_CONFIG)
@@ -35,25 +37,16 @@ MTK_INTERNAL_CDEFS += $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_NAME_VALUE),$(if $
 BOARD_GLOBAL_CFLAGS += $(MTK_INTERNAL_CDEFS)
 BOARD_GLOBAL_CPPFLAGS += $(MTK_INTERNAL_CDEFS)
 
-# Kernel
 TARGET_KMODULES := true
 BOARD_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
-
-# Disable memcpy opt (for audio libraries)
+BOARD_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 TARGET_CPU_MEMCPY_OPT_DISABLE := true
 TARGET_PROVIDES_INIT_RC := true
-
-# EGL
-BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
-
-# Flags
-BOARD_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
-
-# Fonts
+LOCK_BASED_OTA := false
 BOARD_HAS_FLIPPED_SCREEN := true
 EXTENDED_FONT_FOOTPRINT := true
-
-# System.prop
+BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/11270000.usb3/musb-hdrc/gadget/lun%d/file
