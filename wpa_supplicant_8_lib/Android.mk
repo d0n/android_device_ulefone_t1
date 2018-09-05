@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+LOCAL_PATH := $(call my-dir)
 
 ##### For Google SUPPLICANT #####
 ifeq ($(MTKPATH),)
@@ -29,14 +30,13 @@ endif
 
 include $(WPA_SUPPL_DIR)/wpa_supplicant/android.config
 
-WPA_SUPPL_DIR_INCLUDE = \
-    $(WPA_SUPPL_DIR)/src \
-    $(WPA_SUPPL_DIR)/src/common \
-    $(WPA_SUPPL_DIR)/src/drivers \
-    $(WPA_SUPPL_DIR)/src/l2_packet \
-    $(WPA_SUPPL_DIR)/src/utils \
-    $(WPA_SUPPL_DIR)/src/wps \
-    $(WPA_SUPPL_DIR)/wpa_supplicant
+WPA_SUPPL_DIR_INCLUDE = $(WPA_SUPPL_DIR)/src \
+	$(WPA_SUPPL_DIR)/src/common \
+	$(WPA_SUPPL_DIR)/src/drivers \
+	$(WPA_SUPPL_DIR)/src/l2_packet \
+	$(WPA_SUPPL_DIR)/src/utils \
+	$(WPA_SUPPL_DIR)/src/wps \
+	$(WPA_SUPPL_DIR)/wpa_supplicant
 
 ifdef CONFIG_DRIVER_NL80211
 WPA_SUPPL_DIR_INCLUDE += external/libnl/include
