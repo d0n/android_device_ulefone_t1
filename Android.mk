@@ -18,5 +18,5 @@ LOCAL_PATH := $(call my-dir)
 $(shell mkdir -p $(OUT)/obj/busybox)
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 
-include $(call all-makefiles-under,$(LOCAL_PATH))
 include $(LOCAL_PATH)/BoardConfig.mk
+include $(call all-makefiles-under,$(LOCAL_PATH))
