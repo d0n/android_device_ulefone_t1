@@ -322,8 +322,6 @@ bool regDump(const sp<IDumpTunnel>& tunnel, const String8& key)
         result = (guiExt->regDump(tunnel, key) == NO_ERROR);
     }
     return result;
-#else
-return false;
 #endif
 }
 
@@ -336,7 +334,5 @@ bool unregDump(const String8& key)
         result = (guiExt->unregDump(key) == NO_ERROR);
     }
     return result;
-#else
-return false;    
 #endif
 }

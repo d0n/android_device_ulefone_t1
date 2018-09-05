@@ -188,8 +188,7 @@ PRODUCT_PACKAGES += \
 # Keyboard layout
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
-    $(LOCAL_PATH)/configs/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
-    $(LOCAL_PATH)/configs/AVRCP.kl:system/usr/keylayout/AVRCP.kl
+    $(LOCAL_PATH)/configs/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
 # Keyhandler package
 PRODUCT_PACKAGES += \
@@ -239,7 +238,6 @@ PRODUCT_PACKAGES += \
     libem_sensor_jni
 # Configurations
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/apns-conf.xml:system/etc/apns-conf.xml \
     $(LOCAL_PATH)/configs/ecc_list.xml:system/etc/ecc_list.xml \
     $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml
 

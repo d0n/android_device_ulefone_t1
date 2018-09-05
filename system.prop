@@ -553,15 +553,11 @@ dalvik.vm.isa.arm64.variant=cortex-a53
 dalvik.vm.isa.arm64.features=default
 dalvik.vm.isa.arm.variant=cortex-a53
 dalvik.vm.isa.arm.features=default
-net.bt.name=Android
+net.bt.name=d0ndroid
 dalvik.vm.stack-trace-file=/data/anr/traces.txt
-
-# begin fota properties
 ro.fota.platform=MTK6757_7.0
 ro.fota.type=phone
 ro.fota.app=5
 ro.fota.oem=aglod6757_7.0
 ro.fota.device=T1
 ro.fota.version=P15_GQ3039LF1_Ulefone_T1_V05_20171030_20171106-1539
-# end fota properties
-ro.expect.recovery_id=0xf94b815947c0ccd0cf92ab516b4a8d03bcbbbc97000000000000000000000000
