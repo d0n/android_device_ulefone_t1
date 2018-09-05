@@ -86,7 +86,7 @@ TARGET_KERNEL_ARCH := arm64
 
 # Kernel properties
 #TARGET_KERNEL_SOURCE := kernel/ulefone/t1
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilts/kernel
 TARGET_KERNEL_CONFIG := lineage_t1_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.gz
 MTK_APPENDED_DTB_SUPPORT := yes

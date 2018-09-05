@@ -163,12 +163,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES := \
   $(LOCAL_PATH)/rootdir/etc/init.rc:root/init.rc
 
-# RIL
-PRODUCT_PROPERTY_OVERRIDES += \
-  ro.kernel.android.checkjni=0 \
-  ro.telephony.ril_class=MT6757 \
-  ro.telephony.ril.config=fakeiccid
-
 # Sensors
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \

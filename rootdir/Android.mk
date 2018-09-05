@@ -1,5 +1,5 @@
 LOCAL_PATH:= $(call my-dir)
-ifneq ($(filter x603,$(TARGET_DEVICE)),)
+ifneq ($(filter t1,$(TARGET_DEVICE)),)
 include $(CLEAR_VARS)
 
 # Device init files
