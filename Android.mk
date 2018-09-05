@@ -15,6 +15,7 @@
 #
 
 LOCAL_PATH := $(call my-dir)
+include $(LOCAL_PATH)/BoardConfig.mk
 
 ifeq ($(TARGET_DEVICE),t1)
   include $(call all-makefiles-under,$(LOCAL_PATH))
