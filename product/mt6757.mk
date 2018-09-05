@@ -215,15 +215,6 @@ PRODUCT_PACKAGES += \
     power.default \
     power.mt6757
 
-<<<<<<< HEAD
-||||||| merged common ancestors
-# RIL
-PRODUCT_PROPERTY_OVERRIDES += \
-  ro.kernel.android.checkjni=0 \
-  ro.telephony.ril_class=MT6757 \
-  ro.telephony.ril.config=fakeiccid
-
-=======
 # SELinux
 BOARD_SEPOLICY_DIRS := \
        $(LOCAL_PATH)/sepolicy
@@ -231,7 +222,6 @@ BOARD_SEPOLICY_DIRS := \
 # Seccomp Filter
 BOARD_SECCOMP_POLICY := \
        $(LOCAL_PATH)/seccomp
->>>>>>> 96eaa590f4497496661f9ddd2e74052698823cdc
 # Sensors
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
