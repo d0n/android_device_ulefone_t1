@@ -131,10 +131,6 @@ ifeq ($(RECOVERY_VARIANT), twrp)
   TW_THEME := portrait_hdpi
   #TW_EXCLUDE_SUPERSU := true
   #TW_EXTRA_LANGUAGES := true
-  # TWRP.fstab
-  PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab \
-      bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
 else
   # CWMR
   BOARD_RECOVERY_SWIPE := true

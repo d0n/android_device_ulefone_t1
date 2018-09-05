@@ -34,7 +34,8 @@ PRODUCT_PACKAGES += \
 #
 ## Properly input of int.rc
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.rc:root/init.rc
+  $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab \
+  $(LOCAL_PATH)/rootdir/etc/init.rc:root/init.rc
 
 # Configurations
 PRODUCT_COPY_FILES += \
@@ -231,6 +232,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml
+
 
 # Sensor Calibration
 PRODUCT_PACKAGES += \

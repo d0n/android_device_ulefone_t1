@@ -1,8 +1,8 @@
-LOCAL_PATH:= $(call my-dir)
-
 # Device init files
 
 ifneq ($(filter t1,$(TARGET_DEVICE)),)
+
+LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE       := enableswap.sh
