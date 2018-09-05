@@ -19,7 +19,7 @@ index 9049df607..79721385c 100644
 +++ b/services/audioflinger/Threads.cpp
 @@ -6316,20 +6316,20 @@ reacquire_wakelock:
          mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER] = systemTime();
- 
+
          // Update server timestamp with kernel stats
 -        if (mInput->stream->get_capture_position != nullptr
 -                && mPipeSource.get() == nullptr /* don't obtain for FastCapture, could block */) {
@@ -51,6 +51,6 @@ index 9049df607..79721385c 100644
 +//        }
          // Use this to track timestamp information
          // ALOGD("%s", mTimestamp.toString().c_str());
- 
--- 
+
+--
 2.11.0

@@ -37,43 +37,43 @@ import org.cyanogenmod.internal.util.FileUtils;
 public class VibratorHW {
 
     // Keep this synced to immvibe impl
-    private static final String INTENSITY_FILE = "/data/.libimmvibeclient_force";
+    private static final String INTENSITY_FILE = "/sys/kernel/thunderquake_engine/level";
 
     public static boolean isSupported() {
         return true;
     }
 
-    public static boolean setIntensity(int intensity)  {
+    public static boolean setIntensity(int intensity) {
         return FileUtils.writeLine(INTENSITY_FILE, Integer.toString(intensity));
     }
 
-    public static int getMaxIntensity()  {
-        return 127;
+    public static int getMaxIntensity() {
+        return 7;
     }
 
-    public static int getMinIntensity()  {
-        return 3;
+    public static int getMinIntensity() {
+        return 0;
     }
 
-    public static int getWarningThreshold()  {
+    public static int getWarningThreshold() {
         // actually this is rather arbitrary
-        return 115;
+        return 7;
     }
 
-    public static int getCurIntensity()  {
+    public static int getCurIntensity() {
         final String result = FileUtils.readOneLine(INTENSITY_FILE);
         if (result == null) {
-            return 96;
+            return 5;
         }
 
         try {
             return Integer.parseInt(result.trim());
         } catch (final NumberFormatException ignored) {
-            return 96;
+            return 5;
         }
     }
 
-    public static int getDefaultIntensity()  {
-        return 96;
+    public static int getDefaultIntensity() {
+        return 5;
     }
 }

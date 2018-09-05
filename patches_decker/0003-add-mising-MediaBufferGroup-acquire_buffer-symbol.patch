@@ -15,7 +15,7 @@ index 54f768a..3dcb237 100644
 @@ -107,6 +107,13 @@ void MediaBufferGroup::add_buffer(MediaBuffer *buffer) {
      // optionally: mGrowthLimit = max(mGrowthLimit, mBuffers.size());
  }
- 
+
 +// stagefright: add mising MediaBufferGroup::acquire_buffer symbol - https://review.cyanogenmod.org/#/c/77502/
 +extern "C" status_t _ZN7android16MediaBufferGroup14acquire_bufferEPPNS_11MediaBufferE(
 +                    MediaBufferGroup* group, MediaBuffer **out) {
@@ -31,10 +31,10 @@ index 54f768a..3dcb237 100644
          MediaBuffer **out, bool nonBlocking, size_t requestedSize) {
      Mutex::Autolock autoLock(mLock);
 -    for (;;) {
-+    for (;;) {                                                         	
++    for (;;) {
          size_t smallest = requestedSize;
          MediaBuffer *buffer = nullptr;
          auto free = mBuffers.end();
--- 
+--
 2.7.4
 

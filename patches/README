@@ -1,5 +1,0 @@
-This is patch directory
-
-cd WORKING_DIR
-sh device/ulefone/t1/patches/install.sh
-sh device/ulefone/t1/patches/uninstall.sh

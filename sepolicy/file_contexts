@@ -403,7 +403,7 @@
 /system/bin/flashlessd u:object_r:flashlessd_exec:s0
 /system/bin/fuelgauged u:object_r:fuelgauged_exec:s0
 /system/bin/ged_srv u:object_r:ged_srv_exec:s0
-/system/bin/gas_srv u:object_r:gas_srv_exec:s0
+/system/bin/gas_srv    u:object_r:gas_srv_exec:s0
 /system/bin/kpoc_charger u:object_r:kpoc_charger_exec:s0
 /system/bin/geomagneticd u:object_r:geomagneticd_exec:s0
 /system/bin/GoogleOtaBinder u:object_r:GoogleOtaBinder_exec:s0
@@ -422,6 +422,7 @@
 /system/bin/memsicd3416x u:object_r:memsicd3416x_exec:s0
 /system/bin/memsicd u:object_r:memsicd_exec:s0
 /system/bin/meta_tst u:object_r:meta_tst_exec:s0
+ 
 /system/bin/mmc_ffu u:object_r:mmc_ffu_exec:s0
 /system/bin/emmc_rw_debug u:object_r:emmc_rw_debug_exec:s0
 /system/bin/mvg_app u:object_r:mvg_app_exec:s0
@@ -456,7 +457,7 @@
 /system/bin/terservice u:object_r:terservice_exec:s0
 /system/bin/thermald u:object_r:thermald_exec:s0
 /system/bin/thermal_manager u:object_r:thermal_manager_exec:s0
-/system/bin/thermalloadalgod u:object_r:thermalloadalgod_exec:s0
+/system/bin/thermalloadalgod u:object_r:thermalloadalgod_exec:s0  
 /system/bin/thermal u:object_r:thermal_exec:s0
 /system/bin/tiny_mkswap u:object_r:tiny_mkswap_exec:s0
 /system/bin/tiny_swapon u:object_r:tiny_swapon_exec:s0
@@ -472,7 +473,7 @@
 /system/bin/xlog u:object_r:xlog_exec:s0
 /system/bin/sbchk u:object_r:sbchk_exec:s0
 /system/bin/OperaMaxSystem u:object_r:tunman_exec:s0
-/system/etc/sensor(/.*)? u:object_r:system_sensor_data_file:s0
+/system/etc/sensor(/.*)?	u:object_r:system_sensor_data_file:s0
 /system/vendor/bin/pvrsrvctl u:object_r:pvrsrvctl_exec:s0
 /system/xbin/BGW u:object_r:BGW_exec:s0
 /system/xbin/mnld u:object_r:mnld_exec:s0
@@ -500,7 +501,7 @@
 #fat on nand image
 /fat(/.*)?  u:object_r:fon_image_data_file:s0
 
-#smart audio pa
+#smart audio pa 
 /system/bin/smart_audio.sh  u:object_r:smart_audio_exec:s0
 
 # Fingerprint device

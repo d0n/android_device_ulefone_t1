@@ -15,7 +15,7 @@ index 3dcb237..c9e95df 100644
 @@ -114,6 +114,14 @@ extern "C" status_t _ZN7android16MediaBufferGroup14acquire_bufferEPPNS_11MediaBu
      return group->acquire_buffer(out, false, 0);
  }
- 
+
 +// just another method fix
 +extern "C" status_t _ZN7android16MediaBufferGroup14acquire_bufferEPPNS_11MediaBufferEb(
 +                    MediaBufferGroup* group, MediaBuffer **out, bool nonBlocking) {
@@ -27,6 +27,6 @@ index 3dcb237..c9e95df 100644
  bool MediaBufferGroup::has_buffers() {
      if (mBuffers.size() < mGrowthLimit) {
          return true; // We can add more buffers internally.
--- 
+--
 2.7.4
 

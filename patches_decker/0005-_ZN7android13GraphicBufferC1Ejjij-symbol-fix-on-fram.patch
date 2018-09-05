@@ -16,13 +16,13 @@ index 3e127a1..a3189fc 100644
 --- a/include/ui/GraphicBuffer.h
 +++ b/include/ui/GraphicBuffer.h
 @@ -72,6 +72,12 @@ public:
- 
+
      GraphicBuffer();
- 
+
 +    /*
 +    // [+] Decker
 +    GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
-+            uint32_t inUsage); 
++            uint32_t inUsage);
 +    */
 +
      // creates w * h buffer
@@ -34,21 +34,21 @@ index 2b16365..6be8790 100644
 +++ b/libs/ui/Android.mk
 @@ -16,7 +16,7 @@ LOCAL_PATH := $(call my-dir)
  include $(CLEAR_VARS)
- 
+
  LOCAL_CLANG := true
 -LOCAL_CPPFLAGS := -std=c++1y -Weverything -Werror
-+LOCAL_CPPFLAGS := -std=c++1y -Weverything 
++LOCAL_CPPFLAGS := -std=c++1y -Weverything
  # LOCAL_SANITIZE := integer
- 
+
  # The static constructors and destructors in this library have not been noted to
 diff --git a/libs/ui/GraphicBuffer.cpp b/libs/ui/GraphicBuffer.cpp
 index df31d5f..c586671 100644
 --- a/libs/ui/GraphicBuffer.cpp
 +++ b/libs/ui/GraphicBuffer.cpp
 @@ -30,6 +30,36 @@
- 
+
  namespace android {
- 
+
 +// [+] Decker, объявляем свой класс
 +class GraphicBufferStubDecker {
 + public:
@@ -85,7 +85,7 @@ index df31d5f..c586671 100644
 @@ -53,6 +83,25 @@ GraphicBuffer::GraphicBuffer()
      handle = NULL;
  }
- 
+
 +/*
 +// [+] Decker
 +GraphicBuffer::GraphicBuffer()
@@ -108,6 +108,6 @@ index df31d5f..c586671 100644
  GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight,
          PixelFormat inFormat, uint32_t inUsage, std::string requestorName)
      : BASE(), mOwner(ownData), mBufferMapper(GraphicBufferMapper::get()),
--- 
+--
 2.7.4
 

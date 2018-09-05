@@ -835,7 +835,8 @@ void GuiExtPoolItem::dump(String8& result) const
 
     if(mGPUUsedConsumer != NULL){
         result.appendFormat("    << GPU BQ >>\n");
-        mGPUUsedConsumer->dumpState(result, "        ");//dump(result, "        ");
+        //mGPUUsedConsumer->dumpState(result, "        ");
+        //dump(result, "        ");
 
         result.appendFormat("    << GPU Consumer >> connected=%s\n",
                         mIsDisconnected[GUI_EXT_USAGE_GPU] ? "false" : "true");
@@ -848,7 +849,8 @@ void GuiExtPoolItem::dump(String8& result) const
 #if SUPPORT_MULTIBQ_FOR_HWC
         for (uint32_t i = 0; i < mHwcUsedBqList.size(); i++) {
             result.appendFormat("    << HWC BQ >> type=%d\n", mHwcUsedBqList[i]->type);
-            mHwcUsedBqList[i]->mConsumer->dumpState(result, "        ");//dump(result, "        ");
+            //mHwcUsedBqList[i]->mConsumer->dumpState(result, "        ");
+            //dump(result, "        ");
 
             result.appendFormat("    << HWC Consumer >> type=%d connected=%s\n",
                                 mHwcUsedBqList[i]->type,

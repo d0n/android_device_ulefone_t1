@@ -1,5 +1,4 @@
 #!/bin/bash
-clear
 cd frameworks/av
 git apply -v  ../../device/ulefone/t1/patches_decker/0001-mtk-audio-fix.patch
 git apply -v  ../../device/ulefone/t1/patches_decker/0003-add-mising-MediaBufferGroup-acquire_buffer-symbol.patch

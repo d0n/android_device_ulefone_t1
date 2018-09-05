@@ -1,6 +1,6 @@
 # MTK audio
 BOARD_USES_MTK_AUDIO := true
-#USE_XML_AUDIO_POLICY_CONF := 1
+USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
 MTK_BT_SUPPORT := yes
@@ -14,7 +14,7 @@ BOARD_MEDIATEK_USES_GPS := true
 BOARD_USES_AOSP_GPS_HAL := true
 
 # Bootanimation
-TARGET_BOOTANIMATION_HALF_RES := true
+#TARGET_BOOTANIMATION_HALF_RES := true
 TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
@@ -22,10 +22,18 @@ TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 USE_CAMERA_STUB := true
 
 # Legacy HAL
-#TARGET_HAS_LEGACY_CAMERA_HAL1 := true
+TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
 # OTA assert
+<<<<<<< HEAD
 TARGET_OTA_ASSERT_DEVICE := t1
+||||||| merged common ancestors
+TARGET_OTA_ASSERT_DEVICE := t1,T1,ulefone,Ulefone,mp5-V1_even6757,T1
+BOARD_HAS_FLIPPED_SCREEN := true
+=======
+TARGET_OTA_ASSERT_DEVICE := t1,p15v57c2k_gq_tee
+BOARD_HAS_FLIPPED_SCREEN := true
+>>>>>>> 96eaa590f4497496661f9ddd2e74052698823cdc
 
 # Enable Minikin text layout engine (will be the default soon)
 USE_MINIKIN := true
@@ -71,14 +79,14 @@ BOARD_GLOBAL_CFLAGS += -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
 BOARD_GLOBAL_CFLAGS += -DCOMPAT_SENSORS_M
 
 # Kernel information
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 #  androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_NAME := 1509953733
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_RAMDISK_OFFSET := 0x40ef8000
 BOARD_TAGS_OFFSET := 0x03f88000
-BOARD_MKBOOTIMG_ARGS := --cmdline $(BOARD_KERNEL_CMDLINE) --base $(BOARD_KERNEL_BASE) --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_TAGS_OFFSET) --board $(BOARD_NAME) --pagesize $(BOARD_KERNEL_PAGESIZE)
+BOARD_MKBOOTIMG_ARGS := --cmdline bootopt=64S3,32N2,64N2 --base $(BOARD_KERNEL_BASE) --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_TAGS_OFFSET) --board $(BOARD_NAME) --pagesize $(BOARD_KERNEL_PAGESIZE)
 TARGET_IS_64_BIT := true
 MTK_K64_SUPPORT := yes
 TARGET_KERNEL_ARCH := arm64
@@ -90,33 +98,49 @@ TARGET_KERNEL_CONFIG := lineage_t1_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.gz
 MTK_APPENDED_DTB_SUPPORT := yes
 
-# Platform
-TARGET_BOOTLOADER_BOARD_NAME := mt6757
-MTK_PROJECT_CONFIG ?= $(LOCAL_PATH)/ProjectConfig.mk
-include $(MTK_PROJECT_CONFIG)
-
-MTK_INTERNAL_CDEFS := $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_NAME),$(if $(filter-out no NO none NONE false FALSE,$($(t))),-D$(t)))
-MTK_INTERNAL_CDEFS += $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_VALUE),$(if $(filter-out no NO none NONE false FALSE,$($(t))),$(foreach v,$(shell echo $($(t)) | tr '[a-z]' '[A-Z]'),-D$(v))))
-MTK_INTERNAL_CDEFS += $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_NAME_VALUE),$(if $(filter-out no NO none NONE false FALSE,$($(t))),-D$(t)=\"$($(t))\"))
-
-BOARD_GLOBAL_CFLAGS += $(MTK_INTERNAL_CDEFS)
-BOARD_GLOBAL_CPPFLAGS += $(MTK_INTERNAL_CDEFS)
-
 # Legacy blobs
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
 # Images
 TARGET_NO_BOOTLOADER := true
+<<<<<<< HEAD
 
+||||||| merged common ancestors
+
+# Architecture
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 :=
+TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_CORTEX_A53 := true
+
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := cortex-a53
+
+TARGET_BOARD_SUFFIX := _64
+TARGET_USES_64_BIT_BINDER := true
+
+# Architecture Extensions
+TARGET_CPU_SMP := true
+ARCH_ARM_HAVE_NEON := true
+ARCH_ARM_HAVE_TLS_REGISTER := true
+ARCH_ARM_HAVE_VFP := true
+
+=======
+BLOCK_BASED_OTA := false
+
+>>>>>>> 96eaa590f4497496661f9ddd2e74052698823cdc
 # Charger
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # Recovery
+BOARD_USES_FULL_RECOVERY_IMAGE := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 BOARD_HAS_NO_SELECT_BUTTON := true
-#BOARD_USES_RECOVERY_AS_BOOT := true
-#BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
-#AB_OTA_UPDATER := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
 RECOVERY_VARIANT := twrp
 ifeq ($(RECOVERY_VARIANT), twrp)
@@ -133,7 +157,7 @@ ifeq ($(RECOVERY_VARIANT), twrp)
   TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd-backlight/brightness\"
   #TW_NO_REBOOT_BOOTLOADER := true
   TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
-  TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
+  #TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
   RECOVERY_GRAPHICS_USE_LINELENGTH := true
   BOARD_SUPPRESS_SECURE_ERASE := true
   TW_INCLUDE_CRYPTO := true
@@ -146,7 +170,7 @@ ifeq ($(RECOVERY_VARIANT), twrp)
   #TW_USE_TOOLBOX := true
   TW_FLASH_FROM_STORAGE := true
   TW_NEW_ION_HEAP := true
-  #TWHAVE_SELINUX := true
+  TWHAVE_SELINUX := true
   TW_THEME := portrait_hdpi
   #TW_EXCLUDE_SUPERSU := true
   #TW_EXTRA_LANGUAGES := true

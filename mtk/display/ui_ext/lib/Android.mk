@@ -47,13 +47,20 @@ LOCAL_SRC_FILES:= \
 	IDumpTunnel.cpp \
 	RefBaseDump.cpp
 
-LOCAL_C_INCLUDES:= \
-	hardware/lenovo/graphics/ui_ext/inc \
-	hardware/lenovo/graphics/gralloc_extra/include \
+
+LOCAL_C_INCLUDES := \
+	$(LOCAL_PATH)/../inc \
 	external/libpng \
 	external/zlib \
 	external/skia/src/images \
 	external/skia/include/core
+	
+LOCAL_EXPORT_C_INCLUDE_DIRS := \
+	$(LOCAL_PATH)/../inc \
+	external/libpng \
+	external/zlib \
+	external/skia/src/images \
+	external/skia/include/core	
 
 LOCAL_SHARED_LIBRARIES := \
 	libpng \

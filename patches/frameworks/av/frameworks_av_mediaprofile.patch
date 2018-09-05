@@ -23,7 +23,7 @@ index b1c7c15..80724da 100644
 +#else
      CAMCORDER_QUALITY_LIST_END = 8,
 +#endif// MTK_MEDIA_PROFILES
- 
+
      CAMCORDER_QUALITY_TIME_LAPSE_LIST_START = 1000,
      CAMCORDER_QUALITY_TIME_LAPSE_LOW  = 1000,
 @@ -46,7 +62,23 @@ enum camcorder_quality {
@@ -47,7 +47,7 @@ index b1c7c15..80724da 100644
 +#else
      CAMCORDER_QUALITY_TIME_LAPSE_LIST_END = 1008,
 +#endif// MTK_MEDIA_PROFILES
- 
+
      CAMCORDER_QUALITY_HIGH_SPEED_LIST_START = 2000,
      CAMCORDER_QUALITY_HIGH_SPEED_LOW  = 2000,
 @@ -55,7 +87,24 @@ enum camcorder_quality {
@@ -72,7 +72,7 @@ index b1c7c15..80724da 100644
 +#else
      CAMCORDER_QUALITY_HIGH_SPEED_LIST_END = 2005,
 +#endif// MTK_MEDIA_PROFILES
- 
+
      CAMCORDER_QUALITY_VENDOR_START = 10000,
      CAMCORDER_QUALITY_VGA = 10000,
 
@@ -83,7 +83,7 @@ index df4e4b6..77d73e3 100644
 @@ -97,6 +97,10 @@ LOCAL_C_INCLUDES := \
      $(call include-path-for, audio-effects) \
      $(call include-path-for, audio-utils)
- 
+
 +ifeq ($(BOARD_USES_MTK_MEDIA_PROFILES), true)
 +LOCAL_CFLAGS += -DMTK_MEDIA_PROFILES
 +endif
@@ -105,7 +105,7 @@ index dd72c16..d5b331e 100644
 +#endif
      {"lpcm",  AUDIO_ENCODER_LPCM},
  };
- 
+
 @@ -103,6 +106,51 @@ const MediaProfiles::NameToTagMap MediaProfiles::sCamcorderQualityNameMap[] = {
      {"2k", CAMCORDER_QUALITY_2k},
      {"timelapseqhd", CAMCORDER_QUALITY_TIME_LAPSE_QHD},
@@ -156,6 +156,6 @@ index dd72c16..d5b331e 100644
 +#endif // (MTK_MEDIA_PROFILES)
 +
  };
- 
+
  #if LOG_NDEBUG
 

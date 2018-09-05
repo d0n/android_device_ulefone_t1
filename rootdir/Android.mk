@@ -1,9 +1,20 @@
 LOCAL_PATH:= $(call my-dir)
+<<<<<<< HEAD
 ifneq ($(filter t1,$(TARGET_DEVICE)),)
 
 include $(CLEAR_VARS)
 
 # Device init files
+||||||| merged common ancestors
+ifneq ($(filter x603,$(TARGET_DEVICE)),)
+include $(CLEAR_VARS)
+
+# Device init files
+
+=======
+ifneq ($(filter t1,$(TARGET_DEVICE)),)
+
+>>>>>>> 96eaa590f4497496661f9ddd2e74052698823cdc
 include $(CLEAR_VARS)
 LOCAL_MODULE       := enableswap.sh
 LOCAL_MODULE_TAGS  := optional eng
@@ -16,7 +27,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := factory_init.connectivity.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := factory_init.connectivity.rc
+LOCAL_SRC_FILES    := etc/factory_init.connectivity.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
@@ -69,10 +80,18 @@ LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := init.microtrust.rc
+LOCAL_MODULE       := init.epdg.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.microtrust.rc
+LOCAL_SRC_FILES    := etc/init.epdg.rc
+LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.fingerprint.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.fingerprint.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
@@ -129,6 +148,14 @@ LOCAL_MODULE       := init.sensor.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/init.sensor.rc
+LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.trustkernel.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.trustkernel.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
@@ -196,8 +223,6 @@ LOCAL_SRC_FILES    := etc/meta_init.project.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
-
-
 include $(CLEAR_VARS)
 LOCAL_MODULE       := meta_init.rc
 LOCAL_MODULE_TAGS  := optional eng
@@ -237,14 +262,5 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/ueventd.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.epdg.rc
-LOCAL_MODULE_TAGS  := optional eng
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.epdg.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
 
 endif

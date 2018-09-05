@@ -25,6 +25,15 @@ include $(LOCAL_PATH)/PlatformConfig.mk
 -include vendor/ulefone/t1/BoardConfigVendor.mk
 
 #######################################################################
+# Platform
+TARGET_BOOTLOADER_BOARD_NAME := mt6757
+MTK_PROJECT_CONFIG := $(LOCAL_PATH)/ProjectConfig.mk
+include $(MTK_PROJECT_CONFIG)
+MTK_INTERNAL_CDEFS := $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_NAME),$(if $(filter-out no NO none NONE false FALSE,$($(t))),-D$(t)))
+MTK_INTERNAL_CDEFS += $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_VALUE),$(if $(filter-out no NO none NONE false FALSE,$($(t))),$(foreach v,$(shell echo $($(t)) | tr '[a-z]' '[A-Z]'),-D$(v))))
+MTK_INTERNAL_CDEFS += $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_NAME_VALUE),$(if $(filter-out no NO none NONE false FALSE,$($(t))),-D$(t)=\"$($(t))\"))
+BOARD_GLOBAL_CFLAGS += $(MTK_INTERNAL_CDEFS)
+BOARD_GLOBAL_CPPFLAGS += $(MTK_INTERNAL_CDEFS)
 
 # Kernel
 TARGET_KMODULES := true
@@ -32,6 +41,7 @@ BOARD_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 
 # Disable memcpy opt (for audio libraries)
 TARGET_CPU_MEMCPY_OPT_DISABLE := true
+TARGET_PROVIDES_INIT_RC := true
 
 # EGL
 BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg

@@ -51,10 +51,16 @@ LOCAL_SRC_FILES:= \
 MTK_HWC_CHIP = $(shell echo $(MTK_PLATFORM) | tr A-Z a-z )
 
 LOCAL_C_INCLUDES:= \
-    $(TOP)/frameworks/base/include/ \
-    $(TOP)/hardware/lenovo/graphics/gui_ext/inc \
-    $(TOP)/hardware/lenovo/graphics/ui_ext/inc \
-    $(TOP)/hardware/lenovo/graphics/gralloc_extra/include
+	$(LOCAL_PATH)/../inc \
+	$(LOCAL_PATH)/../../gui_ext/inc \
+    $(LOCAL_PATH)/../../ui_ext/inc \
+    $(LOCAL_PATH)/../../gralloc_extra/include
+
+LOCAL_EXPORT_C_INCLUDE_DIRS := \
+	$(LOCAL_PATH)/../inc \
+	$(LOCAL_PATH)/../../gui_ext/inc \
+    $(LOCAL_PATH)/../../ui_ext/inc \
+    $(LOCAL_PATH)/../../gralloc_extra/include
 
 LOCAL_SHARED_LIBRARIES := \
     libutils \
@@ -71,7 +77,7 @@ LOCAL_SHARED_LIBRARIES := \
     libui_ext
 
 # for bring up, please unmark this line
-# LOCAL_CFLAGS += -DMTK_DO_NOT_USE_GUI_EXT
+LOCAL_CFLAGS += -DMTK_DO_NOT_USE_GUI_EXT
 
 ifneq ($(strip $(TARGET_BUILD_VARIANT)), eng)
 LOCAL_CFLAGS += -DMTK_USER_BUILD

@@ -46,7 +46,7 @@ index 4e54ddb..e4c9fad 100644
 @@ -185,10 +185,11 @@ private:
      // PID of the process which last successfully called connect(...)
      pid_t mConnectedPid;
- 
+
 +#ifndef MTK_HARDWARE
      // mLinkedToDeath is used to set a binder death notification on
      // the producer.
@@ -68,7 +68,7 @@ index b7826c6..e5a5a45 100644
      virtual bool needsReleaseNotify() = 0;
 +#endif
  };
- 
+
  class IProducerListener : public ProducerListener, public IInterface
 @@ -55,14 +57,18 @@ class BnProducerListener : public BnInterface<IProducerListener>
  public:
@@ -78,7 +78,7 @@ index b7826c6..e5a5a45 100644
      virtual bool needsReleaseNotify();
 +#endif
  };
- 
+
  class DummyProducerListener : public BnProducerListener
  {
  public:
@@ -87,7 +87,7 @@ index b7826c6..e5a5a45 100644
      virtual bool needsReleaseNotify() { return false; }
 +#endif
  };
- 
+
  } // namespace android
 diff --git a/include/media/openmax/OMX_IVCommon.h b/include/media/openmax/OMX_IVCommon.h
 index f9b6f4b..05317cd 100644
@@ -108,7 +108,7 @@ index f9b6f4b..05317cd 100644
 +    OMX_MTK_COLOR_FormatYV12 = 0x7F000200,
 +    OMX_MTK_COLOR_FormatBitStream = 0x7F000300,
 +    #endif
- 
+
      OMX_TI_COLOR_FormatYUV420PackedSemiPlanar = 0x7F000100,
      OMX_QCOM_COLOR_FormatYVU420SemiPlanar = 0x7FA30C00,
 diff --git a/include/ui/Fence.h b/include/ui/Fence.h
@@ -125,7 +125,7 @@ index 48a7aa3..4e68952 100644
 -
 +#endif
  struct ANativeWindowBuffer;
- 
+
  namespace android {
 @@ -81,9 +81,10 @@ public:
      // becomes signaled when both f1 and f2 are signaled (even if f1 or f2 is
@@ -138,7 +138,7 @@ index 48a7aa3..4e68952 100644
 +#endif
      static sp<Fence> merge(const String8& name, const sp<Fence>& f1,
              const sp<Fence>& f2);
- 
+
 @@ -97,7 +98,7 @@ public:
      // then INT64_MAX is returned.  If the fence is invalid or if an error
      // occurs then -1 is returned.
@@ -159,14 +159,14 @@ index 48a7aa3..4e68952 100644
      size_t getFdCount() const;
 @@ -136,6 +137,10 @@ private:
      const Fence& operator = (const Fence& rhs) const;
- 
+
      int mFenceFd;
 +#ifdef MTK_HARDWARE
 +private:
 +    void dump(int fd);
 +#endif
  };
- 
+
  }; // namespace android
 diff --git a/include/ui/mediatek/GuiExtMonitor.h b/include/ui/mediatek/GuiExtMonitor.h
 new file mode 100644
@@ -419,12 +419,12 @@ index 0889aaf..718282d 100644
  	SurfaceControl.cpp \
  	SurfaceComposerClient.cpp \
  	SyncFeatures.cpp \
-+	
++
 +ifndef MTK_HARDWARE
 +LOCAL_SRC_FILES += \
 +	GraphicsEnv.cpp
 +endif
- 
+
  LOCAL_SHARED_LIBRARIES := \
   	libnativeloader \
 diff --git a/libs/gui/BufferQueueCore.cpp b/libs/gui/BufferQueueCore.cpp
@@ -465,7 +465,7 @@ index ff85eb5..41c6814 100644
          default:
 @@ -1198,9 +1204,15 @@ status_t BufferQueueProducer::disconnect(int api, DisconnectMode mode) {
                      mCore->freeAllBuffersLocked();
- 
+
                      // Remove our death notification callback if we have one
 +#ifndef MTK_HARDWARE
                      if (mCore->mLinkedToDeath != NULL) {
@@ -495,7 +495,7 @@ index 3cf3078..25bf4e9 100644
 +++ b/libs/gui/ConsumerBase.cpp
 @@ -313,6 +313,7 @@ status_t ConsumerBase::addReleaseFenceLocked(int slot,
      }
- 
+
      if (!mSlots[slot].mFence.get()) {
 +#ifndef MTK_HARDWARE
          mSlots[slot].mFence = fence;
@@ -554,14 +554,14 @@ index da54ce1..da5f65e 100644
 --- a/libs/gui/IProducerListener.cpp
 +++ b/libs/gui/IProducerListener.cpp
 @@ -22,7 +22,9 @@ namespace android {
- 
+
  enum {
      ON_BUFFER_RELEASED = IBinder::FIRST_CALL_TRANSACTION,
 +#ifndef MTK_HARDWARE
      NEEDS_RELEASE_NOTIFY,
 +#endif
  };
- 
+
  class BpProducerListener : public BpInterface<IProducerListener>
 @@ -38,7 +40,7 @@ public:
          data.writeInterfaceToken(IProducerListener::getInterfaceDescriptor());
@@ -578,7 +578,7 @@ index da54ce1..da5f65e 100644
      }
 +#endif
  };
- 
+
  // Out-of-line virtual method definition to trigger vtable emission in this
 @@ -70,16 +73,19 @@ status_t BnProducerListener::onTransact(uint32_t code, const Parcel& data,
              CHECK_INTERFACE(IProducerListener, data, reply);
@@ -599,7 +599,7 @@ index da54ce1..da5f65e 100644
      return true;
  }
 +#endif
- 
+
  } // namespace android
 diff --git a/libs/gui/SurfaceControl.cpp b/libs/gui/SurfaceControl.cpp
 index d59b37c..df33860 100644
@@ -636,18 +636,18 @@ index 2b16365..d4436bc 100644
 +++ b/libs/ui/Android.mk
 @@ -16,7 +16,7 @@ LOCAL_PATH := $(call my-dir)
  include $(CLEAR_VARS)
- 
+
  LOCAL_CLANG := true
 -LOCAL_CPPFLAGS := -std=c++1y -Weverything -Werror
 +LOCAL_CPPFLAGS := -std=c++1y -Weverything
  # LOCAL_SANITIZE := integer
- 
+
  # The static constructors and destructors in this library have not been noted to
 @@ -55,6 +55,20 @@ LOCAL_SHARED_LIBRARIES := \
  	libsync \
  	libutils \
  	liblog
-+	
++
 +ifeq ($(BOARD_USES_MTK_HARDWARE),true)
 +LOCAL_CFLAGS += -DMTK_HARDWARE
 +	LOCAL_CPPFLAGS += -Wno-extra-semi -Wno-zero-length-array -Wno-gnu-statement-expression
@@ -661,7 +661,7 @@ index 2b16365..d4436bc 100644
 +	LOCAL_SHARED_LIBRARIES += \
 +		libbinder
 +endif
- 
+
  ifneq ($(BOARD_FRAMEBUFFER_FORCE_FORMAT),)
  LOCAL_CFLAGS += -DFRAMEBUFFER_FORCE_FORMAT=$(BOARD_FRAMEBUFFER_FORCE_FORMAT)
 diff --git a/libs/ui/Fence.cpp b/libs/ui/Fence.cpp
@@ -716,7 +716,7 @@ index 5531b23..f83c214 100644
      return merge(name.string(), f1, f2);
  }
 +#endif
- 
+
  int Fence::dup() const {
      return ::dup(mFenceFd);
 diff --git a/libs/ui/GraphicBuffer.cpp b/libs/ui/GraphicBuffer.cpp
@@ -726,7 +726,7 @@ index df31d5f..2105edb 100644
 @@ -34,6 +34,35 @@ namespace android {
  // Buffer and implementation of ANativeWindowBuffer
  // ===========================================================================
- 
+
 +#ifdef MTK_HARDWARE
 +class GraphicBufferStubDecker {
 + public:
@@ -1028,7 +1028,7 @@ index 2e18698..635db44 100644
 @@ -621,6 +621,10 @@ typedef EGLAPI EGLClientBuffer (EGLAPIENTRYP PFNEGLCREATENATIVECLIENTBUFFERANDRO
  #define EGL_MUTABLE_RENDER_BUFFER_BIT_KHR 0x1000
  #endif
- 
+
 +#ifdef MTK_HARDWARE
 +void* egl_GVR_FrontBuffer(const EGLSurface surface);
 +void* EGL_SEC_getClientBufferForFrontBuffer(EGLSurface surface);
@@ -1045,7 +1045,7 @@ index 2e18698..635db44 100644
 +void* EGL_SEC_getClientBufferForFrontBuffer(EGLSurface surface);
 +#define EGL_IS_INVALID_MTK    0x43210001
 +#endif
- 
+
  #ifdef __cplusplus
  }
 diff --git a/opengl/libs/EGL/Loader.cpp b/opengl/libs/EGL/Loader.cpp
@@ -1065,11 +1065,11 @@ index 4234db8..b402a31 100644
 -
 +#endif
  // ----------------------------------------------------------------------------
- 
+
  Loader::driver_t::driver_t(void* gles)
 @@ -168,7 +168,7 @@ status_t Loader::driver_t::set(void* hnd, int32_t api)
  }
- 
+
  // ----------------------------------------------------------------------------
 -
 +#ifndef MTK_HARDWARE
@@ -1092,7 +1092,7 @@ index 4234db8..b402a31 100644
          dlclose(mLibGui);
 +#endif
  }
- 
+
  static void* load_wrapper(const char* path) {
 +#ifndef MTK_HARDWARE
      void* so = do_dlopen(path, RTLD_NOW | RTLD_LOCAL);
@@ -1132,13 +1132,13 @@ index 4234db8..b402a31 100644
          ALOGE("load_driver(%s): %s", driver_absolute_path, err?err:"unknown");
 @@ -473,7 +491,7 @@ static void* load_system_driver(const char* kind) {
      }
- 
+
      ALOGD("loaded %s", driver_absolute_path);
 -
 +#ifndef MTK_HARDWARE
      return dso;
  }
- 
+
 @@ -525,13 +543,16 @@ void *Loader::load_driver(const char* kind,
          if (!dso)
              return NULL;
@@ -1173,11 +1173,11 @@ index 04a8e41..bc5a1c7 100644
 -
 +#endif
  #include <EGL/egl.h>
- 
+
  // ----------------------------------------------------------------------------
 @@ -55,10 +55,10 @@ class Loader : public Singleton<Loader>
      };
-     
+
      getProcAddressType getProcAddress;
 -
 +#ifndef MTK_HARDWARE
@@ -1187,7 +1187,7 @@ index 04a8e41..bc5a1c7 100644
 +#endif
  public:
      ~Loader();
-     
+
 diff --git a/opengl/libs/EGL/eglApi.cpp b/opengl/libs/EGL/eglApi.cpp
 index 0cd8b02..29289c0 100644
 --- a/opengl/libs/EGL/eglApi.cpp
@@ -1195,7 +1195,7 @@ index 0cd8b02..29289c0 100644
 @@ -219,6 +219,12 @@ static const extention_map_t sExtensionMap[] = {
      { "eglCreateStreamFromFileDescriptorKHR",
              (__eglMustCastToProperFunctionPointerType)&eglCreateStreamFromFileDescriptorKHR },
- 
+
 +#ifdef MTK_HARDWARE
 +    { "egl_GVR_FrontBuffer",
 +            (__eglMustCastToProperFunctionPointerType)&egl_GVR_FrontBuffer },
@@ -1207,7 +1207,7 @@ index 0cd8b02..29289c0 100644
              (__eglMustCastToProperFunctionPointerType)&eglGetFrameTimestampsANDROID },
 @@ -659,6 +665,16 @@ EGLBoolean eglQuerySurface( EGLDisplay dpy, EGLSurface surface,
          return setError(EGL_BAD_SURFACE, EGL_FALSE);
- 
+
      egl_surface_t const * const s = get_surface(surface);
 +#ifdef MTK_HARDWARE
 +    if (attribute == EGL_IS_INVALID_MTK)
@@ -1260,7 +1260,7 @@ index 0cd8b02..29289c0 100644
 @@ -2036,6 +2073,44 @@ EGLBoolean eglSetDamageRegionKHR(EGLDisplay dpy, EGLSurface surface,
      return EGL_FALSE;
  }
- 
+
 +#ifdef MTK_HARDWARE
 +void* egl_GVR_FrontBuffer(const EGLSurface surface)
 +{
@@ -1307,7 +1307,7 @@ index 2b56718..c304973 100644
 --- a/opengl/libs/EGL/egl_entries.in
 +++ b/opengl/libs/EGL/egl_entries.in
 @@ -96,3 +96,6 @@ EGL_ENTRY(EGLBoolean, eglAwakenProcessIMG, void)
- 
+
  EGL_ENTRY(EGLBoolean, eglSwapBuffersWithDamageKHR, EGLDisplay, EGLSurface, EGLint *, EGLint)
  EGL_ENTRY(EGLBoolean, eglSetDamageRegionKHR, EGLDisplay, EGLSurface, EGLint *, EGLint)
 +
@@ -1319,7 +1319,7 @@ index ba99d0c..6cd3f5f 100644
 --- a/vulkan/libvulkan/driver.cpp
 +++ b/vulkan/libvulkan/driver.cpp
 @@ -26,8 +26,9 @@
- 
+
  #include <android/dlext.h>
  #include <cutils/properties.h>
 +#ifndef MTK_HARDWARE
@@ -1328,10 +1328,10 @@ index ba99d0c..6cd3f5f 100644
 +#endif
  #include "driver.h"
  #include "stubhal.h"
- 
+
 @@ -128,7 +129,7 @@ class CreateInfoWrapper {
  };
- 
+
  Hal Hal::hal_;
 -
 +#ifndef MTK_HARDWARE
@@ -1346,14 +1346,14 @@ index ba99d0c..6cd3f5f 100644
 +#endif
  bool Hal::Open() {
      ALOG_ASSERT(!hal_.dev_, "OpenHAL called more than once");
- 
+
      // Use a stub device unless we successfully open a real HAL device.
      hal_.dev_ = &stubhal::kDevice;
 -
 +#ifndef MTK_HARDWARE
      int result;
      const hwvulkan_module_t* module = nullptr;
- 
+
 @@ -206,7 +207,16 @@ bool Hal::Open() {
          ALOGV("unable to load Vulkan HAL, using stub HAL (result=%d)", result);
          return true;
@@ -1366,11 +1366,11 @@ index ba99d0c..6cd3f5f 100644
 +        ALOGI("no Vulkan HAL present, using stub HAL");
 +        return true;
 +    }
- 
+
 +#endif
      hwvulkan_device_t* device;
      result =
          module->common.methods->open(&module->common, HWVULKAN_DEVICE_0,
--- 
+--
 1.9.1
 
