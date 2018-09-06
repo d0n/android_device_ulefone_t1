@@ -7,12 +7,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/ulefone/t1/device.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := T1
+PRODUCT_RELEASE_NAME := t1
 
 PRODUCT_DEVICE := t1
 PRODUCT_NAME := lineage_t1
 PRODUCT_BRAND := Ulefone
-PRODUCT_MODEL := T1
+PRODUCT_MODEL := t1
 PRODUCT_MANUFACTURER := Ulefone
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
