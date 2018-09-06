@@ -25,7 +25,6 @@ include device/ulefone/mt6757-common/BoardConfigCommon.mk
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := t1
-USE_CUSTOM_AUDIO_POLICY := 0
 #ALLOW_MISSING_DEPENDENCIES := true
 BLOCK_BASED_OTA := false
 
