@@ -20,7 +20,7 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 
 ## (2) Also get non-open-source specific aspects if available
-#$(call inherit-product-if-exists, device/ulefone/t1/product/mt6757.mk)
+$(call inherit-product-if-exists, device/ulefone/t1/product/mt6757.mk)
 
 $(call inherit-product-if-exists, vendor/ulefone/t1/t1-vendor.mk)
 
