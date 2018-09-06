@@ -1,56 +1,100 @@
-# Copyright (C) 2015 The CyanogenMod Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# mt6753 platform boardconfig
+LOCAL_PATH := device/ulefone/t1
 
-#
-# This file sets variables that control the way modules are built
-# thorughout the system. It should not be used to conditionally
-# disable makefiles (the proper mechanism to control what gets
-# included in a build is to use PRODUCT_PACKAGES in a product
-# definition file).
-#
+include vendor/mad/config/board.mk
 
-# inherit from zero-common
-include device/ulefone/mt6757-common/BoardConfigCommon.mk
+# Platform
+ARCH_ARM_HAVE_TLS_REGISTER := true
+TARGET_BOARD_PLATFORM := mt6757
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_FACTORYIMAGE := true
 
-# Assert
-TARGET_OTA_ASSERT_DEVICE := t1
-#ALLOW_MISSING_DEPENDENCIES := true
-BLOCK_BASED_OTA := false
+# CPU
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 :=
+TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_SMP := true
 
-# Include path
-#TARGET_SPECIFIC_HEADER_PATH += device/ulefone/t1/include
-TARGET_RECOVERY_FSTAB := device/ulefone/t1/rootdir/recovery.fstab
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := cortex-a53
+TARGET_BOARD_SUFFIX := _64
+TARGET_USES_64_BIT_BINDER := true
+
+TARGET_CPU_CORTEX_A53 := true
+
+TARGET_BOOTLOADER_BOARD_NAME := mt6757
 
 # Kernel
-TARGET_KERNEL_CONFIG := lineageos_t1_defconfig
-
-# Partitions
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3758096384
-# Kernel information
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_NAME := 1509953733
-BOARD_KERNEL_OFFSET := 0x00008000
-BOARD_RAMDISK_OFFSET := 0x40ef8000
-BOARD_TAGS_OFFSET := 0x03f88000
-BOARD_MKBOOTIMG_ARGS := --cmdline bootopt=64S3,32N2,64N2 --base 0x40078000 --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_TAGS_OFFSET) --board $(BOARD_NAME) --pagesize $(BOARD_KERNEL_PAGESIZE)
+TARGET_USES_64_BIT_BINDER := true
 TARGET_IS_64_BIT := true
-MTK_K64_SUPPORT := yes
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
+BOARD_KERNEL_BASE := 0x40078000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_MKBOOTIMG_ARGS := --base 0x40078000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --second_offset 0x00e88000 --tags_offset 0x0df88000 --board 1479347649
+TARGET_KERNEL_SOURCE := kernel/ulefone/metal
 TARGET_KERNEL_ARCH := arm64
-
-# Kernel properties
-#TARGET_KERNEL_SOURCE := kernel/ulefone/t1
-TARGET_PREBUILT_KERNEL := device/ulefone/t1/prebuilts/kernel
-TARGET_KERNEL_CONFIG := lineage_t1_defconfig
-BOARD_KERNEL_IMAGE_NAME := Image.gz
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_CONFIG := wtk6753_65u_m0_defconfig
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 MTK_APPENDED_DTB_SUPPORT := yes
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+LZMA_RAMDISK_TARGETS := boot,recovery
+BOARD_USES_FULL_RECOVERY_IMAGE := true
+
+# Partitions informations
+BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 25165824
+BOARD_CACHEIMAGE_PARTITION_SIZE := 452984832
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3758096384
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 58065927680
+BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_HAS_LARGE_FILESYSTEM := true
+
+# Partitions types
+#TARGET_USE_MKE2FS_FORMAT := true
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+
+# Include needed symbols
+TARGET_INCLUDE_XLOG_SYMBOLS := true
+TARGET_INCLUDE_AUDIO_SYMBOLS := true
+TARGET_INCLUDE_UI_SYMBOLS := true
+TARGET_INCLUDE_GUI_SYMBOLS := true
+include vendor/mad/config/symbols.mk
+
+# Display
+TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 1080
+
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+
+# LightHAL
+TARGET_PROVIDES_LIBLIGHT := true
+
+# Recovery
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.mt6757
+# TWRP-specific
+ifeq ($(RECOVERY_VARIANT), twrp)
+DEVICE_RESOLUTION := 720x1280
+DEVICE_SCREEN_WIDTH := 720
+DEVICE_SCREEN_HEIGHT := 1280
+RECOVERY_SDCARD_ON_DATA := true
+TW_INTERNAL_STORAGE_PATH := "/data/media"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+TW_DEFAULT_EXTERNAL_STORAGE := true
+endif
+
+TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
+
+# SELinux
+BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
