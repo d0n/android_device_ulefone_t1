@@ -1,24 +1,24 @@
 #!/bin/bash
+#
+# Copyright (C) 2016 The CyanogenMod Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 
-VENDOR=ulefone
-DEVICE=t1
+set -e
 
-BASE=$BDIR/vendor/$VENDOR/$DEVICE/proprietary
+export DEVICE=zerofltexx
+export DEVICE_COMMON=zero-common
+export VENDOR=samsung
 
-rm -rf $BASE
-
-echo "Pulling $DEVICE files..."
-for I in `cat blobs.lst | grep -v ^# | grep -v ^$`; do
-    #FILE=$(echo $FILE |sed 's/^\/system\///')
-    DIR=$(dirname $(echo $I |sed 's/^\/system\///'))
-    FILE=$(basename $I)
-    if [ ! -d $BASE/$DIR ]; then
-        mkdir -p $BASE/$DIR
-    fi
-    #for i in $(find ~/and/stock -type f -iname $FILE) ;do
-    #  cp $i ${BASE}/${DIR}/${FILE}
-    #done
-    adb pull $I ${BASE}/$(echo $FILE |sed 's/^\/system\///')
-done
-
-./setup-makefiles.sh
+./../$DEVICE_COMMON/extract-files.sh $@

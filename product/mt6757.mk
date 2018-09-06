@@ -34,14 +34,14 @@ PRODUCT_PACKAGES += \
 #
 ## Properly input of int.rc
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab \
-  $(LOCAL_PATH)/rootdir/etc/init.rc:root/init.rc
+  device/ulefone/t1/twrp.fstab:recovery/root/etc/twrp.fstab \
+  device/ulefone/t1/rootdir/etc/init.rc:root/init.rc
 
 # Configurations
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio/audio_device.xml:system/etc/audio_device.xml \
-    $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
-    $(LOCAL_PATH)/configs/audio/a2dp_audio_policy_configuration.xml:/system/etc/a2dp_audio_policy_configuration.xml \
+    device/ulefone/t1/configs/audio/audio_device.xml:system/etc/audio_device.xml \
+    device/ulefone/t1/configs/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
+    device/ulefone/t1/configs/audio/a2dp_audio_policy_configuration.xml:/system/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:/system/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:/system/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:/system/etc/r_submix_audio_policy_configuration.xml \
@@ -59,7 +59,6 @@ PRODUCT_PACKAGES += \
     libaudiopolicymanagerdefault \
     libaudio-resampler \
     libtinyalsa \
-    libtinycompress \
     libtinymix \
     libtinyxml \
     libfs_mgr
@@ -68,7 +67,6 @@ PRODUCT_PACKAGES += \
     Gello
 # Camera
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/camera/camerasize.xml:system/etc/camerasize.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:system/etc/permissions/android.hardware.camera.raw.xml
@@ -125,7 +123,7 @@ PRODUCT_PACKAGES += \
     libcurl
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
+    device/ulefone/t1/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
 # Hardware-specific permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
@@ -187,8 +185,8 @@ PRODUCT_PACKAGES += \
 
 # Keyboard layout
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
-    $(LOCAL_PATH)/configs/ACCDET.kl:system/usr/keylayout/ACCDET.kl
+    device/ulefone/t1/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
+    device/ulefone/t1/configs/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
 # Keyhandler package
 PRODUCT_PACKAGES += \
@@ -203,8 +201,8 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
-    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+    device/ulefone/t1/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    device/ulefone/t1/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -217,11 +215,11 @@ PRODUCT_PACKAGES += \
 
 # SELinux
 BOARD_SEPOLICY_DIRS := \
-       $(LOCAL_PATH)/sepolicy
+       device/ulefone/t1/sepolicy
 
 # Seccomp Filter
 BOARD_SECCOMP_POLICY := \
-       $(LOCAL_PATH)/seccomp
+       device/ulefone/t1/seccomp
 # Sensors
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -238,18 +236,18 @@ PRODUCT_PACKAGES += \
     libem_sensor_jni
 # Configurations
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/ecc_list.xml:system/etc/ecc_list.xml \
-    $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml
+    device/ulefone/t1/configs/ecc_list.xml:system/etc/ecc_list.xml \
+    device/ulefone/t1/configs/spn-conf.xml:system/etc/spn-conf.xml
 
 PRODUCT_PACKAGES += \
     messaging \
     Stk
 # Configurations
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal/.ht120.mtc:system/etc/.tp/.ht120.mtc \
-    $(LOCAL_PATH)/configs/thermal/thermal.conf:system/etc/.tp/thermal.conf \
-    $(LOCAL_PATH)/configs/thermal/thermal.off.conf:system/etc/.tp/thermal.off.conf \
-    $(LOCAL_PATH)/configs/thermal/.thermal_policy_00:system/etc/.tp/.thermal_policy_00
+    device/ulefone/t1/configs/thermal/.ht120.mtc:system/etc/.tp/.ht120.mtc \
+    device/ulefone/t1/configs/thermal/thermal.conf:system/etc/.tp/thermal.conf \
+    device/ulefone/t1/configs/thermal/thermal.off.conf:system/etc/.tp/thermal.off.conf \
+    device/ulefone/t1/configs/thermal/.thermal_policy_00:system/etc/.tp/.thermal_policy_00
 # USB
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -270,9 +268,9 @@ PRODUCT_PACKAGES += \
     wpa_supplicant
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+    device/ulefone/t1/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    device/ulefone/t1/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    device/ulefone/t1/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
 # Radio dependencies
 PRODUCT_PACKAGES += \

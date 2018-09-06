@@ -1,8 +1,0 @@
-[
-  {
-    "remote": "github",
-    "repository": "d0n/android_vendor_ulefone_t1",
-    "target_path": "vendor/ulefone/t1",
-    "branch": "cm-14.1"
-  }
-]

@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2015 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,40 +11,44 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+#
+# This file sets variables that control the way modules are built
+# thorughout the system. It should not be used to conditionally
+# disable makefiles (the proper mechanism to control what gets
+# included in a build is to use PRODUCT_PACKAGES in a product
+# definition file).
 #
 
-# Device path
-LOCAL_PATH := device/ulefone/t1
+# inherit from zero-common
+include device/ulefone/mt6757-common/BoardConfigCommon.mk
 
-# Device board elements
-include $(LOCAL_PATH)/board/*.mk
-include $(LOCAL_PATH)/PlatformConfig.mk
+# Assert
+TARGET_OTA_ASSERT_DEVICE := t1
 
-# Device vendor board
--include vendor/ulefone/t1/BoardConfigVendor.mk
+# Include path
+#TARGET_SPECIFIC_HEADER_PATH += device/ulefone/t1/include
+TARGET_RECOVERY_FSTAB := device/ulefone/t1/rootdir/recovery.fstab
 
-#######################################################################
+# Kernel
+TARGET_KERNEL_CONFIG := lineageos_t1_defconfig
 
-# Platform
-TARGET_OTA_ASSERT_DEVICE := t1,p15v57c2k_gq_tee
-TARGET_BOOTLOADER_BOARD_NAME := mt6757
-MTK_PROJECT_CONFIG := $(LOCAL_PATH)/ProjectConfig.mk
-include $(MTK_PROJECT_CONFIG)
-MTK_INTERNAL_CDEFS := $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_NAME),$(if $(filter-out no NO none NONE false FALSE,$($(t))),-D$(t)))
-MTK_INTERNAL_CDEFS += $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_VALUE),$(if $(filter-out no NO none NONE false FALSE,$($(t))),$(foreach v,$(shell echo $($(t)) | tr '[a-z]' '[A-Z]'),-D$(v))))
-MTK_INTERNAL_CDEFS += $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_NAME_VALUE),$(if $(filter-out no NO none NONE false FALSE,$($(t))),-D$(t)=\"$($(t))\"))
-BOARD_GLOBAL_CFLAGS += $(MTK_INTERNAL_CDEFS)
-BOARD_GLOBAL_CPPFLAGS += $(MTK_INTERNAL_CDEFS)
-TARGET_KMODULES := true
-BOARD_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
-BOARD_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
-TARGET_CPU_MEMCPY_OPT_DISABLE := true
-TARGET_PROVIDES_INIT_RC := true
-USE_OPENGL_RENDERER := true
-BOARD_EGL_WORKAROUND_BUG_10194508 := true
-BLOCK_BASED_OTA := false
-BOARD_HAS_FLIPPED_SCREEN := true
-EXTENDED_FONT_FOOTPRINT := true
-BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
-TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
-#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/11270000.usb3/musb-hdrc/gadget/lun%d/file
+# Partitions
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3758096384
+# Kernel information
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_NAME := 1509953733
+BOARD_KERNEL_OFFSET := 0x00008000
+BOARD_RAMDISK_OFFSET := 0x40ef8000
+BOARD_TAGS_OFFSET := 0x03f88000
+BOARD_MKBOOTIMG_ARGS := --cmdline bootopt=64S3,32N2,64N2 --base 0x40078000 --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_TAGS_OFFSET) --board $(BOARD_NAME) --pagesize $(BOARD_KERNEL_PAGESIZE)
+TARGET_IS_64_BIT := true
+MTK_K64_SUPPORT := yes
+TARGET_KERNEL_ARCH := arm64
+
+# Kernel properties
+#TARGET_KERNEL_SOURCE := kernel/ulefone/t1
+TARGET_PREBUILT_KERNEL := device/ulefone/t1/prebuilts/kernel
+TARGET_KERNEL_CONFIG := lineage_t1_defconfig
+BOARD_KERNEL_IMAGE_NAME := Image.gz
+MTK_APPENDED_DTB_SUPPORT := yes

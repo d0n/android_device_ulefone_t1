@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2012 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,9 +14,19 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := $(call my-dir)
-$(shell mkdir -p $(OUT)/obj/busybox)
-$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+# WARNING: Everything listed here will be built on ALL platforms,
+# including x86, the emulator, and the SDK.  Modules must be uniquely
+# named (liblights.tuna), and must build everywhere, or limit themselves
+# to only building on ARM if they include assembly. Individual makefiles
+# are responsible for having their own logic, for fine-grained control.
 
-include $(LOCAL_PATH)/BoardConfig.mk
-include $(call all-makefiles-under,$(LOCAL_PATH))
+LOCAL_PATH := $(call my-dir)
+
+ifneq ($(filter t1,$(TARGET_DEVICE)),)
+
+  include $(call all-subdir-makefiles,$(LOCAL_PATH))
+  $(shell mkdir -p $(OUT)/obj/busybox)
+  $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+
+endif
+
