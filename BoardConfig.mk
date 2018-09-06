@@ -25,6 +25,8 @@ include device/ulefone/mt6757-common/BoardConfigCommon.mk
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := t1
+#ALLOW_MISSING_DEPENDENCIES := true
+BLOCK_BASED_OTA := false
 
 # Include path
 #TARGET_SPECIFIC_HEADER_PATH += device/ulefone/t1/include

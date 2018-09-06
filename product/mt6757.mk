@@ -56,12 +56,13 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     audio_policy.default \
-    libaudiopolicymanagerdefault \
     libaudio-resampler \
     libtinyalsa \
     libtinymix \
     libtinyxml \
     libfs_mgr
+    #libaudiopolicymanagerdefault \
+
 # Browser
 PRODUCT_PACKAGES += \
     Gello
@@ -214,12 +215,11 @@ PRODUCT_PACKAGES += \
     power.mt6757
 
 # SELinux
-BOARD_SEPOLICY_DIRS := \
-       device/ulefone/t1/sepolicy
-
+#BOARD_SEPOLICY_DIRS := \
+#       device/ulefone/t1/sepolicy
 # Seccomp Filter
-BOARD_SECCOMP_POLICY := \
-       device/ulefone/t1/seccomp
+#BOARD_SECCOMP_POLICY := \
+#       device/ulefone/t1/seccomp
 # Sensors
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
