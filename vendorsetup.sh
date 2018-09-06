@@ -1,3 +1,3 @@
-add_lunch_combo full_metal-user
-add_lunch_combo full_metal-userdebug
-add_lunch_combo full_metal-eng
+add_lunch_combo lineage_t1-user
+add_lunch_combo lineage_t1-userdebug
+add_lunch_combo lineage_t1-eng
