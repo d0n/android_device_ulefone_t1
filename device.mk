@@ -42,3 +42,4 @@ $(call inherit-product-if-exists, device/ulefone/t1/product/mt6757.mk)
 $(call inherit-product-if-exists, vendor/ulefone/t1/t1-vendor.mk)
 
 $(call inherit-product, device/ulefone/mt6757-common/mt6757-common.mk)
+
