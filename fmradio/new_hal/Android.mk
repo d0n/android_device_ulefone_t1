@@ -3,15 +3,15 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_CFLAGS+= \
-    -DMT6625_FM
+    -DMT6627_FM
 
 LOCAL_MODULE := radio.fm.$(TARGET_BOARD_PLATFORM)
 LOCAL_PROPRIETARY_MODULE := false
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_SRC_FILES := fmr_core.c \
-    fmr_err.c \
-    common.c \
-    radio_hw_hal.c
+	fmr_err.c \
+	common.c \
+	radio_hw_hal.c
 
 LOCAL_SHARED_LIBRARIES := liblog libdl libmedia libcutils libradio_metadata
 LOCAL_MODULE_TAGS := optional

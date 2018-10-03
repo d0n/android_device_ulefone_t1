@@ -115,7 +115,7 @@ enum {
 #define FM_SEEK_DOWN        1
 
 #define FM_CHIP_MT6620 0x6620
-#define FM_CHIP_MT6625 0x6625
+#define FM_CHIP_MT6628 0x6628
 #define FM_CHIP_MT6627 0x6627
 #define FM_CHIP_MT6580 0x6580
 #define FM_CHIP_MT6630 0x6630
@@ -459,7 +459,7 @@ typedef enum {
 
 typedef enum {
     FM_I2S_PAD_CONN = 0, //sco fm chip: e.g.6627
-    FM_I2S_PAD_IO = 1,   //combo fm chip: e.g.6625
+    FM_I2S_PAD_IO = 1,   //combo fm chip: e.g.6628
     FM_I2S_PAD_ERR
 } fm_i2s_pad_sel_e;
 

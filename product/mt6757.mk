@@ -358,10 +358,17 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
 PRODUCT_SYSTEM_SERVER_JARS += \
-    wifi-service
+  keyhandler \
+  gms \
+  wifi-service
 
 # Lights
 PRODUCT_PACKAGES += \
+  com.cyanogenmod.keyhandler \
+  com.google.android.gms \
+  rilproxy-mal \
+  libdatactrl \
+  libcsm_data \
   lights.mt6757
 
 # Media

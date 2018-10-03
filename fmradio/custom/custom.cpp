@@ -70,7 +70,7 @@ extern "C" {
     {9600, -40, -1}, \
     {9220, -80, -1} \
 }
-#define MT6625_FM_FAKE_CHANNEL \
+#define MT6628_FM_FAKE_CHANNEL \
 { }
 #define MT6627_FM_FAKE_CHANNEL \
 { \
@@ -109,8 +109,8 @@ extern "C" {
 
 #if defined MT6620_FM
 static struct fm_fake_channel fake_ch[] = MT6620_FM_FAKE_CHANNEL;
-#elif defined MT6625_FM
-static struct fm_fake_channel fake_ch[] = MT6625_FM_FAKE_CHANNEL;
+#elif defined MT6628_FM
+static struct fm_fake_channel fake_ch[] = MT6628_FM_FAKE_CHANNEL;
 #elif defined MT6627_FM
 static struct fm_fake_channel fake_ch[] = MT6627_FM_FAKE_CHANNEL;
 #elif defined MT6580_FM
@@ -133,7 +133,7 @@ int CUST_get_cfg(struct CUST_cfg_ds *cfg)
     if (property_get("persist.mtk.wcn.combo.chipid",val,NULL)) {
         LOGI("WCN CHIP ID=%s\n",val);
         if (strcmp(val, "0x6628") == 0) {
-            cfg->chip = FM_CHIP_MT6625;
+            cfg->chip = FM_CHIP_MT6628;
             LOGI("detect 6628 chip\n");
         } else if (strcmp(val, "0x6620") == 0) {
             cfg->chip = FM_CHIP_MT6620;
@@ -162,8 +162,8 @@ int CUST_get_cfg(struct CUST_cfg_ds *cfg)
         LOGI("WCN CHIP ID fail!\n");
 #ifdef MT6620_FM
         cfg->chip = FM_CHIP_MT6620;
-#elif defined MT6625_FM
-        cfg->chip = FM_CHIP_MT6625;
+#elif defined MT6628_FM
+        cfg->chip = FM_CHIP_MT6628;
 #elif defined MT6627_FM
         cfg->chip = FM_CHIP_MT6627;
 #elif defined MT6580_FM

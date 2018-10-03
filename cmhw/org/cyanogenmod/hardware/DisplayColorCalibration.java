@@ -16,6 +16,7 @@
 
 package org.cyanogenmod.hardware;
 
+import java.io.File;
 import java.util.Scanner;
 import org.cyanogenmod.internal.util.FileUtils;
 
@@ -23,14 +24,15 @@ public class DisplayColorCalibration {
     private static final String COLOR_FILE = "/sys/devices/platform/mtk_disp_mgr.0/rgb";
 
     public static boolean isSupported() {
-        return FileUtils.isFileWritable(COLOR_FILE);
+        File f = new File(COLOR_FILE);
+        return f.exists();
     }
 
-    public static int getMaxValue() {
+    public static int getMaxValue()  {
         return 2000;
     }
 
-    public static int getMinValue() {
+    public static int getMinValue()  {
         return 0;
     }
 
@@ -38,7 +40,7 @@ public class DisplayColorCalibration {
         return getMaxValue();
     }
 
-    public static String getCurColors() {
+    public static String getCurColors()  {
         return FileUtils.readOneLine(COLOR_FILE);
     }
 

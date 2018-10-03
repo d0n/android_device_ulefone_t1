@@ -6,12 +6,12 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
-    custom.cpp
-
+	custom.cpp
+	
 LOCAL_C_INCLUDES := $(JNI_H_INCLUDE)
 
 LOCAL_CFLAGS+= \
-    -DMT6625_FM
+    -DMT6627_FM
 
 LOCAL_SHARED_LIBRARIES := libcutils
 LOCAL_PRELINK_MODULE := false

@@ -57,9 +57,7 @@ for I in $(find * -xtype f) ;do
   if [ "$(basename $I)" == "libGLES_mali.so" ] ;then
     LEND=":linaro$LEND"
   fi
-  if ! [ "$(echo $I |awk -F'.' '{print $NF}')" == "apk" ] ;then
-	  grep -qs "$I" $AMAKE && continue
-  fi
+  grep -qs "$I" $AMAKE && continue
   printf "  vendor/$VENDOR/$DEVICE/proprietary/${I}:system/${I}${LEND}\n" >> $BMAKE
 done
 cd - >/dev/null
