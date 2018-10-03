@@ -44,18 +44,19 @@ Front Camera | 8MP, Int.13MP (OmniVision OV8856)
  * Offline charging
  * RAM and ROM
  * Rotation
+ * Some sensors
  * Vibration
  * Wi-Fi
  * Wi-Fi tethering
 
 ## Broken/Bugs
- * All sensors
  * Audio over Bluetooth (music, calls .etc)
  * Enforcing SELinux
  * Fingerprint
  * GPS
  * RIL
  * Screenrecorder
+ * Some sensors
  * USB OTG
  * Video playback
 
