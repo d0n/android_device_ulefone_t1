@@ -58,6 +58,7 @@ PRODUCT_PACKAGES += \
   libdownmix \
   libdrmframework \
   libdrmframework_jni \
+  libifaddrs \
   libffmpeg \
   libfilterfw \
   libfilterpack_facedetect \
@@ -72,7 +73,6 @@ PRODUCT_PACKAGES += \
   libkeystore \
   libmtk_symbols \
   libpq \
-  libpq \
   libsqlite_jni \
   libtinyalsa \
   libtinycompress \
@@ -83,6 +83,7 @@ PRODUCT_PACKAGES += \
   libui_mtk \
   libwilhelm \
   libwlparser \
+  libperfservicenative \
   logd \
   make_ext4fs \
   mtkcamera_parameters \
@@ -98,11 +99,9 @@ PRODUCT_PACKAGES += \
   voip-common \
   webview \
   wifi-service \
-  libshim_vtmal \
   perfprofd
 
 LINKER_FORCED_SHIM_LIBS := /system/vendor/lib/libvtmal.so|libshim_vtmal.so
-LINKER_FORCED_SHIM_LIBS := /system/lib/libnetutils.so|libshim_ifc.so #:/vendor/bin/thermal|libshim_ifc.so:/system/bin/audioserver|libshim_ifc.so:/system/bin/app_process32|
 
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
@@ -365,7 +364,6 @@ PRODUCT_SYSTEM_SERVER_JARS += \
 
 # Lights
 PRODUCT_PACKAGES += \
-  com.cyanogenmod.keyhandler \
   lights.mt6757
 
 # Media

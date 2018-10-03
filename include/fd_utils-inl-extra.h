@@ -16,11 +16,11 @@
 
 /*
 #define PATH_WHITELIST_EXTRA_H \
+    "/proc/apid", \
+    "/proc/aprf",
 */
 
 #define PATH_WHITELIST_EXTRA_H \
-    "/proc/apid", \
-    "/proc/aprf", \
     "/proc/ged",
 
 // Overload this file in your device specific config if you need
