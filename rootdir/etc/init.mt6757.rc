@@ -500,7 +500,7 @@ on post-fs-data
     chown system camera /dev/LC898212XDAF
     chown system camera /dev/AK7371AF
     chown system camera /dev/DW9790AF
-#agold add end
+    # agold add end
 
     # VOW
     chmod 0640 /dev/vow
@@ -527,7 +527,7 @@ on post-fs-data
     chown media system /dev/mtk_rrc
 
 
-   # change partition permission
+    # change partition permission
 
     chmod 0640 /mtd@sec_ro
     chown root system /mtd@sec_ro
