@@ -98,6 +98,7 @@ PRODUCT_PACKAGES += \
   voip-common \
   webview \
   wifi-service \
+  libshim_vtmal \
   perfprofd
 
 PRODUCT_COPY_FILES += \

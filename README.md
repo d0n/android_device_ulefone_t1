@@ -1,13 +1,13 @@
 # Ulefone T1 - LineageOS 14.1 / AOSP 7.1.1
 ==============
 
-This branch is device for building of the LineageOS 14.1 and Android Nougat 7.1.1 AOSP ROMs. For more information about building the ROM, read our [build manual](manual).
+This branch is device for building of the LineageOS 14.1 and Android Nougat 7.1.1 AOSP ROMs.
 
 ---
 
 # About Device
 
-![Ulefone T1](http://ulefone.com/images/t1/buy/t1-buy.jpg "Ulefone T1")
+![Ulefone T1](http://d0ndroid.janeiskla.de/ulefone-t1.jpg "Ulefone T1")
 
 
 ## Specifications
@@ -36,32 +36,33 @@ Front Camera | 8MP, Int.13MP (OmniVision OV8856)
  * Bluetooth
  * Camera rear/front (Photographs)
  * Camera rear/front (Video)
+ * Doze
  * Flashlight (statusbar and camera)
+ * Hardware acceleration
  * Micro SD support
+ * MTP and Mass Storage modes
+ * Offline charging
  * RAM and ROM
  * Rotation
  * Vibration
+ * Wi-Fi
+ * Wi-Fi tethering
 
 ## Broken/Bugs
  * All sensors
  * Audio over Bluetooth (music, calls .etc)
- * Doze
  * Enforcing SELinux
  * Fingerprint
  * GPS
- * Hardware acceleration
- * MTP and Mass Storage modes
- * Offline charging
  * RIL
  * Screenrecorder
  * USB OTG
  * Video playback
- * Wi-Fi
- * Wi-Fi tethering
- * HDR
 
 # Thanks to:
  * LineageOS Team
+ * XDA-Developers
+ * MediatekAndroidDevelopers
  * TeamWIN
  * Chainfire
  * JonnyXDA
