@@ -3,34 +3,6 @@ From: mdeejay <mdjrussia@gmail.com>
 Date: Thu, 6 Jul 2017 15:55:51 +0700
 Subject: changes for MTK
 
-Change-Id: I53a9d2be9aaaec32d2dc73cf2f1ec619d5f71343
-
-diff --git a/include/netutils/ifc.h b/include/netutils/ifc.h
-index 3b272343d..89028a38c 100644
---- a/include/netutils/ifc.h
-+++ b/include/netutils/ifc.h
-@@ -61,6 +61,22 @@ extern int ifc_configure(const char *ifname, in_addr_t address,
-
- extern in_addr_t prefixLengthToIpv4Netmask(int prefix_length);
-
-+/* MTK */
-+#ifdef MTK_HARDWARE
-+extern int ifc_is_up(const char *name, unsigned *isup);
-+extern int ifc_enable_allmc(const char *name);
-+extern int ifc_disable_allmc(const char *name);
-+extern int ifc_set_throttle(const char *ifname, int rxKbps, int txKbps);
-+extern int ifc_set_fwmark_rule(const char *ifname, int mark, int add);
-+extern int ifc_set_txq_state(const char *ifname, int state);
-+extern int ifc_ccmni_md_cfg(const char *ifname, int md_id);
-+struct uid_err {
-+    int appuid;
-+	int errorNum;
-+};
-+#endif /* MTK_HARDWARE */
-+
- __END_DECLS
-
- #endif /* _NETUTILS_IFC_H_ */
 diff --git a/init/init.cpp b/init/init.cpp
 index 7a370596e..3dbea5eba 100755
 --- a/init/init.cpp

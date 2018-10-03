@@ -401,16 +401,16 @@ PRODUCT_PACKAGES += \
 #  $(LOCAL_PATH)/rootdir/etc/ueventd.mt6757.rc:recovery/root/ueventd.mt6757.rc \
 
 # Ramdisks
-  #$(LOCAL_PATH)/rootdir/etc/enableswap.sh:root/enableswap.sh \
-  #$(LOCAL_PATH)/rootdir/etc/factory_init.project.rc:root/factory_init.project.rc \
-  #$(LOCAL_PATH)/rootdir/etc/factory_init.rc:root/factory_init.rc \
-  #$(LOCAL_PATH)/rootdir/etc/meta_init.connectivity.rc:root/meta_init.connectivity.rc \
-  #$(LOCAL_PATH)/rootdir/etc/meta_init.modem.rc:root/meta_init.modem.rc \
-  #$(LOCAL_PATH)/rootdir/etc/meta_init.project.rc:root/meta_init.project.rc \
-  #$(LOCAL_PATH)/rootdir/etc/meta_init.rc:root/meta_init.rc \
-  #$(LOCAL_PATH)/rootdir/etc/multi_init.rc:root/multi_init.rc \
-  #$(LOCAL_PATH)/rootdir/etc/factory_init.connectivity.rc:root/factory_init.connectivity.rc
 PRODUCT_COPY_FILES += \
+  $(LOCAL_PATH)/rootdir/etc/enableswap.sh:root/enableswap.sh \
+  $(LOCAL_PATH)/rootdir/etc/factory_init.project.rc:root/factory_init.project.rc \
+  $(LOCAL_PATH)/rootdir/etc/factory_init.rc:root/factory_init.rc \
+  $(LOCAL_PATH)/rootdir/etc/meta_init.connectivity.rc:root/meta_init.connectivity.rc \
+  $(LOCAL_PATH)/rootdir/etc/meta_init.modem.rc:root/meta_init.modem.rc \
+  $(LOCAL_PATH)/rootdir/etc/meta_init.project.rc:root/meta_init.project.rc \
+  $(LOCAL_PATH)/rootdir/etc/meta_init.rc:root/meta_init.rc \
+  $(LOCAL_PATH)/rootdir/etc/multi_init.rc:root/multi_init.rc \
+  $(LOCAL_PATH)/rootdir/etc/factory_init.connectivity.rc:root/factory_init.connectivity.rc \
   $(LOCAL_PATH)/rootdir/etc/fstab.mt6757:root/fstab.mt6757 \
   $(LOCAL_PATH)/rootdir/etc/init.aee.rc:root/init.aee.rc \
   $(LOCAL_PATH)/rootdir/etc/init.connectivity.rc:root/init.connectivity.rc \
