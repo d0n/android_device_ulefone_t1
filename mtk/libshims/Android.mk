@@ -42,13 +42,10 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := vtmal/mtk_vtmal.cpp
-LOCAL_SHARED_LIBRARIES := libbinder libutils libcutils libvtmal
+LOCAL_SHARED_LIBRARIES := libbinder libvtmal
 LOCAL_MODULE := libshim_vtmal
-LOCAL_CLANG := false
-LOCAL_CXX_STL := none
-LOCAL_SANITIZE := never
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_C_INCLUDES += bionic/libc/include
 LOCAL_CFLAGS := -O3 -Wno-unused-variable -Wno-unused-parameter
 LOCAL_PROPRIETARY_MODULE := true
 include $(BUILD_SHARED_LIBRARY)
@@ -58,5 +55,5 @@ LOCAL_SRC_FILES := netutils.c
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 LOCAL_MODULE := libshim_ifc
 LOCAL_C_INCLUDES += system/core/libnetutils/include
-LOCAL_MODULE_TAGS := optional
+LOCAL_CFLAGS := -O3 -Wno-unused-variable -Wno-unused-parameter
 include $(BUILD_SHARED_LIBRARY)

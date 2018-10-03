@@ -101,6 +101,9 @@ PRODUCT_PACKAGES += \
   libshim_vtmal \
   perfprofd
 
+LINKER_FORCED_SHIM_LIBS := /system/vendor/lib/libvtmal.so|libshim_vtmal.so
+LINKER_FORCED_SHIM_LIBS := /system/lib/libnetutils.so|libshim_ifc.so #:/vendor/bin/thermal|libshim_ifc.so:/system/bin/audioserver|libshim_ifc.so:/system/bin/app_process32|
+
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
 
@@ -403,7 +406,7 @@ PRODUCT_PACKAGES += \
   #$(LOCAL_PATH)/rootdir/etc/meta_init.project.rc:root/meta_init.project.rc \
   #$(LOCAL_PATH)/rootdir/etc/meta_init.rc:root/meta_init.rc \
   #$(LOCAL_PATH)/rootdir/etc/multi_init.rc:root/multi_init.rc \
-  #$(LOCAL_PATH)/rootdir/etc/factory_init.connectivity.rc:root/factory_init.connectivity.rc 
+  #$(LOCAL_PATH)/rootdir/etc/factory_init.connectivity.rc:root/factory_init.connectivity.rc
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/rootdir/etc/fstab.mt6757:root/fstab.mt6757 \
   $(LOCAL_PATH)/rootdir/etc/init.aee.rc:root/init.aee.rc \
