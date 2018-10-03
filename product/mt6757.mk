@@ -101,8 +101,6 @@ PRODUCT_PACKAGES += \
   wifi-service \
   perfprofd
 
-LINKER_FORCED_SHIM_LIBS := /system/vendor/lib/libvtmal.so|libshim_vtmal.so
-
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
 
