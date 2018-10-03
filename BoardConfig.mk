@@ -71,6 +71,9 @@ BOARD_GLOBAL_CFLAGS += \
   -DNO_SECURE_DISCARD \
   -DDISABLE_HW_ID_MATCH_CHECK
 LOCAL_LDLIBS := -lGLESv3
+LINKER_FORCED_SHIM_LIBS := /system/vendor/lib/libvtmal.so|libshim_vtmal.so
+LINKER_FORCED_SHIM_LIBS += /system/lib/libnetutils.so|libshim_ifc.so
+
 
 # Addidional platform options
 #BOARD_EGL_WORKAROUND_BUG_10194508 := true
