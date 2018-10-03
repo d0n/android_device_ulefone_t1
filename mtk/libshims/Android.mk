@@ -52,3 +52,11 @@ LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_CFLAGS := -O3 -Wno-unused-variable -Wno-unused-parameter
 LOCAL_PROPRIETARY_MODULE := true
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := netutils.c
+LOCAL_SHARED_LIBRARIES := liblog libcutils
+LOCAL_MODULE := libshim_ifc
+LOCAL_C_INCLUDES += system/core/libnetutils/include
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_SHARED_LIBRARY)
