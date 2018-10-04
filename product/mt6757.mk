@@ -357,12 +357,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
-PRODUCT_SYSTEM_SERVER_JARS += \
-  com.cyanogenmod.keyhandler
-
 # Lights
 PRODUCT_PACKAGES += \
-  com.cyanogenmod.keyhandler \
   rilproxy-mal \
   libdatactrl \
   libcsm_data \

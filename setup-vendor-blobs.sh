@@ -46,9 +46,9 @@ echo "# Copyright \(C\) 2015 The CyanogenMod Project
 
 cd $OUTDIR/proprietary >/dev/null
 declare -a FILES
-FNS=$(find * -xtype f |wc -l)
+FNS=$(find * -xtype f -not -name *.odex -and -not -name *.apk |wc -l)
 CNT=0
-for I in $(find * -xtype f) ;do
+for I in $(find * -xtype f -not -name *.odex -and -not -name *.apk) ;do
   let CNT+=1
   LEND=' \\'
   if [ "$FNS" == "$CNT" ] ;then
@@ -56,9 +56,6 @@ for I in $(find * -xtype f) ;do
   fi
   if [ "$(basename $I)" == "libGLES_mali.so" ] ;then
     LEND=":linaro$LEND"
-  SFX="$(basename $I |awk -F'.' '{print $NF}')"
-  elif [ "$SFX" == "apk" ] || [ "$SFX" == "odex" ] ;then
-	continue
   fi
   grep -qs "$I" $AMAKE && continue
   printf "  vendor/$VENDOR/$DEVICE/proprietary/${I}:system/${I}${LEND}\n" >> $BMAKE
