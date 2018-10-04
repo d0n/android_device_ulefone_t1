@@ -56,7 +56,8 @@ for I in $(find * -xtype f) ;do
   fi
   if [ "$(basename $I)" == "libGLES_mali.so" ] ;then
     LEND=":linaro$LEND"
-  elif [ "$(basename $I |awk -F'.' '{print $NF}')" == "apk" ] ;then
+  SFX="$(basename $I |awk -F'.' '{print $NF}')"
+  elif [ "$SFX" == "apk" ] || [ "$SFX" == "odex" ] ;then
 	continue
   fi
   grep -qs "$I" $AMAKE && continue

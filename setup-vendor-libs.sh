@@ -51,6 +51,7 @@ for I in $(find * -type f -name *.so) ;do
   LLDIR=$(echo $DDIR |sed -r 's/.*lib6?4?(.*)/\1\//' |sed -r 's/^\///')
   LDDIR=$(echo $DDIR |sed -r 's/(.*)lib6?4?.*/\1/' |sed -r 's/^\///')
   grep -qs $I $BMAKE && continue
+  grep -qs $I $AMAKE && continue
   grep -qs $LIB $ddir/blacklibs.lst && continue
   L32="${LDDIR}lib/${LLDIR}${LIB}"
   L64="${LDDIR}lib64/${LLDIR}${LIB}"
