@@ -1,14 +1,20 @@
 GAPPS_VARIANT := mini
-GAPPS_FORCE_MATCHING_DPI := true
 GAPPS_PRODUCT_PACKAGES += \
   CMAudioFX \
   CameraGoogle \
-  Chrome
+  Chrome \
+  DialerGoogle \
+  CarrierServices \
+  DMAgent \
+  GCS
 
 GAPPS_EXCLUDED_PACKAGES := \
   YouTube \
   TagGoogle \
-  GoogleNow
+  GoogleNow \
+  Hangouts \
+  GooglePlus \
+  Search
 
 PRODUCT_PACKAGES += \
   BackupRestoreConfirmation \
@@ -30,6 +36,8 @@ PRODUCT_PACKAGES += \
   bwc \
   libbwc \
   libepos \
+  libvtmal \
+  vtservice \
   libccci_util \
   libshim_vtmal \
   com.google.android.gms \
@@ -371,7 +379,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
-#PRODUCT_SYSTEM_SERVER_JARS += com.cyanogenmod.keyhandler
+PRODUCT_SYSTEM_SERVER_JARS += \
+  com.google.android.gms
 
 # Lights
 PRODUCT_PACKAGES += \
