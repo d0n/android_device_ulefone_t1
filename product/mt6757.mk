@@ -306,7 +306,7 @@ PRODUCT_PACKAGES += \
 #  org.apache.http.legacy.boot
 
 # Dalvik
-#PRODUCT_TAGS += dalvik.gc.type-precise
+PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Fingerprint
 PRODUCT_PACKAGES += \
