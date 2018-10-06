@@ -7,7 +7,8 @@ GAPPS_PRODUCT_PACKAGES += \
 
 GAPPS_EXCLUDED_PACKAGES := \
   YouTube \
-  TagGoogle
+  TagGoogle \
+  GoogleNow
 
 PRODUCT_PACKAGES += \
   BackupRestoreConfirmation \
@@ -26,6 +27,12 @@ PRODUCT_PACKAGES += \
   bash \
   bcc \
   bu \
+  bwc \
+  libbwc \
+  libepos \
+  libccci_util \
+  libshim_vtmal \
+  com.google.android.gms \
   com.android.future.usb.accessory \
   com.android.location.provider \
   com.android.location.provider.xml \
