@@ -31,7 +31,5 @@
 # The following software/firmware and/or related documentation ("MediaTek Software")
 # have been modified by MediaTek Inc. All revisions are subject to any receiver's
 # applicable license agreements with MediaTek Inc.
-
-
-include $(call all-subdir-makefiles)
-
+LOCAL_PATH := $(call my-dir)
+include $(call all-makefiles-under,$(LOCAL_PATH))

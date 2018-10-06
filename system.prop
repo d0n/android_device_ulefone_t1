@@ -235,7 +235,6 @@ ro.agui.system.gesture=yes
 ro.agui.tee.test=yes
 ro.agui.tpd.add.gesture=yes
 ro.agui.usbstorage.name=T1
-ro.agui.usbstorage.name=d0ndroid
 ro.agui_default_storage_sd=yes
 ro.agui_fingerprint.function=yes
 ro.alarm.silence.time=5

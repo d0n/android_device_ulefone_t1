@@ -1,10 +1,10 @@
-LOCAL_PATH:= $(call my-dir)
+LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES:= \
     AudioParameter.cpp
-LOCAL_MODULE:= libmedia_helper
+LOCAL_MODULE := libmedia_helper
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_CFLAGS += -Wno-error=deprecated-declarations -Wall
@@ -14,7 +14,7 @@ include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES:= \
+LOCAL_SRC_FILES := \
     AudioTrack.cpp \
     AudioTrackShared.cpp \
     IAudioFlinger.cpp \

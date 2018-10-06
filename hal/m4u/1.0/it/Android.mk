@@ -41,14 +41,14 @@ LOCAL_SRC_FILES:= \
     m4u_it.cpp \
 
 LC_MTK_PLATFORM := $(shell echo $(MTK_PLATFORM) | tr A-Z a-z )
-    
+
 LOCAL_SHARED_LIBRARIES:= \
     libui \
     libutils \
     libcutils \
-	  libhardware \
- 
-    
+	libhardware \
+
+
 LOCAL_C_INCLUDES:= \
   $(TOP)/$(MTK_PATH_SOURCE)/external/mhal/src/core/drv/6575/mdp \
   $(TOP)/$(MTK_PATH_SOURCE)/external/mhal/src/core/drv/6575/jpeg \
@@ -61,9 +61,9 @@ LOCAL_C_INCLUDES:= \
   $(TOP)/$(MTK_PATH_SOURCE)/external/mhal/src/core/drv/6575/inc \
   $(TOP)/$(MTK_PATH_SOURCE)/external/mhal/src/core/drv/6575/inc \
   $(TOP)/$(MTK_PATH_SOURCE)/hardware/m4u/$(LC_MTK_PLATFORM) \
-    
-    
+
+
 LOCAL_MODULE:= m4u_it
 
 LOCAL_PRELINK_MODULE:=false
-include $(BUILD_EXECUTABLE) 
+include $(BUILD_EXECUTABLE)

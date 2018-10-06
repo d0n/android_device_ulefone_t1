@@ -1,7 +1,5 @@
 LOCAL_PATH:= $(call my-dir)
 
-ifneq ($(filter P70, $(TARGET_DEVICE)),)
-
 include $(CLEAR_VARS)
 
 # We only want this apk build for tests.
@@ -19,5 +17,3 @@ LOCAL_PACKAGE_NAME := YGPSTests
 LOCAL_INSTRUMENTATION_FOR := YGPS
 
 include $(BUILD_PACKAGE)
-endif
-

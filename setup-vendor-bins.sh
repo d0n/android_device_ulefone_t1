@@ -9,7 +9,7 @@ VMAKE=${OUTDIR}/t1-vendor-blobs.mk
 
 cd $OUTDIR/proprietary >/dev/null
 for I in $(find bin/ vendor/bin -type f) ;do
-  #grep -qs $I $AMAKE && continue
+  grep -qs $I $AMAKE && continue
   #grep -qs $I $VMAKE && continue
   BIN=$(basename $I)
   BDIR=$(dirname $I)

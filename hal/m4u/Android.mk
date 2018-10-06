@@ -32,10 +32,7 @@
 # have been modified by MediaTek Inc. All revisions are subject to any receiver's
 # applicable license agreements with MediaTek Inc.
 
-LOCAL_PATH:= $(call my-dir)
-
-#include $(call all-makefiles-under, $(LOCAL_PATH)/$(shell echo $(MTK_PLATFORM) | tr A-Z a-z ))
-#include $(LOCAL_PATH)/$(shell echo $(MTK_PLATFORM) | tr A-Z a-z )/Android.mk
-include $(call all-subdir-makefiles)
+LOCAL_PATH := $(call my-dir)
+include $(call all-makefiles-under,$(LOCAL_PATH))
 
 

@@ -71,7 +71,7 @@ LOCAL_SRC_FILES := gps_mtk_aosp.c
 
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/include \
-	$(LOCAL_PATH)/../../kernel-headers \
+	$(LOCAL_PATH)/../../include \
 
 LOCAL_MODULE := gps.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_TAGS := optional

@@ -63,8 +63,7 @@ LOCAL_MODULE_TAGS := eng
 
 include $(BUILD_SHARED_LIBRARY)
 
-include $(CLEAR_VARS)
-#include $(call all-makefiles-under,$(LOCAL_PATH))
+include $(call all-subdir-makefiles)
 
 endif
 

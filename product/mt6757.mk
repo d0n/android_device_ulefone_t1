@@ -99,7 +99,14 @@ PRODUCT_PACKAGES += \
   voip-common \
   webview \
   wifi-service \
-  perfprofd
+  perfprofd \
+  libccci_util \
+  libbwc \
+  libgralloc_extra \
+  libMtkOmxApeDec \
+  libepos \
+  libifaddrs \
+  libperfservicenative \
 
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
@@ -123,8 +130,8 @@ PRODUCT_PACKAGES += \
   libwifi-hal-mt66xx \
   lib_driver_cmd_mt66xx \
   xlibcamera_client_mtk \
-  power.$(TARGET_BOARD_PLATFORM) \
-  lights.$(TARGET_BOARD_PLATFORM) \
+  power.mt6757 \
+  lights.mt6757 \
   libbthost_if \
   libepos \
   libmedia_helper \
@@ -135,9 +142,9 @@ PRODUCT_PACKAGES += \
   bwc \
   bwc_test \
   libbwc \
-  gps.$(TARGET_BOARD_PLATFORM) \
+  gps.mt6757 \
   libccci_util \
-  radio.fm.$(TARGET_BOARD_PLATFORM) \
+  radio.fm.mt6757 \
   libfmcust \
   Snap \
   agoldnvram \
@@ -292,7 +299,7 @@ PRODUCT_PACKAGES += \
 #  org.apache.http.legacy.boot
 
 # Dalvik
-PRODUCT_TAGS += dalvik.gc.type-precise
+#PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -357,6 +364,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
+#PRODUCT_SYSTEM_SERVER_JARS += com.cyanogenmod.keyhandler
+
 # Lights
 PRODUCT_PACKAGES += \
   rilproxy-mal \
@@ -405,6 +414,7 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/rootdir/etc/multi_init.rc:root/multi_init.rc \
   $(LOCAL_PATH)/rootdir/etc/factory_init.connectivity.rc:root/factory_init.connectivity.rc \
   $(LOCAL_PATH)/rootdir/etc/fstab.mt6757:root/fstab.mt6757 \
+  $(LOCAL_PATH)/rootdir/etc/init.rc:root/init.rc \
   $(LOCAL_PATH)/rootdir/etc/init.aee.rc:root/init.aee.rc \
   $(LOCAL_PATH)/rootdir/etc/init.connectivity.rc:root/init.connectivity.rc \
   $(LOCAL_PATH)/rootdir/etc/init.common_svc.rc:root/init.common_svc.rc \

@@ -37,11 +37,11 @@
 # libui_extra.so
 # modified by daniel_hk(https://github.com/daniel_hk)
 
-LOCAL_PATH:= $(call my-dir)
+LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES:= \
+LOCAL_SRC_FILES := \
 	GraphicBufferUtil.cpp \
 	FpsCounter.cpp \
 	IDumpTunnel.cpp \

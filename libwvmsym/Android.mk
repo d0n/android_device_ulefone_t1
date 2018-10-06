@@ -13,4 +13,4 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MULTILIB := 32
 
 # crash! Disabled for the time being
-#include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_SHARED_LIBRARY)

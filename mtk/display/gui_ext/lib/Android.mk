@@ -36,11 +36,11 @@
 # libgui_extra.so
 # modified by daniel_hk(https://github.com/daniel_hk)
 
-LOCAL_PATH:= $(call my-dir)
+LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES:= \
+LOCAL_SRC_FILES := \
     IGuiExtService.cpp \
     GuiExtService.cpp \
     GuiExtClient.cpp \
@@ -48,9 +48,9 @@ LOCAL_SRC_FILES:= \
     GuiExtClientConsumer.cpp \
     GuiExtImpl.cpp
 
-MTK_HWC_CHIP = $(shell echo $(MTK_PLATFORM) | tr A-Z a-z )
+MTK_HWC_CHIP := $(shell echo $(MTK_PLATFORM) | tr A-Z a-z )
 
-LOCAL_C_INCLUDES:= \
+LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/../inc \
 	$(LOCAL_PATH)/../../gui_ext/inc \
     $(LOCAL_PATH)/../../ui_ext/inc \

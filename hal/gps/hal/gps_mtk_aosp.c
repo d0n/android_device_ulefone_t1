@@ -4167,7 +4167,7 @@ mtk_gps_init(GpsCallbacks* callbacks)
         strcmp(chip_id, "0x6580") == 0 || strcmp(chip_id, "0x6592") == 0 || strcmp(chip_id, "0x6571") == 0 ||
         strcmp(chip_id, "0x8127") == 0 || strcmp(chip_id, "0x0335") == 0 ||strcmp(chip_id, "0x8163") == 0) {
         gps_epo_type = 1;    // GPS only
-    } else if (strcmp(chip_id, "0x6630") == 0 || strcmp(chip_id, "0x6752") == 0 || strcmp(chip_id, "0x6755") == 0) {
+    } else if (strcmp(chip_id, "0x6630") == 0 || strcmp(chip_id, "0x6752") == 0 || strcmp(chip_id, "0x6755") == 0 || strcmp(chip_id, "0x6757") == 0) {
         gps_epo_type = 0;   // G+G
     } else {
         gps_epo_type = 0;   // Default is G+G

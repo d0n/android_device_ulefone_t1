@@ -3,7 +3,7 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_CFLAGS+= \
-    -DMT6627_FM
+    -DMT6625_FM
 
 LOCAL_MODULE := radio.fm.$(TARGET_BOARD_PLATFORM)
 LOCAL_PROPRIETARY_MODULE := false
