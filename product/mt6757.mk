@@ -65,7 +65,6 @@ PRODUCT_PACKAGES += \
   libOpenMAXAL \
   libOpenSLES \
   libaudio-resampler \
-  libaudiopolicymanagerdefault \
   libbcc \
   libconnctrl \
   libcsm_data \
@@ -122,6 +121,8 @@ PRODUCT_PACKAGES += \
   libepos \
   libifaddrs \
   libperfservicenative \
+  mtk_socket \
+  agps
 
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
@@ -379,8 +380,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
-PRODUCT_SYSTEM_SERVER_JARS += \
-  com.google.android.gms
+#PRODUCT_SYSTEM_SERVER_JARS += \
+#  com.google.android.gms
 
 # Lights
 PRODUCT_PACKAGES += \
