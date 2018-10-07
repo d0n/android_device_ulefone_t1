@@ -5,7 +5,7 @@ GAPPS_PRODUCT_PACKAGES += \
   Chrome \
   DialerGoogle \
   CarrierServices \
-  DMAgent \
+  DialerFramework \
   GCS
 
 GAPPS_EXCLUDED_PACKAGES := \
@@ -238,7 +238,7 @@ PRODUCT_PACKAGES += \
   mfv_ut \
   mnld \
   mobile_log_d \
-  mrdump_tool \
+  7mrdump_tool \
   msensord \
   mtk_agpsd \
   mtkmal \
@@ -344,7 +344,7 @@ PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml
 
 # The gps config appropriate for this device
-#$(call inherit-product, device/common/gps/gps_us_supl.mk)
+$(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 # GPS
 PRODUCT_PACKAGES += \

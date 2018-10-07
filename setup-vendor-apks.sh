@@ -5,10 +5,12 @@ DEVICE=t1
 OUTDIR=${bdir}/vendor/$VENDOR/$DEVICE
 AMAKE=${OUTDIR}/Android.mk
 CMAKE=${OUTDIR}/VendorBoardConfig.mk
+BMAKE=${OUTDIR}/t1-vendor-blobs.mk
 
 cd $OUTDIR/proprietary >/dev/null
 for I in $(find * -type f -name *.apk) ;do
   grep -qs $I $AMAKE && continue
+  grep -qs $I $BMAKE && continue
   APK=$(basename $I)
   ADIR=$(dirname $I)
   ANAME=${APK%.*}

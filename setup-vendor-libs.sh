@@ -57,6 +57,7 @@ for I in $(find * -type f -name *.so) ;do
   L64="${LDDIR}lib64/${LLDIR}${LIB}"
   printf "include \$(CLEAR_VARS)\nLOCAL_MODULE_CLASS := SHARED_LIBRARIES\n" >> $AMAKE
   [ "$LDDIR" == "vendor/" ] && printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE
+  printf "LOCAL_ALLOW_UNDEFINED_SYMBOLS := true\n" >> $AMAKE
   if [ -f "${L32}" -a -f "${L64}" ] ;then
     printf "LOCAL_MULTILIB := both\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_SRC_FILES_32 := proprietary/${L32}\nLOCAL_SRC_FILES_64 := proprietary/${L64}\n" >> $AMAKE
   elif [ -f "${L32}" ] ;then
@@ -70,7 +71,7 @@ for I in $(find * -type f -name *.so) ;do
   if [ "$LIB" == "libRSDriver_mtk.so" ] || [ "$LIB" == "libRSDriverArm.so" ] || [ "$LIB" == "libOpenCLIcd.so" ] || [ "$LIB" == "libOpenCL.so" ] ;then
     printf "LOCAL_SHARED_LIBRARIES = libc++ libz libutils libRS_internal libbcinfo liblog libEGL libGLESv1_CM libGLESv2 libnativewindow\n" >> $AMAKE
   fi
-  printf "LOCAL_MODULE_SUFFIX := .so\ninclude \$(BUILD_PREBUILT)\n\n" >> $AMAKE
+  printf "LOCAL_MODULE_SUFFIX := .so\ninclude \$(PREBUILT_SHARED_LIBRARY)\n\n" >> $AMAKE
   printf "  ${LIB%.*}" >> $CMAKE
   echo ' \' >> $CMAKE
 done
