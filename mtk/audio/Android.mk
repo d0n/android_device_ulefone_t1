@@ -12,7 +12,7 @@ LOCAL_SHARED_LIBRARIES := libdl libcutils liblog libutils libbinder
 
 include $(BUILD_SHARED_LIBRARY)
 
-LIBORIG := $(LOCAL_INSTALLED_MODULE)
+LIBORIG := $(LOCAL_MODULE)
 LIBLINK1 := $(subst audio.primary.mt6795,audio.primary.default,$(LIBORIG))
 $(LIBLINK1): $(LIBORIG)
 	@echo "Symlink: $@ -> $(notdir $<)"
