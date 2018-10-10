@@ -50,24 +50,27 @@ for I in $(find * -type f -name *.so) ;do
   DDIR=$(dirname $I)
   LLDIR=$(echo $DDIR |sed -r 's/.*lib6?4?(.*)/\1\//' |sed -r 's/^\///')
   LDDIR=$(echo $DDIR |sed -r 's/(.*)lib6?4?.*/\1/' |sed -r 's/^\///')
-  grep -qs $I $BMAKE && continue
   grep -qs $I $AMAKE && continue
-  grep -qs $LIB $ddir/blacklibs.lst && continue
+  #grep -qs $I $BMAKE && continue
+  #grep -qs $LIB $ddir/blacklibs.lst && continue
   L32="${LDDIR}lib/${LLDIR}${LIB}"
   L64="${LDDIR}lib64/${LLDIR}${LIB}"
   printf "include \$(CLEAR_VARS)\nLOCAL_MODULE_CLASS := SHARED_LIBRARIES\n" >> $AMAKE
-  [ "$LDDIR" == "vendor/" ] && printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE
+  printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE
   printf "LOCAL_ALLOW_UNDEFINED_SYMBOLS := true\n" >> $AMAKE
   if [ -f "${L32}" -a -f "${L64}" ] ;then
-    printf "LOCAL_MULTILIB := both\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_SRC_FILES_32 := proprietary/${L32}\nLOCAL_SRC_FILES_64 := proprietary/${L64}\n" >> $AMAKE
+    printf "LOCAL_MULTILIB := both\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_MODULE_PATH_32 := system/$(dirname $L32)\nLOCAL_SRC_FILES_32 := proprietary/${L32}\nLOCAL_MODULE_PATH_64 := system/$(dirname $L64)\nLOCAL_SRC_FILES_64 := proprietary/${L64}\n" >> $AMAKE
   elif [ -f "${L32}" ] ;then
-    printf "LOCAL_MULTILIB := 32\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_SRC_FILES_32 := proprietary/${L32}\n" >> $AMAKE
+    if [[ $(echo $L32 |grep 'arm64') ]] ;then
+	  printf "LOCAL_MULTILIB := 64\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_MODULE_PATH_64 := system/$(dirname $L32)\nLOCAL_SRC_FILES_64 := proprietary/${L64}\n" >> $AMAKE
+	else
+	    printf "LOCAL_MULTILIB := 32\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_MODULE_PATH_32 := system/$(dirname $L32)\nLOCAL_SRC_FILES_32 := proprietary/${L32}\n" >> $AMAKE
+	fi
   elif [ -f "${L64}" ] ;then
-    printf "LOCAL_MULTILIB := 64\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_SRC_FILES_64 := proprietary/${L64}\n" >> $AMAKE
+    printf "LOCAL_MULTILIB := 64\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_MODULE_PATH_64 := system/$(dirname $L32)\nLOCAL_SRC_FILES_64 := proprietary/${L64}\n" >> $AMAKE
   else
     echo "\033[31mERROR: $I\033[0m"
   fi
-  [[ $LLDIR ]] && printf "LOCAL_MODULE_PATH := \$(TARGET_OUT_SHARED_LIBRARIES)/$(echo $LLDIR |sed 's/\/$//')\n" >>$AMAKE
   if [ "$LIB" == "libRSDriver_mtk.so" ] || [ "$LIB" == "libRSDriverArm.so" ] || [ "$LIB" == "libOpenCLIcd.so" ] || [ "$LIB" == "libOpenCL.so" ] ;then
     printf "LOCAL_SHARED_LIBRARIES = libc++ libz libutils libRS_internal libbcinfo liblog libEGL libGLESv1_CM libGLESv2 libnativewindow\n" >> $AMAKE
   fi

@@ -39,7 +39,6 @@ PRODUCT_PACKAGES += \
   libvtmal \
   vtservice \
   libccci_util \
-  libshim_vtmal \
   com.google.android.gms \
   com.android.future.usb.accessory \
   com.android.location.provider \
@@ -345,7 +344,7 @@ PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml
 
 # The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_eu_supl.mk)
+#$(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -380,8 +379,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
-#PRODUCT_SYSTEM_SERVER_JARS += \
-#  com.google.android.gms
+PRODUCT_SYSTEM_SERVER_JARS += \
+  com.google.android.gms
 
 # Lights
 PRODUCT_PACKAGES += \
