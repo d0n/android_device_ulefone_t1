@@ -99,6 +99,7 @@ PRODUCT_PACKAGES += \
   libperfservicenative \
   logd \
   make_ext4fs \
+  mediatek-framework \
   mtkcamera_parameters \
   resize2fs \
   screencap \
@@ -473,7 +474,6 @@ PRODUCT_PACKAGES += libmal_datamngr
 PRODUCT_PACKAGES += libmal_rds
 PRODUCT_PACKAGES += libmal_epdga
 PRODUCT_PACKAGES += libmal_imsmngr
-PRODUCT_PACKAGES += libmal
 
 PRODUCT_PACKAGES += volte_imsm
 PRODUCT_PACKAGES += volte_imspa
@@ -482,7 +482,6 @@ PRODUCT_PACKAGES += volte_imspa
 #both L1 and L3 library
 PRODUCT_PACKAGES += com.google.widevine.software.drm.xml
 PRODUCT_PACKAGES += com.google.widevine.software.drm
-PRODUCT_PACKAGES += libdrmmtkutil
 
 #Mock modular drm plugin for cts
 #both L1 and L3 library
@@ -497,7 +496,6 @@ PRODUCT_PACKAGES += libdrmwvmcommon
 PRODUCT_PACKAGES += liboemcrypto_static
 PRODUCT_PACKAGES += libion
 PRODUCT_PACKAGES += libion_mtk
-PRODUCT_PACKAGES += libhwm
 PRODUCT_PACKAGES += fmradio
 
 #MTK_AGPS_APP
