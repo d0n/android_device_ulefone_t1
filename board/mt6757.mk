@@ -65,9 +65,9 @@ BOARD_MKBOOTIMG_ARGS := --cmdline "$(BOARD_KERNEL_CMDLINE)" --kernel_offset $(BO
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_SOURCE := #kernel/ulefone/t1
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilts/kernel
-TARGET_KERNEL_CONFIG := lineage_t1_defconfig
+TARGET_KERNEL_CONFIG := d0nkern_t1_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.gz
-#MTK_APPENDED_DTB_SUPPORT := yes
+MTK_APPENDED_DTB_SUPPORT := yes
 
 # Images
 TARGET_NO_BOOTLOADER := true
