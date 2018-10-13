@@ -1,12 +1,1 @@
-libGLES_android.so
-audio_policy.stub.so
-fingerprint.default.so
-libaudiopolicymanagerdefault.so
-libfilterpack_facedetect.so
-libBlurModoule.so
-libfmjni.so
-libdrmclearkeyplugin.so
-libmockdrmcryptoplugin.so
-libgsensorcali_jni.so
 egl.cfg
-libaudiopolicymanager.so
