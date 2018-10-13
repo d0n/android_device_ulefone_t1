@@ -9,6 +9,7 @@ CMAKE=${OUTDIR}/VendorBoardConfig.mk
 cd $OUTDIR/proprietary >/dev/null
 for I in $(find * -type f -name *.apk) ;do
   grep -qs $I $AMAKE && continue
+  echo $I
   APK=$(basename $I)
   ADIR=$(dirname $I)
   ANAME=${APK%.*}
