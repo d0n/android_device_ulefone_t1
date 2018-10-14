@@ -10,10 +10,7 @@ LOCAL_SRC_FILES := \
 	mtk_bionic.cpp \
 	mtk_gps.cpp \
 	program_binary_builder.cpp \
-	vtservice.cpp \
-	mtk_omx.cpp \
-	IGraphicBufferConsumer.cpp \
-	BufferItemConsumer.cpp
+	vtservice.cpp
 	
 
 # only for 32bit libraries
@@ -30,6 +27,12 @@ LOCAL_MODULE := libmtk_symbols
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_CLANG := true
-LOCAL_CPPFLAGS := -std=c++1y -Wno-exit-time-destructors -Wno-global-constructors -Wno-c++98-compat-pedantic -Wno-four-char-constants -Wno-padded
+LOCAL_CPPFLAGS := -std=c++1y
+# LOCAL_SANITIZE := integer
+LOCAL_CPPFLAGS += -Wno-exit-time-destructors
+LOCAL_CPPFLAGS += -Wno-global-constructors
+LOCAL_CPPFLAGS += -Wno-c++98-compat-pedantic
+LOCAL_CPPFLAGS += -Wno-four-char-constants
+LOCAL_CPPFLAGS += -Wno-padded
 
 include $(BUILD_SHARED_LIBRARY)
