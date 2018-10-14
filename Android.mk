@@ -18,5 +18,4 @@ $(shell mkdir -p $(OUT)/obj/busybox $(OUT)/obj/KERNEL_OBJ/usr)
 include $(CLEAR_VARS)
 LOCAL_PATH := $(call my-dir)
 PROJECT_FOLDER := device/ulefone/t1
-MTK_SVLTE_SUPPORT := yes
 include $(call all-makefiles-under,$(LOCAL_PATH))

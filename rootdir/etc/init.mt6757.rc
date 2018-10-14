@@ -32,7 +32,7 @@ on early-init
     chmod 0755 /sys/kernel/debug
 
 on init
-    export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtk_pbb.so:/system/vendor/bin/vtservice|libvtmal.so:/system/vendor/lib/vtmal.so|libmtk_vtmal.so"
+    export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtk_pbb.so:/system/vendor/lib/vtmal.so|libmtk_vtmal.so:/system/vendor/bin/vtservice|libmtk_vtmal.so"
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
 
