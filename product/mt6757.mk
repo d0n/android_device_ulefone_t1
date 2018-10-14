@@ -314,8 +314,6 @@ PRODUCT_PACKAGES += \
 #  apache-xml \
 #  org.apache.http.legacy.boot
 
-# Dalvik
-PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -380,8 +378,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
-PRODUCT_SYSTEM_SERVER_JARS += \
-  com.google.android.gms
+#PRODUCT_SYSTEM_SERVER_JARS += \
+#  com.google.android.gms
 
 # Lights
 PRODUCT_PACKAGES += \
