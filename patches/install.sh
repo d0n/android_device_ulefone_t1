@@ -4,6 +4,6 @@ dirs="bionic frameworks/av frameworks/base frameworks/native hardware/libhardwar
 for dir in $dirs ; do
 	cd $dir
 	echo "Applying $dir patches..."
-	git apply --unsafe-paths -3 -v $rootdirectory/device/ulefone/t1/patches/$dir/*.patch
+	git apply --unsafe-paths -v $rootdirectory/device/ulefone/t1/patches/$dir/*.patch
 	cd $rootdirectory
 done
