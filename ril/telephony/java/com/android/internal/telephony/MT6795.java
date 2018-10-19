@@ -40,7 +40,7 @@ import com.android.internal.telephony.MtkEccList;
  *
  * {@hide}
  */
-public class MT6757 extends RIL implements CommandsInterface {
+public class MT6795 extends RIL implements CommandsInterface {
 
     private static final int RIL_UNSOL_RESPONSE_PS_NETWORK_STATE_CHANGED = 3015;
     private static final int RIL_UNSOL_RESPONSE_REGISTRATION_SUSPENDED = 3024;
@@ -56,27 +56,25 @@ public class MT6757 extends RIL implements CommandsInterface {
     private static final int RIL_REQUEST_SET_ECC_SERVICE_CATEGORY = 2088;
     private static final int RIL_REQUEST_SET_ECC_LIST = 2089;
 
-    private static final int REFRESH_SESSION_RESET = 6;      /* Session reset */
-
     private int[] dataCallCids = { -1, -1, -1, -1, -1 };
 
     //private Context mContext;
     private TelephonyManager mTelephonyManager;
     private MtkEccList mEccList;
 
-    public MT6757(Context context, int preferredNetworkType, int cdmaSubscription) {
+    public MT6795(Context context, int preferredNetworkType, int cdmaSubscription) {
         super(context, preferredNetworkType, cdmaSubscription, null);
         //mContext = context;
-        Rlog.i("MT6757", "Ctor1: context is " + mContext);
+        Rlog.i("MT6795", "Ctor1: context is " + mContext);
         mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         mEccList = new MtkEccList();
     }
 
-    public MT6757(Context context, int preferredNetworkType,
+    public MT6795(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
         //mContext = context;
-        Rlog.i("MT6757", "Ctor2: context is " + mContext);
+        Rlog.i("MT6795", "Ctor2: context is " + mContext);
         mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         mEccList = new MtkEccList();
     }
@@ -262,14 +260,6 @@ public class MT6757 extends RIL implements CommandsInterface {
         String rawefId = p.readString();
         response.efId   = rawefId == null ? 0 : Integer.parseInt(rawefId);
         response.aid = p.readString();
-
-        if (response.refreshResult > IccRefreshResponse.REFRESH_RESULT_RESET) {
-            if (response.refreshResult == REFRESH_SESSION_RESET) {
-                response.refreshResult = IccRefreshResponse.REFRESH_RESULT_RESET;
-            } else {
-                response.refreshResult = IccRefreshResponse.REFRESH_RESULT_INIT;
-            }
-        }
 
         return response;
     }
@@ -511,9 +501,10 @@ public class MT6757 extends RIL implements CommandsInterface {
     iccIOForApp (int command, int fileid, String path, int p1, int p2, int p3,
             String data, String pin2, String aid, Message result) {
         if (command == 0xc0 && p3 == 0) {
-            Rlog.i("MT6757", "Override the size for the COMMAND_GET_RESPONSE 0 => 15");
+            Rlog.i("MT6795", "Override the size for the COMMAND_GET_RESPONSE 0 => 15");
             p3 = 15;
         }
         super.iccIOForApp(command, fileid, path, p1, p2, p3, data, pin2, aid, result);
     }
+
 }

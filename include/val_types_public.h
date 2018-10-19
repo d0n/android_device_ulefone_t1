@@ -93,16 +93,16 @@ typedef enum _VAL_CHIP_NAME_T {
 	VAL_CHIP_NAME_MT6570,                       /* /< Rainier (2 core) */
 	VAL_CHIP_NAME_MT6580,                       /* /< Rainier (4 core) */
 	VAL_CHIP_NAME_MT8163,
-	VAL_CHIP_NAME_MT8173,                       /* /< 8173 */
-	VAL_CHIP_NAME_MT6755,                       /* /< Jade */
-	VAL_CHIP_NAME_MT6757,                       /* /< Olympus */
-	VAL_CHIP_NAME_MT6797,                       /* /< Everest */
-	VAL_CHIP_NAME_MT7623,                       /* /< MT7623 */
-	VAL_CHIP_NAME_MT8167,                       /* /< MT8167 */
+	VAL_CHIP_NAME_MT8173,                       /* / <8173 */
+	VAL_CHIP_NAME_MT6755,                       /* / <Jade */
+	VAL_CHIP_NAME_MT6757,                       /* / <Olympus */
+	VAL_CHIP_NAME_MT6797,                       /* / <Everest */
+	VAL_CHIP_NAME_MT7623,                       /* / <MT7623 */
+	VAL_CHIP_NAME_MT8167,                       /* / <MT8167 */
 	VAL_CHIP_NAME_ELBRUS,                       /* /< ELBRUS */
 	VAL_CHIP_NAME_MT6799,                       /* /< WHITNEY */
 	VAL_CHIP_NAME_MT6759,                       /* /< ALASKA */
-	VAL_CHIP_NAME_MT6758,                       /* /< KIBOPLUS */
+	VAL_CHIP_NAME_MT6758,                       /* / <KIBOPLUS */
 	VAL_CHIP_NAME_MT6763,                       /* /< BIANCO */
 	VAL_CHIP_NAME_MT6739,                       /* /< ZION */
 	VAL_CHIP_NAME_MT3886,                       /* /< SYLVIA */
