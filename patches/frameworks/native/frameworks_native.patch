@@ -27,11 +27,10 @@ Change-Id: I105c019d026520bd02314da20ecbb7f15435e7a9
  libs/ui/mediatek/RefBaseDump.cpp     |  70 ++++++++++++++++++
  opengl/include/EGL/eglext.h          |   9 +++
  opengl/libs/EGL/Loader.cpp           |  41 ++++++++---
- opengl/libs/EGL/Loader.h             |   8 +--
  opengl/libs/EGL/eglApi.cpp           |  75 ++++++++++++++++++++
  opengl/libs/EGL/egl_entries.in       |   3 +
  vulkan/libvulkan/driver.cpp          |  18 +++--
- 26 files changed, 766 insertions(+), 29 deletions(-)
+ 25 files changed, 766 insertions(+), 29 deletions(-)
  create mode 100644 include/ui/mediatek/GuiExtMonitor.h
  create mode 100644 include/ui/mediatek/IDumpTunnel.h
  create mode 100644 include/ui/mediatek/RefBaseDump.h
@@ -1159,35 +1158,6 @@ index 4234db8..b402a31 100644
          egl_t* egl = &cnx->egl;
          __eglMustCastToProperFunctionPointerType* curr =
              (__eglMustCastToProperFunctionPointerType*)egl;
-diff --git a/opengl/libs/EGL/Loader.h b/opengl/libs/EGL/Loader.h
-index 04a8e41..bc5a1c7 100644
---- a/opengl/libs/EGL/Loader.h
-+++ b/opengl/libs/EGL/Loader.h
-@@ -24,9 +24,9 @@
- #include <utils/Errors.h>
- #include <utils/Singleton.h>
- #include <utils/String8.h>
--
-+#ifndef MTK_HARDWARE
- #include <gui/GraphicsEnv.h>
--
-+#endif
- #include <EGL/egl.h>
-
- // ----------------------------------------------------------------------------
-@@ -55,10 +55,10 @@ class Loader : public Singleton<Loader>
-     };
-
-     getProcAddressType getProcAddress;
--
-+#ifndef MTK_HARDWARE
-     void* mLibGui;
-     decltype(android_getDriverNamespace)* mGetDriverNamespace;
--
-+#endif
- public:
-     ~Loader();
-
 diff --git a/opengl/libs/EGL/eglApi.cpp b/opengl/libs/EGL/eglApi.cpp
 index 0cd8b02..29289c0 100644
 --- a/opengl/libs/EGL/eglApi.cpp
