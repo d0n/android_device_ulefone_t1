@@ -3,8 +3,8 @@ LOCAL_PATH := device/ulefone/t1
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
+PRODUCT_AAPT_CONFIG := xxxhdpi xxhdpi xhdpi normal
+PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 
 # Manifest
 PRODUCT_COPY_FILES += \
@@ -52,10 +52,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy
 
 # Dalvik/HWUI
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-4096-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
 
 # Common stuff
-$(call inherit-product, vendor/mad/config/common.mk)
+$(call inherit-product, vendor/mediatek/config/common.mk)
 
 # Vendor
 $(call inherit-product, vendor/ulefone/t1/t1-vendor.mk)
