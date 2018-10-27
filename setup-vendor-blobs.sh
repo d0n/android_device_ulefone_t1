@@ -10,14 +10,11 @@ VMAKE=${OUTDIR}/VendorBoardConfig.mk
 cd $OUTDIR/proprietary >/dev/null
 for I in $(find bin/ vendor/bin -type f) ;do
   grep -qs $I $AMAKE && continue
-  grep -qs $(basename $I) $ddir/blackbins.lst && continue
+  grep -qs $I $ddir/blackbins.lst && continue
   echo $I
   BIN=$(basename $I)
   BDIR="$(dirname /system/$I |sed 's/^\///')"
   printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${BIN}\nLOCAL_MODULE_TAGS := optional\nLOCAL_MODULE_CLASS := EXECUTABLES\nLOCAL_SRC_FILES := proprietary/$(dirname $I)/${BIN}\nLOCAL_MODULE_PATH := ${BDIR}\n" >> $AMAKE
-  if [ "$BIN" == "hostapd" ] ;then
-    printf "LOCAL_STATIC_LIBRARIES := \$(DEVICE_PATH)/mtk/lib_driver_cmd_mt66xx/arm64/lib_driver_cmd_mt66xx.a\n" >>$AMAKE
-  fi
   printf "include \$(BUILD_PREBUILT)\n\n" >>$AMAKE
   printf "  ${BIN}" >>$VMAKE
   echo ' \' >>$VMAKE
