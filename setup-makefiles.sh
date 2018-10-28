@@ -84,16 +84,24 @@ echo "# Copyright (C) 2015 The CyanogenMod Project
 
 LOCAL_PATH := \$(call my-dir)
 DEVICE_PATH := \$(TOP)/device/$VENDOR/$DEVICE
-\$(shell mkdir -p \$(OUT)/obj_arm/SHARED_LIBRARIES/libaudiopolicymanager_intermediates \$(OUT)/obj/SHARED_LIBRARIES/libaudiopolicymanager_intermediates \$(OUT)/obj_arm/lib \$(OUT)/obj/lib \$(OUT)/obj_arm/SHARED_LIBRARIES/libaudiopolicyservice_intermediates/LINKED \$(OUT)/obj/SHARED_LIBRARIES/libaudiopolicyservice_intermediates/LINKED \$(OUT)/obj_arm/SHARED_LIBRARIES/libvtmal_intermediates/ \$(OUT)/obj_arm/lib/ \$(OUT)/obj/STATIC_LIBRARIES/lib_driver_cmd_mt66xx_intermediates/)
-\$(shell touch \$(OUT)/obj_arm/SHARED_LIBRARIES/libaudiopolicymanager_intermediates/export_includes \$(OUT)/obj/SHARED_LIBRARIES/libaudiopolicymanager_intermediates/export_includes \$(OUT)/obj/STATIC_LIBRARIES/lib_driver_cmd_mt66xx_intermediates/export_includes \$(OUT)/obj_arm/SHARED_LIBRARIES/libvtmal_intermediates/export_includes)
-\$(shell cp \$(LOCAL_PATH)/proprietary/lib/libaudiopolicymanager.so \$(OUT)/obj_arm/lib/)
-\$(shell cp \$(LOCAL_PATH)/proprietary/lib/libaudiopolicymanager.so \$(OUT)/obj_arm/SHARED_LIBRARIES/libaudiopolicyservice_intermediates/LINKED/)
-\$(shell cp \$(LOCAL_PATH)/proprietary/lib64/libaudiopolicymanager.so \$(OUT)/obj/lib/)
-\$(shell cp \$(LOCAL_PATH)/proprietary/lib64/libaudiopolicymanager.so \$(OUT)/obj/SHARED_LIBRARIES/libaudiopolicyservice_intermediates/LINKED/)
+
+\$(shell mkdir -p \$(OUT)/obj_arm/SHARED_LIBRARIES/libaudiopolicymanager_intermediates \$(OUT)/obj/SHARED_LIBRARIES/libaudiopolicymanager_intermediates \$(OUT)/obj_arm/lib \$(OUT)/obj/lib \$(OUT)/obj_arm/SHARED_LIBRARIES/libaudiopolicyservice_intermediates/LINKED \$(OUT)/obj/SHARED_LIBRARIES/libaudiopolicyservice_intermediates/LINKED \$(OUT)/obj/STATIC_LIBRARIES/lib_driver_cmd_mt66xx_intermediates/)
+\$(shell touch \$(OUT)/obj_arm/SHARED_LIBRARIES/libaudiopolicymanager_intermediates/export_includes \$(OUT)/obj/SHARED_LIBRARIES/libaudiopolicymanager_intermediates/export_includes \$(OUT)/obj/STATIC_LIBRARIES/lib_driver_cmd_mt66xx_intermediates/export_includes)
 \$(shell cp \$(DEVICE_PATH)/libwifi-hal-mt66xx/arm/libwifi-hal-mt66xx.a \$(OUT)/obj/STATIC_LIBRARIES/lib_driver_cmd_mt66xx_intermediates/lib_driver_cmd_mt66xx.a)
+\$(shell cp \$(LOCAL_PATH)/proprietary/lib/libaudiopolicymanager.so \$(OUT)/obj_arm/SHARED_LIBRARIES/libaudiopolicyservice_intermediates/LINKED/)
+\$(shell cp \$(LOCAL_PATH)/proprietary/lib64/libaudiopolicymanager.so \$(OUT)/obj/SHARED_LIBRARIES/libaudiopolicyservice_intermediates/LINKED/)
 \$(shell cp -r \$(DEVICE_PATH)/lib_driver_cmd_mt66xx \$(TOP)/NOTICE-TARGET-STATIC_LIBRARIES-lib_driver_cmd_mt66xx)
+\$(shell cp \$(LOCAL_PATH)/proprietary/lib/libaudiopolicymanager.so \$(OUT)/obj_arm/lib/)
+\$(shell cp \$(LOCAL_PATH)/proprietary/lib64/libaudiopolicymanager.so \$(OUT)/obj/lib/)
 \$(shell nm -B -D \$(LOCAL_PATH)/proprietary/lib64/libaudiopolicymanager.so > \$(OUT)/obj/lib/libaudiopolicymanager.so.toc)
 \$(shell nm -B -D \$(LOCAL_PATH)/proprietary/lib/libaudiopolicymanager.so > \$(OUT)/obj_arm/lib/libaudiopolicymanager.so.toc)
+#\$(shell mkdir -p \$(OUT)/obj_arm/SHARED_LIBRARIES/libvtmal_intermediates/ \$(OUT)/obj_arm/lib/ \$(OUT)/obj/STATIC_LIBRARIES/lib_driver_cmd_mt66xx_intermediates/)
+#\$(shell touch \$(OUT)/obj/STATIC_LIBRARIES/lib_driver_cmd_mt66xx_intermediates/export_includes \$(OUT)/obj_arm/SHARED_LIBRARIES/libvtmal_intermediates/export_includes)
+#\$(shell cp \$(DEVICE_PATH)/libwifi-hal-mt66xx/arm/libwifi-hal-mt66xx.a \$(OUT)/obj/STATIC_LIBRARIES/lib_driver_cmd_mt66xx_intermediates/lib_driver_cmd_mt66xx.a)
+#\$(shell cp -r \$(DEVICE_PATH)/lib_driver_cmd_mt66xx \$(TOP)/NOTICE-TARGET-STATIC_LIBRARIES-lib_driver_cmd_mt66xx)
+#\$(shell touch \$(OUT)/obj_arm/SHARED_LIBRARIES/libvtmal_intermediates/export_includes \$(OUT)/obj_arm/lib/libvtmal.so.toc)
+#\$(shell mkdir -p \$(OUT)/obj_arm/SHARED_LIBRARIES/libaudiopolicymanager_intermediates/)
+#\$(shell touch \$(OUT)/obj_arm/SHARED_LIBRARIES/libaudiopolicymanager_intermediates/export_includes)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE_CLASS := ETC

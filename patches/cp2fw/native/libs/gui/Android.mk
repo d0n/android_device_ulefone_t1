@@ -36,6 +36,10 @@ LOCAL_CPPFLAGS += -Wno-gnu-zero-variadic-macro-arguments
 # Don't warn about struct padding
 LOCAL_CPPFLAGS += -Wno-padded
 
+LOCAL_CPPFLAGS += -Wmissing-prototypes
+
+LOCAL_CPPFLAGS += -Wunused-macros
+
 LOCAL_CPPFLAGS += -DDEBUG_ONLY_CODE=$(if $(filter userdebug eng,$(TARGET_BUILD_VARIANT)),1,0)
 
 LOCAL_SRC_FILES := \
@@ -56,6 +60,7 @@ LOCAL_SRC_FILES := \
 	GraphicBufferAlloc.cpp \
 	GuiConfig.cpp \
 	IDisplayEventConnection.cpp \
+	IDumpTunnel.cpp \
 	IGraphicBufferAlloc.cpp \
 	IGraphicBufferProducer.cpp \
 	IProducerListener.cpp \
