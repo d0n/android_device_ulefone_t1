@@ -17,29 +17,63 @@ GAPPS_EXCLUDED_PACKAGES := \
   Search
 
 PRODUCT_PACKAGES += \
+  7mrdump_tool \
+  AudioSetParam \
   BackupRestoreConfirmation \
   DownloadProvider \
+  FMRadio \
+  Gba \
   HTMLViewer \
   KeySwitch \
+  LocationEM2 \
+  MPED \
   MediaProvider \
+  MtkCodecService \
   PackageInstaller \
   SettingsProvider \
   Shell \
   Snap \
+  YGPS \
+  aal \
+  aee \
+  aee_archive \
+  aee_core_forwarder \
+  aee_dumpstate \
+  agoldnvram \
+  agps \
+  ahat \
+  akmd09911 \
+  akmd8963 \
+  akmd8975 \
+  ami304d \
+  android.hardware.wifi@1.0-service \
+  apache-xml \
+  art-runtime \
+  art-tools \
+  atci_service \
+  atcid \
   audio.a2dp.default \
   audio.r_submix.default \
   audio.usb.default \
   audio_policy.default \
+  audiocmdservice_atci \
+  autobt \
+  autokd \
   bash \
+  batterywarning \
   bcc \
+  bmm050d \
+  boot_logo_updater \
+  bouncycastle \
   bu \
   bwc \
-  libbwc \
-  libepos \
-  libvtmal \
-  vtservice \
-  libccci_util \
-  com.google.android.gms \
+  bwc_test \
+  cacerts \
+  camtool \
+  ccci_fsd \
+  ccci_mdinit \
+  charger \
+  charon \
   com.android.future.usb.accessory \
   com.android.location.provider \
   com.android.location.provider.xml \
@@ -47,84 +81,270 @@ PRODUCT_PACKAGES += \
   com.android.media.remotedisplay.xml \
   com.android.mediadrm.signer \
   com.android.mediadrm.signer.xml \
+  com.google.android.gms \
+  com.google.widevine.software.drm \
+  com.google.widevine.software.drm.xml \
+  conscrypt \
+  core-junit \
+  core-libart \
+  dalvikvm \
+  dex2oat \
+  dexdeps \
+  dexdump \
+  dexlist \
+  dhcp6c \
+  dhcp6ctl \
+  dhcp6s \
+  display \
+  dmlog \
+  dmtracedump \
+  downloader \
   drmserver \
+  dx \
   e2fsck \
+  em_svr \
+  emdlogger1 \
+  emdlogger2 \
+  emdlogger3 \
+  emdlogger5 \
+  epdg_wod \
   ethernet-service \
+  ext \
+  factory \
+  fingerprintd \
+  flashlessd \
+  fmradio \
   framework-res \
+  fsck_msdos_mtk \
+  fuelgauged \
+  fuelgauged_nvram \
+  ged_srv \
+  geomagneticd \
+  gps.mt6757 \
+  gsm0710muxd \
+  gsm0710muxdmd2 \
+  gui_ext \
+  hostapd \
+  hprof-conv \
   idmap \
   ims-common \
   installd \
   ip \
   ip-up-vpn \
   ip6tables \
+  ipsec \
+  ipsec_mon \
   iptables \
   keystore \
   keystore.default \
+  kpoc_charger \
+  lcdc_screen_cap \
+  libJpgDecDrv_plat \
+  libJpgDecPipe \
   libMtkOmxApeDec \
   libOpenMAXAL \
   libOpenSLES \
+  libSwJpgCodec \
+  lib_driver_cmd_bcmdhd \
+  lib_driver_cmd_mt66xx \
+  libart \
   libaudio-resampler \
   libbcc \
+  libbt-mtk_cust \
+  libbthost_if \
+  libbwc \
+  libccci_util \
+  libccu_bin.dm \
+  libccu_bin.pm \
+  libcdm \
+  libcdm_protos \
+  libcdm_utils \
   libconnctrl \
+  libcrypto \
   libcsm_data \
+  libctor \
+  libcurl \
   libdatactrl \
   libdownmix \
   libdrmframework \
   libdrmframework_jni \
-  libifaddrs \
+  libdrmwvmcommon \
+  libem_sensor_jni \
+  libepos \
+  libexpat \
   libffmpeg \
   libfilterfw \
   libfilterpack_facedetect \
+  libfmcust \
+  libfmjni \
   libfs_mgr \
   libged \
-  libmdp \
   libgralloc \
   libgralloc_extra \
   libgui \
   libgui_ext \
-  gui_ext \
-  display \
   libgui_mtk \
+  libicui18n \
+  libicuuc \
+  libifaddrs \
+  libion \
+  libion_mtk \
+  libipsec_ims \
+  libjavacore \
   libkeystore \
+  libm4u \
+  libmal_datamngr \
+  libmal_epdga \
+  libmal_imsmngr \
+  libmal_mdmngr \
+  libmal_rds \
+  libmal_rilproxy \
+  libmal_simmngr \
+  libmdfx \
+  libmdp \
+  libmedia \
+  libmedia_helper \
+  libmedia_jni \
+  libmhalImageCodec \
   libmtk_symbols \
+  libnativehelper \
+  liboemcrypto_static \
+  libperfservicenative \
   libpq \
+  librilmtk \
+  librilmtkmd2 \
+  librs_jni \
   libsqlite_jni \
+  libssl \
+  libssladp \
+  libteec \
+  libteecjni \
+  libteeclientjni \
   libtinyalsa \
   libtinycompress \
   libtinyxml \
   libui \
-  libctor \
   libui_ext \
   libui_mtk \
+  libvtmal \
+  libwifi-hal-mt66xx \
   libwilhelm \
   libwlparser \
-  libperfservicenative \
+  libwpa_client \
+  libwvdrmcryptoplugin \
+  libwvdrmdrmplugin \
+  libwvdrmengine \
+  libwvlevel3 \
+  libxml2 \
+  libz \
+  lights.mt6757 \
   logd \
+  lsm303md \
+  m4u_it \
+  m4u_ut \
+  magd \
   make_ext4fs \
+  matv \
+  mbimd \
+  mc6420d \
+  md_ctrl \
+  md_monitor \
+  md_monitor_ctrl \
+  mdlogger \
   mediatek-framework \
+  memorydumper \
+  memsicd \
+  memsicd3416x \
+  meta_tst \
+  mfv_ut \
+  mnld \
+  mobile_log_d \
+  msensord \
+  mtk_agpsd \
+  mtk_socket \
   mtkcamera_parameters \
+  mtkmal \
+  mtkrild \
+  mtkrildmd2 \
+  muxreport \
+  netdiag \
+  nvram_agent_binder \
+  nvram_daemon \
+  nvram_proximity \
+  oatdump \
+  okhttp \
+  orientationd \
+  patchoat \
+  perf_native_test \
+  perfprofd \
+  power.mt6757 \
+  pq \
+  program_binary_builder \
+  program_binary_service \
+  qmcX983d \
+  radio.fm.mt6757 \
+  radvd \
   resize2fs \
+  resize_ext4 \
+  rilproxy \
+  rilproxy-mal \
+  rs2spir \
+  rtt \
+  s62xd \
   screencap \
+  securit_test \
   sensorservice \
+  setup_fs \
   sgdisk \
+  slpd \
+  sn \
+  spir2cl \
+  spm_loader \
+  starter \
+  statusd \
+  stp_dump3 \
+  stroke \
+  superumount \
+  sysenv_daemon \
   tcmclient \
+  tee \
+  teed \
   telephony-common \
+  terservice \
+  tertestclient \
+  thermal \
+  thermal_manager \
+  thermald \
+  thermalindicator \
+  thermalloadalgod \
   tinymix \
   uiautomator \
   uncrypt \
+  viaradiooptions \
+  viarild \
   voip-common \
+  vold \
+  volte_core \
+  volte_imcb \
+  volte_imsm \
+  volte_imspa \
+  volte_stack \
+  volte_ua \
+  volte_xdmc \
+  vtservice \
   webview \
+  wfca \
   wifi-service \
-  perfprofd \
-  libccci_util \
-  libbwc \
-  libgralloc_extra \
-  libMtkOmxApeDec \
-  libepos \
-  libifaddrs \
-  libperfservicenative \
-  mtk_socket \
-  agps
+  wifi2agps \
+  wificond \
+  wifilogd \
+  wmt_concurrency \
+  wmt_launcher \
+  wmt_loader \
+  wmt_loopback \
+  wpa_cli \
+  wpa_supplicant \
+  xlibcamera_client_mtk
 
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
@@ -143,163 +363,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
 
-PRODUCT_PACKAGES += \
-  lib_driver_cmd_bcmdhd \
-  libwifi-hal-mt66xx \
-  lib_driver_cmd_mt66xx \
-  xlibcamera_client_mtk \
-  power.mt6757 \
-  lights.mt6757 \
-  libbthost_if \
-  libepos \
-  libmedia_helper \
-  libbt-mtk_cust \
-  m4u_ut \
-  m4u_it \
-  libm4u \
-  bwc \
-  bwc_test \
-  libbwc \
-  gps.mt6757 \
-  libccci_util \
-  radio.fm.mt6757 \
-  libfmcust \
-  Snap \
-  agoldnvram \
-  nvram_proximity \
-  sensorservice \
-  vold \
-  fingerprintd \
-  wpa_cli \
-  wpa_supplicant \
-  securit_test \
-  tee \
-  teed \
-  AudioSetParam \
-  MPED \
-  MtkCodecService \
-  aal \
-  aee \
-  aee_archive \
-  aee_core_forwarder \
-  aee_dumpstate \
-  akmd09911 \
-  akmd8963 \
-  akmd8975 \
-  ami304d \
-  atci_service \
-  atcid \
-  audiocmdservice_atci \
-  autobt \
-  autokd \
-  batterywarning \
-  bmm050d \
-  boot_logo_updater \
-  camtool \
-  ccci_fsd \
-  ccci_mdinit \
-  charon \
-  dhcp6c \
-  dhcp6ctl \
-  dhcp6s \
-  dmlog \
-  downloader \
-  em_svr \
-  emdlogger1 \
-  emdlogger2 \
-  emdlogger3 \
-  emdlogger5 \
-  epdg_wod \
-  factory \
-  flashlessd \
-  fsck_msdos_mtk \
-  fuelgauged \
-  fuelgauged_nvram \
-  ged_srv \
-  geomagneticd \
-  gsm0710muxd \
-  gsm0710muxdmd2 \
-  ipsec \
-  ipsec_mon \
-  kpoc_charger \
-  lcdc_screen_cap \
-  libccu_bin.dm \
-  libccu_bin.pm \
-  lsm303md \
-  magd \
-  matv \
-  mbimd \
-  mc6420d \
-  md_ctrl \
-  md_monitor \
-  md_monitor_ctrl \
-  mdlogger \
-  memorydumper \
-  memsicd \
-  memsicd3416x \
-  meta_tst \
-  mfv_ut \
-  mnld \
-  mobile_log_d \
-  7mrdump_tool \
-  msensord \
-  mtk_agpsd \
-  mtkmal \
-  mtkrild \
-  mtkrildmd2 \
-  muxreport \
-  netdiag \
-  nvram_agent_binder \
-  nvram_daemon \
-  orientationd \
-  perf_native_test \
-  pq \
-  program_binary_builder \
-  program_binary_service \
-  qmcX983d \
-  radvd \
-  resize_ext4 \
-  rilproxy \
-  rs2spir \
-  rtt \
-  s62xd \
-  slpd \
-  sn \
-  spir2cl \
-  spm_loader \
-  starter \
-  statusd \
-  stp_dump3 \
-  stroke \
-  superumount \
-  sysenv_daemon \
-  terservice \
-  tertestclient \
-  thermal \
-  thermal_manager \
-  thermald \
-  thermalindicator \
-  thermalloadalgod \
-  viaradiooptions \
-  viarild \
-  volte_imcb \
-  volte_stack \
-  volte_ua \
-  vtservice \
-  wfca \
-  wifi2agps \
-  wmt_concurrency \
-  wmt_launcher \
-  wmt_loader \
-  wmt_loopback \
-  android.hardware.wifi@1.0-service \
-  lib_driver_cmd_mt66xx \
-  libwpa_client \
-  hostapd \
-  wificond \
-  wifilogd \
-  wpa_supplicant
-
 #PRODUCT_BOOT_JARS := \
 #  telephony-ext \
 #  core-oj \
@@ -317,28 +380,8 @@ PRODUCT_PACKAGES += \
 #  org.apache.http.legacy.boot
 
 
-# Fingerprint
-PRODUCT_PACKAGES += \
-  fingerprintd
-
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
-
-# FMRadio
-PRODUCT_PACKAGES += \
-  libfmjni \
-  FMRadio
-
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-  e2fsck \
-  make_ext4fs \
-  resize2fs \
-  setup_fs \
-  libxml2 \
-  libteec \
-  libteecjni \
-  libteeclientjni
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -346,13 +389,6 @@ PRODUCT_COPY_FILES += \
 
 # The gps config appropriate for this device
 #$(call inherit-product, device/common/gps/gps_eu_supl.mk)
-
-# GPS
-PRODUCT_PACKAGES += \
-  gps.mt6757 \
-  libcurl \
-  libepos \
-  YGPS
 
 # Hardware-specific permissions
 PRODUCT_COPY_FILES += \
@@ -383,27 +419,11 @@ PRODUCT_COPY_FILES += \
 #PRODUCT_SYSTEM_SERVER_JARS += \
 #  com.google.android.gms
 
-# Lights
-PRODUCT_PACKAGES += \
-  rilproxy-mal \
-  libdatactrl \
-  libcsm_data \
-  lights.mt6757
-
-# Media
-PRODUCT_PACKAGES += \
-  libmedia \
-  libmedia_jni
-
 PRODUCT_COPY_FILES += \
   frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
   frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
   frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
   device/ulefone/t1/configs/media_profiles.xml:system/etc/media_profiles.xml
-
-# Charger
-PRODUCT_PACKAGES += \
-  charger
 
 # Recovery
 #PRODUCT_COPY_FILES += \
@@ -455,84 +475,6 @@ BOARD_SEPOLICY_DIRS := \
 BOARD_SECCOMP_POLICY := \
   $(LOCAL_PATH)/seccomp
 
-# VoLTE Process
-PRODUCT_PACKAGES += Gba
-PRODUCT_PACKAGES += volte_xdmc
-PRODUCT_PACKAGES += volte_core
-PRODUCT_PACKAGES += volte_ua
-PRODUCT_PACKAGES += volte_stack
-PRODUCT_PACKAGES += volte_imcb
-PRODUCT_PACKAGES += libipsec_ims
-
-# MAL
-PRODUCT_PACKAGES += libmdfx
-PRODUCT_PACKAGES += mtkmal
-PRODUCT_PACKAGES += libmal_mdmngr
-PRODUCT_PACKAGES += libmal_rilproxy
-PRODUCT_PACKAGES += libmal_simmngr
-PRODUCT_PACKAGES += libmal_datamngr
-PRODUCT_PACKAGES += libmal_rds
-PRODUCT_PACKAGES += libmal_epdga
-PRODUCT_PACKAGES += libmal_imsmngr
-
-PRODUCT_PACKAGES += volte_imsm
-PRODUCT_PACKAGES += volte_imspa
-
-#WVDRM_SUPPORT
-#both L1 and L3 library
-PRODUCT_PACKAGES += com.google.widevine.software.drm.xml
-PRODUCT_PACKAGES += com.google.widevine.software.drm
-
-#Mock modular drm plugin for cts
-#both L1 and L3 library
-PRODUCT_PACKAGES += libwvdrmengine
-PRODUCT_PACKAGES += libcdm
-PRODUCT_PACKAGES += libcdm_utils
-PRODUCT_PACKAGES += libwvlevel3
-PRODUCT_PACKAGES += libwvdrmcryptoplugin
-PRODUCT_PACKAGES += libwvdrmdrmplugin
-PRODUCT_PACKAGES += libcdm_protos
-PRODUCT_PACKAGES += libdrmwvmcommon
-PRODUCT_PACKAGES += liboemcrypto_static
-PRODUCT_PACKAGES += libion
-PRODUCT_PACKAGES += libion_mtk
-PRODUCT_PACKAGES += fmradio
-
-#MTK_AGPS_APP
-PRODUCT_PACKAGES += \
-  LocationEM2 \
-  mtk_agpsd \
-  libssladp
-
-#TODO: check why jpeg library built in some case
-PRODUCT_PACKAGES += libSwJpgCodec
-PRODUCT_PACKAGES += libJpgDecDrv_plat
-PRODUCT_PACKAGES += libJpgDecPipe
-PRODUCT_PACKAGES += libmhalImageCodec
-
-# RIL
-PRODUCT_PACKAGES += \
-  libccci_util \
-  librilmtk \
-  librilmtkmd2 \
-  mtkrild \
-  rilproxy
-
-# ART.
-PRODUCT_PACKAGES += art-runtime
-
-# ART/dex helpers.
-PRODUCT_PACKAGES += art-tools
-
-# Certificates.
-PRODUCT_PACKAGES += \
-  cacerts \
-
-# Radio dependencies
-PRODUCT_PACKAGES += \
-  muxreport \
-  terservice
-
 # Sensors
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -542,10 +484,6 @@ PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
   frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml
 
-# Sensor Calibration
-PRODUCT_PACKAGES += \
-  libem_sensor_jni
-
 # Telephony
 SIM_COUNT := 2
 PRODUCT_PROPERTY_OVERRIDES += ro.telephony.sim.count=$(SIM_COUNT)
@@ -553,8 +491,3 @@ PRODUCT_PROPERTY_OVERRIDES += persist.radio.default.sim=0
 PRODUCT_PROPERTY_OVERRIDES += persist.radio.multisim.config=dsds
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml
-
-# USB
-PRODUCT_PACKAGES += \
-  librs_jni \
-  com.android.future.usb.accessory
