@@ -12,14 +12,12 @@ Change-Id: I105c019d026520bd02314da20ecbb7f15435e7a9
  include/ui/mediatek/GuiExtMonitor.h  | 133 +++++++++++++++++++++++++++++++++++
  include/ui/mediatek/IDumpTunnel.h    |  49 +++++++++++++
  include/ui/mediatek/RefBaseDump.h    |  34 +++++++++
- libs/gui/Android.mk                  |   6 +-
  libs/gui/BufferQueueCore.cpp         |   2 +
  libs/gui/BufferQueueProducer.cpp     |  14 ++++
  libs/gui/ConsumerBase.cpp            |   9 +++
  libs/gui/GLConsumer.cpp              |   9 +++
  libs/gui/IProducerListener.cpp       |  10 ++-
  libs/gui/SurfaceControl.cpp          |  18 +++++
- libs/ui/Android.mk                   |  16 ++++-
  libs/ui/Fence.cpp                    |  33 ++++++++-
  libs/ui/GraphicBuffer.cpp            |  29 ++++++++
  libs/ui/mediatek/Fence.cpp           |  58 +++++++++++++++
@@ -27,11 +25,10 @@ Change-Id: I105c019d026520bd02314da20ecbb7f15435e7a9
  libs/ui/mediatek/RefBaseDump.cpp     |  70 ++++++++++++++++++
  opengl/include/EGL/eglext.h          |   9 +++
  opengl/libs/EGL/Loader.cpp           |  41 ++++++++---
- opengl/libs/EGL/Loader.h             |   8 +--
  opengl/libs/EGL/eglApi.cpp           |  75 ++++++++++++++++++++
  opengl/libs/EGL/egl_entries.in       |   3 +
  vulkan/libvulkan/driver.cpp          |  18 +++--
- 26 files changed, 766 insertions(+), 29 deletions(-)
+ 24 files changed, 766 insertions(+), 29 deletions(-)
  create mode 100644 include/ui/mediatek/GuiExtMonitor.h
  create mode 100644 include/ui/mediatek/IDumpTunnel.h
  create mode 100644 include/ui/mediatek/RefBaseDump.h
@@ -403,30 +400,6 @@ index 0000000..1ac8218
 +
 +}; // namespace android
 +#endif
-diff --git a/libs/gui/Android.mk b/libs/gui/Android.mk
-index 0889aaf..718282d 100644
---- a/libs/gui/Android.mk
-+++ b/libs/gui/Android.mk
-@@ -54,7 +54,6 @@ LOCAL_SRC_FILES := \
- 	DisplayEventReceiver.cpp \
- 	GLConsumer.cpp \
- 	GraphicBufferAlloc.cpp \
--	GraphicsEnv.cpp \
- 	GuiConfig.cpp \
- 	IDisplayEventConnection.cpp \
- 	IGraphicBufferAlloc.cpp \
-@@ -74,6 +73,11 @@ LOCAL_SRC_FILES := \
- 	SurfaceControl.cpp \
- 	SurfaceComposerClient.cpp \
- 	SyncFeatures.cpp \
-+
-+ifndef MTK_HARDWARE
-+LOCAL_SRC_FILES += \
-+	GraphicsEnv.cpp
-+endif
-
- LOCAL_SHARED_LIBRARIES := \
-  	libnativeloader \
 diff --git a/libs/gui/BufferQueueCore.cpp b/libs/gui/BufferQueueCore.cpp
 index d610971..efd7723 100644
 --- a/libs/gui/BufferQueueCore.cpp
@@ -630,40 +603,6 @@ index d59b37c..df33860 100644
      status_t err = validate();
      if (err < 0) return err;
      return mClient->setPosition(mHandle, x, y);
-diff --git a/libs/ui/Android.mk b/libs/ui/Android.mk
-index 2b16365..d4436bc 100644
---- a/libs/ui/Android.mk
-+++ b/libs/ui/Android.mk
-@@ -16,7 +16,7 @@ LOCAL_PATH := $(call my-dir)
- include $(CLEAR_VARS)
-
- LOCAL_CLANG := true
--LOCAL_CPPFLAGS := -std=c++1y -Weverything -Werror
-+LOCAL_CPPFLAGS := -std=c++1y -Weverything
- # LOCAL_SANITIZE := integer
-
- # The static constructors and destructors in this library have not been noted to
-@@ -55,6 +55,20 @@ LOCAL_SHARED_LIBRARIES := \
- 	libsync \
- 	libutils \
- 	liblog
-+
-+ifeq ($(BOARD_USES_MTK_HARDWARE),true)
-+LOCAL_CFLAGS += -DMTK_HARDWARE
-+	LOCAL_CPPFLAGS += -Wno-extra-semi -Wno-zero-length-array -Wno-gnu-statement-expression
-+	LOCAL_CPPFLAGS += -D__STDC_FORMAT_MACROS
-+
-+	LOCAL_SRC_FILES += \
-+		mediatek/Fence.cpp \
-+		mediatek/IDumpTunnel.cpp \
-+		mediatek/RefBaseDump.cpp
-+
-+	LOCAL_SHARED_LIBRARIES += \
-+		libbinder
-+endif
-
- ifneq ($(BOARD_FRAMEBUFFER_FORCE_FORMAT),)
- LOCAL_CFLAGS += -DFRAMEBUFFER_FORCE_FORMAT=$(BOARD_FRAMEBUFFER_FORCE_FORMAT)
 diff --git a/libs/ui/Fence.cpp b/libs/ui/Fence.cpp
 index 5531b23..f83c214 100644
 --- a/libs/ui/Fence.cpp
@@ -1159,35 +1098,6 @@ index 4234db8..b402a31 100644
          egl_t* egl = &cnx->egl;
          __eglMustCastToProperFunctionPointerType* curr =
              (__eglMustCastToProperFunctionPointerType*)egl;
-diff --git a/opengl/libs/EGL/Loader.h b/opengl/libs/EGL/Loader.h
-index 04a8e41..bc5a1c7 100644
---- a/opengl/libs/EGL/Loader.h
-+++ b/opengl/libs/EGL/Loader.h
-@@ -24,9 +24,9 @@
- #include <utils/Errors.h>
- #include <utils/Singleton.h>
- #include <utils/String8.h>
--
-+#ifndef MTK_HARDWARE
- #include <gui/GraphicsEnv.h>
--
-+#endif
- #include <EGL/egl.h>
-
- // ----------------------------------------------------------------------------
-@@ -55,10 +55,10 @@ class Loader : public Singleton<Loader>
-     };
-
-     getProcAddressType getProcAddress;
--
-+#ifndef MTK_HARDWARE
-     void* mLibGui;
-     decltype(android_getDriverNamespace)* mGetDriverNamespace;
--
-+#endif
- public:
-     ~Loader();
-
 diff --git a/opengl/libs/EGL/eglApi.cpp b/opengl/libs/EGL/eglApi.cpp
 index 0cd8b02..29289c0 100644
 --- a/opengl/libs/EGL/eglApi.cpp

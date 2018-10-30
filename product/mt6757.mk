@@ -82,6 +82,8 @@ PRODUCT_PACKAGES += \
   libgralloc_extra \
   libgui \
   libgui_ext \
+  gui_ext \
+  display \
   libgui_mtk \
   libkeystore \
   libmtk_symbols \
