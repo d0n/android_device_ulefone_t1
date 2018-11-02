@@ -138,6 +138,7 @@ PRODUCT_PACKAGES += \
   keystore \
   keystore.default \
   kpoc_charger \
+  libaal \
   lcdc_screen_cap \
   libJpgDecDrv_plat \
   libJpgDecPipe \
@@ -207,7 +208,10 @@ PRODUCT_PACKAGES += \
   libmedia_jni \
   libmhalImageCodec \
   libmtk_symbols \
+  libmtkshim_vtmal \
   libnativehelper \
+  libnvram \
+  libaudiopolicymanager \
   liboemcrypto_static \
   libperfservicenative \
   libpq \
@@ -256,6 +260,7 @@ PRODUCT_PACKAGES += \
   memsicd \
   memsicd3416x \
   meta_tst \
+  mplugin \
   mfv_ut \
   mnld \
   mobile_log_d \
