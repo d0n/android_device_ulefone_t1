@@ -108,4 +108,3 @@ include \$(BUILD_PREBUILT)
 \$(shell nm -B -D \$(LOCAL_PATH)/proprietary/vendor/lib64/libhwm.so > \$(OUT)/obj/lib/libhwm.so.toc)
 \$(shell nm -B -D \$(LOCAL_PATH)/proprietary/lib/libaudiopolicymanager.so > \$(OUT)/obj_arm/lib/libaudiopolicymanager.so.toc)
 \$(shell nm -B -D \$(LOCAL_PATH)/proprietary/lib64/libaudiopolicymanager.so > \$(OUT)/obj/lib/libaudiopolicymanager.so.toc)" >>$AMAKE
-
