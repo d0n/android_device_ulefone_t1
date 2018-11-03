@@ -1,0 +1,13 @@
+diff --git a/Android.mk b/Android.mk
+index 6eaa481..400f714 100644
+--- a/Android.mk
++++ b/Android.mk
+@@ -152,7 +152,7 @@ libbrillo_CFLAGS := \
+     -Werror \
+     -DUSE_DBUS=$(local_use_dbus)
+ libbrillo_CPPFLAGS :=
+-libbrillo_includes := external/gtest/include
++libbrillo_includes := external/gtest/include external/curl/include
+ libbrillo_shared_libraries := libchrome
+ 
+ # Shared library for target
