@@ -42,9 +42,10 @@ for I in $(find lib* vendor/lib* -type f) ;do
   fi
   if [ "$LIB" == "libRSDriver_mtk.so" ] || [ "$LIB" == "libRSDriverArm.so" ] || [ "$LIB" == "libOpenCLIcd.so" ] || [ "$LIB" == "libOpenCL.so" ] ;then
     printf "LOCAL_SHARED_LIBRARIES = libc++ libz libutils libRS_internal libbcinfo liblog libEGL libGLESv1_CM libGLESv2 libnativewindow\n" >> $AMAKE
-  fi
-  if [ "$LIB" == "libaudiopolicymanagerdefault.so" ] ;then
+  elif [ "$LIB" == "libaudiopolicymanagerdefault.so" ] ;then
 	printf "LOCAL_EXPORT_C_INCLUDES := \$(DEVICE_PATH)/include\n" >> $AMAKE
+  elif [ "$LIB" == "libvtmal.so" ] ;then
+    printf "LOCAL_SHARED_LIBRARIES = libc++ libutils libcutils libbinder libmtk_symbols\n" >> $AMAKE
   fi
   printf "include \$(PREBUILT_SHARED_LIBRARY)\n\n" >> $AMAKE
   printf "  ${LIB%.*} \\\\\n" >> $VMAKE
