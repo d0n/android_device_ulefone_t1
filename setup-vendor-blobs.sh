@@ -16,8 +16,7 @@ for I in $(find bin/ vendor/bin -type f) ;do
   BDIR="$(dirname /system/$I |sed 's/^\///')"
   printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${BIN}\nLOCAL_MODULE_TAGS := optional\nLOCAL_MODULE_CLASS := EXECUTABLES\nLOCAL_SRC_FILES := proprietary/$(dirname $I)/${BIN}\nLOCAL_MODULE_PATH := ${BDIR}\n" >> $AMAKE
   printf "include \$(BUILD_PREBUILT)\n\n" >>$AMAKE
-  printf "  ${BIN}" >>$VMAKE
-  echo ' \' >>$VMAKE
+  printf "  ${BIN} \\\\\n" >>$VMAKE
 done
 for I in $(find * -xtype f -not -name *.odex -and -not -name *.apk) ;do
   #grep -qs $I $AMAKE && continue

@@ -22,7 +22,6 @@ for I in $(find * -type f -name *.apk) ;do
     PRIV="true"
   fi
   printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${APK%.*}\nLOCAL_PRIVILEGED_MODULE := ${PRIV}\nLOCAL_MODULE_TAGS := optional\nLOCAL_MODULE_CLASS := APPS\nLOCAL_SRC_FILES := proprietary/${ADIR}/${APK}\nLOCAL_MODULE_PATH := system/${ADIR}\nLOCAL_CERTIFICATE := PRESIGNED\ninclude \$(BUILD_PREBUILT)\n\n" >>$AMAKE
-  printf "  ${ANAME}" >>$CMAKE
-  echo ' \' >>$CMAKE
+  printf "  ${ANAME} \\\\\n" >>$CMAKE
 done
 cd - >/dev/null

@@ -17,7 +17,7 @@ GAPPS_EXCLUDED_PACKAGES := \
   Search
 
 PRODUCT_PACKAGES += \
-  7mrdump_tool \
+  mrdump_tool \
   AudioSetParam \
   BackupRestoreConfirmation \
   DownloadProvider \
@@ -208,7 +208,6 @@ PRODUCT_PACKAGES += \
   libmedia_jni \
   libmhalImageCodec \
   libmtk_symbols \
-  libmtkshim_vtmal \
   libnativehelper \
   libnvram \
   libaudiopolicymanager \
