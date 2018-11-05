@@ -9,6 +9,7 @@ This branch is device for building of the LineageOS 14.1 and Android Nougat 7.1.
 
 ![Ulefone T1](http://d0ndroid.janeiskla.de/ulefone-t1.jpg "Ulefone T1")
 
+![VendorHomepage](http://ulefone.com/products/t1/spec.html "VendorHomepage")
 
 ## Specifications
 

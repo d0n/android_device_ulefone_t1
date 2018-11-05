@@ -15,6 +15,36 @@ index 4e54ddb29..e4c9fad1d 100644
      // mConnectedProducerListener is used to handle the onBufferReleased
      // notification.
      sp<IProducerListener> mConnectedProducerListener;
+diff --git a/include/gui/CpuConsumer.h b/include/gui/CpuConsumer.h
+index b7aa46397..750d62c79 100644
+--- a/include/gui/CpuConsumer.h
++++ b/include/gui/CpuConsumer.h
+@@ -68,13 +68,13 @@ class CpuConsumer : public ConsumerBase
+         uint32_t    chromaStride;
+         uint32_t    chromaStep;
+ 
+-        LockedBuffer() :
++        /*LockedBuffer() :
+             data(NULL),
+             width(0),
+             height(0),
+             format(PIXEL_FORMAT_NONE),
+             stride(0),
+-            crop(Rect::EMPTY_RECT),
++            crop(0),
+             transform(0),
+             scalingMode(NATIVE_WINDOW_SCALING_MODE_FREEZE),
+             timestamp(0),
+@@ -84,8 +84,7 @@ class CpuConsumer : public ConsumerBase
+             dataCb(NULL),
+             dataCr(NULL),
+             chromaStride(0),
+-            chromaStep(0)
+-        {}
++            chromaStep(0) {}*/
+     };
+ 
+     // Create a new CPU consumer. The maxLockedBuffers parameter specifies
 diff --git a/include/gui/IProducerListener.h b/include/gui/IProducerListener.h
 index b7826c677..e5a5a4586 100644
 --- a/include/gui/IProducerListener.h
@@ -70,6 +100,32 @@ index f9b6f4b0f..05317cd88 100644
  
      OMX_TI_COLOR_FormatYUV420PackedSemiPlanar = 0x7F000100,
      OMX_QCOM_COLOR_FormatYVU420SemiPlanar = 0x7FA30C00,
+diff --git a/include/private/gui/LayerState.h b/include/private/gui/LayerState.h
+index 8fae99adb..d9710bf6a 100644
+--- a/include/private/gui/LayerState.h
++++ b/include/private/gui/LayerState.h
+@@ -63,17 +63,17 @@ struct layer_state_t {
+         eBlurMaskAlphaThresholdChanged = 0x02000000,
+     };
+ 
+-    layer_state_t()
++    /*layer_state_t()
+         :   what(0),
+             x(0), y(0), z(0), w(0), h(0), layerStack(0), blur(0),
+             blurMaskSampling(0), blurMaskAlphaThreshold(0), alpha(0), flags(0), mask(0),
+-            reserved(0), crop(Rect::INVALID_RECT),
+-            finalCrop(Rect::INVALID_RECT), frameNumber(0),
++            reserved(0), crop(0),
++            finalCrop(0), frameNumber(0),
+             overrideScalingMode(-1), color(0)
+     {
+         matrix.dsdx = matrix.dtdy = 1.0f;
+         matrix.dsdy = matrix.dtdx = 0.0f;
+-    }
++    }*/
+ 
+     status_t    write(Parcel& output) const;
+     status_t    read(const Parcel& input);
 diff --git a/include/ui/Fence.h b/include/ui/Fence.h
 index 48a7aa3c5..4e689528d 100644
 --- a/include/ui/Fence.h
