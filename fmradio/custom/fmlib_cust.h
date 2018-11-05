@@ -70,7 +70,7 @@ struct CUST_cfg_ds
 #define FM_JNI_SCAN_SPACE_100K 1
 #define FM_JNI_SCAN_SPACE_200K 2
 
-#if (defined(MT6627_FM) || \
+#if (defined(MT6625_FM) || \
     defined(MT6580_FM)  || \
     defined(MT6630_FM)  || \
     defined(MT6631_FM)  || \

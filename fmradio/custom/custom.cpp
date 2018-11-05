@@ -72,7 +72,7 @@ extern "C" {
 }
 #define MT6628_FM_FAKE_CHANNEL \
 { }
-#define MT6627_FM_FAKE_CHANNEL \
+#define MT6625_FM_FAKE_CHANNEL \
 { \
     {9600, -107, -1}, \
     {10400, -107, -1}, \
@@ -111,8 +111,8 @@ extern "C" {
 static struct fm_fake_channel fake_ch[] = MT6620_FM_FAKE_CHANNEL;
 #elif defined MT6628_FM
 static struct fm_fake_channel fake_ch[] = MT6628_FM_FAKE_CHANNEL;
-#elif defined MT6627_FM
-static struct fm_fake_channel fake_ch[] = MT6627_FM_FAKE_CHANNEL;
+#elif defined MT6625_FM
+static struct fm_fake_channel fake_ch[] = MT6625_FM_FAKE_CHANNEL;
 #elif defined MT6580_FM
 static struct fm_fake_channel fake_ch[] = MT6580_FM_FAKE_CHANNEL;
 #elif defined MT6630_FM
@@ -142,7 +142,7 @@ int CUST_get_cfg(struct CUST_cfg_ds *cfg)
                 || (strcmp(val, "0x8127") == 0) || (strcmp(val, "0x6752") == 0) || (strcmp(val, "0x0321") == 0) \
                 || (strcmp(val, "0x0335") == 0) || (strcmp(val, "0x0337") == 0) || (strcmp(val, "0x6735") == 0) \
                 || (strcmp(val, "0x8163") == 0) || (strcmp(val, "0x6755") == 0) || (strcmp(val, "0x0326") == 0)) {
-            cfg->chip = FM_CHIP_MT6627;
+            cfg->chip = FM_CHIP_MT6625;
             LOGI("detect 6627 chip\n");
         } else if (strcmp(val, "0x6580") == 0) {
             cfg->chip = FM_CHIP_MT6580;
@@ -164,8 +164,8 @@ int CUST_get_cfg(struct CUST_cfg_ds *cfg)
         cfg->chip = FM_CHIP_MT6620;
 #elif defined MT6628_FM
         cfg->chip = FM_CHIP_MT6628;
-#elif defined MT6627_FM
-        cfg->chip = FM_CHIP_MT6627;
+#elif defined MT6625_FM
+        cfg->chip = FM_CHIP_MT6625;
 #elif defined MT6580_FM
         cfg->chip = FM_CHIP_MT6580;
 #elif defined MT6630_FM
