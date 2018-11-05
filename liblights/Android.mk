@@ -1,4 +1,4 @@
-# Copyright (C) 2016 fire855 <thefire855@gmail.com>
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,27 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := $(call my-dir)
+LOCAL_PATH:= $(call my-dir)
 
+# HAL module implemenation stored in
+# hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.board.platform>.so
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := libmtk_symbols
-LOCAL_MODULE_TAGS := optional
-LOCAL_SRC_FILES := \
-     icu55.c \
-     mtk_asc.cpp \
-     mtk_audio.cpp \
-     mtk_audioCompat.c \
-     mtk_cam.cpp \
-     mtk_fence.cpp \
-     mtk_omx.cpp \
-     mtk_ui.cpp \
-     mtk_xlog.c  
+LOCAL_SRC_FILES := lights.c
+LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_SHARED_LIBRARIES := liblog libcutils
 
-# only for 64bit libraries
-LOCAL_SRC_FILES_64 := mtk_parcel.cpp
-     
-LOCAL_C_INCLUDES += system/core/include/
-LOCAL_SHARED_LIBRARIES := libbinder libutils liblog libgui libui libicuuc libicui18n libmedia
+LOCAL_MODULE := lights.mt6757
+LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)

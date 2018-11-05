@@ -2,11 +2,11 @@ GAPPS_VARIANT := mini
 GAPPS_PRODUCT_PACKAGES += \
   CMAudioFX \
   CameraGoogle \
-  Chrome \
   DialerGoogle \
   CarrierServices \
   DialerFramework \
   GCS
+  #Chrome \
 
 GAPPS_EXCLUDED_PACKAGES := \
   YouTube \
@@ -383,6 +383,18 @@ PRODUCT_COPY_FILES += \
 #  apache-xml \
 #  org.apache.http.legacy.boot
 
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/tp/etc/.tp/.ht120.mtc:system/etc/.tp/.ht120.mtc \
+	$(LOCAL_PATH)/tp/etc/.tp/.thermal_meta.conf:system/etc/.tp/.thermal_meta.conf \
+	$(LOCAL_PATH)/tp/etc/.tp/.thermal_policy_00:system/etc/.tp/.thermal_policy_00 \
+	$(LOCAL_PATH)/tp/etc/.tp/.thermal_policy_01:system/etc/.tp/.thermal_policy_01 \
+	$(LOCAL_PATH)/tp/etc/.tp/.thermal_policy_02:system/etc/.tp/.thermal_policy_02 \
+	$(LOCAL_PATH)/tp/etc/.tp/thermal.conf:system/etc/.tp/thermal.conf \
+	$(LOCAL_PATH)/tp/etc/.tp/thermal.off.conf:system/etc/.tp/thermal.off.conf \
+	$(LOCAL_PATH)/tp/bin/thermal:system/bin/thermal \
+	$(LOCAL_PATH)/tp/bin/thermal_manager:system/bin/thermal_manager \
+	$(LOCAL_PATH)/tp/bin/thermald:system/bin/thermald \
+	$(LOCAL_PATH)/tp/bin/thermalloadalgod:system/bin/thermalloadalgod
 
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
@@ -420,8 +432,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
-#PRODUCT_SYSTEM_SERVER_JARS += \
-#  com.google.android.gms
+PRODUCT_SYSTEM_SERVER_JARS += \
+  com.google.android.gms
 
 PRODUCT_COPY_FILES += \
   frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
@@ -493,5 +505,10 @@ SIM_COUNT := 2
 PRODUCT_PROPERTY_OVERRIDES += ro.telephony.sim.count=$(SIM_COUNT)
 PRODUCT_PROPERTY_OVERRIDES += persist.radio.default.sim=0
 PRODUCT_PROPERTY_OVERRIDES += persist.radio.multisim.config=dsds
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.kernel.android.checkjni=0 \
+    ro.telephony.ril_class=MT6757 \
+    ro.telephony.ril.config=fakeiccid
+
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml

@@ -1,6 +1,30 @@
-#rild.libpath=mtk-ril.so
-#rild.libargs=-d /dev/ttyC0
+# MTK naming
+ro.build.product=p15v57c2k_gq_tee
+ro.product.device=T1
 
+ro.build.bluetooth.name=T1
+ro.build.wifi.ssid=T1
+ro.ly.showampm=yes
+ro.agui.usbstorage.name=T1
+ro.build.characteristics=default
+ro.board.platform=mt6757
+ro.product.manufacturer=Ulefone
+ro.product.model=T1
+ro.product.brand=Ulefone
+ro.product.name=Ulefone_T1
+ro.product.device=Ulefone_T1
+ro.product.board=Ulefone_T1
+ro.build.user=d0n
+ro.build.host=d0nmachine
+ro.meiguo.remove.meid=no
+ro.meiguo.bb.name=not_custom
+ro.meiguo.battery.mode=15
+gq.auto.wallpaper=yes
+
+
+# MTK ril
+rild.libpath=mtk-ril.so
+rild.libargs=-d /dev/ttyC0
 
 # MTK, Infinity, 20090720 {
 wifi.interface=wlan0

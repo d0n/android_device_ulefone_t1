@@ -27,37 +27,43 @@
        are totally dependent on the platform and can vary
        significantly, so should be measured on the shipping platform
        with a power meter. -->
-    <item name="none">0</item>
-    <item name="screen.on">180</item>
-    <item name="screen.full">280</item>
-    <item name="bluetooth.active">104</item>
-    <item name="bluetooth.on">4</item>
-    <item name="wifi.on">5</item>
-    <item name="wifi.active">200</item>
-    <item name="wifi.scan">100</item>
-    <item name="dsp.audio">100</item>
-    <item name="dsp.video">100</item>
-    <item name="radio.active">300</item>
-    <item name="radio.scanning">10</item>
-    <item name="gps.on">30</item>
-    <array name="radio.on">
-        <value>4</value>
-        <value>4</value>
-    </array>
+  <item name="none">0</item>
+  <item name="screen.on">120</item> <!-- ~200mA -->
+  <item name="bluetooth.active">100</item> <!-- Bluetooth data transfer, ~10mA -->
+  <item name="bluetooth.on">1</item> <!-- Bluetooth on & connectable, but not connected, ~0.1mA -->
+  <item name="screen.full">390</item> <!-- ~300mA -->
+  <item name="wifi.on">3</item> <!-- ~3mA -->
+  <item name="wifi.active">140</item> <!-- WIFI data transfer, ~200mA -->
+  <item name="wifi.scan">130</item> <!-- WIFI network scanning, ~100mA -->
+  <item name="dsp.audio">50</item> <!-- ~10mA -->
+  <item name="dsp.video">200</item> <!-- ~50mA -->
+  <item name="radio.active">150</item> <!-- ~200mA -->
+  <item name="radio.scanning">10</item> <!-- cellular radio scanning for signal, ~10mA -->
+  <item name="gps.on">60</item> <!-- ~50mA -->
+  <!-- Current consumed by the radio at different signal strengths, when paging -->
+  <array name="radio.on"> <!-- Strength 0 to BINS-1 -->
+      <value>10</value> <!-- ~2mA -->
+      <value>5</value> <!-- ~1mA -->
+  </array>
   <!-- Different CPU speeds as reported in
        /sys/devices/system/cpu/cpufreq/all_time_in_state -->
   <array name="cpu.speeds">
-      <value>299000</value> <!-- 299 MHz CPU speed -->
-      <value>442000</value> <!-- 442 MHz CPU speed -->
+      <value>156000</value> <!-- 156 MHz CPU speed -->
+      <value>286000</value> <!-- 286 MHz CPU speed -->
+      <value>338000</value> <!-- 338 MHz CPU speed -->
+      <value>494000</value> <!-- 494 MHz CPU speed -->
       <value>598000</value> <!-- 598 MHz CPU speed -->
-      <value>819000</value> <!-- 819 MHz CPU speed -->
+      <value>663000</value> <!-- 663 MHz CPU speed -->
+      <value>689000</value> <!-- 689 MHz CPU speed -->
+      <value>871000</value> <!-- 871 MHz CPU speed -->
       <value>1014000</value> <!-- 1014 MHz CPU speed -->
-      <value>1040000</value> <!-- 1040 MHz CPU speed -->
+      <value>1027000</value> <!-- 1027 MHz CPU speed -->
       <value>1144000</value> <!-- 1144 MHz CPU speed -->
-      <value>1235000</value> <!-- 1235 MHz CPU speed -->
-      <value>1300000</value> <!-- 1300 MHz CPU speed -->
+      <value>1196000</value> <!-- 1196 MHz CPU speed -->
+      <value>1573000</value> <!-- 1573 MHz CPU speed -->
+      <value>1755000</value> <!-- 1755 MHz CPU speed -->
+      <value>1950000</value> <!-- 1950 MHz CPU speed -->
   </array>
-
   <!-- Current when CPU is idle -->
   <item name="cpu.idle">6</item>
   <!-- Current when CPU is awake -->
@@ -81,7 +87,7 @@
       <value>313.6</value> <!-- ~440mA -->
   </array>
   <!-- This is the battery capacity in mAh (measured at nominal voltage) -->
-  <item name="battery.capacity">3100</item>
+  <item name="battery.capacity">4000</item>
 
   <array name="wifi.batchedscan"> <!-- mA -->
       <value>.0002</value> <!-- 1-8/hr -->

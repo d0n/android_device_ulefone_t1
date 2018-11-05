@@ -1,4 +1,4 @@
-# Copyright (C) 2016 fire855 <thefire855@gmail.com>
+# Copyright (C) 2016 Cyanogenmod
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,25 +14,26 @@
 
 LOCAL_PATH := $(call my-dir)
 
+ifeq ($(MTKPATH),)
+
 include $(CLEAR_VARS)
+LOCAL_MODULE = libwifi-hal-mt66xx
+LOCAL_MODULE_CLASS = STATIC_LIBRARIES
+LOCAL_MODULE_PATH =
+LOCAL_MODULE_RELATIVE_PATH =
+LOCAL_MODULE_SUFFIX = .a
+LOCAL_MULTILIB = 64
+LOCAL_SRC_FILES_64 = arm64/libwifi-hal-mt66xx.a
+include $(BUILD_PREBUILT)
 
-LOCAL_MODULE := libmtk_symbols
-LOCAL_MODULE_TAGS := optional
-LOCAL_SRC_FILES := \
-     icu55.c \
-     mtk_asc.cpp \
-     mtk_audio.cpp \
-     mtk_audioCompat.c \
-     mtk_cam.cpp \
-     mtk_fence.cpp \
-     mtk_omx.cpp \
-     mtk_ui.cpp \
-     mtk_xlog.c  
+include $(CLEAR_VARS)
+LOCAL_MODULE = libwifi-hal-mt66xx
+LOCAL_MODULE_CLASS = STATIC_LIBRARIES
+LOCAL_MODULE_PATH =
+LOCAL_MODULE_RELATIVE_PATH =
+LOCAL_MODULE_SUFFIX = .a
+LOCAL_MULTILIB = 32
+LOCAL_SRC_FILES_32 = arm/libwifi-hal-mt66xx.a
+include $(BUILD_PREBUILT)
 
-# only for 64bit libraries
-LOCAL_SRC_FILES_64 := mtk_parcel.cpp
-     
-LOCAL_C_INCLUDES += system/core/include/
-LOCAL_SHARED_LIBRARIES := libbinder libutils liblog libgui libui libicuuc libicui18n libmedia
-
-include $(BUILD_SHARED_LIBRARY)
+endif
