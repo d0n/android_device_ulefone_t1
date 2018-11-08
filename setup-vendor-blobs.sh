@@ -15,9 +15,9 @@ for I in $(find bin/ vendor/bin -type f) ;do
   BIN=$(basename $I)
   BDIR="$(dirname /system/$I |sed 's/^\///')"
   printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${BIN}\nLOCAL_MODULE_TAGS := optional\nLOCAL_MODULE_CLASS := EXECUTABLES\nLOCAL_SRC_FILES := proprietary/$(dirname $I)/${BIN}\nLOCAL_MODULE_PATH := ${BDIR}\n" >> $AMAKE
-  if [ "$I" == "vendor/bin/program_binary_builder" ] ;then
-    printf "LOCAL_SHARED_LIBRARIES := libmtk_symbols\n" >>$AMAKE
-  fi
+  #if [ "$I" == "vendor/bin/program_binary_builder" ] ;then
+  #  printf "LOCAL_SHARED_LIBRARIES := libmtk_symbols\n" >>$AMAKE
+  #fi
   printf "include \$(BUILD_PREBUILT)\n\n" >>$AMAKE
   printf "  ${BIN} \\\\\n" >>$VMAKE
 done

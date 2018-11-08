@@ -5,14 +5,12 @@ ro.product.device=T1
 ro.build.bluetooth.name=T1
 ro.build.wifi.ssid=T1
 ro.ly.showampm=yes
-ro.agui.usbstorage.name=T1
 ro.build.characteristics=default
 ro.board.platform=mt6757
 ro.product.manufacturer=Ulefone
 ro.product.model=T1
 ro.product.brand=Ulefone
-ro.product.name=Ulefone_T1
-ro.product.device=Ulefone_T1
+ro.product.name=T1
 ro.product.board=Ulefone_T1
 ro.build.user=d0n
 ro.build.host=d0nmachine
@@ -23,7 +21,7 @@ gq.auto.wallpaper=yes
 
 
 # MTK ril
-rild.libpath=mtk-ril.so
+rild.libpath=/system/vendor/lib64/mtk-ril.so
 rild.libargs=-d /dev/ttyC0
 
 # MTK, Infinity, 20090720 {

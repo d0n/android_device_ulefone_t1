@@ -14,6 +14,7 @@ GAPPS_EXCLUDED_PACKAGES := \
   GoogleNow \
   Hangouts \
   GooglePlus \
+  Drive \
   Search
 
 PRODUCT_PACKAGES += \
@@ -243,6 +244,7 @@ PRODUCT_PACKAGES += \
   lights.mt6757 \
   logd \
   lsm303md \
+  libvt_custom \
   m4u_it \
   m4u_ut \
   magd \
@@ -266,6 +268,8 @@ PRODUCT_PACKAGES += \
   msensord \
   mtk_agpsd \
   mtk_socket \
+  mtk_lppe_socket_network \
+  mtk_lppe_socket_ipaddr \
   mtkcamera_parameters \
   mtkmal \
   mtkrild \
@@ -382,19 +386,6 @@ PRODUCT_COPY_FILES += \
 #  ims-common \
 #  apache-xml \
 #  org.apache.http.legacy.boot
-
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/tp/etc/.tp/.ht120.mtc:system/etc/.tp/.ht120.mtc \
-	$(LOCAL_PATH)/tp/etc/.tp/.thermal_meta.conf:system/etc/.tp/.thermal_meta.conf \
-	$(LOCAL_PATH)/tp/etc/.tp/.thermal_policy_00:system/etc/.tp/.thermal_policy_00 \
-	$(LOCAL_PATH)/tp/etc/.tp/.thermal_policy_01:system/etc/.tp/.thermal_policy_01 \
-	$(LOCAL_PATH)/tp/etc/.tp/.thermal_policy_02:system/etc/.tp/.thermal_policy_02 \
-	$(LOCAL_PATH)/tp/etc/.tp/thermal.conf:system/etc/.tp/thermal.conf \
-	$(LOCAL_PATH)/tp/etc/.tp/thermal.off.conf:system/etc/.tp/thermal.off.conf \
-	$(LOCAL_PATH)/tp/bin/thermal:system/bin/thermal \
-	$(LOCAL_PATH)/tp/bin/thermal_manager:system/bin/thermal_manager \
-	$(LOCAL_PATH)/tp/bin/thermald:system/bin/thermald \
-	$(LOCAL_PATH)/tp/bin/thermalloadalgod:system/bin/thermalloadalgod
 
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
