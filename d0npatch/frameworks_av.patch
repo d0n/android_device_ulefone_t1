@@ -75,6 +75,10 @@ index b1c7c15f8..80724da20 100644
  
      CAMCORDER_QUALITY_VENDOR_START = 10000,
      CAMCORDER_QUALITY_VGA = 10000,
+diff --git a/media/libeffects/testlibs/Android.mk_ b/media/libeffects/testlibs/Android.mk
+similarity index 100%
+rename from media/libeffects/testlibs/Android.mk_
+rename to media/libeffects/testlibs/Android.mk
 diff --git a/media/libmedia/Android.mk b/media/libmedia/Android.mk
 index df4e4b6f6..77d73e335 100644
 --- a/media/libmedia/Android.mk
