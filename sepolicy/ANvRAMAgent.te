@@ -1,0 +1,47 @@
+# ==============================================
+# Policy File of /system/binANvRAMAgent Executable File 
+
+
+# ==============================================
+# Type Declaration
+# ==============================================
+
+type ANvRAMAgent_exec , exec_type, file_type;
+type ANvRAMAgent ,domain;
+
+# ==============================================
+# Android Policy Rule
+# ==============================================
+
+# ==============================================
+# NSA Policy Rule
+# ==============================================
+
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+#permissive ANvRAMAgent;
+init_daemon_domain(ANvRAMAgent)
+#unconfined_domain(ANvRAMAgent)
+
+# Date : 2014/09/10
+# Operation : Migration
+# Purpose : allow Binder IPC
+binder_use(ANvRAMAgent)
+binder_service(ANvRAMAgent)
+
+allow ANvRAMAgent ota_agent_service:service_manager add;
+# /dev/block/mmcblko
+allow ANvRAMAgent para_block_device:blk_file { write read open };
+allow ANvRAMAgent mmcblk0_block_device:blk_file { write read open };
+
+allow ANvRAMAgent block_device:dir search;
+#/dev/misc
+allow ANvRAMAgent misc_device:chr_file { write read open ioctl};
+#for kmsg
+allow ANvRAMAgent kmsg_device:chr_file { write read open ioctl};
+#for nand
+allow ANvRAMAgent mtd_device:dir search;
+allow ANvRAMAgent mtd_device:chr_file { read write open rw_file_perms};
+
