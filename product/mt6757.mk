@@ -42,6 +42,7 @@ PRODUCT_PACKAGES += \
   aee_dumpstate \
   agoldnvram \
   agps \
+  agpsd \
   ahat \
   akmd09911 \
   akmd8963 \
@@ -371,31 +372,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
 
-#PRODUCT_BOOT_JARS := \
-#  telephony-ext \
-#  core-oj \
-#  core-libart \
-#  conscrypt \
-#  okhttp \
-#  core-junit \
-#  bouncycastle \
-#  ext \
-#  framework \
-#  telephony-common \
-#  voip-common \
-#  ims-common \
-#  apache-xml \
-#  org.apache.http.legacy.boot
-
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
 
-# GPS
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml
 
 # The gps config appropriate for this device
-#$(call inherit-product, device/common/gps/gps_eu_supl.mk)
+$(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 # Hardware-specific permissions
 PRODUCT_COPY_FILES += \
@@ -423,28 +407,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
-PRODUCT_SYSTEM_SERVER_JARS += \
-  com.google.android.gms
+#PRODUCT_SYSTEM_SERVER_JARS += \
+#  com.google.android.gms
 
 PRODUCT_COPY_FILES += \
   frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
   frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
   frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
   device/ulefone/t1/configs/media_profiles.xml:system/etc/media_profiles.xml
-
-# Recovery
-#PRODUCT_COPY_FILES += \
-#  $(LOCAL_PATH)/rootdir/recovery.fstab:root/etc/recovery.fstab
-#  $(LOCAL_PATH)/rootdir/factory_init.connectivity.rc:recovery/root/factory_init.connectivity.rc \
-#  $(LOCAL_PATH)/rootdir/factory_init.project.rc:recovery/root/factory_init.project.rc \
-#  $(LOCAL_PATH)/rootdir/factory_init.rc:recovery/root/factory_init.rc \
-#  $(LOCAL_PATH)/rootdir/init.recovery.mt6757.rc:recovery/root/init.recovery.mt6757.rc \
-#  $(LOCAL_PATH)/rootdir/etc/meta_init.connectivity.rc:recovery/root/meta_init.connectivity.rc \
-#  $(LOCAL_PATH)/rootdir/etc/meta_init.modem.rc:recovery/root/meta_init.modem.rc \
-#  $(LOCAL_PATH)/rootdir/etc/meta_init.project.rc:recovery/root/meta_init.project.rc \
-#  $(LOCAL_PATH)/rootdir/etc/meta_init.rc:recovery/root/meta_init.rc \
-#  $(LOCAL_PATH)/rootdir/etc/multi_init.rc:recovery/root/multi_init.rc \
-#  $(LOCAL_PATH)/rootdir/etc/ueventd.mt6757.rc:recovery/root/ueventd.mt6757.rc \
 
 # Ramdisks
 PRODUCT_COPY_FILES += \
