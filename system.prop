@@ -1,7 +1,7 @@
 # MTK naming
 ro.build.product=p15v57c2k_gq_tee
 ro.product.device=T1
-
+ro.build.flavor=linueage_t1-user
 ro.build.bluetooth.name=T1
 ro.build.wifi.ssid=T1
 ro.ly.showampm=yes
@@ -39,6 +39,11 @@ ro.mediatek.wlan.p2p=1
 mediatek.wlan.ctia=0
 # MTK, mtk03034 20101213}
 
+ro.product.cpu.abi=arm64-v8a
+ro.product.cpu.abilist=arm64-v8a,armeabi-v7a,armeabi
+ro.product.cpu.abilist32=armeabi-v7a,armeabi
+ro.product.cpu.abilist64=arm64-v8a
+ro.build.wifip2pDN=T1
 
 #
 wifi.tethering.interface=ap0
@@ -233,7 +238,7 @@ ro.audioprofile.more=no
 or.build.vibratorvol=0
 or.build.vibratortime=0
 or.button.ledvalue=-1
-ro.browser.homepage=http://janeiskla.de
+ro.browser.homepage=http://google.de
 ro.nosignal.hideicons=yes
 ro.show.navigationbar=yes
 or.build.serialname=0123456789ABCDEFG
@@ -425,7 +430,7 @@ persist.radio.mobile.data=0,0
 persist.meta.dumpdata=0
 ro.mtk_deinterlace_support=1
 dalvik.vm.heapgrowthlimit=192m
-dalvik.vm.heapsize=384m
+dalvik.vm.heapsize=512m
 persist.radio.mtk_dsbp_support=1
 persist.mtk_dynamic_ims_switch=0
 persist.radio.mtk_ps2_rat=G
