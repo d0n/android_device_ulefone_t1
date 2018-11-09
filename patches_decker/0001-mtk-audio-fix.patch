@@ -5,37 +5,9 @@ Subject: [PATCH] mtk audio fix
 
 Change-Id: I9b5753457cb26d8ac47052674ebe6c7c18666a92
 ---
- media/libmedia/Android.mk         |  11 +-
  media/libmedia/mtkaudio_stubs.cpp | 215 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 224 insertions(+), 2 deletions(-)
+ 1 files changed, 224 insertions(+), 2 deletions(-)
  create mode 100644 media/libmedia/mtkaudio_stubs.cpp
-
-diff --git a/media/libmedia/Android.mk b/media/libmedia/Android.mk
-index df4e4b6..34f6128 100644
---- a/media/libmedia/Android.mk
-+++ b/media/libmedia/Android.mk
-@@ -7,7 +7,7 @@ LOCAL_SRC_FILES:= \
- LOCAL_MODULE:= libmedia_helper
- LOCAL_MODULE_TAGS := optional
-
--LOCAL_CFLAGS += -Werror -Wno-error=deprecated-declarations -Wall
-+LOCAL_CFLAGS += -Wno-error=deprecated-declarations -Wall
- LOCAL_CLANG := true
-
- include $(BUILD_STATIC_LIBRARY)
-@@ -97,7 +97,14 @@ LOCAL_C_INCLUDES := $(call include-path-for, audio-effects) $(call include-path-for, audio-utils)
-
--LOCAL_CFLAGS += -Werror -Wno-error=deprecated-declarations -Wall
-+### audio.primary.mt6737m.so ->_ZN7android11AudioSystem24getVoiceUnlockDLInstanceEv ###
-+LOCAL_SRC_FILES += \
-+    mtkaudio_stubs.cpp
-+
-+# StrongPointer.h
-+LOCAL_C_INCLUDES += $(TOP)/frameworks/rs/server
-+
-+LOCAL_CFLAGS += -Wno-error=deprecated-declarations -Wall
- LOCAL_CLANG := true
- LOCAL_SANITIZE := unsigned-integer-overflow signed-integer-overflow
 
 diff --git a/media/libmedia/mtkaudio_stubs.cpp b/media/libmedia/mtkaudio_stubs.cpp
 new file mode 100644
