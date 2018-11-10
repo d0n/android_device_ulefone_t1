@@ -21,8 +21,10 @@ gq.auto.wallpaper=yes
 
 
 # MTK ril
-rild.libpath=/system/vendor/lib64/mtk-ril.so
+rild.libpath=/system/vendor/lib/mtk-ril.so
 rild.libargs=-d /dev/ttyC0
+#rild.libpath=/system/lib/libreference-ril.so
+#rild.libargs=-d /dev/ttyS0
 
 # MTK, Infinity, 20090720 {
 wifi.interface=wlan0

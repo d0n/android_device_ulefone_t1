@@ -137,6 +137,7 @@ PRODUCT_PACKAGES += \
   ipsec \
   ipsec_mon \
   iptables \
+  keyhandler \
   keystore \
   keystore.default \
   kpoc_charger \
@@ -268,9 +269,8 @@ PRODUCT_PACKAGES += \
   mobile_log_d \
   msensord \
   mtk_agpsd \
-  mtk_socket \
-  mtk_lppe_socket_network \
-  mtk_lppe_socket_ipaddr \
+  mtk-socket \
+  mtk-rilproxy \
   mtkcamera_parameters \
   mtkmal \
   mtkrild \
@@ -307,6 +307,7 @@ PRODUCT_PACKAGES += \
   sgdisk \
   slpd \
   sn \
+  su \
   spir2cl \
   spm_loader \
   starter \
@@ -479,6 +480,4 @@ PRODUCT_PROPERTY_OVERRIDES += ro.telephony.sim.count=$(SIM_COUNT)
 PRODUCT_PROPERTY_OVERRIDES += persist.radio.default.sim=0
 PRODUCT_PROPERTY_OVERRIDES += persist.radio.multisim.config=dsds
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/configs/ecc_list.xml:system/vendor/etc/ecc_list.xml \
   $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml \
-  $(LOCAL_PATH)/configs/apns-conf.xml:system/etc/apns-conf.xml
