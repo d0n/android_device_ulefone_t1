@@ -1,0 +1,13 @@
+diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
+index 60393be67..48fcb1890 100644
+--- a/res/values/cm_strings.xml
++++ b/res/values/cm_strings.xml
+@@ -106,7 +106,7 @@
+ 
+     <!-- Max brightness -->
+     <string name="pref_camera_max_brightness_title">Bright screen</string>
+-    <string name="pref_camera_max_brightness_default" translatable="false">off</string>
++    <string name="pref_camera_max_brightness_default" translatable="false">on</string>
+ 
+     <!-- Touch focus duration -->
+     <string name="pref_camera_focustime_title">Touch focus duration</string>
