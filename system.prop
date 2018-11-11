@@ -20,9 +20,9 @@ ro.meiguo.battery.mode=15
 gq.auto.wallpaper=yes
 
 # MTK ril
-rild.libpath=mtk-ril.so
+#rild.libpath=mtk-ril.so
+rild.libpath=/system/lib/libreference-ril.so
 rild.libargs=-d /dev/ttyC0
-#rild.libpath=/system/lib/libreference-ril.so
 #rild.libargs=-d /dev/ttyS0
 ro.telephony.ril.config=writeaidonly,signalstrength
 #ro.telephony.ril_class=MT6580
