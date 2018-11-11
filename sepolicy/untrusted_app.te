@@ -1,2 +1,0 @@
-# PQ
-allow untrusted_app pq_service:service_manager find;
