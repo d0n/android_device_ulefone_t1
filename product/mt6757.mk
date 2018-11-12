@@ -6,16 +6,12 @@ GAPPS_PRODUCT_PACKAGES += \
   CarrierServices \
   DialerFramework \
   GCS
-  #Chrome \
 
 GAPPS_EXCLUDED_PACKAGES := \
   YouTube \
   TagGoogle \
   GoogleNow \
-  Hangouts \
-  GooglePlus \
-  Drive \
-  Search
+  Hangouts
 
 PRODUCT_PACKAGES += \
   mrdump_tool \
@@ -84,6 +80,7 @@ PRODUCT_PACKAGES += \
   com.android.mediadrm.signer \
   com.android.mediadrm.signer.xml \
   com.google.android.gms \
+  com.google.android.gsf \
   com.google.widevine.software.drm \
   com.google.widevine.software.drm.xml \
   conscrypt \
