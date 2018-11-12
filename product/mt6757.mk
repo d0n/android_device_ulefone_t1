@@ -234,6 +234,7 @@ PRODUCT_PACKAGES += \
   libwifi-hal-mt66xx \
   libwilhelm \
   libwlparser \
+  librecovery_updater_t1 \
   libwpa_client \
   libwvdrmcryptoplugin \
   libwvdrmdrmplugin \
