@@ -134,7 +134,7 @@ PRODUCT_PACKAGES += \
   ipsec \
   ipsec_mon \
   iptables \
-  keyhandler \
+  t1-keyhandler \
   keystore \
   keystore.default \
   kpoc_charger \
@@ -405,7 +405,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
-#PRODUCT_SYSTEM_SERVER_JARS += \
+PRODUCT_SYSTEM_SERVER_JARS += t1-keyhandler
 #  com.google.android.gms
 
 PRODUCT_COPY_FILES += \
