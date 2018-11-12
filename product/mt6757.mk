@@ -134,7 +134,8 @@ PRODUCT_PACKAGES += \
   ipsec \
   ipsec_mon \
   iptables \
-  t1-keyhandler \
+  ConfigPanel \
+  com.cyanogenmod.keyhandler \
   keystore \
   keystore.default \
   kpoc_charger \
@@ -405,8 +406,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
-PRODUCT_SYSTEM_SERVER_JARS += t1-keyhandler
-#  com.google.android.gms
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
+PRODUCT_SYSTEM_SERVER_JARS += com.cyanogenmod.keyhandler
+
+$(call add-product-dex-preopt-module-config,com.cyanogenmod.keyhandler,disable)
 
 PRODUCT_COPY_FILES += \
   frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
