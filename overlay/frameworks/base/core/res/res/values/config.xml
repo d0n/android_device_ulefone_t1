@@ -73,7 +73,7 @@
 
     <!-- The list absolute paths of jar/apk files containing the device specific handlers,
          delimited by File.pathSeparator, which defaults to ":" on Android -->
-    <string name="config_deviceKeyHandlerLib" translatable="false">t1-keyhandler.jar</string>
+    <string name="config_deviceKeyHandlerLib" translatable="false">/system/framework/t1-keyhandler.jar</string>
 
     <!-- Full qualified name of the class that implements
          com.android.internal.os.DeviceKeyHandler interface. -->
