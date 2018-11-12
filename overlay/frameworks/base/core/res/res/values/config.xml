@@ -19,9 +19,9 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <string name="config_deviceKeyHandler" translatable="false">/system/framework/com.cyanogenmod.keyhandler.jar</string>
+    <add-resource type="string" name="config_deviceKeyHandlerLib" translatable="false">/system/framework/com.cyanogenmod.keyhandler.jar</add-resource>
 
-    <string name="config_deviceDeviceKeyHandler" translatable="false">com.cyanogenmod.settings.device.KeyHandler</string>
+    <add-resource type="string" name="config_deviceKeyHandlerClass" translatable="false">com.cyanogenmod.settings.device.KeyHandler</add-resource>
 
     <bool name="config_showNavigationBar">true</bool>
 
