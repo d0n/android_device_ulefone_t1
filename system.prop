@@ -21,11 +21,10 @@ gq.auto.wallpaper=yes
 
 # MTK ril
 #rild.libpath=mtk-ril.so
-rild.libpath=/system/lib/libreference-ril.so
+rild.libpath=/system/lib64/libreference-ril.so
 rild.libargs=-d /dev/ttyC0
-#rild.libargs=-d /dev/ttyS0
 ro.telephony.ril.config=writeaidonly,signalstrength
-#ro.telephony.ril_class=MT6580
+ro.telephony.ril_class=MT6757
 ril.specific.sm_cause=0
 ril.external.md=0
 ril.first.md=1
