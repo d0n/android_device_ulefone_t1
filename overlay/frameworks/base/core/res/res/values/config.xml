@@ -71,6 +71,14 @@
     <!-- Enable the electron beam -->
     <bool name="config_animateScreenLights">false</bool>
 
+    <!-- The list absolute paths of jar/apk files containing the device specific handlers,
+         delimited by File.pathSeparator, which defaults to ":" on Android -->
+    <string name="config_deviceKeyHandlerLib" translatable="false">t1-keyhandler.jar</string>
+
+    <!-- Full qualified name of the class that implements
+         com.android.internal.os.DeviceKeyHandler interface. -->
+    <string name="config_deviceKeyHandlerClass" translatable="false">com.cyanogenmod.settings.device.KeyHandler</string>
+
     <!-- Remote server that can provide NTP responses. -->
     <string translatable="false" name="config_ntpServer">ntp.nict.jp</string>
 
@@ -206,7 +214,7 @@
         <item>255</item>
         <item>255</item>
         <item>255</item>
-    </integer-array>	
+    </integer-array>
 	<string-array name="config_telephonyHardware">
         <item>0,modem,0,0,0,1,1,1</item>
         <item>1,sim,0,modem</item>
@@ -305,7 +313,7 @@
          * The device must be provisioned with HDCP keys (for protected content).
     -->
     <bool name="config_enableWifiDisplay">true</bool>
-	
+
 
     <!-- Set to true if the wifi display supports compositing content stored
          in gralloc protected buffers.  For this to be true, there must exist
@@ -333,7 +341,7 @@
          Otherwise, the device may fail to wake out of suspend reliably.
          The default is false. -->
     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
-     
+
     <!-- Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">4</integer>
 
@@ -371,6 +379,6 @@
          value chosen by ActivityManager based on screen size.  0 prevents keeping any extra
          memory over what the kernel keeps by default.  -1 keeps the default. -->
     <integer name="config_extraFreeKbytesAbsolute">30720</integer>
-	
+
 
 </resources>
