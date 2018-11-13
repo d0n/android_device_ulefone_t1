@@ -13,9 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-$(info $(BUILD_NUMBER))
 $(shell mkdir -p $(OUT)/obj/busybox $(OUT)/obj/KERNEL_OBJ/usr)
 include $(CLEAR_VARS)
 LOCAL_PATH := $(call my-dir)
 PROJECT_FOLDER := device/ulefone/t1
 include $(call all-makefiles-under,$(LOCAL_PATH))
+$(info $(BUILD_NUMBER))
