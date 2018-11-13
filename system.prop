@@ -1,7 +1,6 @@
 # MTK naming
 ro.build.product=p15v57c2k_gq_tee
 ro.product.device=T1
-ro.build.flavor=linueage_t1-user
 ro.build.bluetooth.name=T1
 ro.build.wifi.ssid=T1
 ro.ly.showampm=yes
@@ -22,7 +21,6 @@ gq.auto.wallpaper=yes
 # MTK ril
 rild.libpath=mtk-ril.so
 rild.libargs=-d /dev/ttyC0
-ro.telephony.ril.config=writeaidonly,signalstrength
 ro.telephony.ril_class=MT6757
 ril.specific.sm_cause=0
 ril.external.md=0
@@ -256,7 +254,7 @@ ro.build.lockwallpaper=com.agold.launcher.wallpaper/wallpaper_11
 ro.build.lockwpfunc=yes
 ro.audioprofile_general_vibrate=no
 ro.build.keyboard.touchaudio=yes
-ro.build.touch.sound=no
+ro.build.touch.sound=yes
 ro.lockscreen.sound=yes
 ro.touch.vibrator.feed=yes
 ro.audioprofile.more=no
