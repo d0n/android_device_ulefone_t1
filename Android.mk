@@ -18,4 +18,3 @@ include $(CLEAR_VARS)
 LOCAL_PATH := $(call my-dir)
 PROJECT_FOLDER := device/ulefone/t1
 include $(call all-makefiles-under,$(LOCAL_PATH))
-$(info $(BUILD_NUMBER))

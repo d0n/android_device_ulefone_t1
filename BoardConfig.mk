@@ -15,6 +15,7 @@
 #
 LOCAL_PATH := $(call my-dir)
 #USE_NINJA := false
+$(info $(BUILD_NUMBER))
 BUILD_DATE := $(shell date -u +"%s")
 DEVICE_PATH := device/ulefone/t1
 MTK_PROJECT := mt6757
@@ -63,17 +64,17 @@ BOARD_EGL_CFG := $(DEVICE_PATH)/configs/egl.cfg
 BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
 
 PRODUCT_TAGS += dalvik.gc.type-precise
-MTK_SVLTE_SUPPORT := yes
+#MTK_SVLTE_SUPPORT := yes
 #MTK_OPEN_PACKAGE := true
-MTK_K64_SUPPORT := yes
+#MTK_K64_SUPPORT := yes
 #MTK_BTCODEGEN_SUPPORT := no
-#MTK_TC1_FEATURE := true
+MTK_TC1_FEATURE := true
 #GOOGLE_RELEASE_RIL := no
-#BOARD_USES_AOSP_GPS_HAL := true
+BOARD_USES_AOSP_GPS_HAL := true
 EXTENDED_FONT_FOOTPRINT := true
-DONT_DEXPREOPT_PRBUILTS := false
-WITH_DEXPREOPT_PIC := true
-WITH_DEXPREOPT := true
+#DONT_DEXPREOPT_PRBUILTS := false
+#WITH_DEXPREOPT_PIC := true
+#WITH_DEXPREOPT := true
 CONFIG_NR_CPUS := 8
 MTK_MMPROFILE_SUPPORT := true
 MTK_FM_RX_SUPPORT := yes
