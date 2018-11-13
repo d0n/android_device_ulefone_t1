@@ -273,7 +273,6 @@ ro.acc.alps.calibration=acc,alps
 ro.transition.animation=1
 ro.build.fontsize=AGOLD_EMPTY
 ro.firstboot.date=2017,1,1
-ro.sf.lcd_density=480
 ro.def.camera.zsd.main=AGOLD_EMPTY
 ro.def.camera.zsd.sub=AGOLD_EMPTY
 ro.enable.internet.call=no
