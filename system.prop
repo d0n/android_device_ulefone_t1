@@ -21,7 +21,6 @@ gq.auto.wallpaper=yes
 # MTK ril
 rild.libpath=mtk-ril.so
 rild.libargs=-d /dev/ttyC0
-ro.telephony.ril_class=MT6757
 ril.specific.sm_cause=0
 ril.external.md=0
 ril.first.md=1
@@ -29,20 +28,13 @@ ril.flightmode.poweroffMD=1
 ril.telephony.mode=0
 ril.read.imsi=1
 ril.radiooff.poweroffMD=0
-ril.current.share_modem=2
 ro.telephony.sim.count=2
-ro.telephony.default_network=3
-ro.ril.enable.amr.wideband=1
-ro.ril.def.preferred.network=3
 ro.mtk_rild_read_imsi=1
 ro.build.version.all_codenames=REL
 ro.sim_me_lock_mode=0
-ro.gemini.smart_sim_switch=false
 ro.mtk_eap_sim_aka=1
 ro.mtk_sim_hot_swap=1
 ro.sim_refresh_reset_by_modem=1
-ro.gsm.2nd_data_retry_config=max_retries=1,15000
-persist.gemini.sim_num=2
 persist.radio.multisim.config=dsds
 persist.radio.default.sim=0
 keyguard.no_require_sim=true
@@ -77,8 +69,6 @@ ro.opengles.version=196610
 # ro.kernel.qemu.gles=0
 
 wifi.direct.interface=p2p0
-#dalvik.vm.heapgrowthlimit=256m
-#dalvik.vm.heapsize=512m
 
 # USB MTP WHQL
 ro.sys.usb.mtp.whql.enable=0
@@ -232,10 +222,10 @@ ro.def.camera.bright.sub=middle
 ro.gprs.switch=no
 ro.keyboard.vibrate.value=0
 ro.build.shutdown.animation=no
-ro.build.time.format=12
-ro.build.date.format=dd-MM-yyyy
+ro.build.time.format=24
+ro.build.date.format=yyyy-MM-dd
 ro.auto.time.update=yes
-ro.auto.timezone.update=no
+ro.auto.timezone.update=yes
 ro.build.default.scrbrightness=153
 ro.build.max.scrbrightness=255
 ro.install.nonmarket.switch=no
