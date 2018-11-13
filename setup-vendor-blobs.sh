@@ -8,7 +8,7 @@ BMAKE=${OUTDIR}/$DEVICE-vendor-blobs.mk
 VMAKE=${OUTDIR}/VendorBoardConfig.mk
 
 cd $OUTDIR/proprietary >/dev/null
-for I in $(find bin/ vendor/bin -type f) ;do
+for I in $(find bin/ vendor/bin -type f -not -name "*.apk") ;do
   grep -qs $I $AMAKE && continue
   grep -qs $I $ddir/blackbins.lst && continue
   echo $I
