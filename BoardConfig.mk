@@ -60,6 +60,7 @@ BOARD_HAS_MTK_HARDWARE := true
 BOARD_USES_MTK_HARDWARE := true
 BOARD_HAS_FLIPPED_SCREEN := true
 BOARD_EGL_CFG := $(DEVICE_PATH)/configs/egl.cfg
+BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 MTK_SVLTE_SUPPORT := yes
@@ -104,8 +105,8 @@ TARGET_OTA_ASSERT_DEVICE := t1,p15v57c2k_gq_tee,,
 TARGET_KMODULES := true
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
+#TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_t1
 TARGET_RELEASETOOLS_EXTENSIONS := device/ulefone/t1
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_t1
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES := \
   bgw.current3gband=0 \

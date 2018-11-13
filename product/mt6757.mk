@@ -191,6 +191,8 @@ PRODUCT_PACKAGES += \
   libifaddrs \
   libion \
   libion_mtk \
+  libinput_evdev \
+  input.evdev.default \
   libipsec_ims \
   libjavacore \
   libkeystore \
@@ -328,6 +330,7 @@ PRODUCT_PACKAGES += \
   thermalloadalgod \
   tinymix \
   uiautomator \
+  updater \
   uncrypt \
   viaradiooptions \
   viarild \
