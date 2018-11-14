@@ -113,20 +113,20 @@ TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 TARGET_RELEASETOOLS_EXTENSIONS := device/ulefone/t1
 
 PRODUCT_PROPERTY_OVERRIDES := \
-  $(shell cat $(DEVICE_PATH)/props.lst)
+  $(shell cat $(DEVICE_PATH)/sysprops.lst)
 
 ADDITIONAL_BUILD_PROPERTIES := \
-  $(shell cat $(DEVICE_PATH)/props.lst)
+  $(shell cat $(DEVICE_PATH)/sysprops.lst)
 
 PRODUCT_PROPERTY_OVERRIDES := \
-  $(shell cat $(DEVICE_PATH)/props.lst)
+  $(shell cat $(DEVICE_PATH)/sysprops.lst)
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES := \
-  $(shell cat $(DEVICE_PATH)/props.lst)
+  $(shell cat $(DEVICE_PATH)/sysprops.lst)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES := \
-  $(shell cat $(DEVICE_PATH)/props.lst)
+  $(shell cat $(DEVICE_PATH)/sysprops.lst)
 
 ADDITIONAL_DEFAULT_PROPERTIES := \
-  $(shell cat $(DEVICE_PATH)/props.lst)
+  $(shell cat $(DEVICE_PATH)/sysprops.lst)
 

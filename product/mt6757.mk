@@ -2,7 +2,6 @@ GAPPS_VARIANT := mini
 GAPPS_FORCE_PACKAGE_OVERRIDES := true
 GAPPS_PRODUCT_PACKAGES += \
   CMAudioFX \
-  DMAgent \
   CameraGoogle \
   DialerGoogle \
   CarrierServices \
