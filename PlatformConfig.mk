@@ -3,8 +3,11 @@ TARGET_BOOTLOADER_BOARD_NAME := mt6757
 TARGET_BOARD_PLATFORM := mt6757
 TARGET_LDPRELOAD += \
   libxlog.so \
-  libmtk_symbols.so \
-  mtk_rilproxy.so
+  mtk-ril.so \
+  mtk-rilmd2.so \
+  mtk-rilproxy.so \
+  volte_imsm.so
+
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a

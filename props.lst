@@ -1,6 +1,6 @@
   bgw.current3gband=0 \\
   dalvik.vm.dex2oat-Xms=64m \\
-  dalvik.vm.dex2oat-Xmx=64m \\
+  dalvik.vm.dex2oat-Xmx=128m \\
   dalvik.vm.heapgrowthlimit=256m \\
   dalvik.vm.heapsize=512m \\
   dalvik.vm.image-dex2oat-Xms=64m \\

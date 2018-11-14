@@ -35,7 +35,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Vendor product configurations
-$(call inherit-product-if-exists, vendor/opengapps/build/opengapps-packages.mk)
-$(call inherit-product-if-exists, vendor/mediatek/config/common.mk)
-$(call inherit-product-if-exists, vendor/ulefone/t1/t1-vendor.mk)
-$(call inherit-product-if-exists, vendor/ulefone/t1/VendorBoardConfig.mk)
+$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
+$(call inherit-product, vendor/mediatek/config/common.mk)
+$(call inherit-product, vendor/ulefone/t1/t1-vendor.mk)
+$(call inherit-product, vendor/ulefone/t1/VendorBoardConfig.mk)
