@@ -21,11 +21,11 @@ for I in $(find bin/ vendor/bin -type f) ;do
   printf "include \$(BUILD_PREBUILT)\n\n" >>$AMAKE
   printf "  ${BIN} \\\\\n" >>$VMAKE
 done
-for I in $(find * -xtype f -not -name "*.apk") ;do
+for I in $(find * -xtype f) ;do
   #grep -qs $I $AMAKE && continue
   if [ "$(dirname $I)" == "smartpa_params" ] ;then
     I="etc/audio_param/$(basename $I)"
   fi
-  printf "  vendor/$VENDOR/$DEVICE/proprietary/${I}:system/${I} \\\\\n" >> $BMAKE
+  printf "  vendor/$VENDOR/$DEVICE/proprietary/${I}:system/$(echo $I |sed 's/vendor\///') \\\\\n" >> $BMAKE
 done
 cd - >/dev/null
