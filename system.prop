@@ -1,6 +1,6 @@
 # MTK naming
 ro.build.product=p15v57c2k_gq_tee
-ro.product.device=T1
+ro.product.device=t1
 ro.build.bluetooth.name=T1
 ro.build.wifi.ssid=T1
 ro.ly.showampm=no

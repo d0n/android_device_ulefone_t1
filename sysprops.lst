@@ -509,7 +509,7 @@
   ro.product.cpu.abilist32=armeabi-v7a,armeabi \\
   ro.product.cpu.abilist64=arm64-v8a \\
   ro.product.cpu.abilist=arm64-v8a,armeabi-v7a,armeabi \\
-  ro.product.device=Ulefone_T1 \\
+  ro.product.device=t1 \\
   ro.product.first_api_level=24 \\
   ro.product.manufacturer=Ulefone \\
   ro.product.model=T1 \\
