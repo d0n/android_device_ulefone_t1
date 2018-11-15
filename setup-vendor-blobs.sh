@@ -26,6 +26,6 @@ for I in $(find * -xtype f) ;do
   if [ "$(dirname $I)" == "smartpa_params" ] ;then
     I="etc/audio_param/$(basename $I)"
   fi
-  printf "  vendor/$VENDOR/$DEVICE/proprietary/${I}:system/$(echo $I |sed 's/vendor\///') \\\\\n" >> $BMAKE
+  printf "  vendor/$VENDOR/$DEVICE/proprietary/${I}:system/${I} \\\\\n" >> $BMAKE
 done
 cd - >/dev/null
