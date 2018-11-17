@@ -24,19 +24,21 @@ for I in $(find lib* vendor/lib* -type f) ;do
     LTYPE="EXECUTABLES"
   fi
   printf "include \$(CLEAR_VARS)\nLOCAL_MODULE_CLASS := ${LTYPE}\n" >> $AMAKE
-  printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE
+  if [ "$(echo $I |awk -F'/' '{print $1}')" == "vendor" ] ;then
+    printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE
+  fi
   printf "LOCAL_ALLOW_UNDEFINED_SYMBOLS := true\n" >> $AMAKE
   printf "LOCAL_MODULE_SUFFIX := .${LSUF}\n" >> $AMAKE
   if [ -f "${L32}" -a -f "${L64}" ] ;then
-    printf "LOCAL_MULTILIB := both\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_MODULE_PATH_32 := system/$(dirname $L32)\nLOCAL_SRC_FILES_32 := proprietary/${L32}\nLOCAL_MODULE_PATH_64 := system/$(dirname $L64)\nLOCAL_SRC_FILES_64 := proprietary/${L64}\n" >> $AMAKE
+    printf "LOCAL_MULTILIB := both\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_MODULE_PATH_32 := \$(PRODUCT_OUT)/system/$(dirname $L32)\nLOCAL_SRC_FILES_32 := proprietary/${L32}\nLOCAL_MODULE_PATH_64 := \$(PRODUCT_OUT)/system/$(dirname $L64)\nLOCAL_SRC_FILES_64 := proprietary/${L64}\n" >> $AMAKE
   elif [ -f "${L32}" ] ;then
     if [[ $(echo $L32 |grep 'arm64') ]] ;then
-      printf "LOCAL_MULTILIB := 64\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_MODULE_PATH_64 := system/$(dirname $L32)\nLOCAL_SRC_FILES_64 := proprietary/${L64}\n" >> $AMAKE
+      printf "LOCAL_MULTILIB := 64\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_MODULE_PATH_64 := \$(PRODUCT_OUT)/system/$(dirname $L32)\nLOCAL_SRC_FILES_64 := proprietary/${L64}\n" >> $AMAKE
     else
-        printf "LOCAL_MULTILIB := 32\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_MODULE_PATH_32 := system/$(dirname $L32)\nLOCAL_SRC_FILES_32 := proprietary/${L32}\n" >> $AMAKE
+        printf "LOCAL_MULTILIB := 32\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_MODULE_PATH_32 := \$(PRODUCT_OUT)/system/$(dirname $L32)\nLOCAL_SRC_FILES_32 := proprietary/${L32}\n" >> $AMAKE
     fi
   elif [ -f "${L64}" ] ;then
-    printf "LOCAL_MULTILIB := 64\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_MODULE_PATH_64 := system/$(dirname $L32)\nLOCAL_SRC_FILES_64 := proprietary/${L64}\n" >> $AMAKE
+    printf "LOCAL_MULTILIB := 64\nLOCAL_MODULE := ${LIB%.*}\nLOCAL_MODULE_PATH_64 := \$(PRODUCT_OUT)/system/$(dirname $L32)\nLOCAL_SRC_FILES_64 := proprietary/${L64}\n" >> $AMAKE
   else
     echo "\033[31mERROR: $I\033[0m"
   fi

@@ -7,21 +7,27 @@ AMAKE=${OUTDIR}/Android.mk
 CMAKE=${OUTDIR}/VendorBoardConfig.mk
 
 cd $OUTDIR/proprietary >/dev/null
-for I in $(find * -type f -name *.apk) ;do
-  grep -qs $I $AMAKE && continue
-  echo $I
-  APK=$(basename $I)
-  ADIR=$(dirname $I)
-  ANAME=${APK%.*}
-  SDIR=$(echo $I |awk -F'/' '{print $1}')
-  if [ "$SDIR" == "vendor" ] ;then
-    SDIR="$(echo $I |awk -F'/' '{print $2}')"
-  fi
-  PRIV="false"
-  if [ "$SDIR" == "priv-app" ] ;then
-    PRIV="true"
-  fi
-  printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${APK%.*}\nLOCAL_PRIVILEGED_MODULE := ${PRIV}\nLOCAL_MODULE_TAGS := optional\nLOCAL_MODULE_CLASS := APPS\nLOCAL_SRC_FILES := proprietary/${ADIR}/${APK}\nLOCAL_MODULE_PATH := system/${ADIR}\nLOCAL_CERTIFICATE := PRESIGNED\ninclude \$(BUILD_PREBUILT)\n\n" >>$AMAKE
-  printf "  ${ANAME} \\\\\n" >>$CMAKE
+for s in app priv-app vendor/app vendor/priv-app vendor/plugin vendor/framework ;do
+  for a in $(ls $s 2>/dev/null) ;do
+    printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := $a\nLOCAL_MODULE_CLASS := APPS\n" >>$AMAKE
+	if [ "$(echo $s |awk -F'/' '{print $1}')" == "vendor" ] ;then
+	  printf "LOCAL_PROPRIETARY_MODULE := true\n" >>$AMAKE
+	fi
+	if [ "$s" == "priv-app" -o "$s" == "vendor/priv-app" ] ;then
+	  printf "LOCAL_PRIVILEGED_MODULE := true\n" >>$AMAKE
+	fi
+	printf "LOCAL_SRC_FILES := " >>$AMAKE
+	c="0"
+    for f in $(find $s/$a -type f) ;do
+	  if [ "$c" == "0" ] ;then
+	  #if [ "$(echo $f |awk -F'.' '{print $NF}')" == "apk" ] ;then
+        printf "proprietary/$f " >>$AMAKE
+	  else
+        printf "\$(LOCAL_PATH)/proprietary/$f " >>$AMAKE
+	  fi
+	  let c+=1
+    done
+	printf "\nLOCAL_MODULE_PATH := \$(PRODUCT_OUT)/system/$s/$a\nLOCAL_CERTIFICATE := PRESIGNED\ninclude \$(BUILD_PREBUILT)\n\n" >>$AMAKE
+  done
 done
-cd - >/dev/null
+exit

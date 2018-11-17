@@ -418,31 +418,58 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisks
 PRODUCT_COPY_FILES += \
+  $(LOCAL_PATH)/rootdir/atrace.rc:root/atrace.rc \
+  $(LOCAL_PATH)/rootdir/audioserver.rc:root/audioserver.rc \
+  $(LOCAL_PATH)/rootdir/bootstat.rc:root/bootstat.rc \
+  $(LOCAL_PATH)/rootdir/cameraserver.rc:root/cameraserver.rc \
+  $(LOCAL_PATH)/rootdir/debuggerd.rc:root/debuggerd.rc \
+  $(LOCAL_PATH)/rootdir/debuggerd64.rc:root/debuggerd64.rc \
+  $(LOCAL_PATH)/rootdir/drmserver.rc:root/drmserver.rc \
+  $(LOCAL_PATH)/rootdir/dumpstate.rc:root/dumpstate.rc \
   $(LOCAL_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
+  $(LOCAL_PATH)/rootdir/factory_init.connectivity.rc:root/factory_init.connectivity.rc \
   $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
   $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
-  $(LOCAL_PATH)/rootdir/meta_init.connectivity.rc:root/meta_init.connectivity.rc \
-  $(LOCAL_PATH)/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
-  $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \
-  $(LOCAL_PATH)/rootdir/meta_init.rc:root/meta_init.rc \
-  $(LOCAL_PATH)/rootdir/multi_init.rc:root/multi_init.rc \
-  $(LOCAL_PATH)/rootdir/factory_init.connectivity.rc:root/factory_init.connectivity.rc \
   $(LOCAL_PATH)/rootdir/fstab.mt6757:root/fstab.mt6757 \
-  $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
+  $(LOCAL_PATH)/rootdir/gatekeeperd.rc:root/gatekeeperd.rc \
   $(LOCAL_PATH)/rootdir/init.aee.rc:root/init.aee.rc \
-  $(LOCAL_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc \
   $(LOCAL_PATH)/rootdir/init.common_svc.rc:root/init.common_svc.rc \
+  $(LOCAL_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc \
   $(LOCAL_PATH)/rootdir/init.epdg.rc:root/init.epdg.rc \
   $(LOCAL_PATH)/rootdir/init.fingerprint.rc:root/init.fingerprint.rc \
+  $(LOCAL_PATH)/rootdir/init.mal.rc:root/init.mal.rc \
   $(LOCAL_PATH)/rootdir/init.modem.rc:root/init.modem.rc \
   $(LOCAL_PATH)/rootdir/init.mt6757.rc:root/init.mt6757.rc \
   $(LOCAL_PATH)/rootdir/init.mt6757.usb.rc:root/init.mt6757.usb.rc \
   $(LOCAL_PATH)/rootdir/init.project.rc:root/init.project.rc \
+  $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
   $(LOCAL_PATH)/rootdir/init.rilproxy.rc:root/init.rilproxy.rc \
   $(LOCAL_PATH)/rootdir/init.sensor.rc:root/init.sensor.rc \
   $(LOCAL_PATH)/rootdir/init.trustkernel.rc:root/init.trustkernel.rc \
   $(LOCAL_PATH)/rootdir/init.volte.rc:root/init.volte.rc \
+  $(LOCAL_PATH)/rootdir/init.wod.rc:root/init.wod.rc \
+  $(LOCAL_PATH)/rootdir/keystore.rc:root/keystore.rc \
+  $(LOCAL_PATH)/rootdir/lmkd.rc:root/lmkd.rc \
+  $(LOCAL_PATH)/rootdir/logd.rc:root/logd.rc \
+  $(LOCAL_PATH)/rootdir/mdnsd.rc:root/mdnsd.rc \
+  $(LOCAL_PATH)/rootdir/mediacodec.rc:root/mediacodec.rc \
+  $(LOCAL_PATH)/rootdir/mediadrmserver.rc:root/mediadrmserver.rc \
+  $(LOCAL_PATH)/rootdir/mediaextractor.rc:root/mediaextractor.rc \
+  $(LOCAL_PATH)/rootdir/mediaserver.rc:root/mediaserver.rc \
+  $(LOCAL_PATH)/rootdir/meta_init.connectivity.rc:root/meta_init.connectivity.rc \
+  $(LOCAL_PATH)/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
+  $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \
+  $(LOCAL_PATH)/rootdir/meta_init.rc:root/meta_init.rc \
+  $(LOCAL_PATH)/rootdir/mtpd.rc:root/mtpd.rc \
+  $(LOCAL_PATH)/rootdir/multi_init.rc:root/multi_init.rc \
+  $(LOCAL_PATH)/rootdir/netd.rc:root/netd.rc \
+  $(LOCAL_PATH)/rootdir/racoon.rc:root/racoon.rc \
+  $(LOCAL_PATH)/rootdir/servicemanager.rc:root/servicemanager.rc \
+  $(LOCAL_PATH)/rootdir/surfaceflinger.rc:root/surfaceflinger.rc \
   $(LOCAL_PATH)/rootdir/ueventd.mt6757.rc:root/ueventd.mt6757.rc \
+  $(LOCAL_PATH)/rootdir/uncrypt.rc:root/uncrypt.rc \
+  $(LOCAL_PATH)/rootdir/vdc.rc:root/vdc.rc \
+  $(LOCAL_PATH)/rootdir/vold.rc:root/vold.rc \
   $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab \
   bionic/libc/zoneinfo/tzdata:system/usr/share/zoneinfo/tzdata
 

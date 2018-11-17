@@ -1,4 +1,5 @@
   bgw.current3gband=0 \\
+  com.mediatek.log.modem.enabled=true \\
   dalvik.vm.dex2oat-Xms=64m \\
   dalvik.vm.dex2oat-Xmx=128m \\
   dalvik.vm.heapgrowthlimit=256m \\
@@ -154,7 +155,7 @@
   persist.log.tag.WfoApp=I \\
   persist.log.tag.tel_log_ctrl=1 \\
   persist.meta.dumpdata=0 \\
-  persist.mtk.connsys.poweron.ctl=0 \\
+  persist.mtk.connsys.poweron.ctl=1 \\
   persist.mtk.datashaping.support=1 \\
   persist.mtk.volte.enable=1 \\
   persist.mtk.wcn.combo.chipid=-1 \\
@@ -166,6 +167,9 @@
   persist.mtk_nlp_switch_support=1 \\
   persist.mtk_vilte_support=1 \\
   persist.mtk_volte_support=1 \\
+  persist.mtk.wcn.fwlog.status=1 \\
+  persist.mtk.wcn.dynamic.dump=1 \\
+  persist.mtklog.mdlog.mdsilrbt=1 \\
   persist.radio.default.sim=0 \\
   persist.radio.fd.counter=150 \\
   persist.radio.fd.off.counter=50 \\
