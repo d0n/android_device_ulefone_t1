@@ -34,7 +34,7 @@ for I in $(find * -type f) ;do
     printf "include \$(BUILD_PREBUILT)\n\n" >>$AMAKE
   fi
 done
-for I in $(find * -xtype f -not -name "*.apk") ;do
+for I in $(find * -type f) ;do
   #grep -qs $I $AMAKE && continue
   printf "  vendor/$VENDOR/$DEVICE/proprietary/${I}:system/${I} \\\\\n" >> $BMAKE
 done

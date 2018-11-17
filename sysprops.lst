@@ -165,6 +165,7 @@
   persist.mtk_epdg_support=1 \\
   persist.mtk_ims_support=1 \\
   persist.mtk_nlp_switch_support=1 \\
+  persist.mtk_usp_md_sbp_code=2 \\
   persist.mtk_vilte_support=1 \\
   persist.mtk_volte_support=1 \\
   persist.mtk.wcn.fwlog.status=1 \\
