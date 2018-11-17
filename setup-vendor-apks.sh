@@ -19,12 +19,6 @@ for s in app priv-app vendor/app vendor/priv-app vendor/plugin vendor/framework 
     printf "LOCAL_SRC_FILES := " >>$AMAKE
     c="0"
     for f in $(find $s/$a -type f) ;do
-	  MULTILIB='LOCAL_MULTILIB := both\n'
-      if [ -d $s/$a/oat/arm64 ] && ! [ -d $s/$a/oat/arm ] ;then
-	    MULTILIB='LOCAL_MULTILIB := 64\n'
-      elif [ -d $s/$a/oat/arm ] && ! [ -d $s/$a/oat/arm64 ] ;then
-	    MULTILIB='LOCAL_MULTILIB := 32\n'
-      fi
       if [ "$c" == "0" ] ;then
         printf "proprietary/$f " >>$AMAKE
       else
@@ -32,7 +26,7 @@ for s in app priv-app vendor/app vendor/priv-app vendor/plugin vendor/framework 
       fi
       let c+=1
     done
-    printf "\n${MULTILIB}LOCAL_DEX_PREOPT := false\nLOCAL_MODULE_PATH := \$(PRODUCT_OUT)/system/$s\nLOCAL_CERTIFICATE := PRESIGNED\ninclude \$(BUILD_PREBUILT)\n\n" >>$AMAKE
+    printf "\nLOCAL_DEX_PREOPT := false\nLOCAL_MODULE_PATH := \$(PRODUCT_OUT)/system/$s\nLOCAL_CERTIFICATE := PRESIGNED\ninclude \$(BUILD_PREBUILT)\n\n" >>$AMAKE
   done
 done
 exit
