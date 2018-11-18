@@ -33,8 +33,8 @@ MTK_PATH_CUSTOM_PLATFORM := $(MTK_PATH_CUSTOM)/$(MTK_PROJECT)
 PROJECT_FOLDER := $(DEVICE_PATH)
 
 include $(DEVICE_PATH)/board/mt6757.mk
-$(call inherit-product, device/ulefone/t1/ProjectConfig.mk)
-$(call inherit-product, device/ulefone/t1/PlatformConfig.mk)
+#$(call inherit-product, device/ulefone/t1/ProjectConfig.mk)
+#$(call inherit-product, device/ulefone/t1/PlatformConfig.mk)
 #include $(COMMON_PATH)/BoardConfigCommon.mk
 #include $(COMMON_PATH)/mt6757.mk
 include $(DEVICE_PATH)/PlatformConfig.mk
@@ -51,7 +51,13 @@ BOARD_GLOBAL_CFLAGS += \
   -DCOMPAT_SENSORS_M \
   -DNO_SECURE_DISCARD \
   -DDISABLE_HW_ID_MATCH_CHECK
-LOCAL_LDLIBS := -lGLESv3
+
+TARGET_LDPRELOAD += \
+  GLESv3 \
+  mtk-ril.so \
+  mtk-rilmd2.so \
+  mtk-rilproxy.so \
+  volte_imsm.so
 
 #BOARD_EGL_WORKAROUND_BUG_10194508 := true
 #BOARD_USES_LEGACY_MTK_AV_BLOB := true
@@ -59,6 +65,7 @@ LOCAL_LDLIBS := -lGLESv3
 #BOARD_VENDOR := ulefone
 BOARD_USES_CYANOGEN_HARDWARE := true
 #BOARD_CHARGER_DISABLE_INIT_BLANK := true
+BOARD_CHARGER_ENABLE_SUSPEND := true
 BLOCK_BASED_OTA := false
 #BOARD_USES_ALSA_AUDIO := true
 #BOARD_EGL_NEEDS_HANDLE_VALUE := true
@@ -67,10 +74,11 @@ BLOCK_BASED_OTA := false
 BOARD_HAS_MTK_HARDWARE := true
 BOARD_USES_MTK_HARDWARE := true
 BOARD_HAS_FLIPPED_SCREEN := true
+BOARD_ROOT_EXTRA_FOLDERS := vendor/firmware vendor/firmware/customfilter
 BOARD_EGL_CFG := $(DEVICE_PATH)/configs/egl.cfg
 BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/cmhw
 
-#PRODUCT_TAGS += dalvik.gc.type-precise
+PRODUCT_TAGS += dalvik.gc.type-precise
 #USE_MINIKIN := true
 #MALLOC_SVELTE := true
 #MTK_SVLTE_SUPPORT := yes
@@ -81,6 +89,7 @@ BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/cmhw
 #GOOGLE_RELEASE_RIL := no
 #BOARD_USES_AOSP_GPS_HAL := true
 #DONT_DEXPREOPT_PRBUILTS := true
+ADD_RADIO_FILES := true
 WITH_DEXPREOPT_PIC := true
 WITH_DEXPREOPT := true
 #EXTENDED_FONT_FOOTPRINT := true
@@ -108,6 +117,7 @@ MTK_HARDWARE := true
 TARGET_INCLUDE_PBBUILDER_SYMBOLS := true
 TARGET_INCLUDE_VTMAL_SYMBOLS := true
 TARGET_PROVIDES_INIT_RC := true
+TARGET_SWV8_DISK_ENCRYPTION := false
 #TARGET_CPU_MEMCPY_OPT_DISABLE := true
 TARGET_TEE_IS_OPTEE := true
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
@@ -119,7 +129,9 @@ TARGET_OTA_ASSERT_DEVICE := t1,p15v57c2k_gq_tee,,
 TARGET_KMODULES := true
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
+TARGET_USES_OVERLAY := true
 DEVICE_PACKAGE_OVERLAYS := $(DEVICE_PATH)/overlay
+#TARGET_BOARD_KERNEL_HEADERS := $(DEVICE_PATH)/include
 #TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_t1
 #TARGET_RELEASETOOLS_EXTENSIONS := device/ulefone/t1
 
