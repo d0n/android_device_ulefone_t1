@@ -22,11 +22,11 @@ for I in $(find bin/ vendor/bin vendor/firmware -type f) ;do
   printf "  ${BIN} \\\\\n" >>$VMAKE
 done
 for I in $(find * -type f) ;do
-  grep -qs $I $AMAKE && continue
   grep -qs $I $ddir/blackbins.lst && continue
   SUF="$(echo $I |awk -F'.' '{print $NF}')"
   BIN=$(basename $I)
   BDIR="$(dirname $I)"
+  grep -qs "^LOCAL_MODULE := ${BIN%.*}$" $AMAKE && continue
   if [ "$SUF" == "rc" ] || [ "$SUF" == "cfg" ] || [ "$SUF" == "xml" ] || [ "$SUF" == "ini" ] ;then
 	printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${BIN%.*}\nLOCAL_MODULE_CLASS := ETC\nLOCAL_SRC_FILES := proprietary/$I\nLOCAL_MODULE_PATH := \$(PRODUCT_OUT)/system/${BDIR}\n" >>$AMAKE
     if [ "$(echo $I |awk -F'/' '{print $1}')" == "vendor" ] ;then
@@ -34,7 +34,7 @@ for I in $(find * -type f) ;do
     fi
     printf "include \$(BUILD_PREBUILT)\n\n" >>$AMAKE
   elif [ "$(echo $I |awk -F'.' '{print $NF}')" == "jar" ] ;then
-    printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${BIN%.*}\nLOCAL_MODULE_CLASS := JAVA_LIBRARIES\nLOCAL_SRC_FILES := proprietary/$I\nLOCAL_MODULE_PATH := \$(PRODUCT_OUT)/system/${BDIR}\n" >>$AMAKE
+    printf "include \$(CLEAR_VARS)\nLOCAL_DEX_PREOPT := false\nLOCAL_MODULE := ${BIN%.*}\nLOCAL_MODULE_CLASS := JAVA_LIBRARIES\nLOCAL_SRC_FILES := proprietary/$I\nLOCAL_MODULE_PATH := \$(PRODUCT_OUT)/system/${BDIR}\n" >>$AMAKE
     if [ "$(echo $I |awk -F'/' '{print $1}')" == "vendor" ] ;then
       printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE
     fi

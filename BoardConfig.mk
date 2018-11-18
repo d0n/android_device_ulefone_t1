@@ -14,6 +14,7 @@
 # limitations under the License.
 #
 LOCAL_PATH := $(call my-dir)
+COMMON_PATH := device/cyanogen/mt6757-common
 #USE_NINJA := false
 #$(info $(BUILD_NUMBER))
 #BUILD_DATE := $(shell date -u +"%s")
@@ -33,6 +34,8 @@ PROJECT_FOLDER := $(DEVICE_PATH)
 
 include $(DEVICE_PATH)/PlatformConfig.mk
 include $(DEVICE_PATH)/board/mt6757.mk
+include $(COMMON_PATH)/BoardConfigCommon.mk
+include $(COMMON_PATH)/mt6757.mk
 include $(MTK_PROJECT_CONFIG)
 MTK_INTERNAL_CDEFS := $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_NAME),$(if $(filter-out no NO none NONE false FALSE,$($(t))),-D$(t)))
 MTK_INTERNAL_CDEFS += $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_VALUE),$(if $(filter-out no NO none NONE false FALSE,$($(t))),$(foreach v,$(shell echo $($(t)) | tr '[a-z]' '[A-Z]'),-D$(v))))
