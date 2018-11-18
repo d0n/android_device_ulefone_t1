@@ -21,30 +21,25 @@ for I in $(find bin/ vendor/bin vendor/firmware -type f) ;do
   printf "include \$(BUILD_PREBUILT)\n\n" >>$AMAKE
   printf "  ${BIN} \\\\\n" >>$VMAKE
 done
-for I in $(find * -type f) ;do
+for I in $(find * -type f -name "*.ini" -or -name "*.rc" -or -name "*.xml" -or -name "*.cfg") ;do
   grep -qs $I $ddir/blackbins.lst && continue
-  SUF="$(echo $I |awk -F'.' '{print $NF}')"
   BIN=$(basename $I)
-  BDIR="$(dirname $I)"
   grep -qs "^LOCAL_MODULE := ${BIN%.*}$" $AMAKE && continue
-  if [ "$SUF" == "rc" ] || [ "$SUF" == "cfg" ] || [ "$SUF" == "xml" ] || [ "$SUF" == "ini" ] ;then
-	printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${BIN%.*}\nLOCAL_MODULE_CLASS := ETC\nLOCAL_SRC_FILES := proprietary/$I\nLOCAL_MODULE_PATH := \$(PRODUCT_OUT)/system/${BDIR}\n" >>$AMAKE
-    if [ "$(echo $I |awk -F'/' '{print $1}')" == "vendor" ] ;then
-      printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE
-    fi
-    printf "include \$(BUILD_PREBUILT)\n\n" >>$AMAKE
-  elif [ "$(echo $I |awk -F'.' '{print $NF}')" == "jar" ] ;then
-    printf "include \$(CLEAR_VARS)\nLOCAL_DEX_PREOPT := false\nLOCAL_MODULE := ${BIN%.*}\nLOCAL_MODULE_CLASS := JAVA_LIBRARIES\nLOCAL_SRC_FILES := proprietary/$I\nLOCAL_MODULE_PATH := \$(PRODUCT_OUT)/system/${BDIR}\n" >>$AMAKE
-    if [ "$(echo $I |awk -F'/' '{print $1}')" == "vendor" ] ;then
-      printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE
-    fi
-    printf "include \$(BUILD_PREBUILT)\n\n" >>$AMAKE
-  fi  
+  SUF="$(echo $I |awk -F'.' '{print $NF}')"
+  echo $I
+  BDIR="$(dirname $I)"
+  VDIR="$(echo $I |awk -F'/' '{print $1}')"
+	printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${BIN%.*}\nLOCAL_SRC_FILES := proprietary/$I\nLOCAL_MODULE_CLASS := ETC\n" >>$AMAKE
+  if [ "$(echo $I |awk -F'/' '{print $1}')" == "vendor" ] ;then
+    printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE
+  fi
+  printf "LOCAL_MODULE_PATH := \$(PRODUCT_OUT)/system/${BDIR}\ninclude \$(BUILD_PREBUILT)\n\n" >>$AMAKE
 done
 for I in $(find * -type f) ;do
   if [ "$(dirname $I)" == "smartpa_params" ] ;then
     I="etc/audio_param/$(basename $I)"
   fi
+  #echo $I
   #grep -qs $I $AMAKE && continue
   printf "  vendor/$VENDOR/$DEVICE/proprietary/${I}:system/${I} \\\\\n" >> $BMAKE
 done

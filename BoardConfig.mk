@@ -32,10 +32,13 @@ MTK_PATH_PLATFORM := $(MTK_PATH_SOURCE)
 MTK_PATH_CUSTOM_PLATFORM := $(MTK_PATH_CUSTOM)/$(MTK_PROJECT)
 PROJECT_FOLDER := $(DEVICE_PATH)
 
-include $(DEVICE_PATH)/PlatformConfig.mk
 include $(DEVICE_PATH)/board/mt6757.mk
-include $(COMMON_PATH)/BoardConfigCommon.mk
-include $(COMMON_PATH)/mt6757.mk
+$(call inherit-product, device/ulefone/t1/ProjectConfig.mk)
+$(call inherit-product, device/ulefone/t1/PlatformConfig.mk)
+#include $(COMMON_PATH)/BoardConfigCommon.mk
+#include $(COMMON_PATH)/mt6757.mk
+include $(DEVICE_PATH)/PlatformConfig.mk
+include $(DEVICE_PATH)/ProjectConfig.mk
 include $(MTK_PROJECT_CONFIG)
 MTK_INTERNAL_CDEFS := $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_NAME),$(if $(filter-out no NO none NONE false FALSE,$($(t))),-D$(t)))
 MTK_INTERNAL_CDEFS += $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_VALUE),$(if $(filter-out no NO none NONE false FALSE,$($(t))),$(foreach v,$(shell echo $($(t)) | tr '[a-z]' '[A-Z]'),-D$(v))))
@@ -70,17 +73,17 @@ BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/cmhw
 #PRODUCT_TAGS += dalvik.gc.type-precise
 #USE_MINIKIN := true
 #MALLOC_SVELTE := true
-MTK_SVLTE_SUPPORT := yes
+#MTK_SVLTE_SUPPORT := yes
 #MTK_OPEN_PACKAGE := true
 #MTK_K64_SUPPORT := yes
 #MTK_BTCODEGEN_SUPPORT := no
 #MTK_TC1_FEATURE := true
 #GOOGLE_RELEASE_RIL := no
 #BOARD_USES_AOSP_GPS_HAL := true
-DONT_DEXPREOPT_PRBUILTS := true
+#DONT_DEXPREOPT_PRBUILTS := true
 WITH_DEXPREOPT_PIC := true
 WITH_DEXPREOPT := true
-EXTENDED_FONT_FOOTPRINT := true
+#EXTENDED_FONT_FOOTPRINT := true
 DEX2OAT_XMS := 64m
 DEX2OAT_XMX := 128m
 DEX2OAT_IMAGE_XMS := 64m
@@ -89,9 +92,9 @@ CONFIG_NR_CPUS := 8
 #MTK_MMPROFILE_SUPPORT := true
 #MTK_FM_RX_SUPPORT := yes
 #FM_LIB_BUILD_MT6625 := yes
-#USE_XML_AUDIO_POLICY_CONF := 1
-USE_CUSTOM_AUDIO_POLICY := 1
-USE_LEGACY_AUDIO_POLICY := 1
+USE_XML_AUDIO_POLICY_CONF := 1
+#USE_CUSTOM_AUDIO_POLICY := 1
+#USE_LEGACY_AUDIO_POLICY := 1
 MTK_HARDWARE := true
 #MTK_FM_SUPPORT := yes
 
@@ -105,7 +108,7 @@ MTK_HARDWARE := true
 TARGET_INCLUDE_PBBUILDER_SYMBOLS := true
 TARGET_INCLUDE_VTMAL_SYMBOLS := true
 TARGET_PROVIDES_INIT_RC := true
-TARGET_CPU_MEMCPY_OPT_DISABLE := true
+#TARGET_CPU_MEMCPY_OPT_DISABLE := true
 TARGET_TEE_IS_OPTEE := true
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 TARGET_PROVIDES_KEYMASTER := true

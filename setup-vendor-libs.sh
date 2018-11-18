@@ -52,4 +52,20 @@ for I in $(find lib* vendor/lib* -type f) ;do
   printf "include \$(PREBUILT_SHARED_LIBRARY)\n\n" >> $AMAKE
   printf "  ${LIB%.*} \\\\\n" >> $VMAKE
 done
+for I in $(find * -type f -name *.jar) ;do
+  grep -qs $I $ddir/blacklibs.lst && continue
+  BIN=$(basename $I)
+  grep -qs "^LOCAL_MODULE := ${BIN%.*}$" $AMAKE && continue
+  SUF="$(echo $I |awk -F'.' '{print $NF}')"
+  echo $I
+  BDIR="$(dirname $I)"
+  VDIR="$(echo $I |awk -F'/' '{print $1}')"
+  printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${BIN%.*}\nLOCAL_SRC_FILES := proprietary/$I\nLOCAL_DEX_PREOPT := false\nLOCAL_MODULE_CLASS := JAVA_LIBRARIES\nLOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)\n" >>$AMAKE
+  #if [ "$SUF" == "jar" ] ;then
+	#fi
+  if [ "$(echo $I |awk -F'/' '{print $1}')" == "vendor" ] ;then
+    printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE
+  fi
+  printf "LOCAL_MODULE_PATH := \$(PRODUCT_OUT)/system/${BDIR}\ninclude \$(BUILD_PREBUILT)\n\n" >>$AMAKE
+done
 cd - >/dev/null
