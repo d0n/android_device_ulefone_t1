@@ -349,7 +349,8 @@ PRODUCT_COPY_FILES += \
 # FMRadio
 PRODUCT_PACKAGES += \
   libfmjni \
-  FMRadio
+  FMRadio \
+  fmradio.mt6757
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
