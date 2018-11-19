@@ -6,6 +6,12 @@ GAPPS_PRODUCT_PACKAGES += \
   DialerGoogle \
   CarrierServices \
   DialerFramework \
+  GmsCoreSetupPrebuilt \
+  PrebuiltGmsCore \
+  PrebuiltGmsCoreInstantApps \
+  GoogleDialer \
+  GoogleExtServices \
+  GoogleServicesFramework \
   GCS
 
 GAPPS_EXCLUDED_PACKAGES := \
@@ -26,6 +32,7 @@ PRODUCT_PACKAGES += \
   SettingsProvider \
   Shell \
   Snap \
+  EngineerMode \
   audio.a2dp.default \
   audio.r_submix.default \
   audio.usb.default \
@@ -39,7 +46,9 @@ PRODUCT_PACKAGES += \
   libvtmal \
   vtservice \
   libccci_util \
+  droiddriver \
   com.google.android.gms \
+  com.google.android.gsf \
   com.android.future.usb.accessory \
   com.android.location.provider \
   com.android.location.provider.xml \
@@ -75,6 +84,7 @@ PRODUCT_PACKAGES += \
   libffmpeg \
   libfilterfw \
   libfilterpack_facedetect \
+  libfmcust \
   libfs_mgr \
   libged \
   libmdp \
@@ -144,6 +154,16 @@ PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
 
 PRODUCT_PACKAGES += \
+  api-stubs \
+  ds-static \
+  conscrypt \
+  conscrypt-host \
+  com.cyanogenmod.keyhandler \
+  libjavacrypto \
+  libconscrypt_jni \
+  libconscrypt_static \
+  persistentdata \
+  online-system-api-sdk \
   lib_driver_cmd_bcmdhd \
   libwifi-hal-mt66xx \
   lib_driver_cmd_mt66xx \
@@ -214,6 +234,7 @@ PRODUCT_PACKAGES += \
   factory \
   flashlessd \
   fsck_msdos_mtk \
+  framework \
   fuelgauged \
   fuelgauged_nvram \
   ged_srv \
@@ -381,8 +402,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
-#PRODUCT_SYSTEM_SERVER_JARS += \
-#  com.google.android.gms
+PRODUCT_SYSTEM_SERVER_JARS += \
+  com.google.android.gms
 
 # Lights
 PRODUCT_PACKAGES += \
