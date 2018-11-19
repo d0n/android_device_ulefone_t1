@@ -32,8 +32,6 @@ on early-init
     chmod 0755 /sys/kernel/debug
 
 on init
-    //LINKER_FORCED_SHIM_LIBS
-	//export LD_SHIM_LIBS ${ro.mtk.shimlibs}
     export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtkshim_pbbuilder.so:/system/vendor/lib/libprogrambinary.so:libmtkshim_pbbuilder.so:/system/vendor/lib64/libprogrambinary.so:libmtkshim_pbbuilder.so:/system/vendor/lib/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/bin/vtservice|libmtkshim_vtmal.so"
     # Support legacy paths
     symlink /sdcard /mnt/sdcard

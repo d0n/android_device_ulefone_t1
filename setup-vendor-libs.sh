@@ -60,12 +60,17 @@ for I in $(find * -type f -name *.jar) ;do
   echo $I
   BDIR="$(dirname $I)"
   VDIR="$(echo $I |awk -F'/' '{print $1}')"
-  printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${BIN%.*}\nLOCAL_SRC_FILES := proprietary/$I\nLOCAL_DEX_PREOPT := false\nLOCAL_MODULE_CLASS := JAVA_LIBRARIES\nLOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)\n" >>$AMAKE
+  SRCS="proprietary/$I"
+  if [ "$(basename $BDIR)" == "framework" ] ;then
+    SRCS="proprietary/$I \\\\\n  \$(LOCAL_PATH)/proprietary/framework/arm/boot-${BIN%.*}.art \\\\\n  \$(LOCAL_PATH)/proprietary/framework/arm/boot-${BIN%.*}.oat \\\\\n  \$(LOCAL_PATH)/proprietary/framework/arm64/boot-${BIN%.*}.art \\\\\n  \$(LOCAL_PATH)/proprietary/framework/arm64/boot-${BIN%.*}.oat"
+  fi
+  printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${BIN%.*}\nLOCAL_SRC_FILES := ${SRCS}\nLOCAL_DEX_PREOPT := false\nLOCAL_MODULE_CLASS := JAVA_LIBRARIES\nLOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)\n" >>$AMAKE
   #if [ "$SUF" == "jar" ] ;then
 	#fi
   if [ "$(echo $I |awk -F'/' '{print $1}')" == "vendor" ] ;then
     printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE
   fi
   printf "LOCAL_MODULE_PATH := \$(PRODUCT_OUT)/system/${BDIR}\ninclude \$(BUILD_PREBUILT)\n\n" >>$AMAKE
+  printf "  ${BIN%.*} \\\\\n" >>$VMAKE
 done
 cd - >/dev/null

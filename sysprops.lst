@@ -291,6 +291,7 @@
   ro.build.tags=release-keys \\
   ro.build.time.format=24 \\
   ro.build.touch.sound=yes \\
+  ro.build.type=userdebug \\
   ro.build.user=d0n \\
   ro.build.wifi.ssid=d0ndroid \\
   ro.build.wifip2pDN=T1 \\
@@ -384,6 +385,7 @@
   ro.gprs.switch=no \\
   ro.gqp15.cts.kernel.version=yes \\
   ro.gravity.rotation=yes \\
+  ro.hardware=mt6757 \\
   ro.have_aacencode_feature=1 \\
   ro.have_aee_feature=1 \\
   ro.hed.analog.audio.max=unknown \\
@@ -531,8 +533,10 @@
   ro.scridle_ledcolor=None \\
   ro.sdcard_support=yes \\
   ro.secure=0 \\
+  ro.serialno=BUINBM9TJ7CAYDG6 \\
   ro.setupwizard.mode=OPTIONAL \\
   ro.sf.hwrotation=180 \\
+  ro.sf.lcd_density=480 \\
   ro.short.cut.settings=false \\
   ro.shortcut_flashlight=no \\
   ro.show.more.ringtone=1 \\
@@ -568,6 +572,7 @@
   ro.wifi.notification=no \\
   ro.wifi.sleepmode=2 \\
   ro.wifimac.tonvram=1 \\
+  ro.zygote=zygote64_32 \\
   ro.zygote.preload.enable=0 \\
   service.wcn.coredump.mode=0 \\
   service.wcn.driver.ready=no \\
