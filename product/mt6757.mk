@@ -138,6 +138,8 @@ PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
   frameworks/native/data/etc/android.hardware.camera.raw.xml:system/etc/permissions/android.hardware.camera.raw.xml
 
+PRODUCT_SYSTEM_SERVER_JARS += com.cyanogenmod.keyhandler
+
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
 

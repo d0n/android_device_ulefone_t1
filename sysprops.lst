@@ -1,9 +1,9 @@
   bgw.current3gband=0 \\
   com.mediatek.log.modem.enabled=true \\
   dalvik.vm.dex2oat-Xms=64m \\
-  dalvik.vm.dex2oat-Xmx=128m \\
-  dalvik.vm.heapgrowthlimit=256m \\
-  dalvik.vm.heapsize=512m \\
+  dalvik.vm.dex2oat-Xmx=64m \\
+  dalvik.vm.heapgrowthlimit=192m \\
+  dalvik.vm.heapsize=384m \\
   dalvik.vm.image-dex2oat-Xms=64m \\
   dalvik.vm.image-dex2oat-Xmx=64m \\
   dalvik.vm.isa.arm.features=default \\
@@ -22,7 +22,7 @@
   mtk.eccci.c2k=enabled \\
   mtk.vdec.waitkeyframeforplay=1 \\
   net.bt.name=d0ndroid \\
-  or.build.serialname=0123456789ABCDEFG \\
+  or.build.serialname=BUINBM9TJ7CAYDG6 \\
   or.build.vibratortime=0 \\
   or.build.vibratorvol=0 \\
   or.button.ledvalue=-1 \\

@@ -32,9 +32,7 @@ on early-init
     chmod 0755 /sys/kernel/debug
 
 on init
-    //LINKER_FORCED_SHIM_LIBS
-	//export LD_SHIM_LIBS ${ro.mtk.shimlibs}
-    export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtkshim_pbbuilder.so:/system/vendor/lib/libprogrambinary.so:libmtkshim_pbbuilder.so:/system/vendor/lib64/libprogrambinary.so:libmtkshim_pbbuilder.so:/system/vendor/lib/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/bin/vtservice|libmtkshim_vtmal.so"
+    export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtkshim_pbbuilder.so:/system/vendor/lib/libprogrambinary.so:libmtkshim_pbbuilder.so:/system/vendor/lib64/libprogrambinary.so:libmtkshim_pbbuilder.so:/system/vendor/lib/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/bin/vtservice|libmtkshim_vtmal.so:/system/vendor/bin/volte_imcb|libmtk_vt_service.so:/system/vendor/bin/mtk_agpsd|mtk-rilproxy.so:/system/vendor/bin/mtk_agpsd|libviagpsrpc.so:/system/vendor/bin/mtk_agpsd|libvt_socketbind.so:/system/vendor/bin/mtk_agpsd|libmtk_vt_service.so:/system/vendor/bin/mtk_agpsdlibmtk_vt_wrapper.so"
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
 
