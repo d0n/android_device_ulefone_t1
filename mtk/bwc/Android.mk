@@ -50,9 +50,9 @@ else ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6735)
 LOCAL_CFLAGS += -DBWC_D1
 else ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6753)
 LOCAL_CFLAGS += -DBWC_D3
+#else ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6757)
+#LOCAL_CFLAGS += -DBWC_J
 else ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6757)
-LOCAL_CFLAGS += -DBWC_J
-else ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6795)
 LOCAL_CFLAGS += -DBWC_RO
 endif
 
