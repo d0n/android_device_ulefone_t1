@@ -116,6 +116,7 @@ PRODUCT_PACKAGES += \
   screencap \
   sensorservice \
   sgdisk \
+  su \
   tcmclient \
   telephony-common \
   tinymix \
