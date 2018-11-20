@@ -19,7 +19,7 @@
   mediatek.wlan.module.postfix=_consys_mt6757 \\
   mtk.eccci.c2k=enabled \\
   mtk.vdec.waitkeyframeforplay=1 \\
-  net.bt.name=d0ndroid \\
+  net.bt.name=Android \\
   or.build.serialname=BUINBM9TJ7CAYDG6 \\
   or.build.vibratortime=0 \\
   or.build.vibratorvol=0 \\
@@ -205,7 +205,7 @@
   ril.read.imsi=1 \\
   ril.specific.sm_cause=0 \\
   ril.telephony.mode=0 \\
-  rild.libpath=mtk-ril.so \\
+  rild.libpath=mtk-rilproxy.so \\
   rild.libargs=-d /dev/ttyC0 \\
   ro.CALENDAR_VALUE_TYPE=4 \\
   ro.REMOVE_HALL_TEST=yes \\

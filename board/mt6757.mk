@@ -44,8 +44,8 @@ BOARD_GPS_LIBRARIES := true
 BOARD_MEDIATEK_USES_GPS := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
-#BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=enforcing
+#OARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=enforcing
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_NAME := 1509953733
 BOARD_KERNEL_BASE := 0x40078000
@@ -59,8 +59,8 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilts/kernel
 #TARGET_KERNEL_DTB_APPEND := $(LOCAL_PATH)/prebuilts/dtb
 TARGET_KERNEL_CONFIG := d0nkern_t1_defconfig
-BOARD_KERNEL_IMAGE_NAME := Image.gz
-#MTK_APPENDED_DTB_SUPPORT := yes
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+MTK_APPENDED_DTB_SUPPORT := yes
 
 # Images
 TARGET_NO_BOOTLOADER := true

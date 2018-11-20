@@ -1,26 +1,26 @@
-GAPPS_VARIANT := mini
-GAPPS_PRODUCT_PACKAGES += \
+GAPPS_VARIANT := nano
+APPS_PRODUCT_PACKAGES += \
   CMAudioFX \
-  CameraGoogle \
-  Chrome \
-  DialerGoogle \
+  CalculatorGoogle \
   CarrierServices \
+  ClockGoogle \
+  Chrome \
+  CameraGoogle \
   DialerFramework \
-  GmsCoreSetupPrebuilt \
-  PrebuiltGmsCore \
-  PrebuiltGmsCoreInstantApps \
-  GoogleDialer \
-  GoogleExtServices \
-  GoogleServicesFramework \
-  GCS
+  DialerGoogle \
+  ExchangeGoogle \
+  GCS \
+  Maps \
+  Translate \
 
-GAPPS_EXCLUDED_PACKAGES := \
-  YouTube \
-  TagGoogle \
-  GoogleNow \
-  Hangouts \
-  GooglePlus \
-  Search
+APPS_EXCLUDED_PACKAGES := \
+  Wellbeing
+# YouTube \
+# TagGoogle \
+# GoogleNow \
+# Hangouts \
+# GooglePlus \
+# Search
 
 PRODUCT_PACKAGES += \
   BackupRestoreConfirmation \
@@ -49,6 +49,7 @@ PRODUCT_PACKAGES += \
   droiddriver \
   com.google.android.gms \
   com.google.android.gsf \
+  com.android.server \
   com.android.future.usb.accessory \
   com.android.location.provider \
   com.android.location.provider.xml \
@@ -148,8 +149,6 @@ PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
   frameworks/native/data/etc/android.hardware.camera.raw.xml:system/etc/permissions/android.hardware.camera.raw.xml
 
-PRODUCT_SYSTEM_SERVER_JARS += com.cyanogenmod.keyhandler
-
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
 
@@ -168,7 +167,9 @@ PRODUCT_PACKAGES += \
   libwifi-hal-mt66xx \
   lib_driver_cmd_mt66xx \
   xlibcamera_client_mtk \
+  power.default \
   power.mt6757 \
+  lights.default \
   lights.mt6757 \
   libbthost_if \
   libepos \
@@ -180,8 +181,10 @@ PRODUCT_PACKAGES += \
   bwc \
   bwc_test \
   libbwc \
+  gps.default \
   gps.mt6757 \
   libccci_util \
+  radio.fm.default \
   radio.fm.mt6757 \
   libfmcust \
   Snap \
@@ -250,6 +253,8 @@ PRODUCT_PACKAGES += \
   lsm303md \
   magd \
   matv \
+  vulkan \
+  libvulkan \
   mbimd \
   mc6420d \
   md_ctrl \

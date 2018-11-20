@@ -24,7 +24,7 @@ done
 for I in $(find * -type f -name "*.ini" -or -name "*.rc" -or -name "*.xml" -or -name "*.cfg" -or -name "*.conf" -or -name "*.cnf") ;do
   grep -qs $I $ddir/blackbins.lst && continue
   BIN=$(basename $I)
-  grep -qs "^LOCAL_MODULE := ${BIN%.*}$" $AMAKE && continue
+  grep -qs "LOCAL_MODULE := ${BIN}" $AMAKE && continue
   SUF="$(echo $I |awk -F'.' '{print $NF}')"
   echo $I
   BDIR="$(dirname $I)"
