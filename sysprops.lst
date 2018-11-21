@@ -205,7 +205,7 @@
   ril.read.imsi=1 \\
   ril.specific.sm_cause=0 \\
   ril.telephony.mode=0 \\
-  rild.libpath=libmal_rilproxy.so \\
+  rild.libpath=mtk-rilproxy.so \\
   rild.libargs=-d /dev/ttyC0 \\
   ro.CALENDAR_VALUE_TYPE=4 \\
   ro.REMOVE_HALL_TEST=yes \\
