@@ -19,7 +19,7 @@ ro.meiguo.battery.mode=15
 gq.auto.wallpaper=yes
 
 # MTK ril
-rild.libpath=mtk-ril.so
+rild.libpath=libmal_rilproxy.so
 rild.libargs=-d /dev/ttyC0
 ril.specific.sm_cause=0
 ril.external.md=0

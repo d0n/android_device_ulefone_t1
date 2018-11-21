@@ -80,8 +80,8 @@ BOARD_EGL_NEEDS_FNW := true
 BOARD_HAS_MTK_HARDWARE := true
 BOARD_USES_MTK_HARDWARE := true
 BOARD_HAS_FLIPPED_SCREEN := true
-#BOARD_ROOT_EXTRA_FOLDERS := system/vendor/firmware system/vendor/firmware/customfilter
-#LOCAL_POST_INSTALL_CMD := ln -sf /system/vendor/etc $(TARGET_ROOT_OUT)/etc;
+#BOARD_ROOT_EXTRA_FOLDERS := system/vendor/firmware
+LOCAL_POST_INSTALL_CMD := ln -sf /system/vendor/etc/firmware $(TARGET_ROOT_OUT)/system/vendor/firmware;
 BOARD_EGL_CFG := $(DEVICE_PATH)/configs/egl.cfg
 BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/cmhw
 
