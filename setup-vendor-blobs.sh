@@ -10,7 +10,7 @@ VMAKE=${OUTDIR}/VendorBoardConfig.mk
 cd $OUTDIR/proprietary >/dev/null
 for I in $(find bin/ vendor/bin vendor/firmware -type f) ;do
   grep -qs $I $AMAKE && continue
-  grep -qs $I $ddir/blackbins.lst && continue
+  grep -qs "^$(basename $I)\$" $ddir/blackbins.lst && continue
   echo $I
   BIN=$(basename $I)
   BDIR="$(dirname $I)"
@@ -36,8 +36,7 @@ for I in $(find * -type f -name "*.ini" -or -name "*.rc" -or -name "*.xml" -or -
   printf "LOCAL_MODULE_PATH := \$(PRODUCT_OUT)/system/${BDIR}\ninclude \$(BUILD_PREBUILT)\n\n" >>$AMAKE
   printf "  ${BIN} \\\\\n" >>$VMAKE
 done
-for I in $(find * -type f) ;do
-  grep -qs "^LOCAL_MODULE := ${I%.*}" $AMAKE && continue
+for I in $(find * -type f -not -name *.apk) ;do
   echo $I
   printf "  vendor/$VENDOR/$DEVICE/proprietary/${I}:system/${I} \\\\\n" >> $BMAKE
 done

@@ -53,9 +53,9 @@ for I in $(find lib* vendor/lib* -type f) ;do
   printf "  ${LIB%.*} \\\\\n" >> $VMAKE
 done
 for I in $(find * -type f -name *.jar) ;do
-  grep -qs $I $ddir/blacklibs.lst && continue
+  grep -qs "^$I\$" ./blacklibs.lst && continue
   BIN=$(basename $I)
-  grep -qs "^LOCAL_MODULE := ${BIN%.*}$" $AMAKE && continue
+  grep -qs "^LOCAL_MODULE := ${BIN%.*}\$" $AMAKE && continue
   SUF="$(echo $I |awk -F'.' '{print $NF}')"
   echo $I
   BDIR="$(dirname $I)"
