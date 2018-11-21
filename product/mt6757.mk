@@ -1,4 +1,4 @@
-GAPPS_VARIANT := nano
+GAPPS_VARIANT := mini
 #APPS_PRODUCT_PACKAGES += \
 #  CMAudioFX \
 #  CMParts \
@@ -50,8 +50,8 @@ PRODUCT_PACKAGES += \
   vtservice \
   libccci_util \
   droiddriver \
-  com.google.android.gms \
-  com.google.android.gsf \
+  hwcomposer.default \
+  hwcomposer.mt6757 \
   com.android.server \
   com.android.future.usb.accessory \
   com.android.location.provider \
@@ -73,6 +73,8 @@ PRODUCT_PACKAGES += \
   iptables \
   keystore \
   keystore.default \
+  keystore.mt6757 \
+  keystore.v1.trustkernel \
   libMtkOmxApeDec \
   libOpenMAXAL \
   libOpenSLES \
@@ -93,6 +95,7 @@ PRODUCT_PACKAGES += \
   libged \
   libmdp \
   libgralloc \
+  gralloc.mt6757 \
   libgralloc_extra \
   libgui \
   libgui_ext \
@@ -115,6 +118,9 @@ PRODUCT_PACKAGES += \
   make_ext4fs \
   mediatek-framework \
   mtkcamera_parameters \
+  camera.mt6757 \
+  memtrack.mt6757 \
+  vulkan.mt6757 \
   resize2fs \
   screencap \
   sensorservice \
@@ -126,6 +132,9 @@ PRODUCT_PACKAGES += \
   uiautomator \
   uncrypt \
   voip-common \
+  vibrator.default \
+  consumerir.mt6757 \
+  audio.primary.mt6757 \
   webview \
   wifi-service \
   perfprofd \
@@ -272,7 +281,7 @@ PRODUCT_PACKAGES += \
   mfv_ut \
   mnld \
   mobile_log_d \
-  7mrdump_tool \
+  mrdump_tool \
   msensord \
   mtk_agpsd \
   mtkmal \
@@ -323,7 +332,6 @@ PRODUCT_PACKAGES += \
   wmt_launcher \
   wmt_loader \
   wmt_loopback \
-  android.hardware.wifi@1.0-service \
   lib_driver_cmd_mt66xx \
   libwpa_client \
   hostapd \

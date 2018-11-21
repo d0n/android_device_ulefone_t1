@@ -312,7 +312,7 @@
   ro.cdma.cfu.disable=*720 \\
   ro.cdma.cfu.enable=*72 \\
   ro.cdma.cw.disable=*740 \\
-  ro.cdma.cw.enable=*74 \\
+  ro.cdma.cw.enable=*74 \\ <F6>z67zu
   ro.closescreen.timeout=6000 \\
   ro.cloud.settings.ui=0 \\
   ro.com.android.dateformat=yyyy-MM-dd \\
@@ -330,8 +330,9 @@
   ro.gsm.2nd_data_retry_config=max_retries=1,15000 \\
   ro.telephony.get_imsi_from_sim=true \\
   ro.telephony.gsm-routes-us-smsc=0 \\
-  ro.telephony.ril.config=writeaidonly,usevoicetechfordata \\
-  ro.telephony.ril.v3=writeaidonly,signalstrength \\
+  ro.telephony.ril.config=fakeiccid \\
+  security.perf_harden=1 \\
+  ro.dalvik.vm.native.bridge=0 \\
   ro.config.nav_bar_show=yes \\
   ro.mot.ds.fastdormancy.disable=true \\
   ro.mot.eri=0 \\
