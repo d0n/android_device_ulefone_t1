@@ -11,8 +11,6 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src)
 LOCAL_PACKAGE_NAME := EngineerMode
 LOCAL_CERTIFICATE := platform
 
-LOCAL_MODULE := EngineerMode
-
 # to let app run on 32-bit space
 #LOCAL_JNI_SHARED_LIBRARIES := libem_platform32_dummy
 

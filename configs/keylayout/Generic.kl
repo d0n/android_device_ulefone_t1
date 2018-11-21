@@ -121,7 +121,7 @@ key 98    NUMPAD_DIVIDE
 key 99    SYSRQ
 key 100   ALT_RIGHT
 # key 101 "KEY_LINEFEED"
-key 102   HOME
+key 102   MOVE_HOME
 key 103   DPAD_UP
 key 104   PAGE_UP
 key 105   DPAD_LEFT
@@ -191,7 +191,7 @@ key 168   MEDIA_REWIND
 key 169   CALL
 # key 170 "KEY_ISO"
 key 171   MUSIC
-key 172   MOVE_HOME
+key 172   HOME
 # key 173 "KEY_REFRESH"
 # key 174 "KEY_EXIT"
 # key 175 "KEY_MOVE"
@@ -202,13 +202,17 @@ key 179   NUMPAD_LEFT_PAREN
 key 180   NUMPAD_RIGHT_PAREN
 # key 181 "KEY_NEW"
 # key 182 "KEY_REDO"
-# key 183   F13
-# key 184   F14
-# key 185   F15
-# key 186   F16
-# key 187   F17
-# key 188   F18
-# key 189   F19
+#OS: modify NMOKUAI-6 by panminjie 20161021 start
+key 183   F13
+#OS: modify NMOKUAI-6 by panminjie 20161021 end
+#modify fingerprit_key by wenbo.yin 20161121 start
+key 184   FP_WAKEUP
+key 185   FP_LONG_PRESS
+key 186   FP_LEFT
+key 187   FP_RIGHT
+key 188   FP_UP
+key 189   FP_DOWN
+#modify fingerprit_key by wenbo.yin 20161121 end
 # key 190   F20
 # key 191   F21
 # key 192   F22
@@ -297,15 +301,11 @@ key 315   BUTTON_START
 key 316   BUTTON_MODE
 key 317   BUTTON_THUMBL
 key 318   BUTTON_THUMBR
+#OS: add by lulingjie for hall 20161027 start
+key 356   HALL_CLOSE
+key 357   HALL_OPEN
+#OS: add by lulingjie for hall 20161027 end
 
-#[AGOLD][2016.09.05]taoqiong start
-key 249   FUNC1
-key 250   FUNC2
-#[AGOLD]End
-
-# agold 20170523 gaowanpeng start
-key 253	  ENDCALL
-# agold end
 
 # key 352 "KEY_OK"
 key 353   DPAD_CENTER
