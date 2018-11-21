@@ -1,3 +1,66 @@
+GAPPS_VARIANT := nano
+APPS_PRODUCT_PACKAGES += \
+  CMAudioFX \
+  CMParts \
+  CalculatorGoogle \
+  CarrierServices \
+  ClockGoogle \
+  Chrome \
+  CameraGoogle \
+  PrebuiltGmsCore \
+  DialerFramework \
+  DialerGoogle \
+  ExchangeGoogle \
+  GCS \
+  Maps \
+  Translate \
+
+APPS_EXCLUDED_PACKAGES := \
+  Wellbeing
+# YouTube \
+# TagGoogle \
+# GoogleNow \
+# Hangouts \
+# GooglePlus \
+# Search
+
+# Ramdisks
+PRODUCT_COPY_FILES += \
+  $(LOCAL_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
+  $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
+  $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
+  $(LOCAL_PATH)/rootdir/meta_init.connectivity.rc:root/meta_init.connectivity.rc \
+  $(LOCAL_PATH)/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
+  $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \
+  $(LOCAL_PATH)/rootdir/meta_init.rc:root/meta_init.rc \
+  $(LOCAL_PATH)/rootdir/multi_init.rc:root/multi_init.rc \
+  $(LOCAL_PATH)/rootdir/factory_init.connectivity.rc:root/factory_init.connectivity.rc \
+  $(LOCAL_PATH)/rootdir/fstab.mt6757:root/fstab.mt6757 \
+  $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
+  $(LOCAL_PATH)/rootdir/init.aee.rc:root/init.aee.rc \
+  $(LOCAL_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc \
+  $(LOCAL_PATH)/rootdir/init.common_svc.rc:root/init.common_svc.rc \
+  $(LOCAL_PATH)/rootdir/init.epdg.rc:root/init.epdg.rc \
+  $(LOCAL_PATH)/rootdir/init.fingerprint.rc:root/init.fingerprint.rc \
+  $(LOCAL_PATH)/rootdir/init.modem.rc:root/init.modem.rc \
+  $(LOCAL_PATH)/rootdir/init.mt6757.rc:root/init.mt6757.rc \
+  $(LOCAL_PATH)/rootdir/init.mt6757.usb.rc:root/init.mt6757.usb.rc \
+  $(LOCAL_PATH)/rootdir/init.project.rc:root/init.project.rc \
+  $(LOCAL_PATH)/rootdir/init.rilproxy.rc:root/init.rilproxy.rc \
+  $(LOCAL_PATH)/rootdir/init.sensor.rc:root/init.sensor.rc \
+  $(LOCAL_PATH)/rootdir/init.trustkernel.rc:root/init.trustkernel.rc \
+  $(LOCAL_PATH)/rootdir/init.volte.rc:root/init.volte.rc \
+  $(LOCAL_PATH)/rootdir/ueventd.mt6757.rc:root/ueventd.mt6757.rc \
+  $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab \
+  bionic/libc/zoneinfo/tzdata:system/usr/share/zoneinfo/tzdata
+
+# Sepolicy
+BOARD_SEPOLICY_DIRS := \
+  $(LOCAL_PATH)/sepolicy
+BOARD_SECCOMP_POLICY := \
+  $(LOCAL_PATH)/seccomp
+
+
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
@@ -11,6 +74,7 @@ PRODUCT_PACKAGES += \
     libtinycompress \
     libtinyxml \
     tinymix
+
 # CM's Snap camera
 PRODUCT_PACKAGES += \
 	Snap
@@ -94,8 +158,8 @@ PRODUCT_COPY_FILES += \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
-	device/samsung/j7maxlte/configs/media_profiles.xml:system/etc/media_profiles.xml \
-	device/samsung/j7maxlte/configs/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml
+	device/ulefone/t1/configs/media_profiles.xml:system/etc/media_profiles.xml \
+	device/ulefone/t1/configs/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml
 
 # Charger
 PRODUCT_PACKAGES += \
