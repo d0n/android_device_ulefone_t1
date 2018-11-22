@@ -38,4 +38,4 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
 $(call inherit-product, vendor/mediatek/config/common.mk)
 $(call inherit-product, vendor/ulefone/t1/t1-vendor.mk)
-$(call inherit-product, vendor/ulefone/t1/VendorBoardConfig.mk)
+include vendor/ulefone/t1/VendorBoardConfig.mk

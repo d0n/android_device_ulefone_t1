@@ -43,12 +43,33 @@ for I in $(find lib* vendor/lib* -type f) ;do
     echo "\033[31mERROR: $I\033[0m"
   fi
   if [ "$LIB" == "libRSDriver_mtk.so" ] || [ "$LIB" == "libRSDriverArm.so" ] || [ "$LIB" == "libOpenCLIcd.so" ] || [ "$LIB" == "libOpenCL.so" ] ;then
-    printf "LOCAL_SHARED_LIBRARIES = libc++ libz libutils libRS_internal libbcinfo liblog libEGL libGLESv1_CM libGLESv2 libnativewindow\n" >> $AMAKE
-  elif [ "$LIB" == "libaudiopolicymanagerdefault.so" ] ;then
-	printf "LOCAL_EXPORT_C_INCLUDES := \$(DEVICE_PATH)/include\n" >> $AMAKE
+    SHRLIBS="libc++ libz libutils libRS_internal libbcinfo liblog libEGL libGLESv1_CM libGLESv2 libnativewindow"
+  elif [ "$LIB" == "gralloc.mt6757.so" ] ;then
+    SHRLIBS="libhardware libGLESv1_CM libion libgralloc_extra libion_mtk libc++"
+  elif [ "$LIB" == "libmal_mdmngr.so" ] ;then
+    SHRLIBS="libmdfx libc++"
+  elif [ "$LIB" == "libmtk_vt_service.so" ] ;then
+    SHRLIBS="libandroid_runtime libbinder libnativehelper libui libgui libmedia libimsma libtmal libsource libimsma_rtp libmtk_vt_swip libvt_avsync libvt_socketbind libmtk_vt_utils libstagefright_foundation libc++"
+  elif [ "$LIB" == "libmtk_vt_swip.so" ] ;then
+    SHRLIBS="libmtk_vt_utils libstagefright libc++"
+  elif [ "$LIB" == "libnvram.so" ] ;then
+    SHRLIBS="libcustom_nvram libnvram_platform libnvram_sec libc++"
+  elif [ "$LIB" == "libvt_avsync.so" ] ;then
+    SHRLIBS="libbinder libc++"
+  elif [ "$LIB" == "libvt_socketbind.so" ] ;then
+    SHRLIBS="libbinder libc++"
   elif [ "$LIB" == "libvtmal.so" ] ;then
-    printf "LOCAL_SHARED_LIBRARIES = libc++ libutils libcutils libbinder libmtk_symbols\n" >> $AMAKE
+    SHRLIBS="libc++ libutils libcutils libbinder libmtk_symbols"
+  elif [ "$LIB" == "volte_imsm.so" ] ;then
+    SHRLIBS="libmal libc++"
+  elif [ "$LIB" == "ccci_fsd.so" ] ;then
+    SHRLIBS="libnvram libhardware_legacy libc++"
+  elif [ "$LIB" == "nvram_agent_binder.so" ] ;then
+    SHRLIBS="libbinder libnvram libfile_op libc++"
+  else
+    SHRLIBS="libc++"
   fi
+  printf "LOCAL_SHARED_LIBRARIES := ${SHRLIBS}\n" >> $AMAKE
   printf "include \$(PREBUILT_SHARED_LIBRARY)\n\n" >> $AMAKE
   printf "  ${LIB%.*} \\\\\n" >> $VMAKE
 done
@@ -61,12 +82,12 @@ for I in $(find * -type f -name *.jar) ;do
   BDIR="$(dirname $I)"
   VDIR="$(echo $I |awk -F'/' '{print $1}')"
   SRCS="proprietary/$I"
-  if [ "$(basename $BDIR)" == "framework" ] ;then
+  if [ "$(basename $BDIR)" == "framework" ] && [ -f $BDIR/arm/boot-${BIN%.*}.art -a -f arm64/boot-${BIN%.*}.art ] ;then
     SRCS="proprietary/$I \\\\\n  \$(LOCAL_PATH)/proprietary/framework/arm/boot-${BIN%.*}.art \\\\\n  \$(LOCAL_PATH)/proprietary/framework/arm/boot-${BIN%.*}.oat \\\\\n  \$(LOCAL_PATH)/proprietary/framework/arm64/boot-${BIN%.*}.art \\\\\n  \$(LOCAL_PATH)/proprietary/framework/arm64/boot-${BIN%.*}.oat"
+  elif [ "$(basename $BDIR)" == "framework" ] && [ -f $BDIR/oat/arm/${BIN%.*}.odex -a -f $BDIR/oat/arm64/${BIN%.*}.odex ] ;then
+    SRCS="proprietary/$I \\\\\n  \$(LOCAL_PATH)/proprietary/framework/oat/arm/${BIN%.*}.odex \\\\\n  \$(LOCAL_PATH)/proprietary/framework/oat/arm64/${BIN%.*}.odex\n"
   fi
   printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${BIN%.*}\nLOCAL_SRC_FILES := ${SRCS}\nLOCAL_DEX_PREOPT := false\nLOCAL_MODULE_CLASS := JAVA_LIBRARIES\nLOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)\n" >>$AMAKE
-  #if [ "$SUF" == "jar" ] ;then
-	#fi
   if [ "$(echo $I |awk -F'/' '{print $1}')" == "vendor" ] ;then
     printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE
   fi

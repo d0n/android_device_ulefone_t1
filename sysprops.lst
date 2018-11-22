@@ -248,7 +248,7 @@
   ro.agui.system.gesture=yes \\
   ro.agui.tee.test=yes \\
   ro.agui.tpd.add.gesture=yes \\
-  ro.agui.usbstorage.name=d0ndroid \\
+  ro.agui.usbstorage.name=T1 \\
   ro.agui_default_storage_sd=yes \\
   ro.agui_double_tap_power_cam=yes \\
   ro.agui_fingerprint.function=yes \\
@@ -531,6 +531,7 @@
   ro.nor.sph.vol=unknown \\
   ro.nosignal.hideicons=yes \\
   ro.num_md_protocol=2 \\
+  ro.opt_md5_support=1 \\
   ro.oem_unlock_supported=1 \\
   ro.one.key.sos.mode=0 \\
   ro.only_china_geo=0 \\

@@ -13,8 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-$(shell mkdir -p $(OUT)/obj/busybox $(OUT)/obj/KERNEL_OBJ/usr)
+$(shell mkdir -p $(OUT)/obj/busybox $(OUT)/obj/KERNEL_OBJ)
 include $(CLEAR_VARS)
 LOCAL_PATH := $(call my-dir)
 PROJECT_FOLDER := device/ulefone/t1
+$(shell cp -r $(PROJECT_FOLDER)/prebuilts/usr $(OUT)/obj/KERNEL_OBJ)
 include $(call all-makefiles-under,$(LOCAL_PATH))
