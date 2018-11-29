@@ -1,0 +1,1710 @@
+diff --git a/assets/carrier_config_20404.xml b/assets/carrier_config_20404.xml
+index e1ceb34..f01f077 100644
+--- a/assets/carrier_config_20404.xml
++++ b/assets/carrier_config_20404.xml
+@@ -4,47 +4,13 @@
+         <int name="maxImageHeight" value="1944" />
+         <int name="maxMessageSize" value="1048576" />
+         <int name="maxImageWidth" value="2592" />
++        <int name="wfc_settings_ux_type" value="1"/>
++        <int name="default_wfc_mode" value="1"/>
++        <string name="wifi_calling_optr">Vodafone NL Wi-Fi</string>        
+     </carrier_config>
+     <carrier_config gid1="BAE0000000000000">
+-        <boolean name="mdn_is_additional_voicemail_number_bool" value="true" />
+         <boolean name="allow_adding_apns_bool" value="false" />
+         <boolean name="broadcast_emergency_call_state_changes_bool" value="true" />
+         <string name="carrier_eri_file_name_string">eri_311480.xml</string>
+-        <int name="carrier_default_wfc_ims_mode_int" value="1"/>
+-        <boolean name="editable_wfc_mode_bool" value="false"/>
+-        <boolean name="disable_severe_when_extreme_disabled_bool" value="false" />
+-        <int name="wfc_spn_format_idx_int" value="1" />
+-        <string-array name="read_only_apn_fields_string_array" num="20">
+-            <item value="name" />
+-            <item value="proxy" />
+-            <item value="port" />
+-            <item value="user" />
+-            <item value="password" />
+-            <item value="server" />
+-            <item value="mmsc" />
+-            <item value="mmsproxy" />
+-            <item value="mmsport" />
+-            <item value="mcc" />
+-            <item value="mnc" />
+-            <item value="authtype" />
+-            <item value="type" />
+-            <item value="protocol" />
+-            <item value="roaming_protocol" />
+-            <item value="bearer" />
+-            <item value="bearer_bitmask" />
+-            <item value="carrier_enabled" />
+-            <item value="mvno_type" />
+-            <item value="mvno_match_data" />
+-        </string-array>
+-        <string-array name="carrier_metered_apn_types_strings" num="3">
+-            <item value="default" />
+-            <item value="dun" />
+-            <item value="supl" />
+-        </string-array>
+-        <string-array name="carrier_metered_roaming_apn_types_strings" num="3">
+-            <item value="default" />
+-            <item value="dun" />
+-            <item value="supl" />
+-        </string-array>
+     </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_20815.xml b/assets/carrier_config_20815.xml
+index 041b2a1..b80ef47 100644
+--- a/assets/carrier_config_20815.xml
++++ b/assets/carrier_config_20815.xml
+@@ -4,8 +4,5 @@
+ <int name="maxImageHeight" value="1944" />
+ <int name="maxMessageSize" value="614400" />
+ <int name="maxImageWidth" value="2592" />
+-<string-array name="gsm_nonroaming_networks_string_array" num="1">
+-    <item value="20801" />
+-</string-array>
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_20826.xml b/assets/carrier_config_20826.xml
+index 536f7a1..b80ef47 100644
+--- a/assets/carrier_config_20826.xml
++++ b/assets/carrier_config_20826.xml
+@@ -4,9 +4,5 @@
+ <int name="maxImageHeight" value="1944" />
+ <int name="maxMessageSize" value="614400" />
+ <int name="maxImageWidth" value="2592" />
+-<string-array name="gsm_nonroaming_networks_string_array" num="2">
+-    <item value="20801" />
+-    <item value="20810" />
+-</string-array>
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_21401.xml b/assets/carrier_config_21401.xml
+index 0740eed..0c13810 100644
+--- a/assets/carrier_config_21401.xml
++++ b/assets/carrier_config_21401.xml
+@@ -4,5 +4,8 @@
+ <boolean name="csp_enabled_bool" value="true" />
+ <boolean name="carrier_volte_available_bool" value="true" />
+ <int name="volte_replacement_rat_int" value="3" />
++<int name="wfc_settings_ux_type" value="1"/>
++<int name="default_wfc_mode" value="1"/>
++<string name="wifi_calling_optr">Vodafone WiFi Call</string>
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_21407.xml b/assets/carrier_config_21407.xml
+index 05203d9..dc743a2 100644
+--- a/assets/carrier_config_21407.xml
++++ b/assets/carrier_config_21407.xml
+@@ -4,6 +4,5 @@
+ <int name="maxImageHeight" value="1944" />
+ <int name="maxMessageSize" value="512000" />
+ <int name="maxImageWidth" value="2592" />
+-<boolean name="enabledNotifyWapMMSC" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_21421.xml b/assets/carrier_config_21421.xml
+index 77dc2a1..b5a67d3 100644
+--- a/assets/carrier_config_21421.xml
++++ b/assets/carrier_config_21421.xml
+@@ -2,27 +2,5 @@
+ <carrier_config_list>
+     <carrier_config>
+         <boolean name="carrier_use_ims_first_for_emergency_bool" value="false" />
+-        <string-array name="gsm_nonroaming_networks_string_array" num="20">
+-            <item value="21401" />
+-            <item value="21402" />
+-            <item value="21403" />
+-            <item value="21404" />
+-            <item value="21405" />
+-            <item value="21406" />
+-            <item value="21407" />
+-            <item value="21408" />
+-            <item value="21409" />
+-            <item value="21410" />
+-            <item value="21411" />
+-            <item value="21412" />
+-            <item value="21413" />
+-            <item value="21414" />
+-            <item value="21415" />
+-            <item value="21416" />
+-            <item value="21417" />
+-            <item value="21418" />
+-            <item value="21419" />
+-            <item value="21420" />
+-        </string-array>
+     </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_22801.xml b/assets/carrier_config_22801.xml
+new file mode 100644
+index 0000000..4a475d1
+--- /dev/null
++++ b/assets/carrier_config_22801.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="show_open_mobile_data_dialog" value="false" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_23001.xml b/assets/carrier_config_23001.xml
+index baa0c55..144cf67 100644
+--- a/assets/carrier_config_23001.xml
++++ b/assets/carrier_config_23001.xml
+@@ -2,7 +2,6 @@
+ <carrier_config_list>
+ <carrier_config>
+ <boolean name="carrier_volte_available_bool" value="true" />
+-<boolean name="display_hd_audio_property_bool" value="false" />
+ <int name="volte_replacement_rat_int" value="3" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_23003.xml b/assets/carrier_config_23003.xml
+new file mode 100644
+index 0000000..a41c8b6
+--- /dev/null
++++ b/assets/carrier_config_23003.xml
+@@ -0,0 +1,8 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<int name="wfc_settings_ux_type" value="1"/>
++<int name="default_wfc_mode" value="1"/>
++<string name="wifi_calling_optr">Vodafone WiFi Call</string>
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_23402.xml b/assets/carrier_config_23402.xml
+index beac1cc..9f000bf 100644
+--- a/assets/carrier_config_23402.xml
++++ b/assets/carrier_config_23402.xml
+@@ -2,7 +2,5 @@
+ <carrier_config_list>
+ <carrier_config>
+ <boolean name="prefer_2g_bool" value="false" />
+-<boolean name="voicemail_notification_persistent_bool" value="true" />
+-<boolean name="enabledNotifyWapMMSC" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_23410.xml b/assets/carrier_config_23410.xml
+index bbbb5d6..08eeff2 100644
+--- a/assets/carrier_config_23410.xml
++++ b/assets/carrier_config_23410.xml
+@@ -3,17 +3,5 @@
+ <carrier_config>
+ <int name="smsToMmsTextThreshold" value="10" />
+ <boolean name="prefer_2g_bool" value="false" />
+-<boolean name="voicemail_notification_persistent_bool" value="true" />
+-<boolean name="enabledNotifyWapMMSC" value="true" />
+-<string-array name="gsm_nonroaming_networks_string_array" num="8">
+-    <item value="23420" />
+-    <item value="23426" />
+-    <item value="23430" />
+-    <item value="23431" />
+-    <item value="23432" />
+-    <item value="23433" />
+-    <item value="23434" />
+-    <item value="23486" />
+-</string-array>
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_23411.xml b/assets/carrier_config_23411.xml
+index beac1cc..9f000bf 100644
+--- a/assets/carrier_config_23411.xml
++++ b/assets/carrier_config_23411.xml
+@@ -2,7 +2,5 @@
+ <carrier_config_list>
+ <carrier_config>
+ <boolean name="prefer_2g_bool" value="false" />
+-<boolean name="voicemail_notification_persistent_bool" value="true" />
+-<boolean name="enabledNotifyWapMMSC" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_23415.xml b/assets/carrier_config_23415.xml
+index ebeb778..96ec0a2 100644
+--- a/assets/carrier_config_23415.xml
++++ b/assets/carrier_config_23415.xml
+@@ -2,8 +2,8 @@
+ <carrier_config_list>
+ <carrier_config>
+ <int name="smsToMmsTextThreshold" value="10" />
+-<string-array name="read_only_apn_types_string_array" num="1">
+-    <item value="*" />
+-</string-array>
++<int name="wfc_settings_ux_type" value="0"/>
++<int name="default_wfc_mode" value="1"/>
++<string name="wifi_calling_optr">Vodafone WiFi Call</string>
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_23430.xml b/assets/carrier_config_23430.xml
+index e799c8e..540f250 100644
+--- a/assets/carrier_config_23430.xml
++++ b/assets/carrier_config_23430.xml
+@@ -4,17 +4,5 @@
+         <boolean name="prefer_2g_bool" value="false" />
+         <int name="wfc_spn_format_idx_int" value="1" />
+         <string-array name="wfc_operator_error_codes_string_array" num="1"><item value="REG09|0" /></string-array>
+-        <string-array name="gsm_nonroaming_networks_string_array" num="6">
+-            <item value="23430" />
+-            <item value="23431" />
+-            <item value="23432" />
+-            <item value="23433" />
+-            <item value="23434" />
+-            <item value="23486" />
+-        </string-array>
+-    </carrier_config>
+-    <carrier_config gid1="28000000">
+-        <boolean name="carrier_name_override_bool" value="true" />
+-        <string name="carrier_name_string">Virgin</string>
+     </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_23433.xml b/assets/carrier_config_23433.xml
+index e799c8e..05cbf7c 100644
+--- a/assets/carrier_config_23433.xml
++++ b/assets/carrier_config_23433.xml
+@@ -1,20 +1,11 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+     <carrier_config>
++        <int name="vvm_port_number_int" value="20481" />
++        <string name="vvm_destination_number_string">887</string>
++        <string name="vvm_type_string">vvm_type_omtp</string>
+         <boolean name="prefer_2g_bool" value="false" />
+         <int name="wfc_spn_format_idx_int" value="1" />
+         <string-array name="wfc_operator_error_codes_string_array" num="1"><item value="REG09|0" /></string-array>
+-        <string-array name="gsm_nonroaming_networks_string_array" num="6">
+-            <item value="23430" />
+-            <item value="23431" />
+-            <item value="23432" />
+-            <item value="23433" />
+-            <item value="23434" />
+-            <item value="23486" />
+-        </string-array>
+-    </carrier_config>
+-    <carrier_config gid1="28000000">
+-        <boolean name="carrier_name_override_bool" value="true" />
+-        <string name="carrier_name_string">Virgin</string>
+     </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_23434.xml b/assets/carrier_config_23434.xml
+index cfd3002..5ef7a19 100644
+--- a/assets/carrier_config_23434.xml
++++ b/assets/carrier_config_23434.xml
+@@ -4,13 +4,5 @@
+ <int name="vvm_port_number_int" value="20481" />
+ <string name="vvm_destination_number_string">887</string>
+ <string name="vvm_type_string">vvm_type_omtp</string>
+-<string-array name="gsm_nonroaming_networks_string_array" num="6">
+-    <item value="23430" />
+-    <item value="23431" />
+-    <item value="23432" />
+-    <item value="23433" />
+-    <item value="23434" />
+-    <item value="23486" />
+-</string-array>
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_26202.xml b/assets/carrier_config_26202.xml
+index 144cf67..ad3d653 100644
+--- a/assets/carrier_config_26202.xml
++++ b/assets/carrier_config_26202.xml
+@@ -3,5 +3,7 @@
+ <carrier_config>
+ <boolean name="carrier_volte_available_bool" value="true" />
+ <int name="volte_replacement_rat_int" value="3" />
++<int name="wfc_settings_ux_type" value="0"/>
++<string name="wifi_calling_optr">Vodafone NL Wi-Fi</string>
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_26207.xml b/assets/carrier_config_26207.xml
+index 6b98e22..b80ef47 100644
+--- a/assets/carrier_config_26207.xml
++++ b/assets/carrier_config_26207.xml
+@@ -4,11 +4,5 @@
+ <int name="maxImageHeight" value="1944" />
+ <int name="maxMessageSize" value="614400" />
+ <int name="maxImageWidth" value="2592" />
+-<string-array name="gsm_nonroaming_networks_string_array" num="3">
+-<item value="26203" />
+-<item value="26205" />
+-<item value="26277" />
+-</string-array>
+-<boolean name="enabledNotifyWapMMSC" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_29401.xml b/assets/carrier_config_29401.xml
+index e961712..86e05c3 100644
+--- a/assets/carrier_config_29401.xml
++++ b/assets/carrier_config_29401.xml
+@@ -4,6 +4,5 @@
+ <int name="maxImageHeight" value="1944" />
+ <int name="maxMessageSize" value="102400" />
+ <int name="maxImageWidth" value="2592" />
+-<boolean name="display_hd_audio_property_bool" value="false" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_29501.xml b/assets/carrier_config_29501.xml
+new file mode 100644
+index 0000000..4a475d1
+--- /dev/null
++++ b/assets/carrier_config_29501.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="show_open_mobile_data_dialog" value="false" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_302220.xml b/assets/carrier_config_302220.xml
+index 13473c1..d247feb 100644
+--- a/assets/carrier_config_302220.xml
++++ b/assets/carrier_config_302220.xml
+@@ -8,8 +8,5 @@
+         <int name="maxMessageSize" value="1048576" />
+         <int name="maxImageWidth" value="2592" />
+         <boolean name="voicemail_notification_persistent_bool" value="true" />
+-        <string-array name="read_only_apn_types_string_array" num="1">
+-            <item value="*" />
+-        </string-array>
+     </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_302370.xml b/assets/carrier_config_302370.xml
+index 359deb3..714e34c 100644
+--- a/assets/carrier_config_302370.xml
++++ b/assets/carrier_config_302370.xml
+@@ -7,15 +7,5 @@
+ <int name="maxSubjectLength" value="80" />
+ <int name="maxMessageSize" value="1048576" />
+ <int name="maxImageWidth" value="2592" />
+-<string-array name="read_only_apn_types_string_array" num="1">
+-    <item value="*" />
+-</string-array>
+-<string-array name="gsm_nonroaming_networks_string_array" num="5">
+-    <item value="302220" />
+-    <item value="302610" />
+-    <item value="302660" />
+-    <item value="302720" />
+-    <item value="302780" />
+-</string-array>
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_302610.xml b/assets/carrier_config_302610.xml
+index 14f02e0..c597ac7 100644
+--- a/assets/carrier_config_302610.xml
++++ b/assets/carrier_config_302610.xml
+@@ -4,14 +4,12 @@
+         <int name="smsToMmsTextThreshold" value="8" />
+         <int name="recipientLimit" value="20" />
+         <int name="maxImageHeight" value="1944" />
++        <boolean name="config_cellBroadcastAppLinks" value="false" />
+         <int name="maxSubjectLength" value="80" />
+         <boolean name="enableGroupMms" value="false" />
+         <string name="emailGatewayNumber">6245</string>
+         <int name="maxMessageSize" value="614400" />
+         <int name="maxImageWidth" value="2592" />
+         <boolean name="voicemail_notification_persistent_bool" value="true" />
+-        <string-array name="read_only_apn_types_string_array" num="1">
+-            <item value="*" />
+-        </string-array>
+     </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_302660.xml b/assets/carrier_config_302660.xml
+index 0fb222f..714e34c 100644
+--- a/assets/carrier_config_302660.xml
++++ b/assets/carrier_config_302660.xml
+@@ -7,12 +7,5 @@
+ <int name="maxSubjectLength" value="80" />
+ <int name="maxMessageSize" value="1048576" />
+ <int name="maxImageWidth" value="2592" />
+-<string-array name="gsm_nonroaming_networks_string_array" num="5">
+-    <item value="302220" />
+-    <item value="302370" />
+-    <item value="302610" />
+-    <item value="302720" />
+-    <item value="302780" />
+-</string-array>
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_302720.xml b/assets/carrier_config_302720.xml
+index faeb362..fd8e203 100644
+--- a/assets/carrier_config_302720.xml
++++ b/assets/carrier_config_302720.xml
+@@ -8,15 +8,5 @@
+         <int name="maxMessageSize" value="1048576" />
+         <int name="maxImageWidth" value="2592" />
+         <boolean name="voicemail_notification_persistent_bool" value="true" />
+-        <string-array name="read_only_apn_types_string_array" num="1">
+-            <item value="*" />
+-        </string-array>
+-<string-array name="gsm_nonroaming_networks_string_array" num="5">
+-    <item value="302220" />
+-    <item value="302370" />
+-    <item value="302610" />
+-    <item value="302660" />
+-    <item value="302780" />
+-</string-array>
+     </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310004.xml b/assets/carrier_config_310004.xml
+index a0adfbd..bfdac80 100644
+--- a/assets/carrier_config_310004.xml
++++ b/assets/carrier_config_310004.xml
+@@ -1,7 +1,6 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+     <carrier_config>
+-        <boolean name="mdn_is_additional_voicemail_number_bool" value="true" />
+         <boolean name="operator_selection_expand_bool" value="true" />
+         <int name="aliasMinChars" value="2" />
+         <int name="smsToMmsTextThreshold" value="7" />
+@@ -28,42 +27,6 @@
+         <boolean name="allow_adding_apns_bool" value="false" />
+         <boolean name="broadcast_emergency_call_state_changes_bool" value="true" />
+         <string name="carrier_eri_file_name_string">eri_311480.xml</string>
+-        <int name="carrier_default_wfc_ims_mode_int" value="1"/>
+-        <boolean name="editable_wfc_mode_bool" value="false"/>
+-        <boolean name="disable_severe_when_extreme_disabled_bool" value="false" />
+-        <boolean name="mmsCloseConnection" value="true"/>
+-        <int name="wfc_spn_format_idx_int" value="1" />
+-        <string-array name="read_only_apn_fields_string_array" num="20">
+-            <item value="name" />
+-            <item value="proxy" />
+-            <item value="port" />
+-            <item value="user" />
+-            <item value="password" />
+-            <item value="server" />
+-            <item value="mmsc" />
+-            <item value="mmsproxy" />
+-            <item value="mmsport" />
+-            <item value="mcc" />
+-            <item value="mnc" />
+-            <item value="authtype" />
+-            <item value="type" />
+-            <item value="protocol" />
+-            <item value="roaming_protocol" />
+-            <item value="bearer" />
+-            <item value="bearer_bitmask" />
+-            <item value="carrier_enabled" />
+-            <item value="mvno_type" />
+-            <item value="mvno_match_data" />
+-        </string-array>
+-        <string-array name="carrier_metered_apn_types_strings" num="3">
+-            <item value="default" />
+-            <item value="dun" />
+-            <item value="supl" />
+-        </string-array>
+-        <string-array name="carrier_metered_roaming_apn_types_strings" num="3">
+-            <item value="default" />
+-            <item value="dun" />
+-            <item value="supl" />
+-        </string-array>
++        <boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
+     </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310005.xml b/assets/carrier_config_310005.xml
+index 2e46c1f..4791df2 100644
+--- a/assets/carrier_config_310005.xml
++++ b/assets/carrier_config_310005.xml
+@@ -21,5 +21,6 @@
+ <int name="maxImageWidth" value="2592" />
+ <boolean name="enabledNotifyWapMMSC" value="true" />
+ <boolean name="enableMultipartSMS" value="true" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310006.xml b/assets/carrier_config_310006.xml
+new file mode 100644
+index 0000000..d409f62
+--- /dev/null
++++ b/assets/carrier_config_310006.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+\ No newline at end of file
+diff --git a/assets/carrier_config_310010.xml b/assets/carrier_config_310010.xml
+index dab5e81..27b5daf 100644
+--- a/assets/carrier_config_310010.xml
++++ b/assets/carrier_config_310010.xml
+@@ -1,16 +1,16 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <boolean name="enableSMSDeliveryReports" value="false"/>
+-        <int name="maxMessageTextSize" value="-1"/>
+-        <boolean name="supportMmsContentDisposition" value="false"/>
+-        <int name="maxImageHeight" value="1944"/>
+-        <boolean name="enableMMSDeliveryReports" value="false"/>
+-        <int name="maxMessageSize" value="1048576"/>
+-        <boolean name="enableMMSReadReports" value="false"/>
+-        <int name="maxImageWidth" value="2592"/>
+-        <boolean name="sendMultipartSmsAsSeparateMessages" value="true"/>
+-        <boolean name="enableMultipartSMS" value="false"/>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
++<carrier_config>
++<boolean name="enableSMSDeliveryReports" value="false" />
++<int name="maxMessageTextSize" value="-1" />
++<boolean name="supportMmsContentDisposition" value="false" />
++<int name="maxImageHeight" value="1944" />
++<boolean name="enableMMSDeliveryReports" value="false" />
++<int name="maxMessageSize" value="1048576" />
++<boolean name="enableMMSReadReports" value="false" />
++<int name="maxImageWidth" value="2592" />
++<boolean name="sendMultipartSmsAsSeparateMessages" value="true" />
++<boolean name="enableMultipartSMS" value="false" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310012.xml b/assets/carrier_config_310012.xml
+index a4ed51a..9123a21 100644
+--- a/assets/carrier_config_310012.xml
++++ b/assets/carrier_config_310012.xml
+@@ -1,9 +1,9 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <boolean name="operator_selection_expand_bool" value="true"/>
+-        <boolean name="apn_expand_bool" value="false"/>
+-        <boolean name="prefer_2g_bool" value="false"/>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
++<carrier_config>
++<boolean name="operator_selection_expand_bool" value="true" />
++<boolean name="apn_expand_bool" value="false" />
++<boolean name="prefer_2g_bool" value="false" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310013.xml b/assets/carrier_config_310013.xml
+index 3fdcc52..d409f62 100644
+--- a/assets/carrier_config_310013.xml
++++ b/assets/carrier_config_310013.xml
+@@ -1,6 +1,6 @@
+-<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+-<carrier_config_list>
+-    <carrier_config>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
+-</carrier_config_list>
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+\ No newline at end of file
+diff --git a/assets/carrier_config_310030.xml b/assets/carrier_config_310030.xml
+new file mode 100644
+index 0000000..ece6c56
+--- /dev/null
++++ b/assets/carrier_config_310030.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="wfc_remove_preference_mode" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_310070.xml b/assets/carrier_config_310070.xml
+index 578e7b0..0a35452 100644
+--- a/assets/carrier_config_310070.xml
++++ b/assets/carrier_config_310070.xml
+@@ -7,5 +7,6 @@
+ <int name="maxImageWidth" value="2592" />
+ <boolean name="enableSMSDeliveryReports" value="false" />
+ <boolean name="csp_enabled_bool" value="true" />
++<boolean name="wfc_remove_preference_mode" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310090.xml b/assets/carrier_config_310090.xml
+index adb9719..461dde8 100644
+--- a/assets/carrier_config_310090.xml
++++ b/assets/carrier_config_310090.xml
+@@ -5,5 +5,6 @@
+ <int name="maxMessageSize" value="614400" />
+ <int name="maxImageWidth" value="2592" />
+ <boolean name="csp_enabled_bool" value="true" />
++<boolean name="wfc_remove_preference_mode" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310120.xml b/assets/carrier_config_310120.xml
+index 941ff6d..433e052 100644
+--- a/assets/carrier_config_310120.xml
++++ b/assets/carrier_config_310120.xml
+@@ -27,6 +27,5 @@
+ <boolean name="enableMultipartSMS" value="true" />
+ <boolean name="allow_non_emergency_calls_in_ecm_bool" value="false" />
+ <string name="carrier_eri_file_name_string">eri_310120.xml</string>
+-<boolean name="stk_disable_launch_browser_bool" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310150.xml b/assets/carrier_config_310150.xml
+index 852fe26..3b77efc 100644
+--- a/assets/carrier_config_310150.xml
++++ b/assets/carrier_config_310150.xml
+@@ -6,21 +6,5 @@
+ <int name="maxImageWidth" value="2592" />
+ <boolean name="enableSMSDeliveryReports" value="false" />
+ <boolean name="csp_enabled_bool" value="true" />
+-<string-array name="cdma_nonroaming_networks_string_array" num="7">
+-    <item value="310" />
+-    <item value="311" />
+-    <item value="312" />
+-    <item value="313" />
+-    <item value="314" />
+-    <item value="315" />
+-    <item value="316" />
+-</string-array>
+-<string-array name="cdma_roaming_networks_string_array" num="5">
+-    <item value="310110" />
+-    <item value="310140" />
+-    <item value="310400" />
+-    <item value="310470" />
+-    <item value="311170" />
+-</string-array>
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310170.xml b/assets/carrier_config_310170.xml
+index 31a0955..a02ee41 100644
+--- a/assets/carrier_config_310170.xml
++++ b/assets/carrier_config_310170.xml
+@@ -6,12 +6,6 @@
+ <int name="maxImageWidth" value="2592" />
+ <boolean name="enableSMSDeliveryReports" value="false" />
+ <boolean name="csp_enabled_bool" value="true" />
+-<string-array name="cdma_roaming_networks_string_array" num="5">
+-    <item value="310110" />
+-    <item value="310140" />
+-    <item value="310400" />
+-    <item value="310470" />
+-    <item value="311170" />
+-</string-array>
++<boolean name="wfc_remove_preference_mode" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310280.xml b/assets/carrier_config_310280.xml
+new file mode 100644
+index 0000000..ece6c56
+--- /dev/null
++++ b/assets/carrier_config_310280.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="wfc_remove_preference_mode" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_310350.xml b/assets/carrier_config_310350.xml
+new file mode 100644
+index 0000000..d409f62
+--- /dev/null
++++ b/assets/carrier_config_310350.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+\ No newline at end of file
+diff --git a/assets/carrier_config_310380.xml b/assets/carrier_config_310380.xml
+index f98d0b9..0a35452 100644
+--- a/assets/carrier_config_310380.xml
++++ b/assets/carrier_config_310380.xml
+@@ -7,12 +7,6 @@
+ <int name="maxImageWidth" value="2592" />
+ <boolean name="enableSMSDeliveryReports" value="false" />
+ <boolean name="csp_enabled_bool" value="true" />
+-<string-array name="cdma_roaming_networks_string_array" num="5">
+-    <item value="310110" />
+-    <item value="310140" />
+-    <item value="310400" />
+-    <item value="310470" />
+-    <item value="311170" />
+-</string-array>
++<boolean name="wfc_remove_preference_mode" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310410.xml b/assets/carrier_config_310410.xml
+index cb9f51f..980a44a 100644
+--- a/assets/carrier_config_310410.xml
++++ b/assets/carrier_config_310410.xml
+@@ -1,42 +1,14 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <int name="recipientLimit" value="10" />
+-        <int name="maxImageHeight" value="1944" />
+-        <boolean name="support_pause_ims_video_calls_bool" value="false" />
+-        <int name="maxMessageSize" value="1048576" />
+-        <int name="maxImageWidth" value="2592" />
+-        <boolean name="enableSMSDeliveryReports" value="false" />
+-        <int name="volte_replacement_rat_int" value="3" />
+-        <boolean name="csp_enabled_bool" value="true" />
+-        <boolean name="carrier_disable_etws_cmas_dup_detection" value="true" />
+-        <string-array name="carrier_data_call_retry_config_strings" num="3">
+-            <!-- New retry pattern: 10s, 3m, 12m, 36m, 36m, 36m, ... (forever)
+-                 (comparing to the default one used before:
+-                    5s, 10s, 20s, 40s, 80s, 2.5m, 5m, 10m, 21m, 30m, 30m..(forever))
+-
+-                 Since AT&T has two APNs, and modem retry 5 times for each, this should be able to
+-                 reduce the retry number to 40 for the first hour.
+-            -->
+-            <item value="default:default_randomization=2000,10000,18000:5000,720000:5000,2160000:5000" />
+-            <item value="mms:default_randomization=2000,10000,18000:5000,720000:5000,2160000:5000" />
+-            <item value="others:max_retries=3,5000,5000,5000" />
+-        </string-array>
+-        <string-array name="cdma_nonroaming_networks_string_array" num="7">
+-            <item value="310" />
+-            <item value="311" />
+-            <item value="312" />
+-            <item value="313" />
+-            <item value="314" />
+-            <item value="315" />
+-            <item value="316" />
+-        </string-array>
+-        <string-array name="cdma_roaming_networks_string_array" num="5">
+-            <item value="310110" />
+-            <item value="310140" />
+-            <item value="310400" />
+-            <item value="310470" />
+-            <item value="311170" />
+-        </string-array>
+-    </carrier_config>
++<carrier_config>
++<int name="recipientLimit" value="10" />
++<int name="maxImageHeight" value="1944" />
++<boolean name="support_pause_ims_video_calls_bool" value="false" />
++<int name="maxMessageSize" value="1048576" />
++<int name="maxImageWidth" value="2592" />
++<boolean name="enableSMSDeliveryReports" value="false" />
++<int name="volte_replacement_rat_int" value="3" />
++<boolean name="csp_enabled_bool" value="true" />
++<boolean name="wfc_remove_preference_mode" value="true" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310560.xml b/assets/carrier_config_310560.xml
+index 578e7b0..0a35452 100644
+--- a/assets/carrier_config_310560.xml
++++ b/assets/carrier_config_310560.xml
+@@ -7,5 +7,6 @@
+ <int name="maxImageWidth" value="2592" />
+ <boolean name="enableSMSDeliveryReports" value="false" />
+ <boolean name="csp_enabled_bool" value="true" />
++<boolean name="wfc_remove_preference_mode" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310590.xml b/assets/carrier_config_310590.xml
+index f5142a4..8bb54dc 100644
+--- a/assets/carrier_config_310590.xml
++++ b/assets/carrier_config_310590.xml
+@@ -1,18 +1,18 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <boolean name="carrier_volte_available_bool" value="true"/>
+-        <boolean name="carrier_volte_tty_supported_bool" value="false"/>
+-        <boolean name="carrier_wfc_ims_available_bool" value="true"/>
+-        <boolean name="carrier_ims_gba_required_bool" value="true"/>
+-        <int name="vvm_port_number_int" value="1808"/>
+-        <string name="vvm_destination_number_string">122</string>
+-        <string name="carrier_vvm_package_name_string">com.tmobile.vvm.application</string>
+-        <string name="vvm_type_string">vvm_type_cvvm</string>
+-        <int name="volte_replacement_rat_int" value="3"/>
+-        <int name="maxMessageSize" value="1048576"/>
+-        <int name="maxImageWidth" value="2592"/>
+-        <int name="maxImageHeight" value="1944"/>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
++<carrier_config>
++<boolean name="carrier_volte_available_bool" value="true" />
++<boolean name="carrier_volte_tty_supported_bool" value="false" />
++<boolean name="carrier_wfc_ims_available_bool" value="true" />
++<boolean name="carrier_ims_gba_required_bool" value="true" />
++<int name="vvm_port_number_int" value="1808" />
++<string name="vvm_destination_number_string">122</string>
++<string name="carrier_vvm_package_name_string">com.tmobile.vvm.application</string>
++<string name="vvm_type_string">vvm_type_cvvm</string>
++<int name="volte_replacement_rat_int" value="3" />
++<int name="maxMessageSize" value="1048576" />
++<int name="maxImageWidth" value="2592" />
++<int name="maxImageHeight" value="1944" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310680.xml b/assets/carrier_config_310680.xml
+index 578e7b0..0a35452 100644
+--- a/assets/carrier_config_310680.xml
++++ b/assets/carrier_config_310680.xml
+@@ -7,5 +7,6 @@
+ <int name="maxImageWidth" value="2592" />
+ <boolean name="enableSMSDeliveryReports" value="false" />
+ <boolean name="csp_enabled_bool" value="true" />
++<boolean name="wfc_remove_preference_mode" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_310820.xml b/assets/carrier_config_310820.xml
+new file mode 100644
+index 0000000..d409f62
+--- /dev/null
++++ b/assets/carrier_config_310820.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+\ No newline at end of file
+diff --git a/assets/carrier_config_310890.xml b/assets/carrier_config_310890.xml
+index 3fdcc52..d409f62 100644
+--- a/assets/carrier_config_310890.xml
++++ b/assets/carrier_config_310890.xml
+@@ -1,6 +1,6 @@
+-<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+-<carrier_config_list>
+-    <carrier_config>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
+-</carrier_config_list>
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+\ No newline at end of file
+diff --git a/assets/carrier_config_310910.xml b/assets/carrier_config_310910.xml
+index 3fdcc52..d409f62 100644
+--- a/assets/carrier_config_310910.xml
++++ b/assets/carrier_config_310910.xml
+@@ -1,6 +1,6 @@
+-<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+-<carrier_config_list>
+-    <carrier_config>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
+-</carrier_config_list>
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+\ No newline at end of file
+diff --git a/assets/carrier_config_311012.xml b/assets/carrier_config_311012.xml
+index 6f3cc0e..4546420 100644
+--- a/assets/carrier_config_311012.xml
++++ b/assets/carrier_config_311012.xml
+@@ -18,5 +18,6 @@
+ <int name="maxImageWidth" value="2592" />
+ <boolean name="enabledNotifyWapMMSC" value="true" />
+ <boolean name="enableMultipartSMS" value="true" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_311180.xml b/assets/carrier_config_311180.xml
+index 99c2083..c95ab04 100644
+--- a/assets/carrier_config_311180.xml
++++ b/assets/carrier_config_311180.xml
+@@ -5,5 +5,6 @@
+ <int name="maxImageHeight" value="1944" />
+ <int name="maxMessageSize" value="1048576" />
+ <int name="maxImageWidth" value="2592" />
++<boolean name="wfc_remove_preference_mode" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_311390.xml b/assets/carrier_config_311390.xml
+index 4f6352d..bc0a573 100644
+--- a/assets/carrier_config_311390.xml
++++ b/assets/carrier_config_311390.xml
+@@ -1,10 +1,9 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <boolean name="dtmf_type_enabled_bool" value="true"/>
+-        <boolean name="show_apn_setting_cdma_bool" value="true"/>
+-        <boolean name="carrier_volte_available_bool" value="true"/>
+-        <int name="volte_replacement_rat_int" value="6"/>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
++<carrier_config>
++<boolean name="dtmf_type_enabled_bool" value="true" />
++<boolean name="show_apn_setting_cdma_bool" value="true" />
++<boolean name="carrier_volte_available_bool" value="true" />
++<int name="volte_replacement_rat_int" value="6" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_311480.xml b/assets/carrier_config_311480.xml
+index 76887a4..635a1eb 100644
+--- a/assets/carrier_config_311480.xml
++++ b/assets/carrier_config_311480.xml
+@@ -1,11 +1,7 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+     <carrier_config>
+-        <boolean name="allow_hold_in_ims_call" value="false" />
+-        <boolean name="mdn_is_additional_voicemail_number_bool" value="true" />
+         <boolean name="carrier_vt_available_bool" value="true" />
+-        <boolean name="support_downgrade_vt_to_audio_bool" value="false" />
+-        <boolean name="notify_handover_video_from_wifi_to_lte_bool" value="true" />
+         <boolean name="carrier_allow_turnoff_ims_bool" value="false" />
+         <boolean name="carrier_volte_provisioning_required_bool" value="true" />
+         <boolean name="operator_selection_expand_bool" value="true" />
+@@ -36,70 +32,6 @@
+         <boolean name="allow_adding_apns_bool" value="false" />
+         <boolean name="broadcast_emergency_call_state_changes_bool" value="true" />
+         <string name="carrier_eri_file_name_string">eri_311480.xml</string>
+-        <int name="carrier_default_wfc_ims_mode_int" value="1"/>
+-        <boolean name="treat_downgraded_video_calls_as_video_calls_bool" value="true" />
+-        <boolean name="drop_video_call_when_answering_audio_call_bool" value="true" />
+-        <boolean name="editable_wfc_mode_bool" value="false"/>
+-        <boolean name="allow_merge_wifi_calls_when_vowifi_off_bool" value="false" />
+-        <boolean name="wifi_calls_can_be_hd_audio" value="false" />
+-        <boolean name="video_calls_can_be_hd_audio" value="false" />
+-        <boolean name="allow_add_call_during_video_call" value="false" />
+-        <boolean name="carrier_promote_wfc_on_call_fail_bool" value="true" />
+-        <string-array name="ims_reasoninfo_mapping_string_array" num="9">
+-            <item value="332|simultaneous call limit has already been reached|1403" />
+-            <item value="332|Forbidden: Simultaneous Call Limit Has Already Been Reached|1403" />
+-            <item value="338|another device sent all devices busy response|1404" />
+-            <item value="501|call completion elsewhere|1014" />
+-            <item value="501|call has been pulled by another device|1016" />
+-            <item value="510|call has been pulled by another device|1016" />
+-            <item value="501|another device sent all devices busy response|1404" />
+-            <item value="510|another device sent all devices busy response|1404" />
+-            <item value="1014|call has been pulled by another device|1016" />
+-        </string-array>
+-        <boolean name="disable_severe_when_extreme_disabled_bool" value="false" />
+-        <boolean name="mmsCloseConnection" value="true"/>
+-        <boolean name="notify_vt_handover_to_wifi_failure_bool" value="true" />
+-        <int name="wfc_spn_format_idx_int" value="1" />
+-        <string-array name="filtered_cnap_names_string_array" num="2">
+-            <item value="WIRELESS CALLER" />
+-            <item value="UNKNOWN NAME" />
+-        </string-array>
+-        <string-array name="read_only_apn_fields_string_array" num="20">
+-            <item value="name" />
+-            <item value="proxy" />
+-            <item value="port" />
+-            <item value="user" />
+-            <item value="password" />
+-            <item value="server" />
+-            <item value="mmsc" />
+-            <item value="mmsproxy" />
+-            <item value="mmsport" />
+-            <item value="mcc" />
+-            <item value="mnc" />
+-            <item value="authtype" />
+-            <item value="type" />
+-            <item value="protocol" />
+-            <item value="roaming_protocol" />
+-            <item value="bearer" />
+-            <item value="bearer_bitmask" />
+-            <item value="carrier_enabled" />
+-            <item value="mvno_type" />
+-            <item value="mvno_match_data" />
+-        </string-array>
+-        <string-array name="carrier_metered_apn_types_strings" num="3">
+-            <item value="default" />
+-            <item value="dun" />
+-            <item value="supl" />
+-        </string-array>
+-        <string-array name="carrier_metered_roaming_apn_types_strings" num="3">
+-            <item value="default" />
+-            <item value="dun" />
+-            <item value="supl" />
+-        </string-array>
+-        <boolean name="support_3gpp_call_forwarding_while_roaming_bool" value="false" />
+-        <string-array name="call_forwarding_blocks_while_roaming_string_array" num="2">
+-            <item value="*71" />
+-            <item value="*72" />
+-        </string-array>
++        <boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
+     </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_311481.xml b/assets/carrier_config_311481.xml
+index a4ed51a..9123a21 100644
+--- a/assets/carrier_config_311481.xml
++++ b/assets/carrier_config_311481.xml
+@@ -1,9 +1,9 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <boolean name="operator_selection_expand_bool" value="true"/>
+-        <boolean name="apn_expand_bool" value="false"/>
+-        <boolean name="prefer_2g_bool" value="false"/>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
++<carrier_config>
++<boolean name="operator_selection_expand_bool" value="true" />
++<boolean name="apn_expand_bool" value="false" />
++<boolean name="prefer_2g_bool" value="false" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_311482.xml b/assets/carrier_config_311482.xml
+index a4ed51a..9123a21 100644
+--- a/assets/carrier_config_311482.xml
++++ b/assets/carrier_config_311482.xml
+@@ -1,9 +1,9 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <boolean name="operator_selection_expand_bool" value="true"/>
+-        <boolean name="apn_expand_bool" value="false"/>
+-        <boolean name="prefer_2g_bool" value="false"/>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
++<carrier_config>
++<boolean name="operator_selection_expand_bool" value="true" />
++<boolean name="apn_expand_bool" value="false" />
++<boolean name="prefer_2g_bool" value="false" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_311483.xml b/assets/carrier_config_311483.xml
+index a4ed51a..9123a21 100644
+--- a/assets/carrier_config_311483.xml
++++ b/assets/carrier_config_311483.xml
+@@ -1,9 +1,9 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <boolean name="operator_selection_expand_bool" value="true"/>
+-        <boolean name="apn_expand_bool" value="false"/>
+-        <boolean name="prefer_2g_bool" value="false"/>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
++<carrier_config>
++<boolean name="operator_selection_expand_bool" value="true" />
++<boolean name="apn_expand_bool" value="false" />
++<boolean name="prefer_2g_bool" value="false" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_311484.xml b/assets/carrier_config_311484.xml
+index a4ed51a..9123a21 100644
+--- a/assets/carrier_config_311484.xml
++++ b/assets/carrier_config_311484.xml
+@@ -1,9 +1,9 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <boolean name="operator_selection_expand_bool" value="true"/>
+-        <boolean name="apn_expand_bool" value="false"/>
+-        <boolean name="prefer_2g_bool" value="false"/>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
++<carrier_config>
++<boolean name="operator_selection_expand_bool" value="true" />
++<boolean name="apn_expand_bool" value="false" />
++<boolean name="prefer_2g_bool" value="false" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_311485.xml b/assets/carrier_config_311485.xml
+index a4ed51a..9123a21 100644
+--- a/assets/carrier_config_311485.xml
++++ b/assets/carrier_config_311485.xml
+@@ -1,9 +1,9 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <boolean name="operator_selection_expand_bool" value="true"/>
+-        <boolean name="apn_expand_bool" value="false"/>
+-        <boolean name="prefer_2g_bool" value="false"/>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
++<carrier_config>
++<boolean name="operator_selection_expand_bool" value="true" />
++<boolean name="apn_expand_bool" value="false" />
++<boolean name="prefer_2g_bool" value="false" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_311486.xml b/assets/carrier_config_311486.xml
+index a4ed51a..9123a21 100644
+--- a/assets/carrier_config_311486.xml
++++ b/assets/carrier_config_311486.xml
+@@ -1,9 +1,9 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <boolean name="operator_selection_expand_bool" value="true"/>
+-        <boolean name="apn_expand_bool" value="false"/>
+-        <boolean name="prefer_2g_bool" value="false"/>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
++<carrier_config>
++<boolean name="operator_selection_expand_bool" value="true" />
++<boolean name="apn_expand_bool" value="false" />
++<boolean name="prefer_2g_bool" value="false" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_311487.xml b/assets/carrier_config_311487.xml
+index a4ed51a..9123a21 100644
+--- a/assets/carrier_config_311487.xml
++++ b/assets/carrier_config_311487.xml
+@@ -1,9 +1,9 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <boolean name="operator_selection_expand_bool" value="true"/>
+-        <boolean name="apn_expand_bool" value="false"/>
+-        <boolean name="prefer_2g_bool" value="false"/>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
++<carrier_config>
++<boolean name="operator_selection_expand_bool" value="true" />
++<boolean name="apn_expand_bool" value="false" />
++<boolean name="prefer_2g_bool" value="false" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_311488.xml b/assets/carrier_config_311488.xml
+index a4ed51a..9123a21 100644
+--- a/assets/carrier_config_311488.xml
++++ b/assets/carrier_config_311488.xml
+@@ -1,9 +1,9 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <boolean name="operator_selection_expand_bool" value="true"/>
+-        <boolean name="apn_expand_bool" value="false"/>
+-        <boolean name="prefer_2g_bool" value="false"/>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
++<carrier_config>
++<boolean name="operator_selection_expand_bool" value="true" />
++<boolean name="apn_expand_bool" value="false" />
++<boolean name="prefer_2g_bool" value="false" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_311489.xml b/assets/carrier_config_311489.xml
+index a4ed51a..9123a21 100644
+--- a/assets/carrier_config_311489.xml
++++ b/assets/carrier_config_311489.xml
+@@ -1,9 +1,9 @@
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+-    <carrier_config>
+-        <boolean name="operator_selection_expand_bool" value="true"/>
+-        <boolean name="apn_expand_bool" value="false"/>
+-        <boolean name="prefer_2g_bool" value="false"/>
+-        <boolean name="mmsCloseConnection" value="true"/>
+-    </carrier_config>
++<carrier_config>
++<boolean name="operator_selection_expand_bool" value="true" />
++<boolean name="apn_expand_bool" value="false" />
++<boolean name="prefer_2g_bool" value="false" />
++<boolean name="ims_pdn_sync_fail_cause_to_modem_bool" value="true" />
++</carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_311580.xml b/assets/carrier_config_311580.xml
+index e12a47c..611fbf2 100644
+--- a/assets/carrier_config_311580.xml
++++ b/assets/carrier_config_311580.xml
+@@ -18,7 +18,5 @@
+ <boolean name="enabledNotifyWapMMSC" value="true" />
+ <boolean name="enableMultipartSMS" value="false" />
+ <boolean name="show_apn_setting_cdma_bool" value="true" />
+-<boolean name="support_swap_after_merge_bool" value="false" />
+-<string name="carrier_eri_file_name_string">eri_311580.xml</string>
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_334020.xml b/assets/carrier_config_334020.xml
+index dc743a2..368bf4c 100644
+--- a/assets/carrier_config_334020.xml
++++ b/assets/carrier_config_334020.xml
+@@ -2,7 +2,7 @@
+ <carrier_config_list>
+ <carrier_config>
+ <int name="maxImageHeight" value="1944" />
+-<int name="maxMessageSize" value="512000" />
++<int name="maxMessageSize" value="1048576" />
+ <int name="maxImageWidth" value="2592" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_42402.xml b/assets/carrier_config_42402.xml
+new file mode 100644
+index 0000000..c33991b
+--- /dev/null
++++ b/assets/carrier_config_42402.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="show_clir_setting_bool" value="false" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44000.xml b/assets/carrier_config_44000.xml
+index a1e728b..08b3e73 100644
+--- a/assets/carrier_config_44000.xml
++++ b/assets/carrier_config_44000.xml
+@@ -10,6 +10,5 @@
+ <boolean name="carrier_force_disable_etws_cmas_test_bool" value="true" />
+ <boolean name="carrier_volte_available_bool" value="true" />
+ <int name="volte_replacement_rat_int" value="3" />
+-<long name="message_expiration_time_long" value="3600000" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_44007.xml b/assets/carrier_config_44007.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44007.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44008.xml b/assets/carrier_config_44008.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44008.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44010.xml b/assets/carrier_config_44010.xml
+index 8936279..cb4ae1c 100644
+--- a/assets/carrier_config_44010.xml
++++ b/assets/carrier_config_44010.xml
+@@ -7,7 +7,5 @@
+ <int name="volte_replacement_rat_int" value="3" />
+ <boolean name="hide_ims_apn_bool" value="true" />
+ <boolean name="always_show_emergency_alert_onoff_bool" value="true" />
+-<long name="message_expiration_time_long" value="3600000" />
+-<boolean name="ignore_data_enabled_changed_for_video_calls" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_44020.xml b/assets/carrier_config_44020.xml
+index 4dfcf27..4d787a6 100644
+--- a/assets/carrier_config_44020.xml
++++ b/assets/carrier_config_44020.xml
+@@ -12,11 +12,5 @@
+ <int name="volte_replacement_rat_int" value="3" />
+ <int name="ims_dtmf_tone_delay_int" value="215" />
+ <boolean name="always_show_emergency_alert_onoff_bool" value="true" />
+-<string-array name="carrier_additional_cbs_channels_strings" num="3">
+-    <item value="0xA800:type=earthquake, emergency=true" />
+-    <item value="0xAFEE:type=tsunami, emergency=true" />
+-    <item value="0xAC00-0xAFED:type=other, emergency=true" />
+-</string-array>
+-<long name="message_expiration_time_long" value="3600000" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_44050.xml b/assets/carrier_config_44050.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44050.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44051.xml b/assets/carrier_config_44051.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44051.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44052.xml b/assets/carrier_config_44052.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44052.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44053.xml b/assets/carrier_config_44053.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44053.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44054.xml b/assets/carrier_config_44054.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44054.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44055.xml b/assets/carrier_config_44055.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44055.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44056.xml b/assets/carrier_config_44056.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44056.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44070.xml b/assets/carrier_config_44070.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44070.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44071.xml b/assets/carrier_config_44071.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44071.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44072.xml b/assets/carrier_config_44072.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44072.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44073.xml b/assets/carrier_config_44073.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44073.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44074.xml b/assets/carrier_config_44074.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44074.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44076.xml b/assets/carrier_config_44076.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44076.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44077.xml b/assets/carrier_config_44077.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44077.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44079.xml b/assets/carrier_config_44079.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44079.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44088.xml b/assets/carrier_config_44088.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44088.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44089.xml b/assets/carrier_config_44089.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44089.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_44100.xml b/assets/carrier_config_44100.xml
+index a1e728b..08b3e73 100644
+--- a/assets/carrier_config_44100.xml
++++ b/assets/carrier_config_44100.xml
+@@ -10,6 +10,5 @@
+ <boolean name="carrier_force_disable_etws_cmas_test_bool" value="true" />
+ <boolean name="carrier_volte_available_bool" value="true" />
+ <int name="volte_replacement_rat_int" value="3" />
+-<long name="message_expiration_time_long" value="3600000" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_44120.xml b/assets/carrier_config_44120.xml
+index a1e728b..08b3e73 100644
+--- a/assets/carrier_config_44120.xml
++++ b/assets/carrier_config_44120.xml
+@@ -10,6 +10,5 @@
+ <boolean name="carrier_force_disable_etws_cmas_test_bool" value="true" />
+ <boolean name="carrier_volte_available_bool" value="true" />
+ <int name="volte_replacement_rat_int" value="3" />
+-<long name="message_expiration_time_long" value="3600000" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_44170.xml b/assets/carrier_config_44170.xml
+new file mode 100644
+index 0000000..c8f0d45
+--- /dev/null
++++ b/assets/carrier_config_44170.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="use_administrative_apn_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_45005.xml b/assets/carrier_config_45005.xml
+index 03ff03a..c9cef78 100644
+--- a/assets/carrier_config_45005.xml
++++ b/assets/carrier_config_45005.xml
+@@ -13,6 +13,5 @@
+ <string name="carrier_instant_lettering_encoding_string">EUC-KR</string>
+ <int name="carrier_instant_lettering_length_limit_int" value="16" />
+ <boolean name="support_conference_call_bool" value="false" />
+-<boolean name="allow_emergency_video_calls_bool" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_45006.xml b/assets/carrier_config_45006.xml
+index 9013060..01162df 100644
+--- a/assets/carrier_config_45006.xml
++++ b/assets/carrier_config_45006.xml
+@@ -16,6 +16,5 @@
+ <boolean name="editable_enhanced_4g_lte_bool" value="false" />
+ <boolean name="hide_preferred_network_type_bool" value="true" />
+ <boolean name="additional_call_setting_bool" value="false" />
+-<boolean name="allow_emergency_video_calls_bool" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_45008.xml b/assets/carrier_config_45008.xml
+index df95fd3..10658a9 100644
+--- a/assets/carrier_config_45008.xml
++++ b/assets/carrier_config_45008.xml
+@@ -12,6 +12,5 @@
+ <string name="carrier_instant_lettering_encoding_string">EUC-KR</string>
+ <int name="carrier_instant_lettering_length_limit_int" value="64" />
+ <boolean name="support_conference_call_bool" value="false" />
+-<boolean name="allow_emergency_video_calls_bool" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_45502.xml b/assets/carrier_config_45502.xml
+new file mode 100644
+index 0000000..db20a29
+--- /dev/null
++++ b/assets/carrier_config_45502.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++    <carrier_config>
++        <boolean name="default_enhanced_4g_mode_enabled_bool" value="false" />
++    </carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_45507.xml b/assets/carrier_config_45507.xml
+new file mode 100644
+index 0000000..db20a29
+--- /dev/null
++++ b/assets/carrier_config_45507.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++    <carrier_config>
++        <boolean name="default_enhanced_4g_mode_enabled_bool" value="false" />
++    </carrier_config>
++</carrier_config_list>
+diff --git a/assets/carrier_config_46003.xml b/assets/carrier_config_46003.xml
+index 6efafcd..c97b4ec 100644
+--- a/assets/carrier_config_46003.xml
++++ b/assets/carrier_config_46003.xml
+@@ -2,6 +2,6 @@
+ <carrier_config_list>
+     <carrier_config>
+         <boolean name="show_apn_setting_cdma_bool" value="true" />
+-        <int name="volte_replacement_rat_int" value="6" />
++        <boolean name="default_enhanced_4g_mode_enabled_bool" value="false" />
+     </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_46011.xml b/assets/carrier_config_46011.xml
+index 6efafcd..c97b4ec 100644
+--- a/assets/carrier_config_46011.xml
++++ b/assets/carrier_config_46011.xml
+@@ -2,6 +2,6 @@
+ <carrier_config_list>
+     <carrier_config>
+         <boolean name="show_apn_setting_cdma_bool" value="true" />
+-        <int name="volte_replacement_rat_int" value="6" />
++        <boolean name="default_enhanced_4g_mode_enabled_bool" value="false" />
+     </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_46012.xml b/assets/carrier_config_46012.xml
+index db65bd3..db20a29 100644
+--- a/assets/carrier_config_46012.xml
++++ b/assets/carrier_config_46012.xml
+@@ -1,35 +1,6 @@
+-<!-- Copyright (c) 2016, The Linux Foundation. All rights reserved.
+-
+-Redistribution and use in source and binary forms, with or without
+-modification, are permitted provided that the following conditions are
+-met:
+-    * Redistributions of source code must retain the above copyright
+-      notice, this list of conditions and the following disclaimer.
+-    * Redistributions in binary form must reproduce the above
+-      copyright notice, this list of conditions and the following
+-      disclaimer in the documentation and/or other materials provided
+-      with the distribution.
+-    * Neither the name of The Linux Foundation nor the names of its
+-      contributors may be used to endorse or promote products derived
+-      from this software without specific prior written permission.
+-
+-THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+-WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+-ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+-BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+-SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+-BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+-OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+-IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+--->
+-
+ <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+ <carrier_config_list>
+     <carrier_config>
+-        <int name="volte_replacement_rat_int" value="6" />
+-        <boolean name="show_apn_setting_cdma_bool" value="true" />
++        <boolean name="default_enhanced_4g_mode_enabled_bool" value="false" />
+     </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_50501.xml b/assets/carrier_config_50501.xml
+index 78e8e20..b5962c8 100644
+--- a/assets/carrier_config_50501.xml
++++ b/assets/carrier_config_50501.xml
+@@ -4,8 +4,5 @@
+ <int name="maxImageHeight" value="1944" />
+ <int name="maxMessageSize" value="2097152" />
+ <int name="maxImageWidth" value="2592" />
+-<string name="default_vm_number_string">+61101</string>
+-<int name="carrier_default_wfc_ims_mode_int" value="1" />
+-<boolean name="editable_tether_apn_bool" value="true" />
+ </carrier_config>
+ </carrier_config_list>
+diff --git a/assets/carrier_config_60201.xml b/assets/carrier_config_60201.xml
+new file mode 100644
+index 0000000..bdd32ab
+--- /dev/null
++++ b/assets/carrier_config_60201.xml
+@@ -0,0 +1,6 @@
++<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
++<carrier_config_list>
++<carrier_config>
++<boolean name="carrier_wfc_supports_wifi_only_bool" value="true" />
++</carrier_config>
++</carrier_config_list>
+diff --git a/res/xml/vendor.xml b/res/xml/vendor.xml
+index 58a87d81eb7f936c7c4e2247b272c8a2e8caa26f..cc65a4ffb7b4cd04492e326e1059280771a41499 100644
+GIT binary patch
+literal 372
+zcmZXO%?g505QUF_X$2A)(V}J0u0@Mz*#orc3B=?of@$2W=je^=jCsLoE{8ey<IFG)
+z0yGw2VTmUIpK6P2Z#?^)T2mWpM;)jW6-8;Hb)j^e)>T&Iaar6NgyA=Z>sHA{!SfzT
+zc~|iLb6uAzshGTKm2rHV$HJIwG!wQp!HWCko>y12nDLo1nSj7#c=liBNH*+c+%99Y
+oOUbNwkK!&zx-f@*@L|*T&zlzf|L$@+KI-NqD|Z+^?r~bY0m!3VsQ>@~
+
+literal 379
+zcmZ9Iv2MdK3`BQ-#dR`J)NZ?Vh?Bu{GIb9GiAo8`l0nKr^7p0VqChKX&~SY3sNLZ<
+zC0t3AOCH+y{;dUNUjpaL&@MH0A1$=H99$}yhW1X{;;?UaPhE%4FIL!fn3MB_Sj1R4
+z6zOy(&yhWR$&oL(y0nn?Hu8u~uEL-V))P5Z5;H=UM1~VWwVb+%;MCql37p}b2$P&Q
+z=5xPxx8aS;`b)F0LdXTUXk;_p@xRbIhbU!wsGKTQwFOcjd4U#i-Eh;Q6^r@lHYfI6
+mf9kGb!Eqd6n&W8%M<dx<rVgYm6nb=>{nX#q=fnnl-8bL2(SPIs
+

@@ -1602,6 +1602,12 @@ chown root /system/bin/pppd
 chmod 4755 /system/bin/pppd
 chown root /vendor/bin/chat
 chmod 4755 /vendor/bin/chat
+chmod 0755 /vendor/bin/mtkshim.sh
+
+service mtkshim /vendor/bin/mtkshim.sh
+    disabled                                                                   
+    oneshot   
+    user root
 
 #
 #ril-daemon (begin)

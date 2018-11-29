@@ -14,7 +14,7 @@ index 19a7dac..207495f 100644
  allow { appdomain -isolated_app } ion_device:chr_file rw_file_perms;
  
 diff --git a/audioserver.te b/audioserver.te
-index da12649..f93d2f0 100644
+index da12649..e8fdf32 100644
 --- a/audioserver.te
 +++ b/audioserver.te
 @@ -20,7 +20,7 @@ userdebug_or_eng(`
@@ -34,7 +34,7 @@ index da12649..f93d2f0 100644
  
  # Needed on some devices for playing audio on paired BT device,
  # but seems appropriate for all devices.
-@@ -53,3 +54,14 @@ neverallow audioserver { file_type fs_type }:file execute_no_trans;
+@@ -53,3 +54,17 @@ neverallow audioserver { file_type fs_type }:file execute_no_trans;
  
  # audioserver should never need network access. Disallow network sockets.
  neverallow audioserver domain:{ tcp_socket udp_socket rawip_socket } *;
@@ -49,6 +49,9 @@ index da12649..f93d2f0 100644
 +allow audioserver device:chr_file { open read write };
 +allow audioserver init:unix_stream_socket connectto;
 +allow audioserver property_socket:sock_file write;
++allow audioserver default_prop:property_service set;
++allow audioserver unlabeled:dir search;
++allow audioserver system_data_file:dir { open read };
 diff --git a/bootanim.te b/bootanim.te
 index c3091ab..48014c1 100644
 --- a/bootanim.te
@@ -60,22 +63,50 @@ index c3091ab..48014c1 100644
 +allow bootanim device:chr_file { getattr ioctl };
 +allow bootanim device:chr_file { open read write };
 diff --git a/cameraserver.te b/cameraserver.te
-index 4f50f8d..8b37cce 100644
+index 4f50f8d..cc03d30 100644
 --- a/cameraserver.te
 +++ b/cameraserver.te
-@@ -27,6 +27,10 @@ allow cameraserver processinfo_service:service_manager find;
+@@ -26,6 +26,18 @@ allow cameraserver mediaserver_service:service_manager find;
+ allow cameraserver processinfo_service:service_manager find;
  allow cameraserver scheduling_policy_service:service_manager find;
  allow cameraserver surfaceflinger_service:service_manager find;
- 
++allow cameraserver media_rw_data_file:dir { open read search };
++allow cameraserver mnt_user_file:dir search;
++allow cameraserver mnt_user_file:lnk_file read;
++allow cameraserver proc_meminfo:file { getattr open read };
++allow cameraserver sdcardfs:dir search;
++allow cameraserver storage_file:dir search;
++allow cameraserver storage_file:lnk_file read;
++allow cameraserver tmpfs:dir search;
++
 +allow cameraserver device:chr_file { ioctl open read write };
 +allow cameraserver proc:file { open read };
 +allow cameraserver sysfs:file { open read };
-+
+ 
  ###
  ### neverallow rules
- ###
+diff --git a/debuggerd.te b/debuggerd.te
+index 3338b8d..901195b 100644
+--- a/debuggerd.te
++++ b/debuggerd.te
+@@ -20,6 +20,7 @@ allow debuggerd {
+   -watchdogd
+ }:process { ptrace getattr };
+ security_access_policy(debuggerd)
++allow debuggerd init:process ptrace;
+ allow debuggerd tombstone_data_file:dir rw_dir_perms;
+ allow debuggerd tombstone_data_file:file create_file_perms;
+ allow debuggerd shared_relro_file:dir r_dir_perms;
+@@ -31,6 +32,7 @@ allow debuggerd system_data_file:file open;
+ # Allow debuggerd to redirect a dump_backtrace request to itself.
+ # This only happens on 64 bit systems, where all requests go to the 64 bit
+ # debuggerd and get redirected to the 32 bit debuggerd if the process is 32 bit.
++allow debuggerd keystore:process ptrace;
+ 
+ allow debuggerd {
+   audioserver
 diff --git a/domain.te b/domain.te
-index 59de1f1..540d224 100644
+index 59de1f1..ce53289 100644
 --- a/domain.te
 +++ b/domain.te
 @@ -28,7 +28,7 @@ r_dir_file(domain, self)
@@ -110,7 +141,12 @@ index 59de1f1..540d224 100644
  
  # Limit device node creation to these whitelisted domains.
  neverallow {
-@@ -252,17 +252,17 @@ neverallow * init:process ptrace;
+@@ -248,21 +248,21 @@ neverallow { domain -init } usermodehelper:file { append write };
+ neverallow { domain -init } proc_security:file { append write };
+ 
+ # No domain should be allowed to ptrace init.
+-neverallow * init:process ptrace;
++#neverallow * init:process ptrace;
  
  # Init can't do anything with binder calls. If this neverallow rule is being
  # triggered, it's probably due to a service with no SELinux domain.
@@ -127,11 +163,20 @@ index 59de1f1..540d224 100644
  # init is exempt from this as there are character devices that only it uses.
  # ueventd is exempt from this, as it is managing these devices.
 -neverallow { domain -init -ueventd } device:chr_file { open read write };
-+#neverallow { domain -init -ueventd } device:chr_file { open read write };
++neverallow { domain -init -ueventd } device:chr_file { append execute };
  
  # Limit what domains can mount filesystems or change their mount flags.
  # sdcard_type / vfat is exempt as a larger set of domains need
-@@ -346,7 +346,7 @@ neverallow { domain -recovery } contextmount_type:dir_file_class_set
+@@ -305,7 +305,7 @@ neverallow {
+ neverallow { domain userdebug_or_eng(`-shell') } nativetest_data_file:file no_x_file_perms;
+ 
+ # Only the init property service should write to /data/property and /dev/__properties__
+-neverallow { domain -init } property_data_file:dir no_w_dir_perms;
++#neverallow { domain -init } property_data_file:dir no_w_dir_perms;
+ neverallow { domain -init } property_data_file:file { no_w_file_perms no_x_file_perms };
+ neverallow { domain -init } property_type:file { no_w_file_perms no_x_file_perms };
+ neverallow { domain -init } properties_device:file { no_w_file_perms no_x_file_perms };
+@@ -346,11 +346,11 @@ neverallow { domain -recovery } contextmount_type:dir_file_class_set
  # system_app_service rather than the generic type.
  # New service_types are defined in service.te and new mappings
  # from service name to service_type are defined in service_contexts.
@@ -140,6 +185,11 @@ index 59de1f1..540d224 100644
  
  # Require that domains explicitly label unknown properties, and do not allow
  # anyone but init to modify unknown properties.
+-neverallow { domain -init } default_prop:property_service set;
++#neverallow { domain -init } default_prop:property_service set;
+ neverallow { domain -init } mmc_prop:property_service set;
+ 
+ neverallow { domain -init -recovery -system_server } frp_block_device:blk_file rw_file_perms;
 @@ -486,13 +486,13 @@ neverallow ~domain domain:process { transition dyntransition };
  # Example type transition:
  #  mydomain.te:file_type_auto_trans(mydomain, system_data_file, new_file_type)
@@ -161,6 +211,17 @@ index 59de1f1..540d224 100644
  # do not grant anything greater than r_file_perms and relabelfrom unlink
  # to installd
  neverallow installd system_data_file:file ~{ r_file_perms relabelfrom unlink };
+diff --git a/drmserver.te b/drmserver.te
+index 9130e0b..b8fc432 100644
+--- a/drmserver.te
++++ b/drmserver.te
+@@ -52,5 +52,6 @@ allow drmserver oemfs:file r_file_perms;
+ 
+ allow drmserver drmserver_service:service_manager { add find };
+ allow drmserver permission_service:service_manager find;
++allow drmserver sdcardfs:file open;
+ 
+ selinux_check_access(drmserver)
 diff --git a/fingerprintd.te b/fingerprintd.te
 index 1c0ab1c..087dbeb 100644
 --- a/fingerprintd.te
@@ -181,10 +242,39 @@ index d5a6db1..8a696bf 100644
  neverallow fsck { file_type fs_type -fsck_exec }:file entrypoint;
 +allow fsck block_device:blk_file { ioctl };
 +allow fsck block_device:blk_file { open read write };
+diff --git a/gatekeeperd.te b/gatekeeperd.te
+index e394af3..9e59b7f 100644
+--- a/gatekeeperd.te
++++ b/gatekeeperd.te
+@@ -26,5 +26,6 @@ allow gatekeeperd gatekeeper_data_file:file create_file_perms;
+ 
+ # For hardware properties retrieval
+ allow gatekeeperd hardware_properties_service:service_manager find;
++allow gatekeeperd device:chr_file { ioctl open read write };
+ 
+ neverallow { domain -gatekeeperd } gatekeeper_service:service_manager add;
 diff --git a/init.te b/init.te
-index 9bc78d1..9315804 100644
+index 9bc78d1..47fbd78 100644
 --- a/init.te
 +++ b/init.te
+@@ -25,7 +25,7 @@ allow init self:capability sys_resource;
+ allow init tmpfs:file unlink;
+ 
+ # Access pty created for fsck.
+-allow init devpts:chr_file { read write open };
++allow init devpts:chr_file { read write open ioctl setattr };
+ 
+ # Create /dev/fscklogs files.
+ allow init fscklogs:file create_file_perms;
+@@ -139,7 +139,7 @@ r_dir_file(init, security_file)
+ # Any operation that can modify the kernel ring buffer, e.g. clear
+ # or a read that consumes the messages that were read.
+ allow init kernel:system syslog_mod;
+-allow init self:capability2 syslog;
++allow init self:capability2 { syslog block_suspend };
+ 
+ # Set usermodehelpers and /proc security settings.
+ allow init usermodehelper:file rw_file_perms;
 @@ -178,6 +178,12 @@ domain_trans(init, init_exec, watchdogd)
  # case where logpersistd is actually logcat -f in logd context (nee: logcatd)
  userdebug_or_eng(`
@@ -198,7 +288,7 @@ index 9bc78d1..9315804 100644
  ')
  
  # Init will create /data/misc/logd when the property persist.logd.logpersistd is "logcatd".
-@@ -304,11 +310,35 @@ neverallow init shell_data_file:lnk_file read;
+@@ -304,11 +310,39 @@ neverallow init shell_data_file:lnk_file read;
  neverallow init app_data_file:lnk_file read;
  
  # init should never execute a program without changing to another domain.
@@ -214,12 +304,11 @@ index 9bc78d1..9315804 100644
  neverallow init shell_data_file:dir { write add_name remove_name };
 +allow init block_device:blk_file write;
 +allow init debugfs:file write;
-+allow init devpts:chr_file setattr;
 +allow init kmsg_device:chr_file write;
 +allow init media_rw_data_file:file append;
 +allow init mediacodec:binder transfer;
 +allow init mnt_user_file:lnk_file read;
-+allow init sdcardfs:dir { add_name open read remove_name search write };
++allow init sdcardfs:dir { add_name create open read remove_name search write };
 +allow init sdcardfs:file { append create getattr open read unlink };
 +allow init self:netlink_generic_socket { bind create getattr read setopt write };
 +allow init self:netlink_kobject_uevent_socket { bind create read setopt };
@@ -230,12 +319,17 @@ index 9bc78d1..9315804 100644
 +allow init socket_device:sock_file { create setattr unlink write };
 +allow init storage_file:lnk_file read;
 +allow init surfaceflinger:binder call;
++allow init surfaceflinger_service:service_manager find;
 +allow init system_data_file:file lock;
 +allow init system_data_file:sock_file write;
 +allow init tmpfs:lnk_file create;
 +allow init system_file:file execute_no_trans;
 +allow init default_android_service:service_manager { add find };
 +allow init shell_exec:file execute_no_trans;
++allow init netd_socket:sock_file write;
++allow init device:lnk_file unlink;
++allow init debugfs_trace_marker:file getattr;
++allow init devpts:chr_file getattr;
 diff --git a/install_recovery.te b/install_recovery.te
 index 1c47236..18c17d3 100644
 --- a/install_recovery.te
@@ -269,10 +363,23 @@ index 978982a..1b41384 100644
    socket netlink_socket packet_socket key_socket appletalk_socket
    netlink_firewall_socket netlink_tcpdiag_socket netlink_nflog_socket
 diff --git a/kernel.te b/kernel.te
-index 1ca5673..9ed776a 100644
+index 1ca5673..34320c8 100644
 --- a/kernel.te
 +++ b/kernel.te
-@@ -41,6 +41,10 @@ allow kernel self:capability sys_resource;
+@@ -15,6 +15,12 @@ allow kernel selinuxfs:file r_file_perms;
+ # Allow init relabel itself.
+ allow kernel rootfs:file relabelfrom;
+ allow kernel init_exec:file relabelto;
++allow kernel init:dir search;
++allow kernel init:file { getattr open read };
++allow kernel system_app:dir search;
++allow kernel system_app:file { getattr open read };
++allow kernel platform_app:dir search;
++allow kernel platform_app:file { getattr open read };
+ # TODO: investigate why we need this.
+ allow kernel init:process share;
+ 
+@@ -41,6 +47,10 @@ allow kernel self:capability sys_resource;
  allow kernel self:capability sys_boot;
  allow kernel proc_sysrq:file w_file_perms;
  
@@ -283,7 +390,7 @@ index 1ca5673..9ed776a 100644
  # Allow writing to /dev/__kmsg__ which was created prior to
  # loading policy
  allow kernel tmpfs:chr_file write;
-@@ -90,4 +94,12 @@ neverallow * kernel:process { transition dyntransition };
+@@ -90,4 +100,29 @@ neverallow * kernel:process { transition dyntransition };
  #   some other program.  Fix your init.rc file.
  # - You are running an exploit which switched to the init task credentials
  #   and is then trying to exec a shell or other program.  You lose!
@@ -297,11 +404,53 @@ index 1ca5673..9ed776a 100644
 +allow kernel self:capability2 block_suspend;
 +allow kernel sysfs_wake_lock:file { open read write };
 +allow kernel system_data_file:file { create write };
++allow kernel audioserver:dir search;
++allow kernel audioserver:file { getattr open read };
++allow kernel system_data_file:dir { create remove_name };
++allow kernel system_data_file:file unlink;
++allow kernel su:dir search;
++allow kernel su:file { getattr open read };
++allow kernel bootanim:dir search;
++allow kernel bootanim:file { getattr open read };
++allow kernel cameraserver:dir search;
++allow kernel cameraserver:file { getattr open read };
++allow kernel keystore:dir search;
++allow kernel keystore:file { getattr open read };
++allow kernel mediaserver:dir search;
++allow kernel mediaserver:file { getattr open read };
++allow kernel zygote:dir search;
++allow kernel zygote:file { getattr open read };
++
+diff --git a/keystore.te b/keystore.te
+index 9dca43c..b4661c9 100644
+--- a/keystore.te
++++ b/keystore.te
+@@ -10,6 +10,7 @@ allow keystore keystore_data_file:dir create_dir_perms;
+ allow keystore keystore_data_file:notdevfile_class_set create_file_perms;
+ allow keystore keystore_exec:file { getattr };
+ allow keystore tee_device:chr_file rw_file_perms;
++allow keystore device:chr_file { ioctl open read write };
+ allow keystore tee:unix_stream_socket connectto;
+ 
+ allow keystore keystore_service:service_manager { add find };
+@@ -22,11 +23,10 @@ selinux_check_access(keystore)
+ ###
+ ### Protect ourself from others
+ ###
+-
+ neverallow { domain -keystore } keystore_data_file:dir ~{ open create read getattr setattr search relabelto ioctl };
+ neverallow { domain -keystore } keystore_data_file:notdevfile_class_set ~{ relabelto getattr };
+ 
+ neverallow { domain -keystore -init } keystore_data_file:dir *;
+ neverallow { domain -keystore -init } keystore_data_file:notdevfile_class_set *;
+ 
+-neverallow * keystore:process ptrace;
++#neverallow * keystore:process ptrace;
 diff --git a/mediacodec.te b/mediacodec.te
-index 3d3625a..5553f1c 100644
+index 3d3625a..26f2ab3 100644
 --- a/mediacodec.te
 +++ b/mediacodec.te
-@@ -28,3 +28,10 @@ neverallow mediacodec { file_type fs_type }:file execute_no_trans;
+@@ -28,3 +28,14 @@ neverallow mediacodec { file_type fs_type }:file execute_no_trans;
  
  # mediacodec should never need network access. Disallow network sockets.
  neverallow mediacodec domain:{ tcp_socket udp_socket rawip_socket } *;
@@ -312,6 +461,10 @@ index 3d3625a..5553f1c 100644
 +allow mediacodec property_socket:sock_file write;
 +allow mediacodec sysfs:file { open read };
 +allow mediacodec init:binder call;
++allow mediacodec debug_prop:property_service set;
++allow mediacodec default_prop:property_service set;
++allow mediacodec system_prop:property_service set;
++
 diff --git a/mediadrmserver.te b/mediadrmserver.te
 index d9368ad..3ef8830 100644
 --- a/mediadrmserver.te
@@ -334,10 +487,23 @@ index d9368ad..3ef8830 100644
 -neverallowxperm mediadrmserver domain:{ rawip_socket tcp_socket udp_socket } ioctl priv_sock_ioctls;
 +#neverallowxperm mediadrmserver domain:{ rawip_socket tcp_socket udp_socket } ioctl priv_sock_ioctls;
 diff --git a/mediaserver.te b/mediaserver.te
-index dc05e14..519b87f 100644
+index dc05e14..d13f931 100644
 --- a/mediaserver.te
 +++ b/mediaserver.te
-@@ -117,8 +117,8 @@ allow mediaserver drmserver:drmservice {
+@@ -34,6 +34,12 @@ allow mediaserver gpu_device:chr_file rw_file_perms;
+ allow mediaserver video_device:dir r_dir_perms;
+ allow mediaserver video_device:chr_file rw_file_perms;
+ 
++allow mediaserver device:chr_file { ioctl open read write };
++allow mediaserver mnt_user_file:dir search;
++allow mediaserver storage_file:dir search;
++allow mediaserver storage_file:lnk_file read;
++
++
+ set_prop(mediaserver, audio_prop)
+ 
+ # XXX Label with a specific type?
+@@ -117,8 +123,8 @@ allow mediaserver drmserver:drmservice {
  };
  
  # only allow unprivileged socket ioctl commands
@@ -348,7 +514,7 @@ index dc05e14..519b87f 100644
  
  # Access to /data/media.
  # This should be removed if sdcardfs is modified to alter the secontext for its
-@@ -138,4 +138,4 @@ allow mediaserver preloads_data_file:file { getattr read ioctl };
+@@ -138,4 +144,4 @@ allow mediaserver preloads_data_file:file { getattr read ioctl };
  neverallow mediaserver { file_type fs_type }:file execute_no_trans;
  
  # do not allow privileged socket ioctl commands
@@ -364,20 +530,41 @@ index 6302073..5498e8a 100644
  neverallow netd { domain -system_server -servicemanager userdebug_or_eng(`-su') }:binder call;
 +allow netd device:chr_file { open write };
 diff --git a/platform_app.te b/platform_app.te
-index d4a27ad..489dc55 100644
+index d4a27ad..e0b1869 100644
 --- a/platform_app.te
 +++ b/platform_app.te
-@@ -56,3 +56,5 @@ allow platform_app vr_manager_service:service_manager find;
- # Access to /data/preloads
- allow platform_app preloads_data_file:file r_file_perms;
- allow platform_app preloads_data_file:dir r_dir_perms;
-+allow platform_app device:chr_file { getattr ioctl };
-+allow platform_app device:chr_file { open read write };
+@@ -12,11 +12,14 @@ bluetooth_domain(platform_app)
+ allow platform_app shell_data_file:dir search;
+ allow platform_app shell_data_file:file { open getattr read };
+ allow platform_app icon_file:file { open getattr read };
++allow platform_app device:chr_file write;
+ # Populate /data/app/vmdl*.tmp, /data/app-private/vmdl*.tmp files
+ # created by system server.
+ allow platform_app { apk_tmp_file apk_private_tmp_file }:dir rw_dir_perms;
+ allow platform_app { apk_tmp_file apk_private_tmp_file }:file rw_file_perms;
+ allow platform_app apk_private_data_file:dir search;
++allow platform_app device:chr_file { open read write getattr ioctl };
++allow platform_app device:chr_file write;
+ # ASEC
+ allow platform_app asec_apk_file:dir create_dir_perms;
+ allow platform_app asec_apk_file:file create_file_perms;
 diff --git a/priv_app.te b/priv_app.te
-index 85516a6..889a424 100644
+index 85516a6..c100a5f 100644
 --- a/priv_app.te
 +++ b/priv_app.te
-@@ -87,7 +87,7 @@ allow priv_app sysfs_zram:dir search;
+@@ -14,9 +14,11 @@ allow priv_app self:process ptrace;
+ # Some apps ship with shared libraries and binaries that they write out
+ # to their sandbox directory and then execute.
+ allow priv_app app_data_file:file rx_file_perms;
++allow priv_app device:chr_file write;
+ 
+ # android.process.media uses /dev/mtp_usb
+ allow priv_app mtp_device:chr_file rw_file_perms;
++allow priv_app device:chr_file { getattr ioctl open read write };
+ 
+ # Allow the allocation and use of ptys
+ # Used by: https://play.privileged.com/store/apps/details?id=jackpal.androidterm
+@@ -87,7 +89,7 @@ allow priv_app sysfs_zram:dir search;
  allow priv_app sysfs_zram:file r_file_perms;
  
  # access the mac address
@@ -386,12 +573,33 @@ index 85516a6..889a424 100644
  
  # Allow GMS core to communicate with update_engine for A/B update.
  binder_call(priv_app, update_engine)
-@@ -142,3 +142,5 @@ neverallow priv_app mlstrustedsubject:process fork;
- # bugs, so we want to ensure priv_app never has this
- # capability.
- neverallow priv_app file_type:file link;
-+allow priv_app device:chr_file { getattr ioctl };
-+allow priv_app device:chr_file { open read write };
+@@ -99,6 +101,8 @@ allow priv_app ringtone_file:file { getattr read write };
+ # Access to /data/preloads
+ allow priv_app preloads_data_file:file r_file_perms;
+ allow priv_app preloads_data_file:dir r_dir_perms;
++allow priv_app device:chr_file write;
++allow priv_app cache_private_backup_file:dir getattr;
+ 
+ ###
+ ### neverallow rules
+diff --git a/radio.te b/radio.te
+index 591c3bc..d857ff3 100644
+--- a/radio.te
++++ b/radio.te
+@@ -36,3 +36,4 @@ allow radio radio_service:service_manager { add find };
+ allow radio surfaceflinger_service:service_manager find;
+ allow radio app_api_service:service_manager find;
+ allow radio system_api_service:service_manager find;
++allow radio device:chr_file { getattr ioctl open read write };
+diff --git a/rild.te b/rild.te
+index e2856a3..6fb1792 100644
+--- a/rild.te
++++ b/rild.te
+@@ -45,3 +45,4 @@ allow rild self:netlink_kobject_uevent_socket create_socket_perms;
+ wakelock_use(rild)
+ 
+ allow rild self:socket create_socket_perms;
++allow rild socket_device:sock_file write;
 diff --git a/servicemanager.te b/servicemanager.te
 index 84605d1..026cd70 100644
 --- a/servicemanager.te
@@ -421,10 +629,18 @@ index 3e95b46..7ed52cb 100644
 -neverallowxperm shell domain:{ rawip_socket tcp_socket udp_socket } ioctl priv_sock_ioctls;
 +#neverallowxperm shell domain:{ rawip_socket tcp_socket udp_socket } ioctl priv_sock_ioctls;
 diff --git a/surfaceflinger.te b/surfaceflinger.te
-index 7364e5f..e78f46c 100644
+index 7364e5f..c8da3c7 100644
 --- a/surfaceflinger.te
 +++ b/surfaceflinger.te
-@@ -71,3 +71,6 @@ allow surfaceflinger self:capability sys_nice;
+@@ -32,6 +32,7 @@ allow surfaceflinger video_device:chr_file rw_file_perms;
+ 
+ # Create and use netlink kobject uevent sockets.
+ allow surfaceflinger self:netlink_kobject_uevent_socket create_socket_perms;
++allow surfaceflinger debug_prop:property_service set;
+ 
+ # Set properties.
+ set_prop(surfaceflinger, system_prop)
+@@ -71,3 +72,6 @@ allow surfaceflinger self:capability sys_nice;
  # Do not allow accessing SDcard files as unsafe ejection could
  # cause the kernel to kill the process.
  neverallow surfaceflinger sdcard_type:file rw_file_perms;
@@ -462,10 +678,10 @@ index db59b65..e61367b 100644
 +allow system_server device:chr_file { open read write };
 +allow system_server block_device:blk_file { ioctl open read write };
 diff --git a/toolbox.te b/toolbox.te
-index 55de7eb..65fd9f2 100644
+index 55de7eb..51e71e4 100644
 --- a/toolbox.te
 +++ b/toolbox.te
-@@ -24,3 +24,9 @@ allow toolbox swap_block_device:blk_file rw_file_perms;
+@@ -24,3 +24,17 @@ allow toolbox swap_block_device:blk_file rw_file_perms;
  neverallow { domain -init } toolbox:process transition;
  neverallow * toolbox:process dyntransition;
  neverallow toolbox { file_type fs_type -toolbox_exec}:file entrypoint;
@@ -474,12 +690,28 @@ index 55de7eb..65fd9f2 100644
 +allow toolbox unlabeled:dir getattr;
 +allow toolbox unlabeled:file getattr;
 +allow toolbox unlabeled:file { open read setattr write };
-+allow toolbox system_data_file:file { create write };
++allow toolbox system_data_file:file { create write setattr };
++allow toolbox device:chr_file { read write };
++allow toolbox init:fifo_file { getattr write };
++allow toolbox drm_data_file:dir rmdir;
++allow toolbox init:fifo_file ioctl;
++allow toolbox property_data_file:dir rmdir;
++allow toolbox self:capability dac_override;
++allow toolbox system_data_file:dir { remove_name rmdir create open read setattr };
++allow toolbox media_data_file:dir rmdir;
 diff --git a/untrusted_app.te b/untrusted_app.te
-index 07bfbf4..2002e8b 100644
+index 07bfbf4..4dcf296 100644
 --- a/untrusted_app.te
 +++ b/untrusted_app.te
-@@ -158,8 +158,8 @@ neverallow untrusted_app sysfs_mac_address:file no_rw_file_perms;
+@@ -109,6 +109,7 @@ allow untrusted_app sysfs_hwrandom:file r_file_perms;
+ # Allow apps to view preloaded content
+ allow untrusted_app preloads_data_file:dir r_dir_perms;
+ allow untrusted_app preloads_data_file:file r_file_perms;
++allow untrusted_app device:chr_file { getattr ioctl open read write };
+ 
+ ###
+ ### neverallow rules
+@@ -158,8 +159,8 @@ neverallow untrusted_app sysfs_mac_address:file no_rw_file_perms;
  
  # Restrict socket ioctls. Either 1. disallow privileged ioctls, 2. disallow the
  # ioctl permission, or 3. disallow the socket class.
@@ -490,3 +722,15 @@ index 07bfbf4..2002e8b 100644
  neverallow untrusted_app *:{
    socket netlink_socket packet_socket key_socket appletalk_socket
    netlink_firewall_socket netlink_tcpdiag_socket netlink_nflog_socket
+diff --git a/vold.te b/vold.te
+index a2b55bb..208a2ba 100644
+--- a/vold.te
++++ b/vold.te
+@@ -156,6 +156,7 @@ allow vold userdata_block_device:blk_file rw_file_perms;
+ 
+ # Access metadata block device used for encryption meta-data.
+ allow vold metadata_block_device:blk_file rw_file_perms;
++allow vold block_device:blk_file { open read write };
+ 
+ # Allow vold to manipulate /data/unencrypted
+ allow vold unencrypted_data_file:{ file } create_file_perms;

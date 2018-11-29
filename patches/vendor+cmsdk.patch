@@ -76,16 +76,3 @@ index 12de39b..b35486c 100644
      field public static final java.lang.String SYSTEM_PROFILES_ENABLED = "system_profiles_enabled";
      field public static final java.lang.String SYS_PROP_CM_SETTING_VERSION = "sys.cm_settings_system_version";
      field public static final java.lang.String T9_SEARCH_INPUT_LOCALE = "t9_search_input_locale";
-diff --git a/cm/res/res/values/config.xml b/cm/res/res/values/config.xml
-index a4429ce..4925aa5 100644
---- a/cm/res/res/values/config.xml
-+++ b/cm/res/res/values/config.xml
-@@ -60,7 +60,7 @@
-     <integer name="config_nightColorTemperature">4800</integer>
-     <integer name="config_outdoorAmbientLux">12000</integer>
-     <integer name="config_outdoorAmbientLuxHysteresis">1500</integer>
--    <integer name="config_defaultLiveDisplayMode">2</integer>
-+    <integer name="config_defaultLiveDisplayMode">0</integer>
- 
-     <!-- These values should map to the true min and max
-          that the backend is capable of adjusting to. This

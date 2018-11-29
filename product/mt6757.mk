@@ -1,28 +1,28 @@
 GAPPS_VARIANT := nano
-#APPS_PRODUCT_PACKAGES += \
-#  CMAudioFX \
-#  CMParts \
-#  CalculatorGoogle \
-#  CarrierServices \
-#  ClockGoogle \
-#  Chrome \
-##  CameraGoogle \
-#  PrebuiltGmsCore \
-#  DialerFramework \
-#  DialerGoogle \
-#  ExchangeGoogle \
-#  GCS \
-#  Maps \
-#  Translate \
+APPS_PRODUCT_PACKAGES += \
+  CMAudioFX \
+  CMParts \
+  CalculatorGoogle \
+  CarrierServices \
+  ClockGoogle \
+  Chrome \
+  CameraGoogle \
+  PrebuiltGmsCore \
+  DialerFramework \
+  DialerGoogle \
+  ExchangeGoogle \
+  GCS \
+  Maps \
+  Translate \
 
-#APPS_EXCLUDED_PACKAGES := \
-#  Wellbeing
-# YouTube \
-# TagGoogle \
-# GoogleNow \
-# Hangouts \
-# GooglePlus \
-# Search
+APPS_EXCLUDED_PACKAGES := \
+  Wellbeing \
+  YouTube \
+  TagGoogle \
+  GoogleNow \
+  Hangouts \
+  GooglePlus \
+  Search
 
 PRODUCT_PACKAGES += \
   BackupRestoreConfirmation \

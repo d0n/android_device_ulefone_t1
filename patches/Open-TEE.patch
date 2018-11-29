@@ -1,0 +1,9 @@
+diff --git a/otservice/src/main/jni/libtee b/otservice/src/main/jni/libtee
+index c0b1a3e..0008023 120000
+--- a/otservice/src/main/jni/libtee
++++ b/otservice/src/main/jni/libtee
+@@ -1 +1 @@
+-../../../../opentee/src/main/jni/libtee
+\ No newline at end of file
++../../../../opentee/src/main/jniLibs/armeabi-v7a
+\ No newline at end of file

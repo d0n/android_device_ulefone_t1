@@ -1,0 +1,33 @@
+diff --git a/src/com/android/phone/settings/AccessibilitySettingsFragment.java b/src/com/android/phone/settings/AccessibilitySettingsFragment.java
+index 0c186a9ab..d7fe2d13a 100644
+--- a/src/com/android/phone/settings/AccessibilitySettingsFragment.java
++++ b/src/com/android/phone/settings/AccessibilitySettingsFragment.java
+@@ -147,11 +147,11 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
+             return false;
+         }
+ 
+-        for (Phone phone : phones) {
++        /*for (Phone phone : phones) {
+             if (phone.isImsVideoCallOrConferencePresent()) {
+                 return true;
+             }
+-        }
++        }*/
+         return false;
+     }
+ }
+diff --git a/src/com/android/services/telephony/TelephonyConnectionService.java b/src/com/android/services/telephony/TelephonyConnectionService.java
+index 3259e97b6..5d3fba26e 100644
+--- a/src/com/android/services/telephony/TelephonyConnectionService.java
++++ b/src/com/android/services/telephony/TelephonyConnectionService.java
+@@ -902,8 +902,8 @@ public class TelephonyConnectionService extends ConnectionService {
+             int cause = android.telephony.DisconnectCause.OUTGOING_FAILURE;
+             if (e.getError() == CallStateException.ERROR_DISCONNECTED) {
+                 cause = android.telephony.DisconnectCause.OUT_OF_SERVICE;
+-            } else if (e.getError() == CallStateException.ERROR_POWER_OFF) {
+-                cause = android.telephony.DisconnectCause.POWER_OFF;
++            //} else if (e.getError() == CallStateException.ERROR_POWER_OFF) {
++            //    cause = android.telephony.DisconnectCause.POWER_OFF;
+             }
+             connection.setDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(
+                     cause, e.getMessage()));
