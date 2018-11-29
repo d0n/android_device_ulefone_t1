@@ -1,22 +1,22 @@
 GAPPS_VARIANT := nano
-APPS_PRODUCT_PACKAGES += \
-  CMAudioFX \
-  CMParts \
-  CalculatorGoogle \
-  CarrierServices \
-  ClockGoogle \
-  Chrome \
-  CameraGoogle \
-  PrebuiltGmsCore \
-  DialerFramework \
-  DialerGoogle \
-  ExchangeGoogle \
-  GCS \
-  Maps \
-  Translate \
+#APPS_PRODUCT_PACKAGES += \
+#  CMAudioFX \
+#  CMParts \
+#  CalculatorGoogle \
+#  CarrierServices \
+#  ClockGoogle \
+#  Chrome \
+##  CameraGoogle \
+#  PrebuiltGmsCore \
+#  DialerFramework \
+#  DialerGoogle \
+#  ExchangeGoogle \
+#  GCS \
+#  Maps \
+#  Translate \
 
-APPS_EXCLUDED_PACKAGES := \
-  Wellbeing
+#APPS_EXCLUDED_PACKAGES := \
+#  Wellbeing
 # YouTube \
 # TagGoogle \
 # GoogleNow \
@@ -142,9 +142,15 @@ PRODUCT_PACKAGES += \
   libbwc \
   libgralloc_extra \
   libMtkOmxApeDec \
+  libdrmpassthruplugin \
+  libfwdlockengine \
+  libdrmutility \
+  libdrmframework \
+  libstagefrighthw \
   libepos \
   libifaddrs \
   libperfservicenative \
+  libaudiopolicymanagerdefault \
   mtk_socket \
   agps
 
@@ -155,9 +161,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
   camera2.portability.force_api=1
 
-PRODUCT_SYSTEM_SERVER_JARS += \
-  com.google.android.gms \
-  com.cyanogenmod.keyhandler
+#PRODUCT_SYSTEM_SERVER_JARS += \
+#  com.google.android.gms \
+#  com.cyanogenmod.keyhandler
 
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/camerasize.xml:system/etc/camerasize.xml \
@@ -343,24 +349,9 @@ PRODUCT_PACKAGES += \
   hostapd \
   wificond \
   wifilogd \
+  Open-TEE \
+  opentee-engine \
   wpa_supplicant
-
-#PRODUCT_BOOT_JARS := \
-#  telephony-ext \
-#  core-oj \
-#  core-libart \
-#  conscrypt \
-#  okhttp \
-#  core-junit \
-#  bouncycastle \
-#  ext \
-#  framework \
-#  telephony-common \
-#  voip-common \
-#  ims-common \
-#  apache-xml \
-#  org.apache.http.legacy.boot
-
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -424,10 +415,8 @@ PRODUCT_COPY_FILES += \
 
 # Keyboard layout
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
-
-PRODUCT_SYSTEM_SERVER_JARS += \
-  com.google.android.gms
+  $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
+  $(LOCAL_PATH)/configs/keylayout/Generic.kl:system/usr/keylayout/Generic.kl
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -445,7 +434,8 @@ PRODUCT_COPY_FILES += \
   frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
   frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
   frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
-  device/ulefone/t1/configs/media_profiles.xml:system/etc/media_profiles.xml
+  $(LOCAL_PATH)/configs/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
+  $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -468,6 +458,7 @@ PRODUCT_PACKAGES += \
 # Ramdisks
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
+  $(LOCAL_PATH)/rootdir/mtkshim.sh:root/mtkshim.sh \
   $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
   $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
   $(LOCAL_PATH)/rootdir/meta_init.connectivity.rc:root/meta_init.connectivity.rc \
@@ -570,6 +561,8 @@ PRODUCT_PACKAGES += art-runtime
 # ART/dex helpers.
 PRODUCT_PACKAGES += art-tools
 
+PRODUCT_PACKAGES += libmtk_symbols
+
 # Certificates.
 PRODUCT_PACKAGES += \
   cacerts \
@@ -598,9 +591,9 @@ PRODUCT_PROPERTY_OVERRIDES += ro.telephony.sim.count=$(SIM_COUNT)
 PRODUCT_PROPERTY_OVERRIDES += persist.radio.default.sim=0
 PRODUCT_PROPERTY_OVERRIDES += persist.radio.multisim.config=dsds
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml
+  $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml \
 
 # USB
 PRODUCT_PACKAGES += \
   librs_jni \
-  com.android.future.usb.accessory
+  com.android.future.usb.accessor

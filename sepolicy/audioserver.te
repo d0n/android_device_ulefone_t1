@@ -1,0 +1,9 @@
+# nvram
+allow audioserver ccci_device:chr_file rw_file_perms;
+
+# fm radio
+allow audioserver fm_device:chr_file rw_file_perms;
+
+# Audio
+allow audioserver sysfs:file { open read write };
+allow audioserver audiohal_prop:property_service set;

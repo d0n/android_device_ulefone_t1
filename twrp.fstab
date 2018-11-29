@@ -25,4 +25,4 @@
 
 # Removable storage
 /external_sd            vfat            /dev/block/mmcblk1p1    /dev/block/mmcblk1                                flags=display="MSD";backup=0;wipeingui;storage;removable;settingsstorage;encryptable=userdata
-#/usb-otg                auto            /devices/platform/11270000.usb3_xhci*                                     flags=display="OTG";backup=0;wipeingui;storage;removable
+/usb-otg                auto            /devices/platform/11270000.usb3_xhci*                                     flags=display="OTG";backup=0;wipeingui;storage;removable

@@ -24,6 +24,7 @@ $(call inherit-product, $(LOCAL_PATH)/device_t1.mk)
 # Device display
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
+LINEAGEOS_VERSION := 14.1
 
 # Device identifier
 PRODUCT_BRAND := Ulefone

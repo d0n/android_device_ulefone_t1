@@ -18,7 +18,7 @@
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
-PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi 480dpi hdpi tvdpi mdpi ldpi
+PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi tvdpi mdpi ldpi
 
 # Device product elements
 include $(LOCAL_PATH)/product/mt6757.mk

@@ -18,8 +18,8 @@ for I in $(find bin/ vendor/bin vendor/firmware -type f) ;do
   if [ "$(echo $I |awk -F'/' '{print $1}')" == "vendor" ] ;then
     printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE
   fi
-  if [ "$I" == "vtservice" ] ;then
-    printf "LOCAL_SHARED_LIBRARIES := libbinder libmtk_vt_service libc++\n" >> $AMAKE
+  if [ "$BIN" == "vtservice" ] ;then
+    printf "LOCAL_MULTILIB := 32\nLOCAL_SHARED_LIBRARIES := libc++ libutils libbinder libmtk_vt_service libmtk_vt_wrapper libmtk_vt_swip libmtk_vt_utils\n" >> $AMAKE
   fi
   printf "include \$(BUILD_PREBUILT)\n\n" >>$AMAKE
   printf "  ${BIN} \\\\\n" >>$VMAKE

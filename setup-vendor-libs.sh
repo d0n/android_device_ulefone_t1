@@ -70,7 +70,7 @@ for I in $(find lib* vendor/lib* -type f) ;do
     SHRLIBS="libc++"
   fi
   printf "LOCAL_SHARED_LIBRARIES := ${SHRLIBS}\n" >> $AMAKE
-  printf "include \$(PREBUILT_SHARED_LIBRARY)\n\n" >> $AMAKE
+  printf "include \$(BUILD_PREBUILT)\n\n" >> $AMAKE
   printf "  ${LIB%.*} \\\\\n" >> $VMAKE
 done
 for I in $(find * -type f -name *.jar) ;do
@@ -82,10 +82,10 @@ for I in $(find * -type f -name *.jar) ;do
   BDIR="$(dirname $I)"
   VDIR="$(echo $I |awk -F'/' '{print $1}')"
   SRCS="proprietary/$I"
-  if [ "$(basename $BDIR)" == "framework" ] && [ -f $BDIR/arm/boot-${BIN%.*}.art -a -f arm64/boot-${BIN%.*}.art ] ;then
+  if [ "$(basename $BDIR)" == "framework" ] && [ -f $BDIR/arm/boot-${BIN%.*}.art -a -f $BDIR/arm64/boot-${BIN%.*}.art ] ;then
     SRCS="proprietary/$I \\\\\n  \$(LOCAL_PATH)/proprietary/framework/arm/boot-${BIN%.*}.art \\\\\n  \$(LOCAL_PATH)/proprietary/framework/arm/boot-${BIN%.*}.oat \\\\\n  \$(LOCAL_PATH)/proprietary/framework/arm64/boot-${BIN%.*}.art \\\\\n  \$(LOCAL_PATH)/proprietary/framework/arm64/boot-${BIN%.*}.oat"
   elif [ "$(basename $BDIR)" == "framework" ] && [ -f $BDIR/oat/arm/${BIN%.*}.odex -a -f $BDIR/oat/arm64/${BIN%.*}.odex ] ;then
-    SRCS="proprietary/$I \\\\\n  \$(LOCAL_PATH)/proprietary/framework/oat/arm/${BIN%.*}.odex \\\\\n  \$(LOCAL_PATH)/proprietary/framework/oat/arm64/${BIN%.*}.odex\n"
+    SRCS="proprietary/$I \\\\\n  \$(LOCAL_PATH)/proprietary/framework/oat/arm/${BIN%.*}.odex \\\\\n  \$(LOCAL_PATH)/proprietary/framework/oat/arm64/${BIN%.*}.odex"
   fi
   printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${BIN%.*}\nLOCAL_SRC_FILES := ${SRCS}\nLOCAL_DEX_PREOPT := false\nLOCAL_MODULE_CLASS := JAVA_LIBRARIES\nLOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)\n" >>$AMAKE
   if [ "$(echo $I |awk -F'/' '{print $1}')" == "vendor" ] ;then
