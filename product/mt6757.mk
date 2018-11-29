@@ -180,9 +180,6 @@ PRODUCT_PACKAGES += \
   ds-static \
   conscrypt \
   conscrypt-host \
-  org.cyanogenmod.platform.internal \
-  com.cyanogenmod.keyhandler \
-  com.google.android.gsf \
   libjavacrypto \
   libconscrypt_jni \
   libconscrypt_static \
@@ -351,7 +348,17 @@ PRODUCT_PACKAGES += \
   wifilogd \
   Open-TEE \
   opentee-engine \
-  wpa_supplicant
+  wpa_supplicant \
+  audio.a2dp.default \
+  audio.usb.default \
+  audio.r_submix.default \
+  audio_policy.default \
+  libaudio-resampler \
+  libaudiopolicymanagerdefault \
+  libmtk_symbols \
+  libtinycompress \
+  libtinyxml \
+  tinymix \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -385,11 +392,18 @@ PRODUCT_COPY_FILES += \
 #$(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 # GPS
+$(call inherit-product, device/common/gps/gps_us_supl.mk)
+
+# GPS library
 PRODUCT_PACKAGES += \
-  gps.mt6757 \
-  libcurl \
-  libepos \
-  YGPS
+    libcurl
+
+# GPS
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/slp_conf:system/etc/slp_conf \
+    $(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml
+
 
 # Hardware-specific permissions
 PRODUCT_COPY_FILES += \
@@ -458,7 +472,6 @@ PRODUCT_PACKAGES += \
 # Ramdisks
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
-  $(LOCAL_PATH)/rootdir/mtkshim.sh:root/mtkshim.sh \
   $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
   $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
   $(LOCAL_PATH)/rootdir/meta_init.connectivity.rc:root/meta_init.connectivity.rc \
@@ -591,7 +604,8 @@ PRODUCT_PROPERTY_OVERRIDES += ro.telephony.sim.count=$(SIM_COUNT)
 PRODUCT_PROPERTY_OVERRIDES += persist.radio.default.sim=0
 PRODUCT_PROPERTY_OVERRIDES += persist.radio.multisim.config=dsds
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml \
+  $(LOCAL_PATH)/configs/ecc_list.xml:system/etc/ecc_list.xml \
+  $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml
 
 # USB
 PRODUCT_PACKAGES += \

@@ -1,5 +1,11 @@
 [
   {
+      "remote": "github",
+      "repository": "joe2k01/KeySwitch",
+      "target_path": "packages/apps/KeySwitch",
+      "branch": "AOSP-build"
+  },
+  {
     "repository": "android_device_qcom_common",
     "target_path": "device/qcom/common"
   },

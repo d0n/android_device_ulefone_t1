@@ -1,3 +1,18 @@
+diff --git a/src/java/com/android/internal/telephony/TelephonyComponentFactory.java b/src/java/com/android/internal/telephony/TelephonyComponentFactory.java
+index c15402c52..67742580c 100644
+--- a/src/java/com/android/internal/telephony/TelephonyComponentFactory.java
++++ b/src/java/com/android/internal/telephony/TelephonyComponentFactory.java
+@@ -55,8 +55,8 @@ public class TelephonyComponentFactory {
+ 
+     public static TelephonyComponentFactory getInstance() {
+         if (sInstance == null) {
+-            String fullClsName = "com.qualcomm.qti.internal.telephony.QtiTelephonyComponentFactory";
+-            String libPath = "/system/framework/qti-telephony-common.jar";
++            String fullClsName = "com.android.internal.telephony.TelephonyComponentFactory";
++            String libPath = "/system/framework/telephony-common.jar";
+ 
+             PathClassLoader classLoader = new PathClassLoader(libPath,
+                     ClassLoader.getSystemClassLoader());
 diff --git a/src/java/com/android/internal/telephony/uicc/IccFileHandler.java b/src/java/com/android/internal/telephony/uicc/IccFileHandler.java
 index 6f944bda1..4b43bf268 100644
 --- a/src/java/com/android/internal/telephony/uicc/IccFileHandler.java

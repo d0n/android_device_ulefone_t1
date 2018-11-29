@@ -1,1 +1,5 @@
-allow untrusted_app device:chr_file write;
+# PQ
+allow untrusted_app pq_service:service_manager find;
+
+# thermal
+allow untrusted_app thermal_sysfs:file r_file_perms;

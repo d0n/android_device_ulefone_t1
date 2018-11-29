@@ -63,10 +63,10 @@ index c3091ab..48014c1 100644
 +allow bootanim device:chr_file { getattr ioctl };
 +allow bootanim device:chr_file { open read write };
 diff --git a/cameraserver.te b/cameraserver.te
-index 4f50f8d..cc03d30 100644
+index 4f50f8d..f432bb8 100644
 --- a/cameraserver.te
 +++ b/cameraserver.te
-@@ -26,6 +26,18 @@ allow cameraserver mediaserver_service:service_manager find;
+@@ -26,6 +26,19 @@ allow cameraserver mediaserver_service:service_manager find;
  allow cameraserver processinfo_service:service_manager find;
  allow cameraserver scheduling_policy_service:service_manager find;
  allow cameraserver surfaceflinger_service:service_manager find;
@@ -78,6 +78,7 @@ index 4f50f8d..cc03d30 100644
 +allow cameraserver storage_file:dir search;
 +allow cameraserver storage_file:lnk_file read;
 +allow cameraserver tmpfs:dir search;
++allow cameraserver system_data_file:dir { open read };
 +
 +allow cameraserver device:chr_file { ioctl open read write };
 +allow cameraserver proc:file { open read };
@@ -700,10 +701,16 @@ index 55de7eb..51e71e4 100644
 +allow toolbox system_data_file:dir { remove_name rmdir create open read setattr };
 +allow toolbox media_data_file:dir rmdir;
 diff --git a/untrusted_app.te b/untrusted_app.te
-index 07bfbf4..4dcf296 100644
+index 07bfbf4..1835952 100644
 --- a/untrusted_app.te
 +++ b/untrusted_app.te
-@@ -109,6 +109,7 @@ allow untrusted_app sysfs_hwrandom:file r_file_perms;
+@@ -106,9 +106,13 @@ r_dir_file(untrusted_app, proc_net)
+ allow untrusted_app sysfs_hwrandom:dir search;
+ allow untrusted_app sysfs_hwrandom:file r_file_perms;
+ 
++allow untrusted_app sysfs_zram:dir search;
++allow untrusted_app sysfs_zram:file { getattr open read };
++
  # Allow apps to view preloaded content
  allow untrusted_app preloads_data_file:dir r_dir_perms;
  allow untrusted_app preloads_data_file:file r_file_perms;
@@ -711,7 +718,7 @@ index 07bfbf4..4dcf296 100644
  
  ###
  ### neverallow rules
-@@ -158,8 +159,8 @@ neverallow untrusted_app sysfs_mac_address:file no_rw_file_perms;
+@@ -158,8 +162,8 @@ neverallow untrusted_app sysfs_mac_address:file no_rw_file_perms;
  
  # Restrict socket ioctls. Either 1. disallow privileged ioctls, 2. disallow the
  # ioctl permission, or 3. disallow the socket class.
