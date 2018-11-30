@@ -32,8 +32,8 @@ on early-init
     chmod 0755 /sys/kernel/debug
 
 on init
-    export LD_PRELOAD "/system/vendor/lib/libmal_rilproxy.so /system/vendor/lib64/libmal_rilproxy.so"
-    export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtkshim_pbbuilder.so:/system/vendor/bin/vtservice|libmtkshim_vtmal.so:/system/vendor/bin/vtservice|libvt_socketbind.so:/system/vendor/bin/vtservice|libmal_rilproxy.so:/system/vendor/bin/vtservice|libmtk_vt_wrapper.so:/system/vendor/bin/mtk_agpsd|libmal_rilproxy.so:/system/vendor/bin/volte_imcb|libmal_rilproxy.so"
+    export LD_PRELOAD "/system/vendor/lib/libmal_rilproxy.so:/system/vendor/lib64/libmal_rilproxy.so:"
+    export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtkshim_pbbuilder.so:/system/vendor/bin/vtservice|libmtkshim_vtmal.so:/system/vendor/bin/vtservice|libvt_socketbind.so:/system/vendor/bin/vtservice|libmal_rilproxy.so:/system/vendor/bin/vtservice|libmtk_vt_wrapper.so:/system/vendor/bin/mtk_agpsd|libmal_rilproxy.so:/system/vendor/bin/volte_imcb|libmal_rilproxy.so:/system/vendor/lib/libmedia_jni.so|libmtkshim_mediajni.so:/system/vendor/lib64/libmedia_jni.so|libmtkshim_mediajni.so"
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
 

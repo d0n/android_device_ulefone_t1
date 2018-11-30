@@ -22,7 +22,7 @@ LOCAL_MODULE := libion_mtk
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_C_INCLUDES += \
-	device/infinix/x603/libion_mtk/include \
+	device/ulefone/t1/libion_mtk/include \
 	system/core/include
 
 LOCAL_SHARED_LIBRARIES := libion liblog libdl

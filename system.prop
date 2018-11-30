@@ -1,6 +1,3 @@
-# RIL
-rild.libpath=mtk-ril.so
-rild.libargs=-d /dev/ttyC0
 ril.specific.sm_cause=0
 ril.external.md=0
 ril.current.share_modem=2
@@ -39,3 +36,99 @@ ro.config.max_starting_bg=3
 
 # Use 3 threads max for dex2oat
 ro.sys.fw.dex2oat_thread_count=3
+#
+#
+# system.prop for generic sdk
+#
+
+#rild.libpath=mtk-ril.so
+rild.libargs=-d /dev/ttyC0
+
+
+# MTK, Infinity, 20090720 {
+wifi.interface=wlan0
+# MTK, Infinity, 20090720 }
+
+# MTK, mtk03034, 20101210 {
+ro.mediatek.wlan.wsc=1
+# MTK, mtk03034 20101210}
+# MTK, mtk03034, 20110318 {
+ro.mediatek.wlan.p2p=1
+# MTK, mtk03034 20110318}
+
+# MTK, mtk03034, 20101213 {
+mediatek.wlan.ctia=0
+# MTK, mtk03034 20101213}
+
+# Wifi
+wifi.interface=wlan0
+wifi.direct.interface=p2p0
+wifi.tethering.interface=ap0
+
+# OpenGL
+ro.opengles.version=196610
+#ro.kernel.qemu.gles=0
+
+
+ro.kernel.zio=38,108,105,16
+
+# Dalvik
+dalvik.vm.heapgrowthlimit=256m
+dalvik.vm.heapsize=512m
+
+# Audio
+ro.camera.sound.forced=0
+ro.audio.silent=0
+#persist.af.audio_patch_fm=1
+
+# disable soft keys
+qemu.hw.mainkeys=1
+
+# Disable dirty region for Mali
+debug.hwui.render_dirty_regions=false
+
+# lcd density
+ro.sf.lcd_density=480
+
+# RIL
+#ro.telephony.sim.count=2
+persist.radio.multisim.config=dsds
+rild.libpath=/vendor/lib/mtk-ril.so
+rild.libpath2=/vendor/lib/mtk-rilmd2.so
+ril.external.md=0
+ril.telephony.mode=0
+persist.radio.fd.counter=150
+persist.radio.fd.off.counter=50
+persist.radio.fd.r8.counter=150
+persist.radio.fd.off.r8.counter=50
+#ro.mtk_flight_mode_power_off_md=1
+ro.mtk_sim_hot_swap=1
+#ro.mtk_world_phone=1
+ro.mtk_md_world_mode_support=1
+ro.mtk_cta_set=1
+ro.mtk_lte_support=1
+ro.mtk_rild_read_imsi=1
+ro.mtk_protocol1_rat_config=Lf/Lt/W/G
+persist.radio.mtk_ps2_rat=W/G
+ro.mediatek.version.release=alps-mp-n0.mp5-V1.19_even6757.66.n_P33
+ro.boot.opt_using_default=1
+ro.boot.opt_md1_support=11
+ro.boot.opt_c2k_lte_mode=2
+#ro.boot.opt_ps1_rat=Lf/Lt/W/T/G
+ro.boot.opt_lte_support=1
+
+# NFC
+#ro.nfc.port=I2C
+
+# other things
+ro.mediatek.chip_ver=S01
+ro.mediatek.platform=MT6757
+bgw.current3gband=0
+ro.sf.hwrotation=180
+persist.mtk.wcn.combo.chipid=-1
+drm.service.enabled=true
+wfd.dummy.enable=1
+keyguard.no_require_sim=true
+#camera.disable_zsl_mode=1
+#persist.debug.wfd.enable=1
+media.settings.xml=/vendor/etc/media_profiles.xml
