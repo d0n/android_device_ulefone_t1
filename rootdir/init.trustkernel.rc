@@ -31,4 +31,3 @@ service teed /system/bin/teed
 	user system
 	group inet system
 	class core
-	seclabel u:r:tkcore:s0

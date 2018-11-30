@@ -16,3 +16,6 @@ allow ccci_fsd protect_s_data_file:file create_file_perms;
 allow ccci_fsd sysfs_ccci:file rw_file_perms;
 allow ccci_fsd sysfs_ccci:dir search;
 allow ccci_fsd sysfs_wake_lock:file rw_file_perms;
+allow ccci_fsd system_data_file:dir { add_name create open read remove_name write };
+allow ccci_fsd system_data_file:file { create open unlink write };
+

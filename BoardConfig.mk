@@ -22,7 +22,7 @@ DEVICE_PATH := device/ulefone/t1
 MTK_PROJECT := p15v57c2k_gq_tee
 MTK_PROJECT_NAME := EVEN6753_65C_L1
 MTK_PLATFORM := MT6757
-MTK_BASE_PROJECT := mt6757
+MTK_BASE_PROJECT := p15v57c2k_gq_tee
 MTK_PROJECT_CONFIG := $(DEVICE_PATH)/ProjectConfig.mk
 MTK_PATH_SOURCE := vendor/mediatek/proprietary
 MTK_TARGET_PROJECT_FOLDER := $(DEVICE_PATH)
@@ -118,7 +118,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/11270000.usb3/musb-hdrc
 TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 TARGET_PROVIDES_LIBLIGHT := true
-TARGET_INCLUDE_MEDIAJNI_SYMBOLS := true
+#TARGET_INCLUDE_MEDIAJNI_SYMBOLS := true
 TARGET_INCLUDE_PBBUILDER_SYMBOLS := true
 TARGET_INCLUDE_VTMAL_SYMBOLS := true
 TARGET_INCLUDE_RIL_SYMBOLS := true
@@ -145,45 +145,8 @@ ADDITIONAL_BUILD_PROPERTIES := \
 PRODUCT_PROPERTY_OVERRIDES := \
   $(shell cat $(DEVICE_PATH)/sysprops.lst)
 
-PRODUCT_PROPERTY_OVERRIDES := \
-  ro.kernel.android.checkjni=0 \
-  ro.telephony.ril_class=MT6757 \
-  ro.telephony.ril.config=fakeiccid
-
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES := \
   $(shell cat $(DEVICE_PATH)/sysprops.lst)
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES := \
-  ro.adb.secure=0 \
-  ro.oem_unlock_supported=1 \
-  persist.radio.lte.chip=0 \
-  persist.service.acm.enable=0 \
-  ro.secure=1 \
-  security.perf_harden=1 \
-  ro.allow.mock.location=0 \
-  ro.debuggable=1 \
-  ro.zygote=zygote64_32 \
-  pm.dexopt.first-boot=interpret-only \
-  pm.dexopt.boot=speed \
-  pm.dexopt.install=speed \
-  pm.dexopt.bg-dexopt=speed-profile \
-  pm.dexopt.ab-ota=speed-profile \
-  pm.dexopt.nsys-library=speed \
-  pm.dexopt.shared-apk=speed \
-  pm.dexopt.forced-dexopt=speed \
-  pm.dexopt.core-app=speed \
-  dalvik.vm.image-dex2oat-Xms=64m \
-  dalvik.vm.image-dex2oat-Xmx=64m \
-  dalvik.vm.dex2oat-Xms=64m \
-  dalvik.vm.dex2oat-Xmx=512m \
-  ro.dalvik.vm.native.bridge=0 \
-  dalvik.vm.usejit=true \
-  dalvik.vm.usejitprofiles=true \
-  dalvik.vm.appimageformat=lz4 \
-  debug.atrace.tags.enableflags=0 \
-  persist.sys.usb.config=mtp,adb \
-  ro.mount.fs=EXT4 \
-  camera.disable_zsl_mode=1
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES := \
   $(shell cat $(DEVICE_PATH)/sysprops.lst)
@@ -191,3 +154,4 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES := \
 ADDITIONAL_DEFAULT_PROPERTIES := \
   $(shell cat $(DEVICE_PATH)/sysprops.lst)
 
+$(shell echo "$(ADDITIONAL_DEFAULT_PROPERTIES)")

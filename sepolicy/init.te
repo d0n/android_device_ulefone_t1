@@ -18,3 +18,7 @@ allow init wmtWifi_device:chr_file write;
 # allow it for most domain. Do not honor LD_PRELOAD
 # for lmkd
 allow init { domain -lmkd }:process noatsecure;
+allow init logmisc_data_file:file append;
+allow init mal_mfi_socket:sock_file write;
+allow init nvram_agent_service:service_manager add;
+allow init proc_thermal:file write;

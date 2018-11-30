@@ -57,6 +57,8 @@ for I in $(find lib* vendor/lib* -type f) ;do
     SHRLIBS="libhardware libGLESv1_CM libion libgralloc_extra libion_mtk libc++"
   elif [ "$LIB" == "libmal_mdmngr.so" ] ;then
     SHRLIBS="libmdfx libc++"
+  elif [ "$LIB" == "fingerprint.default.so" ] ;then
+    SHRLIBS="liblog"
   elif [ "$LIB" == "libmtk_vt_service.so" ] ;then
     SHRLIBS="libandroid_runtime libbinder libnativehelper libui libgui libmedia libimsma libtmal libsource libimsma_rtp libmtk_vt_swip libvt_avsync libvt_socketbind libmtk_vt_utils libstagefright_foundation libc++"
   elif [ "$LIB" == "libmtk_vt_swip.so" ] ;then
