@@ -4,5 +4,6 @@ type msensord, domain, domain_deprecated;
 init_daemon_domain(msensord)
 
 allow msensord msensord_daemon_sysfs:file r_file_perms;
+allow msensord ctl_default_prop:property_service set;
 
 set_prop(msensord, ctl_akmd09911_prop)

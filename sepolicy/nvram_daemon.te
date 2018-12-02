@@ -26,3 +26,4 @@ allow nvram_daemon block_device:dir search;
 
 # boot_mode
 allow nvram_daemon sysfs_boot_mode:file r_file_perms;
+allow nvram_daemon default_prop:property_service set;

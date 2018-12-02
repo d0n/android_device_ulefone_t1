@@ -16,15 +16,6 @@ for I in $(find lib* vendor/lib* -type f) ;do
   LDDIR=$(echo $DDIR |sed -r 's/(.*)lib6?4?.*/\1/' |sed -r 's/^\///')
   grep -qs ${LIB} $AMAKE && continue
   grep -qs ${LIB} $ddir/blacklibs.lst && continue
-  for l in libaudiopolicymanagerdefault.so libaudiopreprocessing.so libbundlewrapper.so libdownmix.so libeffectproxy.so libldnhncr.so libreverbwrapper.so libvisualizer.so libfmjni.so libdrmclearkeyplugin.so libmockdrmcryptoplugin.so ;do
-    if [ $LIB == $l ] ;then
-      CONTINUE=true
-    fi
-  done
-  if [[ $CONTINUE ]] ;then
-    unset CONTINUE
-    continue
-  fi
   echo $I
   L32="${LDDIR}lib/${LLDIR}${LIB}"
   L64="${LDDIR}lib64/${LLDIR}${LIB}"

@@ -25,3 +25,6 @@ set_prop(ccci_mdinit, ril_mux_report_case_prop)
 
 # boot_mode
 allow ccci_mdinit sysfs_boot_mode:file r_file_perms;
+allow ccci_mdinit ctl_default_prop:property_service set;
+allow ccci_mdinit net_radio_prop:property_service set;
+allow ccci_mdinit system_data_file:file open;

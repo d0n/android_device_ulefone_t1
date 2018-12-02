@@ -31,6 +31,7 @@ allow mnld property_socket:sock_file write;
 
 allow mnld init:unix_stream_socket connectto;
 allow mnld system_server:unix_dgram_socket { sendto write };
+allow mnld system_data_file:dir remove_name;
 
 allow mnld fuse:dir create_dir_perms;
 allow mnld fuse:file create_file_perms;
