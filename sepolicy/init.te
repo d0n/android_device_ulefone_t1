@@ -22,3 +22,6 @@ allow init logmisc_data_file:file append;
 allow init mal_mfi_socket:sock_file write;
 allow init nvram_agent_service:service_manager add;
 allow init proc_thermal:file write;
+allow init ril-daemon-mtk:unix_stream_socket connectto;
+allow init rild_socket:sock_file write;
+

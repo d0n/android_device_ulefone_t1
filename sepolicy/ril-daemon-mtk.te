@@ -21,6 +21,9 @@ allow ril-daemon-mtk mtkmal:unix_stream_socket connectto;
 
 allow ril-daemon-mtk radio_device:dir search;
 allow ril-daemon-mtk radio_prop:property_service set;
+allow ril-daemon-mtk netd_socket:sock_file write;
+allow ril-daemon-mtk socket_device:sock_file write;
+allow ril-daemon-mtk default_prop:property_service set;
 
 set_prop(ril-daemon-mtk, ctl_muxreport-daemon_prop)
 set_prop(ril-daemon-mtk, ril_mux_report_case_prop)

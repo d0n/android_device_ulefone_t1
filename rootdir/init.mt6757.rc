@@ -32,13 +32,14 @@ on early-init
     chmod 0755 /sys/kernel/debug
 
 on init
-    #export LD_PRELOAD "/system/vendor/lib/libmal_rilproxy.so:/system/vendor/lib64/libmal_rilproxy.so:/system/vendor/lib/libmtk_vt_service.so"
-    export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtkshim_pbbuilder.so:/system/vendor/lib/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/lib64/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/bin/vtservice|libmtkshim_vtmal.so"
+    export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtkshim_pbbuilder.so:/system/vendor/lib/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/lib64/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/bin/vtservice|libmtkshim_vtmal.so:/system/lib/libmedia_jni.so|libmtkshim_mediajni.so:/system/lib64/libmedia_jni.so|libmtkshim_mediajni.so" 
     # Support legacy paths
+    mkdir /data/media/0 0770 media_rw media_rw
     symlink /sdcard /mnt/sdcard
+    symlink /mnt/user/0/primary /data/media/0
 
     # if primary storage is physical, set ro.vold.primary_physical to 1
-    # setprop ro.vold.primary_physical 1
+    setprop ro.vold.primary_physical 1
 
     # BATTERY proc
     chown shell system /proc/mtk_battery_cmd/current_cmd
@@ -976,6 +977,10 @@ service atcid-daemon-e /vendor/bin/atcid
     disabled
     oneshot
 
+on property:ro.build.type=userdebug
+start atci_service
+start atcid-daemon-e
+
 on property:ro.build.type=eng
 start atci_service
 start atcid-daemon-e
@@ -1441,7 +1446,7 @@ on property:ro.build.type=user
     start emsvr_user
 
 on property:ro.build.type=userdebug
-    start emsvr_user
+    start emsvr
 
 service emsvr_user /vendor/bin/em_svr
     disabled
