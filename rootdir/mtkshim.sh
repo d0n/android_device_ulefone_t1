@@ -1,5 +1,7 @@
 #!/bin/sh
 
+date +'%s' >/tmp/mtkshimrun
+
 if ! [ -e /system/etc/wifi ] ;then
   ln -s /system/vendor/etc/wifi /system/etc/wifi
 fi

@@ -41,6 +41,7 @@ cd $OUTDIR/proprietary >/dev/null
 #done
 for I in $(find * -type f -not -name *.apk) ;do
   #grep -qs "${I}" $AMAKE && continue
+  grep -qs "  vendor/$VENDOR/$DEVICE/proprietary/${I}" $BMAKE && continue
   echo $I
   printf "  vendor/$VENDOR/$DEVICE/proprietary/${I}:system/${I} \\\\\n" >> $BMAKE
 done

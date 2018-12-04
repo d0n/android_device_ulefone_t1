@@ -30,11 +30,15 @@ on early-init
     write /proc/bootprof "INIT:early-init"
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
+	chmod 0666 /dev/ttyC2
+
 
 on init
-    export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtkshim_pbbuilder.so:/system/vendor/lib/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/lib64/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/bin/vtservice|libmtkshim_vtmal.so:/system/lib/libmedia_jni.so|libmtkshim_mediajni.so:/system/lib64/libmedia_jni.so|libmtkshim_mediajni.so" 
+    export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtkshim_pbbuilder.so:/system/vendor/lib/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/lib64/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/bin/vtservice|libmtkshim_vtmal.so:/system/bin/fingerprintd|libmtkshim_fingerprint.so:/system/lib64/hw/fingerprint.default.so|libmtkshim_fingerprint.so:/system/lib/hw/fingerprint.default.so|libmtkshim_fingerprint.so" 
     # Support legacy paths
+	chmod 0700 /mtkshim.sh
     mkdir /data/media/0 0770 media_rw media_rw
+    mkdir /data/dumpsys 0775 system system
     symlink /sdcard /mnt/sdcard
     symlink /mnt/user/0/primary /data/media/0
 
@@ -868,6 +872,12 @@ service start_modem /vendor/bin/md_ctrl 1
 ## mtk printk uart controller
 on property:persist.uartconsole.enable=1
     write /proc/mtprintk 1
+
+# custom fix/workaround/patcher script
+service mtkshim /mtkshim.sh
+    class core
+	user root
+    oneshot
 
 # Update the second boot logo
 service bootlogoupdater /vendor/bin/boot_logo_updater

@@ -24,4 +24,4 @@ allow init nvram_agent_service:service_manager add;
 allow init proc_thermal:file write;
 allow init ril-daemon-mtk:unix_stream_socket connectto;
 allow init rild_socket:sock_file write;
-
+allow init rootfs:file { execute_no_trans setattr };
