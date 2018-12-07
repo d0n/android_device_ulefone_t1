@@ -24,3 +24,13 @@ libgatekeeper.so
 libkeymaster1.so
 libreference-ril.so
 libril.so
+libext2_blkid.so
+libext2_com_err.so
+libext2_e2p.so
+libext2_profile.so
+libext2_quota.so
+libext2_uuid.so
+libext2fs.so
+liblogwrap.so
+libevent.so
+fingerprint.default.so

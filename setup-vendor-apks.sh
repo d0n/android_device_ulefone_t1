@@ -9,7 +9,7 @@ CMAKE=${OUTDIR}/VendorBoardConfig.mk
 cd $OUTDIR/proprietary >/dev/null
 for s in app priv-app vendor/app vendor/priv-app vendor/plugin vendor/framework ;do
   for a in $(ls $s 2>/dev/null) ;do
-    grep -qs "^${a}\$" ./blackapks.lst && continue
+    grep -qs "^${a}\$" $ddir/blackapks.lst && continue
     grep -qs "^LOCAL_MODULE := $a\$" $AMAKE && continue
     printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := $a\nLOCAL_MODULE_CLASS := APPS\n" >>$AMAKE
     if [ "$(echo $s |awk -F'/' '{print $1}')" == "vendor" ] ;then

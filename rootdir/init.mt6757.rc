@@ -16,13 +16,8 @@ import init.common_svc.rc
 import init.microtrust.rc
 import init.sensor_bio.rc
 import init.sensor.rc
-
-# agold guotuo for fingerprint init
 import init.fingerprint.rc
-
-# init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
 import init.modem.rc
-# *** DO NOT import the new rc file after this line ***
 
 on early-init
     write /proc/ppm/policy/userlimit_min_cpu_freq "1 1794000"
@@ -32,18 +27,24 @@ on early-init
     chmod 0755 /sys/kernel/debug
 	chmod 0666 /dev/ttyC2
 
-
 on init
-    export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtkshim_pbbuilder.so:/system/vendor/lib/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/lib64/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/bin/vtservice|libmtkshim_vtmal.so:/system/bin/fingerprintd|libmtkshim_fingerprint.so:/system/lib64/hw/fingerprint.default.so|libmtkshim_fingerprint.so:/system/lib/hw/fingerprint.default.so|libmtkshim_fingerprint.so" 
+    export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtkshim_pbbuilder.so:/system/vendor/lib/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/lib64/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/bin/vtservice|libmtkshim_vtmal.so:/system/bin/fingerprintd|libmtkshim_fingerprint.so:/system/lib64/hw/fingerprint.default.so|libmtkshim_fingerprint.so:/system/lib/hw/fingerprint.default.so|libmtkshim_fingerprint.so"
+
+	write /proc/sys/vm/swappiness 100
+
     # Support legacy paths
 	chmod 0700 /mtkshim.sh
     mkdir /data/media/0 0770 media_rw media_rw
     mkdir /data/dumpsys 0775 system system
+	symlink /system/vendor/etc/wifi /system/etc/wifi
+	symlink /system/vendor/etc/audio_param /system/etc/audio_param
+	symlink /system/vendor/etc/init/init.mal.rc /system/etc/init/init.mal.rc
+	symlink /system/vendor/etc/init/init.wod.rc /system/etc/init/init.wod.rc
     symlink /sdcard /mnt/sdcard
     symlink /mnt/user/0/primary /data/media/0
 
     # if primary storage is physical, set ro.vold.primary_physical to 1
-    setprop ro.vold.primary_physical 1
+    #setprop ro.vold.primary_physical 1
 
     # BATTERY proc
     chown shell system /proc/mtk_battery_cmd/current_cmd
@@ -809,6 +810,17 @@ on property:ro.board.platform=mt6753
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1300000
 
+on property:or.ril.kickstart=1
+    setprop ril.mal 1
+    setprop ril.rilproxy 1
+    setprop or.ril.kickstart=0
+    write /proc/bootprof "INIT:vold.decrypt=trigger_reset_main"
+    start stop_modem
+    setprop sys.boot_completed 0
+    setprop dev.bootcomplete 0
+    write /proc/bootprof "INIT:vold.decrypt=trigger_post_fs_data"
+	start start_modem
+
 on property:vold.decrypt=trigger_reset_main
     write /proc/bootprof "INIT:vold.decrypt=trigger_reset_main"
     start stop_modem
@@ -876,7 +888,7 @@ on property:persist.uartconsole.enable=1
 # custom fix/workaround/patcher script
 service mtkshim /mtkshim.sh
     class core
-	user root
+    user root
     oneshot
 
 # Update the second boot logo
@@ -1456,7 +1468,7 @@ on property:ro.build.type=user
     start emsvr_user
 
 on property:ro.build.type=userdebug
-    start emsvr
+    start emsvr_user
 
 service emsvr_user /vendor/bin/em_svr
     disabled

@@ -16,3 +16,5 @@ r_submix_audio_policy_configuration.xml
 gms-cleanux.xml
 usb_audio_policy_configuration.xml
 egl.cfg
+sgdisk
+blkid
