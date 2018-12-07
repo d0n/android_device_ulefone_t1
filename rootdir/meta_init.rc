@@ -418,10 +418,9 @@ on nonencrypted
     exec - root -- /system/bin/update_verifier nonencrypted
     class_start main
     class_start late_start
-	trigger post-fs-data
 
-#on property:vold.decrypt=trigger_default_encryption
-#    start defaultcrypto
+on property:vold.decrypt=trigger_default_encryption
+    start defaultcrypto
 
 on property:vold.decrypt=trigger_encryption
     start surfaceflinger

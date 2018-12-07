@@ -27,7 +27,7 @@ on post-fs-data
 #    insmod /vendor/lib/modules/ccci_plat.ko
 #    insmod /vendor/lib/modules/ccci.ko
 #  Build-in Modified - E
-    chown radio radio /sys/class/BOOT/BOOT/boot/boot_mode
+#   chown radio radio /sys/class/BOOT/BOOT/boot/md
     chown radio radio /sys/kernel/ccci/boot
 
 #SeLinux
@@ -59,7 +59,7 @@ service muxreport-daemon /vendor/bin/muxreport
     disabled
     oneshot
 
-service ril-daemon-mtk /vendor/bin/rilproxy
+service ril-daemon-mtk /vendor/bin/mtkrild
     class core
     socket rild stream 660 root radio
     socket rild2 stream 660 root radio

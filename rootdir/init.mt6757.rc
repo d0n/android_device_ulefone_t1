@@ -38,8 +38,6 @@ on init
     mkdir /data/dumpsys 0775 system system
 	symlink /system/vendor/etc/wifi /system/etc/wifi
 	symlink /system/vendor/etc/audio_param /system/etc/audio_param
-	symlink /system/vendor/etc/init/init.mal.rc /system/etc/init/init.mal.rc
-	symlink /system/vendor/etc/init/init.wod.rc /system/etc/init/init.wod.rc
     symlink /sdcard /mnt/sdcard
     symlink /mnt/user/0/primary /data/media/0
 

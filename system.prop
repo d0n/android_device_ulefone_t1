@@ -1,96 +1,26 @@
-ro.product.cpu.abi=arm64-v8a
-ro.product.cpu.abilist=arm64-v8a,armeabi-v7a,armeabi
-ro.product.cpu.abilist32=armeabi-v7a,armeabi
-ro.product.cpu.abilist64=arm64-v8a
-ro.product.manufacturer=Ulefone
-ro.wifi.channels=
-ro.board.platform=mt6757
-# ro.build.product is obsolete; use ro.product.device
-ro.build.product=p15v57c2k_gq_tee
-ro.product.board=mt6757
-# Do not try to parse description, fingerprint, or thumbprint
-ro.build.description=full_p15v57c2k_gq_tee-user 7.0 NRD90M 1509331399 release-keys
-ro.build.fingerprint=Ulefone/Ulefone_T1/Ulefone_T1:7.0/NRD90M/1509331399:user/release-keys
-ro.build.characteristics=default
-persist.sys.timezone=
-ro.build.bluetooth.name=T1
-ro.build.wifi.ssid=T1
-ro.ly.showampm=yes
-ro.agui.usbstorage.name=T1
-ro.build.wifip2pDN=T1
-ro.meiguo.remove.meid=no
-ro.meiguo.bb.name=not_custom
-ro.meiguo.battery.mode=15
-gq.auto.wallpaper=yes
-or.ril.kickstart=1
-# end build properties
-#
-# from device/even/p15v57c2k_gq_tee/system.prop
-#
-#
-# system.prop for generic sdk
-#
-
 rild.libpath=mtk-ril.so
 rild.libargs=-d /dev/ttyC0
-
-
-# MTK, Infinity, 20090720 {
 wifi.interface=wlan0
-# MTK, Infinity, 20090720 }
-
-# MTK, mtk03034, 20101210 {
 ro.mediatek.wlan.wsc=1
-# MTK, mtk03034 20101210}
-# MTK, mtk03034, 20110318 {
 ro.mediatek.wlan.p2p=1
-# MTK, mtk03034 20110318}
-
-# MTK, mtk03034, 20101213 {
 mediatek.wlan.ctia=0
-# MTK, mtk03034 20101213}
-
-
-#
 wifi.tethering.interface=ap0
-#
-
 ro.opengles.version=196610
-# ro.kernel.qemu=1
-# ro.kernel.qemu.gles=0
-
 wifi.direct.interface=p2p0
 dalvik.vm.heapgrowthlimit=256m
 dalvik.vm.heapsize=512m
-
-# USB MTP WHQL
 ro.sys.usb.mtp.whql.enable=0
-
-# Power off opt in IPO
 sys.ipo.pwrdncap=2
-
 ro.sys.usb.storage.type=mtp
-
-# USB BICR function
 ro.sys.usb.bicr=no
-
-# USB Charge only function
 ro.sys.usb.charging.only=yes
-
-# audio
 ro.camera.sound.forced=0
 ro.audio.silent=0
-
 ro.zygote.preload.enable=0
-
-# temporary enables NAV bar (soft keys)
 qemu.hw.mainkeys=1
 ro.kernel.zio=38,108,105,16
-#ro.kernel.qemu=1
-#ro.kernel.qemu.gles=0
 #ro.boot.selinux=disable
 ro.sf.lcd_density=480
 ro.mtk_perf_simple_start_win=1
 ro.mtk_perf_fast_start_win=1
 ro.mtk_perf_response_time=1
-persist.chiptest.enable=1
