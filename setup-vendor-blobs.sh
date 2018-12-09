@@ -29,9 +29,9 @@ for I in $(find * -type f -name "*.ini" -or -name "*.rc" -or -name "*.xml" -or -
   grep -qs $BIN $ddir/blackbins.lst && continue
   grep -qs "LOCAL_MODULE := ${BIN}" $AMAKE && continue
   SUF="$(echo $I |awk -F'.' '{print $NF}')"
- echo $I
+  echo $I
   BDIR="$(dirname $I)"
- VDIR="$(echo $I |awk -F'/' '{print $1}')"
+  VDIR="$(echo $I |awk -F'/' '{print $1}')"
   printf "include \$(CLEAR_VARS)\nLOCAL_MODULE := ${BIN}\nLOCAL_SRC_FILES := proprietary/$I\nLOCAL_MODULE_CLASS := ETC\n" >>$AMAKE
   if [ "$(echo $I |awk -F'/' '{print $1}')" == "vendor" ] ;then
     printf "LOCAL_PROPRIETARY_MODULE := true\n" >> $AMAKE

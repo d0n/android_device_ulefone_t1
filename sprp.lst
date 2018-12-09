@@ -1,3 +1,5 @@
+  bgw.current3gband=0 \\
+  com.mediatek.log.modem.enabled=true \\
   dalvik.vm.dex2oat-Xms=64m \\
   dalvik.vm.dex2oat-Xmx=64m \\
   dalvik.vm.heapgrowthlimit=256m \\
@@ -6,7 +8,7 @@
   dalvik.vm.image-dex2oat-Xmx=64m \\
   dalvik.vm.isa.arm.features=default \\
   dalvik.vm.isa.arm.variant=cortex-a53 \\
-  dalvik.vm.isa.arm64.features=default \\
+  alvik.vm.isa.arm64.features=default \\
   dalvik.vm.isa.arm64.variant=cortex-a53 \\
   dalvik.vm.mtk-stack-trace-file=/data/anr/mtk_traces.txt \\
   dalvik.vm.stack-trace-file=/data/anr/traces.txt \\
@@ -25,7 +27,6 @@
   or.build.vibratorvol=0 \\
   or.button.ledvalue=1 \\
   or.ril.kickstart=1 \\
-  bgw.current3gband=0 \\
   persist.datashaping.alarmgroup=1 \\
   persist.log.tag.AT=I \\
   persist.log.tag.AdnRecord=I \\
@@ -191,7 +192,6 @@
   persist.sys.root_access=0 \\
   persist.sys.usb.config=mtp,adb \\
   persist.chiptest.enable=0 \\
-  persist.service.acm.enable=1 \\
   pm.dexopt.ab-ota=speed-profile \\
   pm.dexopt.bg-dexopt=speed-profile \\
   pm.dexopt.boot=verify-profile \\
@@ -264,7 +264,7 @@
   ro.battery_charging_led=yes \\
   ro.bg.task.clear=0 \\
   ro.board.platform=mt6757 \\
-  ro.boot.opt_c2k_lte_mode=2 \\
+  ro.boot.opt_c2k_lte_mode=1 \\
   ro.boot.opt_c2k_support=1 \\
   ro.boot.opt_eccci_c2k=1 \\
   ro.boot.opt_irat_support=1 \\
@@ -334,7 +334,7 @@
   ro.def.camera.antiband.sub=auto \\
   ro.def.camera.bright.main=middle \\
   ro.def.camera.bright.sub=middle \\
-  ro.def.camera.exposure.main=0 \\
+  ro.def.camera.exposure.mai n=0 \\
   ro.def.camera.exposure.sub=0 \\
   ro.def.camera.face=off \\
   ro.def.camera.flash.main=auto \\
@@ -375,6 +375,7 @@
   ro.factest.touchfollow=0 \\
   ro.fastpass.gms_support=yes \\
   ro.fingerprint.keep_fingers=yes \\
+  ro.fingerprint.support=SUNWAVE_TRUSTKERNEL \\
   ro.fota.app=5 \\
   ro.fota.device=T1 \\
   ro.fota.oem=aglod6757_7.0 \\
@@ -583,4 +584,4 @@
   wfd.iframesize.level=0 \\
   wifi.direct.interface=p2p0 \\
   wifi.interface=wlan0 \\
-  wifi.tethering.interface=ap0
+  wifi.tethering.interface=ap0 \\

@@ -25,3 +25,11 @@ allow init proc_thermal:file write;
 allow init ril-daemon-mtk:unix_stream_socket connectto;
 allow init rild_socket:sock_file write;
 allow init rootfs:file { execute_no_trans setattr };
+allow init debugfs:dir mounton;
+allow init functionfs:dir mounton;
+allow init nvdata_file:dir mounton;
+allow init protect_f_data_file:dir mounton;
+allow init protect_s_data_file:dir mounton;
+allow init sysfs:dir write;
+allow init unlabeled:dir mounton;
+

@@ -167,10 +167,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
   camera2.portability.force_api=1
 
-#PRODUCT_SYSTEM_SERVER_JARS += \
-#  com.google.android.gms \
-#  com.cyanogenmod.keyhandler
-
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/camerasize.xml:system/etc/camerasize.xml \
   $(LOCAL_PATH)/configs/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
