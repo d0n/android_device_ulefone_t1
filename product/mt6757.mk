@@ -26,12 +26,48 @@ APPS_EXCLUDED_PACKAGES := \
   Search
 
 PRODUCT_PACKAGES += \
+  AdupsFota \
+  AdupsFotaReboot \
+  AgingTest \
+  AgoldApnInfoCollector \
+  AgoldCompass \
+  AgoldNetworkmanager \
+  AguiAccAndAlspsCalibration \
+  AosGpsTracker \
+  BasicDreams \
+  Bluetooth \
+  BluetoothMidiService \
+  BookmarkProvider \
+  CaptivePortalLogin \
+  CertInstaller \
+  CtsShimPrebuilt \
+  DeskClock \
+  Devicemessages114 \
+  Devicemessages118 \
+  DownloadProviderUi \
+  Drive \
+  Duo \
+  EasterEgg \
+  ExactCalculator \
+  GBoard \
+  IMEIApp \
+  KW_BeautySnap \
+  KeyChain \
+  LatinImeGoogle \
+  PacProcessor \
+  ScreenCapture \
+  SoundRecorder \
+  UserDictionaryProvider \
+  WebViewGoogle \
+  agold.AgoldFactoryTest \
+  t6 \
   libreadline \
   readline \
   libqemu_pipe \
   BackupRestoreConfirmation \
   DownloadProvider \
   HTMLViewer \
+  GmsCore \
   KeySwitch \
   MediaProvider \
   PackageInstaller \
@@ -95,6 +131,9 @@ PRODUCT_PACKAGES += \
   libfilterfw \
   libfilterpack_facedetect \
   libfmcust \
+  fs_mgr \
+  sdcard \
+  libsdcard \
   libfs_mgr \
   libged \
   libmdp \
@@ -474,6 +513,7 @@ PRODUCT_PACKAGES += \
 # Ramdisks
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
+  $(LOCAL_PATH)/rootdir/mkshrc:root/etc/mkshrc \
   $(LOCAL_PATH)/rootdir/mtkshim.sh:root/mtkshim.sh \
   $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
   $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \

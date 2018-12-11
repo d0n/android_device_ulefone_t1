@@ -33,11 +33,11 @@ service wmt_launcher /vendor/bin/wmt_launcher -p /vendor/firmware/
     group system
 
 # GPS
-#service mnld /vendor/bin/mnld
-#    class main
-#    user gps
-#    group gps inet misc sdcard_rw sdcard_r media_rw system radio
-#    socket mnld stream 660 gps system
+service mnld /vendor/bin/mnld
+    class main
+    user gps
+    group gps inet misc sdcard_rw sdcard_r media_rw system radio
+    socket mnld stream 660 gps system
 
 service MPED /vendor/bin/MPED
     class main

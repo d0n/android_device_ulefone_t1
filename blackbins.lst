@@ -18,3 +18,5 @@ usb_audio_policy_configuration.xml
 egl.cfg
 sgdisk
 blkid
+sdcard
+vold

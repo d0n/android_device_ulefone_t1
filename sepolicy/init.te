@@ -32,4 +32,6 @@ allow init protect_f_data_file:dir mounton;
 allow init protect_s_data_file:dir mounton;
 allow init sysfs:dir write;
 allow init unlabeled:dir mounton;
-
+allow init radio_device:lnk_file unlink;
+allow init ppp_exec:file getattr;
+allow init sdcardd_exec:file getattr;

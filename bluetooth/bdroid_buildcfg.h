@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The CyanogenMod Project <http://www.cyanogenmod.org>
+ * Copyright (C) 2012 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,10 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Ulefone T1"
+#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
+
+#define BTM_DEF_LOCAL_NAME   "Zero 5"
+#define BLE_VND_INCLUDED TRUE
 
 #endif

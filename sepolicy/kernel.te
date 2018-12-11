@@ -6,3 +6,5 @@ allow kernel wifi_data_file:file r_file_perms;
 
 # modules
 allow kernel self:system module_request;
+allow kernel em_svr:dir search;
+allow kernel em_svr:file { getattr open read };

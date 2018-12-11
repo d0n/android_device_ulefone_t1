@@ -30,16 +30,18 @@ on early-init
     chmod 0666 /dev/ttyC2
 
 on init
+    export LD_PRELOAD libdirect-coredump.so
     export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtkshim_pbbuilder.so:/system/vendor/lib/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/lib64/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/bin/vtservice|libmtkshim_vtmal.so:/system/bin/fingerprintd|libmtkshim_fingerprint.so"
     write /proc/sys/vm/swappiness 100
-    # Support legacy paths
+    write /proc/self/coredump_filter 39
+    setprop ro.aee.enperf off
     chmod 0700 /mtkshim.sh
     mkdir /data/media/0 0770 media_rw media_rw
     mkdir /data/dumpsys 0775 system system
+    symlink /system/vendor/etc/slp_conf /system/etc/slp_conf
     symlink /system/vendor/etc/wifi /system/etc/wifi
     symlink /system/vendor/etc/audio_param /system/etc/audio_param
     symlink /sdcard /mnt/sdcard
-    # symlink /mnt/user/0/primary /data/media/0
 
     # if primary storage is physical, set ro.vold.primary_physical to 1
     #setprop ro.vold.primary_physical 1
@@ -808,18 +810,72 @@ on property:ro.board.platform=mt6753
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1300000
 
-on property:or.ril.kickstart=1
-    write /proc/bootprof "INIT:vold.decrypt=trigger_restart_min_framework"
+# custom fix/workaround/patcher
+on property:ril.mal=0
+    stop mal-daemon
+    stop md-daemon
+    stop imsm-daemon
+
+on property:ril.mal=1
+    stop md-daemon
+    stop imsm-daemon
+    start mal-daemon
+
+on property:ril.mal=2
+    stop mal-daemon
+    start md-daemon
+    start imsm-daemon
+
+on property:persist.chiptest.enable=0
+    setprop ril.mal 1
+
+on property:persist.chiptest.enable=1
     setprop ril.mal 2
-    setprop ril.rilproxy 1
-    setprop or.ril.kickstart=0
+
+service mal-daemon /vendor/bin/mtkmal
+    class core
+    socket mal-mfi stream 660 root radio
+    socket volte_imsm stream 660 root radio
+    user root
+    group radio cache inet misc log system wifi
+
+service md-daemon /vendor/bin/mtkmal
+    socket mal-mfi-dongle stream 660 root radio
+    user root
+    group radio cache inet misc log system wifi
+    oneshot
+    disabled
+
+service imsm-daemon /vendor/bin/volte_imsm_md
+    socket volte_imsm_dongle stream 660 root radio
+    user root
+    group radio cache inet misc log system wifi
+    oneshot
+    disabled
+
+service mtkshim /mtkshim.sh
+    class main
+	user root
+    oneshot
+
+on property:ro.build.type=userdebug
+    write /proc/sys/fs/suid_dumpable 2
+    write /proc/sys/kernel/core_pattern "|/vendor/bin/aee_core_forwarder /data/core/ %p %s UID=%u GID=%g"
+
+on property:or.ril.kickstart=1
+    start mtkshim
+    write /proc/bootprof "INIT:vold.decrypt=trigger_restart_min_framework"
     setprop service.nvram_init 0
+    setprop ril.mal 1
+    setprop ril.rilproxy 1
+    setprop or.ril.kickstart 0
     start nvram_daemon
     start sysenv_daemon
     start start_modem
     start msensord
     start permission_check
-    start stp_dump    
+    start stp_dump
+	start mtkshim
     write /proc/bootprof "INIT:vold.decrypt=trigger_post_fs_data"
 
 on property:vold.decrypt=trigger_reset_main
@@ -885,12 +941,6 @@ service start_modem /vendor/bin/md_ctrl 1
 ## mtk printk uart controller
 on property:persist.uartconsole.enable=1
     write /proc/mtprintk 1
-
-# custom fix/workaround/patcher script
-service mtkshim /mtkshim.sh
-    class core
-    user root
-    oneshot
 
 # Update the second boot logo
 service bootlogoupdater /vendor/bin/boot_logo_updater

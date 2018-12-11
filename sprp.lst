@@ -8,7 +8,7 @@
   dalvik.vm.image-dex2oat-Xmx=64m \\
   dalvik.vm.isa.arm.features=default \\
   dalvik.vm.isa.arm.variant=cortex-a53 \\
-  alvik.vm.isa.arm64.features=default \\
+  dalvik.vm.isa.arm64.features=default \\
   dalvik.vm.isa.arm64.variant=cortex-a53 \\
   dalvik.vm.mtk-stack-trace-file=/data/anr/mtk_traces.txt \\
   dalvik.vm.stack-trace-file=/data/anr/traces.txt \\
@@ -188,10 +188,11 @@
   persist.runningbooster.upgrade=1 \\
   persist.service.adb.enable=1 \\
   persist.service.debuggable=1 \\
-  persist.sys.dalvik.vm.lib.2=libart.so \\
-  persist.sys.root_access=0 \\
-  persist.sys.usb.config=mtp,adb \\
+  persist.service.atci.autostart=1 \\
   persist.chiptest.enable=0 \\
+  persist.sys.dalvik.vm.lib.2=libart.so \\
+  persist.sys.root_access=1 \\
+  persist.sys.usb.config=mtp,adb \\
   pm.dexopt.ab-ota=speed-profile \\
   pm.dexopt.bg-dexopt=speed-profile \\
   pm.dexopt.boot=verify-profile \\
@@ -209,7 +210,7 @@
   ril.read.imsi=1 \\
   ril.specific.sm_cause=0 \\
   ril.telephony.mode=0 \\
-  rild.libargs=-d /dev/ttyC0 \\
+  rild.libargs='-d /dev/ttyC0' \\
   rild.libpath=mtk-ril.so \\
   ro.CALENDAR_VALUE_TYPE=4 \\
   ro.REMOVE_HALL_TEST=yes \\
@@ -334,7 +335,7 @@
   ro.def.camera.antiband.sub=auto \\
   ro.def.camera.bright.main=middle \\
   ro.def.camera.bright.sub=middle \\
-  ro.def.camera.exposure.mai n=0 \\
+  ro.def.camera.exposure.main=0 \\
   ro.def.camera.exposure.sub=0 \\
   ro.def.camera.face=off \\
   ro.def.camera.flash.main=auto \\
@@ -375,7 +376,6 @@
   ro.factest.touchfollow=0 \\
   ro.fastpass.gms_support=yes \\
   ro.fingerprint.keep_fingers=yes \\
-  ro.fingerprint.support=SUNWAVE_TRUSTKERNEL \\
   ro.fota.app=5 \\
   ro.fota.device=T1 \\
   ro.fota.oem=aglod6757_7.0 \\
@@ -537,7 +537,6 @@
   ro.scridle_ledcolor=None \\
   ro.sdcard_support=yes \\
   ro.secure=0 \\
-  ro.serialno=BUINBM9TJ7CAYDG6 \\
   ro.setupwizard.mode=OPTIONAL \\
   ro.sf.hwrotation=180 \\
   ro.sf.lcd_density=480 \\
@@ -557,7 +556,7 @@
   ro.sys.sdcardfs=1 \\
   ro.sys.usb.bicr=no \\
   ro.sys.usb.charging.only=yes \\
-  ro.sys.sb.configfs=1 \\
+  ro.sys.usb.configfs=1 \\
   ro.sys.usb.mtp.whql.enable=0 \\
   ro.sys.usb.storage.type=mtp \\
   ro.telephony.call_ring.delay=0 \\
