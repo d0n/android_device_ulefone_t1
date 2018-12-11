@@ -1,0 +1,183 @@
+diff --git a/native/jni/Android.mk b/native/jni/Android.mk
+index 9b9ac07c..82eb7a20 100644
+--- a/native/jni/Android.mk
++++ b/native/jni/Android.mk
+@@ -1,4 +1,5 @@
+ LOCAL_PATH := $(call my-dir)
++MAGISK_TOP := $(call my-dir)
+ 
+ # Some handy paths
+ EXT_PATH := jni/external
+@@ -77,7 +78,7 @@ LOCAL_SRC_FILES := \
+ 	magiskpolicy/api.cpp \
+ 	magiskpolicy/magiskpolicy.cpp \
+ 	magiskpolicy/rules.cpp \
+-	magiskpolicy/sepolicy.c
++    magiskpolicy/sepolicy.c
+ 
+ LOCAL_LDFLAGS := -static
+ include $(BUILD_EXECUTABLE)
+@@ -91,7 +92,7 @@ include $(CLEAR_VARS)
+ LOCAL_MODULE := magiskboot
+ LOCAL_STATIC_LIBRARIES := libmincrypt liblzma liblz4 libbz2 libfdt libutils
+ LOCAL_C_INCLUDES := \
+-	jni/include \
++	$(MAGISK_TOP)/include \
+ 	$(EXT_PATH)/include \
+ 	$(LIBLZMA) \
+ 	$(LIBLZ4) \
+@@ -131,13 +132,13 @@ endif
+ ifdef B_BB
+ 
+ # Busybox
+-include jni/external/busybox/Android.mk
++include $(MAGISK_TOP)/external/busybox/Android.mk
+ 
+ endif
+ 
+ ########################
+ # Libraries
+ ########################
+-include jni/utils/Android.mk
+-include jni/systemproperties/Android.mk
+-include jni/external/Android.mk
++#include $(MAGISK_TOP)/utils/Android.mk
++include $(MAGISK_TOP)/systemproperties/Android.mk
++include $(MAGISK_TOP)/external/Android.mk
+diff --git a/native/jni/external/Android.mk b/native/jni/external/Android.mk
+index bd741d42..c9c5e659 100644
+--- a/native/jni/external/Android.mk
++++ b/native/jni/external/Android.mk
+@@ -1,11 +1,11 @@
+ LOCAL_PATH := $(call my-dir)
+ 
+ # libsqlite.so (stub)
+-include $(CLEAR_VARS)
+-LOCAL_MODULE:= libsqlite
+-LOCAL_C_INCLUDES := $(EXT_PATH)/include
+-LOCAL_SRC_FILES := stubs/sqlite3_stub.c
+-include $(BUILD_SHARED_LIBRARY)
++#include $(CLEAR_VARS)
++#LOCAL_MODULE:= libsqlite
++#LOCAL_C_INCLUDES := $(EXT_PATH)/include
++#LOCAL_SRC_FILES := stubs/sqlite3_stub.c
++#include $(BUILD_SHARED_LIBRARY)
+ 
+ # libselinux.so (stub)
+ #include $(CLEAR_VARS)
+@@ -15,20 +15,20 @@ include $(BUILD_SHARED_LIBRARY)
+ #include $(BUILD_SHARED_LIBRARY)
+ 
+ # libxz.a
+-include $(CLEAR_VARS)
+-LOCAL_MODULE:= libxz
+-LOCAL_C_INCLUDES := $(EXT_PATH)/include
+-LOCAL_SRC_FILES := \
++#include $(CLEAR_VARS)
++#LOCAL_MODULE:= libxz
++#LOCAL_C_INCLUDES := $(EXT_PATH)/include
++#LOCAL_SRC_FILES := \
+ 	xz-embedded/xz_crc32.c \
+ 	xz-embedded/xz_dec_lzma2.c \
+ 	xz-embedded/xz_dec_stream.c
+-include $(BUILD_STATIC_LIBRARY)
+-
++#include $(BUILD_STATIC_LIBRARY)
++#
+ # libmincrypt.a
+-include $(CLEAR_VARS)
+-LOCAL_MODULE:= libmincrypt
+-LOCAL_C_INCLUDES := $(EXT_PATH)/include
+-LOCAL_SRC_FILES := \
++#include $(CLEAR_VARS)
++#LOCAL_MODULE:= libmincrypt
++#LOCAL_C_INCLUDES := $(EXT_PATH)/include
++#LOCAL_SRC_FILES := \
+ 	mincrypt/dsa_sig.c \
+ 	mincrypt/p256.c \
+ 	mincrypt/p256_ec.c \
+@@ -36,7 +36,7 @@ LOCAL_SRC_FILES := \
+ 	mincrypt/rsa.c \
+ 	mincrypt/sha.c \
+ 	mincrypt/sha256.c
+-include $(BUILD_STATIC_LIBRARY)
++#include $(BUILD_STATIC_LIBRARY)
+ 
+ # libnanopb.a
+ include $(CLEAR_VARS)
+@@ -65,15 +65,15 @@ LOCAL_SRC_FILES := \
+ include $(BUILD_STATIC_LIBRARY)
+ 
+ # liblz4.a
+-include $(CLEAR_VARS)
+-LOCAL_MODULE := liblz4
+-LOCAL_C_INCLUDES += $(LIBLZ4)
+-LOCAL_SRC_FILES := \
++#include $(CLEAR_VARS)
++#LOCAL_MODULE := liblz4
++#LOCAL_C_INCLUDES += $(LIBLZ4)
++#LOCAL_SRC_FILES := \
+ 	lz4/lib/lz4.c \
+ 	lz4/lib/lz4frame.c \
+ 	lz4/lib/lz4hc.c \
+ 	lz4/lib/xxhash.c
+-include $(BUILD_STATIC_LIBRARY)
++#include $(BUILD_STATIC_LIBRARY)
+ 
+ # libbz2.a
+ include $(CLEAR_VARS)
+@@ -90,9 +90,9 @@ LOCAL_SRC_FILES := \
+ include $(BUILD_STATIC_LIBRARY)
+ 
+ # liblzma.a
+-include $(CLEAR_VARS)
+-LOCAL_MODULE := liblzma
+-LOCAL_C_INCLUDES += \
++#include $(CLEAR_VARS)
++#LOCAL_MODULE := liblzma
++#LOCAL_C_INCLUDES += \
+ 	$(EXT_PATH)/include/xz_config \
+ 	$(EXT_PATH)/xz/src/common \
+ 	$(EXT_PATH)/xz/src/liblzma/api \
+@@ -104,7 +104,7 @@ LOCAL_C_INCLUDES += \
+ 	$(EXT_PATH)/xz/src/liblzma/rangecoder \
+ 	$(EXT_PATH)/xz/src/liblzma/simple \
+ 	$(EXT_PATH)/xz/src/liblzma
+-LOCAL_SRC_FILES := \
++#LOCAL_SRC_FILES := \
+ 	xz/src/common/tuklib_cpucores.c \
+ 	xz/src/common/tuklib_exit.c \
+ 	xz/src/common/tuklib_mbstr_fw.c \
+@@ -185,14 +185,14 @@ LOCAL_SRC_FILES := \
+ 	xz/src/liblzma/simple/simple_encoder.c \
+ 	xz/src/liblzma/simple/sparc.c \
+ 	xz/src/liblzma/simple/x86.c
+-LOCAL_CFLAGS += -DHAVE_CONFIG_H -Wno-implicit-function-declaration
+-include $(BUILD_STATIC_LIBRARY)
++#LOCAL_CFLAGS += -DHAVE_CONFIG_H -Wno-implicit-function-declaration
++#include $(BUILD_STATIC_LIBRARY)
+ 
+ # libsepol.a
+-include $(CLEAR_VARS)
+-LOCAL_MODULE := libsepol
+-LOCAL_C_INCLUDES := $(LIBSEPOL) $(EXT_PATH)/selinux/libsepol/src
+-LOCAL_SRC_FILES := \
++#include $(CLEAR_VARS)
++#LOCAL_MODULE := libsepol
++#LOCAL_C_INCLUDES := $(LIBSEPOL) $(EXT_PATH)/selinux/libsepol/src
++#LOCAL_SRC_FILES := \
+ 	selinux/libsepol/src/assertion.c \
+ 	selinux/libsepol/src/avrule_block.c \
+ 	selinux/libsepol/src/avtab.c \
+@@ -259,5 +259,5 @@ LOCAL_SRC_FILES := \
+ 	selinux/libsepol/cil/src/cil_verify.c \
+ 	selinux/libsepol/cil/src/cil.c \
+ 	selinux/libsepol/cil/src/cil_post.c
+-LOCAL_CFLAGS += -Dgetline=__getline -Wno-implicit-function-declaration
+-include $(BUILD_STATIC_LIBRARY)
++#LOCAL_CFLAGS += -Dgetline=__getline -Wno-implicit-function-declaration
++#include $(BUILD_STATIC_LIBRARY)
+diff --git a/native/jni/utils/Android.mk b/native/jni/utils/Android.mk_
+similarity index 100%
+rename from native/jni/utils/Android.mk
+rename to native/jni/utils/Android.mk_

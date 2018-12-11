@@ -1,5 +1,5 @@
 diff --git a/app.te b/app.te
-index 19a7dac..207495f 100644
+index 19a7dac..acbd032 100644
 --- a/app.te
 +++ b/app.te
 @@ -244,8 +244,8 @@ use_keystore({ appdomain -isolated_app })
@@ -13,6 +13,26 @@ index 19a7dac..207495f 100644
  
  allow { appdomain -isolated_app } ion_device:chr_file rw_file_perms;
  
+@@ -355,8 +355,8 @@ neverallow appdomain { domain -appdomain }:process
+ # Transition to a non-app domain.
+ # Exception for the shell domain and the su domain, can transition to runas,
+ # etc.
+-neverallow { appdomain -shell userdebug_or_eng(`-su') } { domain -appdomain }:process
+-    { transition dyntransition };
++#neverallow { appdomain -shell userdebug_or_eng(`-su') } { domain -appdomain }:process
++#    { transition dyntransition };
+ 
+ # Write to rootfs.
+ neverallow appdomain rootfs:dir_file_class_set
+@@ -436,7 +436,7 @@ neverallow { appdomain -system_app -shell }
+ 
+ # Ability to perform any filesystem operation other than statfs(2).
+ # i.e. no mount(2), unmount(2), etc.
+-neverallow appdomain fs_type:filesystem ~getattr;
++#neverallow appdomain fs_type:filesystem ~getattr;
+ 
+ # prevent creation/manipulation of globally readable symlinks
+ neverallow appdomain {
 diff --git a/audioserver.te b/audioserver.te
 index da12649..e8fdf32 100644
 --- a/audioserver.te
@@ -107,7 +127,7 @@ index 3338b8d..901195b 100644
  allow debuggerd {
    audioserver
 diff --git a/domain.te b/domain.te
-index 59de1f1..ce53289 100644
+index 59de1f1..ec0f021 100644
 --- a/domain.te
 +++ b/domain.te
 @@ -28,7 +28,7 @@ r_dir_file(domain, self)
@@ -177,7 +197,24 @@ index 59de1f1..ce53289 100644
  neverallow { domain -init } property_data_file:file { no_w_file_perms no_x_file_perms };
  neverallow { domain -init } property_type:file { no_w_file_perms no_x_file_perms };
  neverallow { domain -init } properties_device:file { no_w_file_perms no_x_file_perms };
-@@ -346,11 +346,11 @@ neverallow { domain -recovery } contextmount_type:dir_file_class_set
+@@ -321,11 +321,11 @@ neverallow * exec_type:dir_file_class_set mounton;
+ neverallow { domain -init } system_file:dir_file_class_set mounton;
+ 
+ # Nothing should be writing to files in the rootfs.
+-ifelse(target_build_variant, `user',
+-  `neverallow * rootfs:file { create write setattr relabelto append unlink link rename };'
+-,
+-  `neverallow { domain -recovery } rootfs:file { create write setattr relabelto append unlink link rename };'
+-)
++#if(target_build_variant, `user',
++#  `neverallow * rootfs:file { create write setattr relabelto append unlink link rename };'
++#,
++#  `neverallow { domain -recovery } rootfs:file { create write setattr relabelto append unlink link rename };'
++#)
+ 
+ # Restrict context mounts to specific types marked with
+ # the contextmount_type attribute.
+@@ -346,17 +346,17 @@ neverallow { domain -recovery } contextmount_type:dir_file_class_set
  # system_app_service rather than the generic type.
  # New service_types are defined in service.te and new mappings
  # from service name to service_type are defined in service_contexts.
@@ -191,7 +228,25 @@ index 59de1f1..ce53289 100644
  neverallow { domain -init } mmc_prop:property_service set;
  
  neverallow { domain -init -recovery -system_server } frp_block_device:blk_file rw_file_perms;
-@@ -486,13 +486,13 @@ neverallow ~domain domain:process { transition dyntransition };
+ 
+ # No domain other than recovery and update_engine can write to system partition(s).
+-neverallow { domain -recovery -update_engine } system_block_device:blk_file write;
++#neverallow { domain -recovery -update_engine } system_block_device:blk_file write;
+ 
+ # No domains other than install_recovery or recovery can write to recovery.
+ neverallow { domain -install_recovery -recovery } recovery_block_device:blk_file write;
+@@ -431,7 +431,9 @@ neverallow * { file_type fs_type dev_type }:{ lnk_file fifo_file sock_file } mou
+ # Nobody should be able to execute su on user builds.
+ # On userdebug/eng builds, only dumpstate, shell, and
+ # su itself execute su.
+-neverallow { domain userdebug_or_eng(`-dumpstate -shell -su -domain') } su_exec:file no_x_file_perms;
++userdebug_or_eng(`
++  neverallow { domain userdebug_or_eng(`-dumpstate -shell -su -domain') } su_exec:file no_x_file_perms;
++')
+ 
+ # Do not allow the introduction of new execmod rules. Text relocations
+ # and modification of executable pages are unsafe.
+@@ -486,13 +488,13 @@ neverallow ~domain domain:process { transition dyntransition };
  # Example type transition:
  #  mydomain.te:file_type_auto_trans(mydomain, system_data_file, new_file_type)
  #
@@ -212,6 +267,23 @@ index 59de1f1..ce53289 100644
  # do not grant anything greater than r_file_perms and relabelfrom unlink
  # to installd
  neverallow installd system_data_file:file ~{ r_file_perms relabelfrom unlink };
+@@ -511,10 +513,12 @@ neverallow {
+ } shell:process { transition dyntransition };
+ 
+ # Only domains spawned from zygote and runas may have the appdomain attribute.
+-neverallow { domain -runas -zygote } {
+-  appdomain -shell userdebug_or_eng(`-su -sudaemon') -bluetooth userdebug_or_eng(`-qti-testscripts')
+-}:process { transition dyntransition };
+-
++userdebug_or_eng(`
++  neverallow { domain -runas -zygote } {
++    appdomain -shell userdebug_or_eng(`-su -sudaemon') -bluetooth userdebug_or_eng(`-qti-testscripts')
++  }:process { transition dyntransition };
++')
++#
+ # Minimize read access to shell- or app-writable symlinks.
+ # This is to prevent malicious symlink attacks.
+ neverallow {
 diff --git a/drmserver.te b/drmserver.te
 index 9130e0b..b8fc432 100644
 --- a/drmserver.te
@@ -223,16 +295,43 @@ index 9130e0b..b8fc432 100644
 +allow drmserver sdcardfs:file open;
  
  selinux_check_access(drmserver)
+diff --git a/dumpstate.te b/dumpstate.te
+index 0b1f97b..714d4ae 100644
+--- a/dumpstate.te
++++ b/dumpstate.te
+@@ -193,3 +193,20 @@ allow dumpstate atrace_exec:file rx_file_perms;
+ # This should be removed if sdcardfs is modified to alter the secontext for its
+ # accesses to the underlying FS.
+ allow dumpstate media_rw_data_file:dir getattr;
++allow dumpstate adbsecure_prop:file { getattr open };
++allow dumpstate adbtcp_prop:file { getattr open };
++allow dumpstate device_logging_prop:file { getattr open };
++allow dumpstate gatekeeper_service:service_manager find;
++allow dumpstate logpersistd_logging_prop:file { getattr open };
++allow dumpstate mmc_prop:file { getattr open };
++allow dumpstate nvdata_device:blk_file getattr;
++allow dumpstate nvdata_file:dir getattr;
++allow dumpstate protect1_device:blk_file getattr;
++allow dumpstate protect2_device:blk_file getattr;
++allow dumpstate protect_f_data_file:dir getattr;
++allow dumpstate protect_s_data_file:dir getattr;
++allow dumpstate recovery_prop:file { getattr open };
++allow dumpstate safemode_prop:file { getattr open };
++allow dumpstate unlabeled:dir getattr;
++allow dumpstate userinit_prop:file { getattr open };
++allow dumpstate vold_encryption_type_prop:file { getattr open };
 diff --git a/fingerprintd.te b/fingerprintd.te
-index 1c0ab1c..087dbeb 100644
+index 1c0ab1c..6312be6 100644
 --- a/fingerprintd.te
 +++ b/fingerprintd.te
-@@ -21,3 +21,5 @@ allow fingerprintd keystore:keystore_key { add_auth };
+@@ -21,3 +21,7 @@ allow fingerprintd keystore:keystore_key { add_auth };
  # For permissions checking
  binder_call(fingerprintd, system_server);
  allow fingerprintd permission_service:service_manager find;
 +allow fingerprintd device:chr_file { ioctl open read write };
 +allow fingerprintd default_android_service:service_manager add;
++allow fingerprintd self:netlink_kobject_uevent_socket { read bind create setopt };
++
 diff --git a/fsck.te b/fsck.te
 index d5a6db1..8a696bf 100644
 --- a/fsck.te
@@ -255,7 +354,7 @@ index e394af3..9e59b7f 100644
  
  neverallow { domain -gatekeeperd } gatekeeper_service:service_manager add;
 diff --git a/init.te b/init.te
-index 9bc78d1..47fbd78 100644
+index 9bc78d1..0ad79de 100644
 --- a/init.te
 +++ b/init.te
 @@ -25,7 +25,7 @@ allow init self:capability sys_resource;
@@ -289,7 +388,7 @@ index 9bc78d1..47fbd78 100644
  ')
  
  # Init will create /data/misc/logd when the property persist.logd.logpersistd is "logcatd".
-@@ -304,11 +310,39 @@ neverallow init shell_data_file:lnk_file read;
+@@ -304,11 +310,46 @@ neverallow init shell_data_file:lnk_file read;
  neverallow init app_data_file:lnk_file read;
  
  # init should never execute a program without changing to another domain.
@@ -331,6 +430,13 @@ index 9bc78d1..47fbd78 100644
 +allow init device:lnk_file unlink;
 +allow init debugfs_trace_marker:file getattr;
 +allow init devpts:chr_file getattr;
++allow init als_ps_device:chr_file ioctl;
++allow init gpu_device:chr_file { getattr ioctl write };
++allow init gsensor_device:chr_file write;
++allow init msensor_device:chr_file { ioctl write };
++allow init proinfo_device:blk_file write;
++allow init serial_device:chr_file { ioctl write };
++allow init stpwmt_device:chr_file { ioctl write };
 diff --git a/install_recovery.te b/install_recovery.te
 index 1c47236..18c17d3 100644
 --- a/install_recovery.te
@@ -364,7 +470,7 @@ index 978982a..1b41384 100644
    socket netlink_socket packet_socket key_socket appletalk_socket
    netlink_firewall_socket netlink_tcpdiag_socket netlink_nflog_socket
 diff --git a/kernel.te b/kernel.te
-index 1ca5673..34320c8 100644
+index 1ca5673..198042f 100644
 --- a/kernel.te
 +++ b/kernel.te
 @@ -15,6 +15,12 @@ allow kernel selinuxfs:file r_file_perms;
@@ -391,7 +497,7 @@ index 1ca5673..34320c8 100644
  # Allow writing to /dev/__kmsg__ which was created prior to
  # loading policy
  allow kernel tmpfs:chr_file write;
-@@ -90,4 +100,29 @@ neverallow * kernel:process { transition dyntransition };
+@@ -90,4 +100,32 @@ neverallow * kernel:process { transition dyntransition };
  #   some other program.  Fix your init.rc file.
  # - You are running an exploit which switched to the init task credentials
  #   and is then trying to exec a shell or other program.  You lose!
@@ -409,8 +515,10 @@ index 1ca5673..34320c8 100644
 +allow kernel audioserver:file { getattr open read };
 +allow kernel system_data_file:dir { create remove_name };
 +allow kernel system_data_file:file unlink;
-+allow kernel su:dir search;
-+allow kernel su:file { getattr open read };
++userdebug_or_eng(`
++  allow kernel su:dir search;
++  allow kernel su:file { getattr open read };
++')
 +allow kernel bootanim:dir search;
 +allow kernel bootanim:file { getattr open read };
 +allow kernel cameraserver:dir search;
@@ -421,7 +529,8 @@ index 1ca5673..34320c8 100644
 +allow kernel mediaserver:file { getattr open read };
 +allow kernel zygote:dir search;
 +allow kernel zygote:file { getattr open read };
-+
++allow kernel rootfs:dir { add_name write };
++allow kernel rootfs:file { create write };
 diff --git a/keystore.te b/keystore.te
 index 9dca43c..b4661c9 100644
 --- a/keystore.te
@@ -629,6 +738,21 @@ index 3e95b46..7ed52cb 100644
  # Do not allow privileged socket ioctl commands
 -neverallowxperm shell domain:{ rawip_socket tcp_socket udp_socket } ioctl priv_sock_ioctls;
 +#neverallowxperm shell domain:{ rawip_socket tcp_socket udp_socket } ioctl priv_sock_ioctls;
+diff --git a/su.te b/su.te
+index e1a75c2..1310cda 100644
+--- a/su.te
++++ b/su.te
+@@ -1,8 +1,7 @@
+ # File types must be defined for file_contexts.
+-type su_exec, exec_type, file_type;
+-type sudaemon, domain;
+-
+ userdebug_or_eng(`
++  type su_exec, exec_type, file_type;
++  type sudaemon, domain;
+   # Domain used for su processes, as well as for adbd and adb shell
+   # after performing an adb root command.  The domain definition is
+   # wrapped to ensure that it does not exist at all on -user builds.
 diff --git a/surfaceflinger.te b/surfaceflinger.te
 index 7364e5f..c8da3c7 100644
 --- a/surfaceflinger.te

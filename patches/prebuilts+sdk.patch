@@ -1,0 +1,72 @@
+diff --git a/current/support/v7/mediarouter/res/drawable-hdpi/ic_vol_type_speaker_dark.png b/current/support/v7/mediarouter/res/drawable-hdpi/ic_vol_type_speaker_dark.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-hdpi/ic_vol_type_speaker_group_dark.png b/current/support/v7/mediarouter/res/drawable-hdpi/ic_vol_type_speaker_group_dark.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-hdpi/ic_vol_type_speaker_group_light.png b/current/support/v7/mediarouter/res/drawable-hdpi/ic_vol_type_speaker_group_light.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-hdpi/ic_vol_type_speaker_light.png b/current/support/v7/mediarouter/res/drawable-hdpi/ic_vol_type_speaker_light.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-hdpi/ic_vol_type_tv_dark.png b/current/support/v7/mediarouter/res/drawable-hdpi/ic_vol_type_tv_dark.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-hdpi/ic_vol_type_tv_light.png b/current/support/v7/mediarouter/res/drawable-hdpi/ic_vol_type_tv_light.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-mdpi/ic_vol_type_speaker_dark.png b/current/support/v7/mediarouter/res/drawable-mdpi/ic_vol_type_speaker_dark.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-mdpi/ic_vol_type_speaker_group_dark.png b/current/support/v7/mediarouter/res/drawable-mdpi/ic_vol_type_speaker_group_dark.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-mdpi/ic_vol_type_speaker_group_light.png b/current/support/v7/mediarouter/res/drawable-mdpi/ic_vol_type_speaker_group_light.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-mdpi/ic_vol_type_speaker_light.png b/current/support/v7/mediarouter/res/drawable-mdpi/ic_vol_type_speaker_light.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-mdpi/ic_vol_type_tv_dark.png b/current/support/v7/mediarouter/res/drawable-mdpi/ic_vol_type_tv_dark.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-mdpi/ic_vol_type_tv_light.png b/current/support/v7/mediarouter/res/drawable-mdpi/ic_vol_type_tv_light.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-xhdpi/ic_vol_type_speaker_dark.png b/current/support/v7/mediarouter/res/drawable-xhdpi/ic_vol_type_speaker_dark.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-xhdpi/ic_vol_type_speaker_group_dark.png b/current/support/v7/mediarouter/res/drawable-xhdpi/ic_vol_type_speaker_group_dark.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-xhdpi/ic_vol_type_speaker_group_light.png b/current/support/v7/mediarouter/res/drawable-xhdpi/ic_vol_type_speaker_group_light.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-xhdpi/ic_vol_type_speaker_light.png b/current/support/v7/mediarouter/res/drawable-xhdpi/ic_vol_type_speaker_light.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-xhdpi/ic_vol_type_tv_dark.png b/current/support/v7/mediarouter/res/drawable-xhdpi/ic_vol_type_tv_dark.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-xhdpi/ic_vol_type_tv_light.png b/current/support/v7/mediarouter/res/drawable-xhdpi/ic_vol_type_tv_light.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-xxhdpi/ic_vol_type_speaker_dark.png b/current/support/v7/mediarouter/res/drawable-xxhdpi/ic_vol_type_speaker_dark.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-xxhdpi/ic_vol_type_speaker_group_dark.png b/current/support/v7/mediarouter/res/drawable-xxhdpi/ic_vol_type_speaker_group_dark.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-xxhdpi/ic_vol_type_speaker_group_light.png b/current/support/v7/mediarouter/res/drawable-xxhdpi/ic_vol_type_speaker_group_light.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-xxhdpi/ic_vol_type_speaker_light.png b/current/support/v7/mediarouter/res/drawable-xxhdpi/ic_vol_type_speaker_light.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-xxhdpi/ic_vol_type_tv_dark.png b/current/support/v7/mediarouter/res/drawable-xxhdpi/ic_vol_type_tv_dark.png
+old mode 100755
+new mode 100644
+diff --git a/current/support/v7/mediarouter/res/drawable-xxhdpi/ic_vol_type_tv_light.png b/current/support/v7/mediarouter/res/drawable-xxhdpi/ic_vol_type_tv_light.png
+old mode 100755
+new mode 100644

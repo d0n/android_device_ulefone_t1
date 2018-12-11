@@ -292,6 +292,7 @@ PRODUCT_PACKAGES += \
   dmlog \
   downloader \
   em_svr \
+  magisk \
   emdlogger1 \
   emdlogger2 \
   emdlogger3 \

@@ -1,58 +1,13 @@
-diff --git a/src/java/com/android/internal/telephony/TelephonyComponentFactory.java b/src/java/com/android/internal/telephony/TelephonyComponentFactory.java
-index c15402c52..67742580c 100644
---- a/src/java/com/android/internal/telephony/TelephonyComponentFactory.java
-+++ b/src/java/com/android/internal/telephony/TelephonyComponentFactory.java
-@@ -55,8 +55,8 @@ public class TelephonyComponentFactory {
+diff --git a/tests/telephonytests/Android.mk b/tests/telephonytests/Android.mk
+index 953494530..8efb39519 100644
+--- a/tests/telephonytests/Android.mk
++++ b/tests/telephonytests/Android.mk
+@@ -5,7 +5,7 @@ LOCAL_MODULE_TAGS := tests
  
-     public static TelephonyComponentFactory getInstance() {
-         if (sInstance == null) {
--            String fullClsName = "com.qualcomm.qti.internal.telephony.QtiTelephonyComponentFactory";
--            String libPath = "/system/framework/qti-telephony-common.jar";
-+            String fullClsName = "com.android.internal.telephony.TelephonyComponentFactory";
-+            String libPath = "/system/framework/telephony-common.jar";
+ LOCAL_SRC_FILES := $(call all-subdir-java-files)
  
-             PathClassLoader classLoader = new PathClassLoader(libPath,
-                     ClassLoader.getSystemClassLoader());
-diff --git a/src/java/com/android/internal/telephony/uicc/IccFileHandler.java b/src/java/com/android/internal/telephony/uicc/IccFileHandler.java
-index 6f944bda1..4b43bf268 100644
---- a/src/java/com/android/internal/telephony/uicc/IccFileHandler.java
-+++ b/src/java/com/android/internal/telephony/uicc/IccFileHandler.java
-@@ -291,7 +291,7 @@ public abstract class IccFileHandler extends Handler implements IccConstants {
-                         fileid, 0, onLoaded);
+-#LOCAL_STATIC_JAVA_LIBRARIES := librilproto-java
++LOCAL_STATIC_JAVA_LIBRARIES := librilproto-java
  
-         mCi.iccIOForApp(COMMAND_GET_RESPONSE, fileid, getEFPath(fileid),
--                        0, 0, 0, null, null, mAid, response);
-+                        0, 0, GET_RESPONSE_EF_SIZE_BYTES, null, null, mAid, response);
-     }
- 
-     /**
-diff --git a/src/java/com/android/internal/telephony/uicc/UiccTlvData.java b/src/java/com/android/internal/telephony/uicc/UiccTlvData.java
-index 17f594c0f..5cb57a21a 100644
---- a/src/java/com/android/internal/telephony/uicc/UiccTlvData.java
-+++ b/src/java/com/android/internal/telephony/uicc/UiccTlvData.java
-@@ -1,13 +1,9 @@
- package com.android.internal.telephony.uicc;
- 
--import android.telephony.Rlog;
--
- /**
-  * UICC TLV Data Parser according to ETSI TS 102 221 spec.
-  */
- public class UiccTlvData {
--    private static final String LOG_TAG = "UiccTlvData";
--
-     private static final int TLV_FORMAT_ID = 0x62;
- 
-     private static final int TAG_FILE_DESCRIPTOR = 0x82;
-@@ -85,9 +81,8 @@ public class UiccTlvData {
-                         break;
- 
-                     default:
--                        Rlog.d(LOG_TAG, "Unknown tag 0x" + String.format("%02X", currentTag));
--                        currentLocation = parsedData.parseSomeTag(data, currentLocation);
--                        break;
-+                        //Unknown TAG
-+                        throw new IccFileTypeMismatch();
-                 }
-             }
- 
+ LOCAL_JAVA_LIBRARIES := android.test.runner telephony-common ims-common services.core
+ LOCAL_STATIC_JAVA_LIBRARIES := guava \
