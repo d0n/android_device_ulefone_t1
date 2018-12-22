@@ -46,3 +46,5 @@ file_type_auto_trans(mnld,apk_data_file,mnld_data_file);
 
 # boot_mode
 allow mnld sysfs_boot_mode:file r_file_perms;
+allow mnld unlabeled:dir search;
+

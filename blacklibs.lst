@@ -1,4 +1,5 @@
 egl.cfg
+libc.so
 audio_policy.stub.so
 libfmjni.so
 libdrmclearkeyplugin.so
@@ -34,3 +35,12 @@ libext2fs.so
 liblogwrap.so
 libevent.so
 fingerprint.default.so
+libbinary_parse.so
+libm.so
+libimage_type_recognition.so
+libpdfium.so
+libutils.so
+libdl.so
+libpackagelistparser.so
+libsonivox.so
+

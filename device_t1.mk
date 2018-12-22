@@ -39,3 +39,5 @@ $(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
 $(call inherit-product, vendor/mediatek/config/common.mk)
 $(call inherit-product, vendor/ulefone/t1/t1-vendor.mk)
 include vendor/ulefone/t1/VendorBoardConfig.mk
+
+include $(call all-subdir-makefiles)

@@ -15,15 +15,15 @@ APPS_PRODUCT_PACKAGES += \
   Maps \
   Translate \
   Velvet
-
-APPS_EXCLUDED_PACKAGES := \
-  Wellbeing \
-  YouTube \
-  TagGoogle \
-  GoogleNow \
-  Hangouts \
-  GooglePlus \
-  Search
+#
+#APPS_EXCLUDED_PACKAGES := \
+#  Wellbeing \
+#  YouTube \
+#  TagGoogle \
+#  GoogleNow \
+#  Hangouts \
+#  GooglePlus \
+#  Search
 
 PRODUCT_PACKAGES += \
   AdupsFota \
@@ -202,13 +202,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
 
-# Camera properties
-PRODUCT_PROPERTY_OVERRIDES += \
-  camera2.portability.force_api=1
-
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/configs/camerasize.xml:system/etc/camerasize.xml \
-  $(LOCAL_PATH)/configs/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
   frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
   frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
   frameworks/native/data/etc/android.hardware.camera.raw.xml:system/etc/permissions/android.hardware.camera.raw.xml
@@ -226,7 +220,6 @@ PRODUCT_PACKAGES += \
   libconscrypt_static \
   persistentdata \
   online-system-api-sdk \
-  lib_driver_cmd_bcmdhd \
   libwifi-hal-mt66xx \
   lib_driver_cmd_mt66xx \
   xlibcamera_client_mtk \
@@ -319,6 +312,11 @@ PRODUCT_PACKAGES += \
   matv \
   vulkan \
   libvulkan \
+  libdng_sdk \
+  libm \
+  libLLVM \
+  libcamera_metadata \
+  libradio_metadata \
   mbimd \
   mc6420d \
   md_ctrl \
@@ -471,8 +469,8 @@ PRODUCT_COPY_FILES += \
 
 # Keyboard layout
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
-  $(LOCAL_PATH)/configs/keylayout/Generic.kl:system/usr/keylayout/Generic.kl
+  $(LOCAL_PATH)/configs/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
+  $(LOCAL_PATH)/configs/Generic.kl:system/usr/keylayout/Generic.kl
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -490,8 +488,6 @@ PRODUCT_COPY_FILES += \
   frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
   frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
   frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
-  $(LOCAL_PATH)/configs/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
-  $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -514,6 +510,7 @@ PRODUCT_PACKAGES += \
 # Ramdisks
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
+  $(LOCAL_PATH)/rootdir/disableswap.sh:root/disableswap.sh \
   $(LOCAL_PATH)/rootdir/mkshrc:root/etc/mkshrc \
   $(LOCAL_PATH)/rootdir/mtkshim.sh:root/mtkshim.sh \
   $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
@@ -648,23 +645,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
   librs_jni \
   com.android.future.usb.accessor
-#
-# Copyright (C) 2016 The CyanogenMod Project
-# Copyright (C) 2017 The LineageOS Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-LOCAL_PATH := device/ulefone/t1
 
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
@@ -681,12 +661,6 @@ PRODUCT_PACKAGES += \
     wifi2agps \
     wmt_loader
 
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
-
 PRODUCT_PACKAGES += \
-    md_ctrl
-
-# Charger Mode
-PRODUCT_PACKAGES += \
+    md_ctrl \
     charger_res_images
-
