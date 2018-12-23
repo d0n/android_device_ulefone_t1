@@ -43,4 +43,5 @@ libutils.so
 libdl.so
 libpackagelistparser.so
 libsonivox.so
-
+libril.so
+librilutils.so
