@@ -1,4 +1,4 @@
-GAPPS_VARIANT := mini
+GAPPS_VARIANT := nano
 GAPPS_PRODUCT_PACKAGES += \
   CMAudioFX \
   CameraGoogle \
@@ -31,6 +31,7 @@ PRODUCT_PACKAGES += \
   audio.usb.default \
   audio_policy.default \
   bash \
+  busybox \
   bcc \
   bu \
   bwc \
