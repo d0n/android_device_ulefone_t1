@@ -1,46 +1,98 @@
 GAPPS_VARIANT := nano
-GAPPS_PRODUCT_PACKAGES += \
+APPS_PRODUCT_PACKAGES += \
   CMAudioFX \
-  CameraGoogle \
-  Chrome \
-  DialerGoogle \
+  CMParts \
+  CalculatorGoogle \
   CarrierServices \
+  ClockGoogle \
+  Chrome \
+  CameraGoogle \
+  PrebuiltGmsCore \
   DialerFramework \
-  GCS
-
-GAPPS_EXCLUDED_PACKAGES := \
-  YouTube \
-  TagGoogle \
-  GoogleNow \
-  Hangouts \
-  GooglePlus \
-  Search
+  DialerGoogle \
+  ExchangeGoogle \
+  GCS \
+  Maps \
+  Translate \
+  Velvet
+#
+#APPS_EXCLUDED_PACKAGES := \
+#  Wellbeing \
+#  YouTube \
+#  TagGoogle \
+#  GoogleNow \
+#  Hangouts \
+#  GooglePlus \
+#  Search
 
 PRODUCT_PACKAGES += \
+  AdupsFota \
+  AdupsFotaReboot \
+  AgingTest \
+  AgoldApnInfoCollector \
+  AgoldCompass \
+  AgoldNetworkmanager \
+  AguiAccAndAlspsCalibration \
+  AosGpsTracker \
+  BasicDreams \
+  Bluetooth \
+  BluetoothMidiService \
+  BookmarkProvider \
+  CaptivePortalLogin \
+  CertInstaller \
+  CtsShimPrebuilt \
+  DeskClock \
+  Devicemessages114 \
+  Devicemessages118 \
+  DownloadProviderUi \
+  Drive \
+  Duo \
+  EasterEgg \
+  ExactCalculator \
+  GBoard \
+  IMEIApp \
+  KW_BeautySnap \
+  KeyChain \
+  LatinImeGoogle \
+  PacProcessor \
+  ScreenCapture \
+  SoundRecorder \
+  UserDictionaryProvider \
+  WebViewGoogle \
+  agold.AgoldFactoryTest \
+  t6 \
+  libreadline \
+  readline \
+  libqemu_pipe \
   BackupRestoreConfirmation \
   DownloadProvider \
   HTMLViewer \
+  GmsCore \
   KeySwitch \
   MediaProvider \
   PackageInstaller \
   SettingsProvider \
   Shell \
   Snap \
+  EngineerMode \
   audio.a2dp.default \
   audio.r_submix.default \
   audio.usb.default \
   audio_policy.default \
   bash \
-  busybox \
   bcc \
   bu \
   bwc \
+  libshim_gui \
   libbwc \
   libepos \
   libvtmal \
   vtservice \
   libccci_util \
-  com.google.android.gms \
+  droiddriver \
+  hwcomposer.default \
+  hwcomposer.mt6757 \
+  com.android.server \
   com.android.future.usb.accessory \
   com.android.location.provider \
   com.android.location.provider.xml \
@@ -61,6 +113,8 @@ PRODUCT_PACKAGES += \
   iptables \
   keystore \
   keystore.default \
+  keystore.mt6757 \
+  keystore.v1.trustkernel \
   libMtkOmxApeDec \
   libOpenMAXAL \
   libOpenSLES \
@@ -76,10 +130,15 @@ PRODUCT_PACKAGES += \
   libffmpeg \
   libfilterfw \
   libfilterpack_facedetect \
+  libfmcust \
+  fs_mgr \
+  sdcard \
+  libsdcard \
   libfs_mgr \
   libged \
   libmdp \
   libgralloc \
+  gralloc.mt6757 \
   libgralloc_extra \
   libgui \
   libgui_ext \
@@ -102,16 +161,25 @@ PRODUCT_PACKAGES += \
   make_ext4fs \
   mediatek-framework \
   mtkcamera_parameters \
+  camera.mt6757 \
+  memtrack.mt6757 \
+  radio.mt6757 \
+  vulkan.mt6757 \
   resize2fs \
   screencap \
   sensorservice \
   sgdisk \
+  su \
+  sh \
   tcmclient \
   telephony-common \
   tinymix \
   uiautomator \
   uncrypt \
   voip-common \
+  vibrator.default \
+  consumerir.mt6757 \
+  audio.primary.mt6757 \
   webview \
   wifi-service \
   perfprofd \
@@ -119,22 +187,22 @@ PRODUCT_PACKAGES += \
   libbwc \
   libgralloc_extra \
   libMtkOmxApeDec \
+  libdrmpassthruplugin \
+  libfwdlockengine \
+  libdrmutility \
+  libdrmframework \
+  libstagefrighthw \
   libepos \
   libifaddrs \
   libperfservicenative \
+  libaudiopolicymanagerdefault \
   mtk_socket \
   agps
 
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
 
-# Camera properties
-PRODUCT_PROPERTY_OVERRIDES += \
-  camera2.portability.force_api=1
-
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/configs/camerasize.xml:system/etc/camerasize.xml \
-  $(LOCAL_PATH)/configs/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
   frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
   frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
   frameworks/native/data/etc/android.hardware.camera.raw.xml:system/etc/permissions/android.hardware.camera.raw.xml
@@ -143,11 +211,21 @@ PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
 
 PRODUCT_PACKAGES += \
-  lib_driver_cmd_bcmdhd \
+  api-stubs \
+  ds-static \
+  conscrypt \
+  conscrypt-host \
+  libjavacrypto \
+  libconscrypt_jni \
+  libconscrypt_static \
+  persistentdata \
+  online-system-api-sdk \
   libwifi-hal-mt66xx \
   lib_driver_cmd_mt66xx \
   xlibcamera_client_mtk \
+  power.default \
   power.mt6757 \
+  lights.default \
   lights.mt6757 \
   libbthost_if \
   libepos \
@@ -159,8 +237,10 @@ PRODUCT_PACKAGES += \
   bwc \
   bwc_test \
   libbwc \
+  gps.default \
   gps.mt6757 \
   libccci_util \
+  radio.primary \
   radio.fm.mt6757 \
   libfmcust \
   Snap \
@@ -168,6 +248,7 @@ PRODUCT_PACKAGES += \
   nvram_proximity \
   sensorservice \
   vold \
+  libwvm \
   fingerprintd \
   wpa_cli \
   wpa_supplicant \
@@ -204,6 +285,7 @@ PRODUCT_PACKAGES += \
   dmlog \
   downloader \
   em_svr \
+  magisk \
   emdlogger1 \
   emdlogger2 \
   emdlogger3 \
@@ -212,6 +294,7 @@ PRODUCT_PACKAGES += \
   factory \
   flashlessd \
   fsck_msdos_mtk \
+  framework \
   fuelgauged \
   fuelgauged_nvram \
   ged_srv \
@@ -227,6 +310,13 @@ PRODUCT_PACKAGES += \
   lsm303md \
   magd \
   matv \
+  vulkan \
+  libvulkan \
+  libdng_sdk \
+  libm \
+  libLLVM \
+  libcamera_metadata \
+  libradio_metadata \
   mbimd \
   mc6420d \
   md_ctrl \
@@ -240,7 +330,7 @@ PRODUCT_PACKAGES += \
   mfv_ut \
   mnld \
   mobile_log_d \
-  7mrdump_tool \
+  mrdump_tool \
   msensord \
   mtk_agpsd \
   mtkmal \
@@ -291,34 +381,30 @@ PRODUCT_PACKAGES += \
   wmt_launcher \
   wmt_loader \
   wmt_loopback \
-  android.hardware.wifi@1.0-service \
   lib_driver_cmd_mt66xx \
   libwpa_client \
   hostapd \
   wificond \
   wifilogd \
-  wpa_supplicant
-
-#PRODUCT_BOOT_JARS := \
-#  telephony-ext \
-#  core-oj \
-#  core-libart \
-#  conscrypt \
-#  okhttp \
-#  core-junit \
-#  bouncycastle \
-#  ext \
-#  framework \
-#  telephony-common \
-#  voip-common \
-#  ims-common \
-#  apache-xml \
-#  org.apache.http.legacy.boot
-
+  Open-TEE \
+  opentee-engine \
+  wpa_supplicant \
+  audio.a2dp.default \
+  audio.usb.default \
+  audio.r_submix.default \
+  audio_policy.default \
+  libaudio-resampler \
+  libaudiopolicymanagerdefault \
+  libmtk_symbols \
+  libtinycompress \
+  libtinyxml \
+  tinymix \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-  fingerprintd
+  fingerprintd \
+  fingerprint.default \
+  hwcomposer.default
 
 PRODUCT_COPY_FILES += \
   frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
@@ -326,7 +412,8 @@ PRODUCT_COPY_FILES += \
 # FMRadio
 PRODUCT_PACKAGES += \
   libfmjni \
-  FMRadio
+  FMRadio \
+  fmradio.mt6757
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -347,11 +434,16 @@ PRODUCT_COPY_FILES += \
 #$(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 # GPS
+$(call inherit-product, device/common/gps/gps_us_supl.mk)
+
+# GPS library
 PRODUCT_PACKAGES += \
-  gps.mt6757 \
-  libcurl \
-  libepos \
-  YGPS
+    libcurl
+
+# GPS
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml
+
 
 # Hardware-specific permissions
 PRODUCT_COPY_FILES += \
@@ -377,10 +469,8 @@ PRODUCT_COPY_FILES += \
 
 # Keyboard layout
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
-
-#PRODUCT_SYSTEM_SERVER_JARS += \
-#  com.google.android.gms
+  $(LOCAL_PATH)/configs/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
+  $(LOCAL_PATH)/configs/Generic.kl:system/usr/keylayout/Generic.kl
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -398,7 +488,6 @@ PRODUCT_COPY_FILES += \
   frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
   frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
   frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
-  device/ulefone/t1/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -420,31 +509,36 @@ PRODUCT_PACKAGES += \
 
 # Ramdisks
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/rootdir/etc/enableswap.sh:root/enableswap.sh \
-  $(LOCAL_PATH)/rootdir/etc/factory_init.project.rc:root/factory_init.project.rc \
-  $(LOCAL_PATH)/rootdir/etc/factory_init.rc:root/factory_init.rc \
-  $(LOCAL_PATH)/rootdir/etc/meta_init.connectivity.rc:root/meta_init.connectivity.rc \
-  $(LOCAL_PATH)/rootdir/etc/meta_init.modem.rc:root/meta_init.modem.rc \
-  $(LOCAL_PATH)/rootdir/etc/meta_init.project.rc:root/meta_init.project.rc \
-  $(LOCAL_PATH)/rootdir/etc/meta_init.rc:root/meta_init.rc \
-  $(LOCAL_PATH)/rootdir/etc/multi_init.rc:root/multi_init.rc \
-  $(LOCAL_PATH)/rootdir/etc/factory_init.connectivity.rc:root/factory_init.connectivity.rc \
-  $(LOCAL_PATH)/rootdir/etc/fstab.mt6757:root/fstab.mt6757 \
-  $(LOCAL_PATH)/rootdir/etc/init.rc:root/init.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.aee.rc:root/init.aee.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.connectivity.rc:root/init.connectivity.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.common_svc.rc:root/init.common_svc.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.epdg.rc:root/init.epdg.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.fingerprint.rc:root/init.fingerprint.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.modem.rc:root/init.modem.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.mt6757.rc:root/init.mt6757.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.mt6757.usb.rc:root/init.mt6757.usb.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.project.rc:root/init.project.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.rilproxy.rc:root/init.rilproxy.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.sensor.rc:root/init.sensor.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.trustkernel.rc:root/init.trustkernel.rc \
-  $(LOCAL_PATH)/rootdir/etc/init.volte.rc:root/init.volte.rc \
-  $(LOCAL_PATH)/rootdir/etc/ueventd.mt6757.rc:root/ueventd.mt6757.rc \
+  $(LOCAL_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
+  $(LOCAL_PATH)/rootdir/disableswap.sh:root/disableswap.sh \
+  $(LOCAL_PATH)/rootdir/mkshrc:root/etc/mkshrc \
+  $(LOCAL_PATH)/rootdir/mtkshim.sh:root/mtkshim.sh \
+  $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
+  $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
+  $(LOCAL_PATH)/rootdir/meta_init.connectivity.rc:root/meta_init.connectivity.rc \
+  $(LOCAL_PATH)/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
+  $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \
+  $(LOCAL_PATH)/rootdir/meta_init.rc:root/meta_init.rc \
+  $(LOCAL_PATH)/rootdir/multi_init.rc:root/multi_init.rc \
+  $(LOCAL_PATH)/rootdir/factory_init.connectivity.rc:root/factory_init.connectivity.rc \
+  $(LOCAL_PATH)/rootdir/fstab.mt6757:root/fstab.mt6757 \
+  $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
+  $(LOCAL_PATH)/rootdir/init.mal.rc:root/init.mal.rc \
+  $(LOCAL_PATH)/rootdir/init.wod.rc:root/init.wod.rc \
+  $(LOCAL_PATH)/rootdir/init.aee.rc:root/init.aee.rc \
+  $(LOCAL_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc \
+  $(LOCAL_PATH)/rootdir/init.common_svc.rc:root/init.common_svc.rc \
+  $(LOCAL_PATH)/rootdir/init.epdg.rc:root/init.epdg.rc \
+  $(LOCAL_PATH)/rootdir/init.fingerprint.rc:root/init.fingerprint.rc \
+  $(LOCAL_PATH)/rootdir/init.modem.rc:root/init.modem.rc \
+  $(LOCAL_PATH)/rootdir/init.mt6757.rc:root/init.mt6757.rc \
+  $(LOCAL_PATH)/rootdir/init.mt6757.usb.rc:root/init.mt6757.usb.rc \
+  $(LOCAL_PATH)/rootdir/init.project.rc:root/init.project.rc \
+  $(LOCAL_PATH)/rootdir/init.rilproxy.rc:root/init.rilproxy.rc \
+  $(LOCAL_PATH)/rootdir/init.sensor.rc:root/init.sensor.rc \
+  $(LOCAL_PATH)/rootdir/init.trustkernel.rc:root/init.trustkernel.rc \
+  $(LOCAL_PATH)/rootdir/init.volte.rc:root/init.volte.rc \
+  $(LOCAL_PATH)/rootdir/ueventd.mt6757.rc:root/ueventd.mt6757.rc \
   $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab \
   bionic/libc/zoneinfo/tzdata:system/usr/share/zoneinfo/tzdata
 
@@ -523,6 +617,8 @@ PRODUCT_PACKAGES += art-runtime
 # ART/dex helpers.
 PRODUCT_PACKAGES += art-tools
 
+PRODUCT_PACKAGES += libmtk_symbols
+
 # Certificates.
 PRODUCT_PACKAGES += \
   cacerts \
@@ -546,14 +642,25 @@ PRODUCT_PACKAGES += \
   libem_sensor_jni
 
 # Telephony
-SIM_COUNT := 2
-PRODUCT_PROPERTY_OVERRIDES += ro.telephony.sim.count=$(SIM_COUNT)
-PRODUCT_PROPERTY_OVERRIDES += persist.radio.default.sim=0
-PRODUCT_PROPERTY_OVERRIDES += persist.radio.multisim.config=dsds
-PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml
-
-# USB
 PRODUCT_PACKAGES += \
   librs_jni \
-  com.android.future.usb.accessory
+  com.android.future.usb.accessor
+
+TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 1080
+
+# Wifi
+PRODUCT_PACKAGES += \
+    libwpa_client \
+    hostapd \
+    dhcpcd.conf \
+    wpa_supplicant \
+    wpa_supplicant.conf
+
+PRODUCT_PACKAGES += \
+    wifi2agps \
+    wmt_loader
+
+PRODUCT_PACKAGES += \
+    md_ctrl \
+    charger_res_images
