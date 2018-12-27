@@ -51,13 +51,6 @@ LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := init.environ.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.environ.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE       := init.epdg.rc
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := init.epdg.rc
@@ -96,13 +89,6 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.project.rc
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := init.project.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
@@ -217,36 +203,3 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := ueventd.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
-
-PRODUCT_PACKAGES += \
-  enableswap.sh \
-  factory_init.connectivity.rc \
-  factory_init.project.rc \
-  factory_init.rc \
-  init.aee.rc \
-  init.common_svc.rc \
-  init.connectivity.rc \
-  init.environ.rc \
-  init.epdg.rc \
-  init.fingerprint.rc \
-  init.modem.rc \
-  init.mt6757.rc \
-  init.mt6757.usb.rc \
-  init.project.rc \
-  init.rc \
-  init.recovery.mt6757.rc \
-  init.rilproxy.rc \
-  init.sensor.rc \
-  init.trustkernel.rc \
-  init.usb.configfs.rc \
-  init.usb.rc \
-  init.volte.rc \
-  init.zygote32.rc \
-  init.zygote64_32.rc \
-  meta_init.connectivity.rc \
-  meta_init.modem.rc \
-  meta_init.project.rc \
-  meta_init.rc \
-  multi_init.rc \
-  ueventd.mt6757.rc \
-  ueventd.rc
