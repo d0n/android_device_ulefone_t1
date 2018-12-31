@@ -61,7 +61,7 @@ for I in $(find lib* vendor/lib* -type f) ;do
   elif [ "$LIB" == "libvt_socketbind.so" ] ;then
     SHRLIBS="libbinder libc++"
   elif [ "$LIB" == "libvtmal.so" ] ;then
-    SHRLIBS="libc++ libutils libcutils libbinder libmtk_symbols"
+    SHRLIBS="libc++ libutils libcutils libbinder"
   elif [ "$LIB" == "volte_imsm.so" ] ;then
     SHRLIBS="libmal libc++"
   elif [ "$LIB" == "ccci_fsd.so" ] ;then

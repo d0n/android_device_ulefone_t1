@@ -39,7 +39,7 @@ for I in $(find * -type f -name "*.ini" -or -name "*.rc" -or -name "*.xml" -or -
   printf "LOCAL_MODULE_PATH := \$(PRODUCT_OUT)/system/${BDIR}\ninclude \$(BUILD_PREBUILT)\n\n" >>$AMAKE
   printf "  ${BIN} \\\\\n" >>$VMAKE
 done
-for I in $(find * -type f) ;do
+for I in $(find * -type f -not -name *.apk) ;do
   #grep -qs "${I}" $AMAKE && continue
   #F=$(echo $I |sed 's/vndor\///')
   grep -qs "  vendor/$VENDOR/$DEVICE/proprietary/${I}" $BMAKE && continue

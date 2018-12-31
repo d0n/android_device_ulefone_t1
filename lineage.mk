@@ -4,7 +4,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/ulefone/t1/t1.mk)
+$(call inherit-product, device/ulefone/t1/device.mk)
 
 # Release name
 PRODUCT_RELEASE_NAME := t1
@@ -21,13 +21,13 @@ TARGET_VENDOR := ulefone
 TARGET_VENDOR_PRODUCT_NAME := t1
 TARGET_VENDOR_DEVICE_NAME := T1
 
-TARGET_SCREEN_HEIGHT      := 1920
-TARGET_SCREEN_WIDTH       := 1080
+TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 1080
 TARGET_BOOTANIMATION_NAME := 1080
 
 PRODUCT_DEFAULT_LANGUAGE := de
 PRODUCT_DEFAULT_REGION   := DE
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE=T1 \
-    PRODUCT_NAME=t1 \
+  TARGET_DEVICE=t1 \
+  PRODUCT_NAME=t1
