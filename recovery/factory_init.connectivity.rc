@@ -1,4 +1,3 @@
-#INTERNAL_START
 on post-fs-data
 #
 # Connectivity related modules and character device nodes (Begin)
@@ -8,10 +7,23 @@ on post-fs-data
     chmod 0660 /dev/ttyMT2
     chown system system /dev/ttyMT2
 
-#GPS
+# GPS
     mkdir /data/gps_mnl 0771 gps system
     mkdir /data/misc/gps 0770 gps system
     chown gps system /data/mpe_mnl
+    chown gps gps /dev/stpgps
+    chown gps gps /sys/class/gpsdrv/gps/pwrctl
+    chown gps gps /sys/class/gpsdrv/gps/suspend
+    chown gps gps /sys/class/gpsdrv/gps/state
+    chown gps gps /sys/class/gpsdrv/gps/pwrsave
+    chown gps gps /sys/class/gpsdrv/gps/status
+    chmod 0660 /dev/stpgps
+
+# WiFi
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wpa_supplicant 0770 wifi wifi
+
 #
 # Connectivity related device nodes & configuration (end)
 #
@@ -33,11 +45,11 @@ service wmt_launcher /vendor/bin/wmt_launcher -p /vendor/firmware/
     group system
 
 # GPS
-service mnld /vendor/bin/mnld
-    class main
-    user gps
-    group gps inet misc sdcard_rw sdcard_r media_rw system radio
-    socket mnld stream 660 gps system
+#service mnld /vendor/bin/mnld
+#    class main
+#    user gps
+#    group gps inet misc sdcard_rw sdcard_r media_rw system radio
+#    socket mnld stream 660 gps system
 
 service MPED /vendor/bin/MPED
     class main
@@ -53,4 +65,3 @@ service MPED /vendor/bin/MPED
 #
 # Connectivity related services (End)
 #
-#INTERNAL_END

@@ -50,7 +50,6 @@ service ril-daemon-mtk /vendor/bin/mtkrild
 on property:ril.rilproxy=1
     start ril-proxy
 
-
 #
 # Rilproxy related services (End)
 #

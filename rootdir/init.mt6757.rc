@@ -16,13 +16,10 @@ import init.common_svc.rc
 import init.microtrust.rc
 import init.sensor_bio.rc
 import init.sensor.rc
-
-# agold guotuo for fingerprint init
+import ueventd.mt6757.rc
+import meta_init.rc
 import init.fingerprint.rc
-
-# init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
 import init.modem.rc
-# *** DO NOT import the new rc file after this line ***
 
 on early-init
     write /proc/ppm/policy/userlimit_min_cpu_freq "1 1794000"
@@ -30,13 +27,24 @@ on early-init
     write /proc/bootprof "INIT:early-init"
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
+    chmod 0666 /dev/ttyC2
 
 on init
-    # Support legacy paths
+    export LD_PRELOAD libdirect-coredump.so
+    export LD_SHIM_LIBS "/system/vendor/bin/program_binary_builder|libmtkshim_pbbuilder.so:/system/vendor/lib/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/lib64/libvtmal.so|libmtkshim_vtmal.so:/system/vendor/bin/vtservice|libmtkshim_vtmal.so:/system/bin/fingerprintd|libmtkshim_fingerprint.so"
+    write /proc/sys/vm/swappiness 100
+    write /proc/self/coredump_filter 39
+    setprop ro.aee.enperf off
+    chmod 0700 /mtkshim.sh
+    mkdir /data/media/0 0770 media_rw media_rw
+    mkdir /data/dumpsys 0775 system system
+    symlink /system/vendor/etc/slp_conf /system/etc/slp_conf
+    symlink /system/vendor/etc/wifi /system/etc/wifi
+    symlink /system/vendor/etc/audio_param /system/etc/audio_param
     symlink /sdcard /mnt/sdcard
 
     # if primary storage is physical, set ro.vold.primary_physical to 1
-    # setprop ro.vold.primary_physical 1
+    #setprop ro.vold.primary_physical 1
 
     # BATTERY proc
     chown shell system /proc/mtk_battery_cmd/current_cmd
@@ -166,7 +174,7 @@ on post-fs-data
     mkdir /data/misc/gps 0770 gps system
     mkdir /data/mpe_mnl 0771 gps system
     chown gps system /data/mpe_mnl
-    chmod 0775 /vendor/xbin/MPED
+    chmod 0775 /vendor/bin/MPED
     chmod 0666 /dev/gps_emi
 
     # NFC
@@ -192,7 +200,7 @@ on post-fs-data
     chown dhcp wifi /data/misc/wide-dhcpv6
 
     # android log much
-    mkdir /data/misc/log 0755	logd logd
+    mkdir /data/misc/log 0755    logd logd
 
     # radvd
     mkdir /data/misc/radvd 0770 system system
@@ -283,7 +291,7 @@ on post-fs-data
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_ut
 
     mkdir /data/amit/ 0770 system system
-		mkdir /data/misc/sensor 0774 system system
+    mkdir /data/misc/sensor 0774 system system
     mkdir /data/misc/akmd 0770 system system
     mkdir /data/misc/s62x 0771 compass compass
     mkdir /data/acdapi/ 0770 system system
@@ -295,7 +303,7 @@ on post-fs-data
     chown system /sys/devices/platform/msensor/driver/cpsreptz
     chown system /sys/devices/platform/gsensor/driver/cpsopmode
     chown system /sys/devices/platform/gsensor/driver/cpsrange
-    mkdir	/data/mcube 0664 system system
+    mkdir    /data/mcube 0664 system system
 
     chown system /sys/class/input/input1/enable
     chown system /sys/class/input/input1/delay
@@ -458,10 +466,10 @@ on post-fs-data
     chmod 0660 /dev/SUBAF
     chmod 0660 /dev/CAM_CAL_DRV
     #[AGOLD][chenpeng][20170518]
-	chmod 0777 /sys/bus/platform/drivers/flashlights-rt5081/ledduty
-	chmod 0777 /sys/bus/platform/drivers/flashlights-rt5081/ledtimeout
-	chmod 0777 /sys/bus/platform/drivers/flashlights-rt5081/leden
-	#[AGOLD][chenpeng][20170518]
+    chmod 0777 /sys/bus/platform/drivers/flashlights-rt5081/ledduty
+    chmod 0777 /sys/bus/platform/drivers/flashlights-rt5081/ledtimeout
+    chmod 0777 /sys/bus/platform/drivers/flashlights-rt5081/leden
+    #[AGOLD][chenpeng][20170518]
 
     chown system camera /dev/camera-sysram
     chown system camera /dev/camera-isp
@@ -478,28 +486,28 @@ on post-fs-data
     chown system camera /dev/SUBAF
     chown system camera /dev/CAM_CAL_DRV
 
-	#agold add start
-	chmod 0660 /dev/BU64291AF
-	chmod 0660 /dev/BU6429AF
-	chmod 0660 /dev/DW9800AF
-	chmod 0660 /dev/BU64297AF
-	chmod 0660 /dev/DW9763AF
-	chmod 0660 /dev/DW9763XAF
-	chmod 0660 /dev/DW9714AF
-	chmod 0660 /dev/LC898212XDAF
-	chmod 0660 /dev/AK7371AF
-	chmod 0660 /dev/DW9790AF
+    #agold add start
+    chmod 0660 /dev/BU64291AF
+    chmod 0660 /dev/BU6429AF
+    chmod 0660 /dev/DW9800AF
+    chmod 0660 /dev/BU64297AF
+    chmod 0660 /dev/DW9763AF
+    chmod 0660 /dev/DW9763XAF
+    chmod 0660 /dev/DW9714AF
+    chmod 0660 /dev/LC898212XDAF
+    chmod 0660 /dev/AK7371AF
+    chmod 0660 /dev/DW9790AF
 
-	chown system camera /dev/BU64291AF
-	chown system camera /dev/BU6429AF
-	chown system camera /dev/DW9800AF
-	chown system camera /dev/DW9714AF
-	chown system camera /dev/BU64297AF
-	chown system camera /dev/DW9763AF
-	chown system camera /dev/DW9763XAF
-	chown system camera /dev/LC898212XDAF
-	chown system camera /dev/AK7371AF
-	chown system camera /dev/DW9790AF
+    chown system camera /dev/BU64291AF
+    chown system camera /dev/BU6429AF
+    chown system camera /dev/DW9800AF
+    chown system camera /dev/DW9714AF
+    chown system camera /dev/BU64297AF
+    chown system camera /dev/DW9763AF
+    chown system camera /dev/DW9763XAF
+    chown system camera /dev/LC898212XDAF
+    chown system camera /dev/AK7371AF
+    chown system camera /dev/DW9790AF
 #agold add end
 
     #VOW
@@ -572,7 +580,7 @@ on post-fs-data
 
     #agold ly 20170804
     chown root system /proc/meminfo
-	#agold end
+    #agold end
 
     #sn
     chmod 0664 /sys/class/android_usb/android0/iSerial
@@ -589,8 +597,8 @@ on post-fs-data
     chmod 0666 /dev/exm0
 
 
-	#Thermal
-	mkdir /data/.tp/ 0775 system system
+    #Thermal
+    mkdir /data/.tp/ 0775 system system
 
 # End of adding by MTK drivers
 # -----------------------
@@ -802,6 +810,74 @@ on property:ro.board.platform=mt6753
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1300000
 
+# custom fix/workaround/patcher
+on property:ril.mal=0
+    stop mal-daemon
+    stop md-daemon
+    stop imsm-daemon
+
+on property:ril.mal=1
+    stop md-daemon
+    stop imsm-daemon
+    start mal-daemon
+
+on property:ril.mal=2
+    stop mal-daemon
+    start md-daemon
+    start imsm-daemon
+
+on property:persist.chiptest.enable=0
+    setprop ril.mal 1
+
+on property:persist.chiptest.enable=1
+    setprop ril.mal 2
+
+service mal-daemon /vendor/bin/mtkmal
+    class core
+    socket mal-mfi stream 660 root radio
+    socket volte_imsm stream 660 root radio
+    user root
+    group radio cache inet misc log system wifi
+
+service md-daemon /vendor/bin/mtkmal
+    socket mal-mfi-dongle stream 660 root radio
+    user root
+    group radio cache inet misc log system wifi
+    oneshot
+    disabled
+
+service imsm-daemon /vendor/bin/volte_imsm_md
+    socket volte_imsm_dongle stream 660 root radio
+    user root
+    group radio cache inet misc log system wifi
+    oneshot
+    disabled
+
+service mtkshim /mtkshim.sh
+    class main
+	user root
+    oneshot
+
+on property:ro.build.type=userdebug
+    write /proc/sys/fs/suid_dumpable 2
+    write /proc/sys/kernel/core_pattern "|/vendor/bin/aee_core_forwarder /data/core/ %p %s UID=%u GID=%g"
+
+on property:or.ril.kickstart=1
+    start mtkshim
+    write /proc/bootprof "INIT:vold.decrypt=trigger_restart_min_framework"
+    setprop service.nvram_init 0
+    setprop ril.mal 1
+    setprop ril.rilproxy 1
+    setprop or.ril.kickstart 0
+    start nvram_daemon
+    start sysenv_daemon
+    start start_modem
+    start msensord
+    start permission_check
+    start stp_dump
+	start mtkshim
+    write /proc/bootprof "INIT:vold.decrypt=trigger_post_fs_data"
+
 on property:vold.decrypt=trigger_reset_main
     write /proc/bootprof "INIT:vold.decrypt=trigger_reset_main"
     start stop_modem
@@ -973,6 +1049,10 @@ service atcid-daemon-e /vendor/bin/atcid
     group radio system
     disabled
     oneshot
+
+on property:ro.build.type=userdebug
+start atci_service
+start atcid-daemon-e
 
 on property:ro.build.type=eng
 start atci_service
@@ -1183,8 +1263,8 @@ service bluetoothd /system/bin/bluetoothd -n
     disabled
 
 #service dpfd /vendor/bin/dpfd
-#	user root
-#	group system media
+#   user root
+#   group system media
 
 #
 #  External Modme control related services
@@ -1331,21 +1411,21 @@ service memsicd /vendor/bin/memsicd
 
 #AGold Bruce 2015.05.16
 service memsicd3524x /vendor/bin/memsicd3524x
-	user system
+    user system
     group system
     class main
-	oneshot
+    oneshot
 #endif
 
 #AGold gengdong 2016.02.23
 service st480 /vendor/bin/st480
-	 user system
+    user system
     group system
     class main
 #endif
 service memsicd3416x /vendor/bin/memsicd3416x
-     disabled
-	 user system
+    disabled
+    user system
     group system
     class main
 service akmd8975 /vendor/bin/akmd8975
@@ -1366,7 +1446,7 @@ service akmd09911 /vendor/bin/akmd09911
     group system
     class main
 service qmcX983d /vendor/bin/qmcX983d
-	oneshot
+    oneshot
     disabled
     user system
     group system
@@ -1474,7 +1554,7 @@ service thermalloadalgod /vendor/bin/thermalloadalgod
 service thermal_manager /vendor/bin/thermal_manager
     class main
     user root
-	group system
+    group system
     oneshot
 
 service thermal /vendor/bin/thermal
@@ -1520,9 +1600,9 @@ service batterywarning /vendor/bin/batterywarning
 
 
 #service BGW /vendor/xbin/BGW
-#	user system
-#	group gps system radio
-#	class main
+#    user system
+#    group gps system radio
+#    class main
 service MtkCodecService /vendor/bin/MtkCodecService
     class main
     user system
@@ -1622,9 +1702,9 @@ service ril-3gddaemon /vendor/bin/rild_dongle
 #
 service usbdongled /vendor/bin/dongled
     class main
-	user root
-	group radio cache inet misc
-	enabled
+    user root
+    group radio cache inet misc
+    enabled
 
 
 #
@@ -1636,9 +1716,9 @@ service usbdongled /vendor/bin/dongled
 #
 service zpppd_gprs /vendor/bin/init.gprs-pppd
     user root
-	group radio cache inet misc
-	disabled
-	oneshot
+    group radio cache inet misc
+    disabled
+    oneshot
 #
 # add the service for call pppd(end)
 #
@@ -1675,14 +1755,14 @@ on property:logmuch.detect.value=*
 # Thermal Indicator Service
 
 service ThermalIndicator /vendor/bin/thermalindicator
-	class core
-	disabled
+    class core
+    disabled
 
 on property:debug.mtk.thermalindicator=0
-	stop ThermalIndicator
+    stop ThermalIndicator
 
 on property:debug.mtk.thermalindicator=1
-	start ThermalIndicator
+    start ThermalIndicator
 
 #[AGOLD][spl][20120420] AGOLD_PROX_CALI_ENABLE
 service nvram_proximity /system/bin/nvram_proximity
