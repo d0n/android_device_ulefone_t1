@@ -1,0 +1,10 @@
+type fuelgauged_exec, exec_type, file_type;
+type fuelgauged, domain;
+
+init_daemon_domain(fuelgauged)
+
+allow fuelgauged self:netlink_socket create_socket_perms;
+allow fuelgauged kmsg_device:chr_file w_file_perms;
+allow fuelgauged cache_file:dir { add_name create write };
+allow fuelgauged cache_file:file { create open write };
+allow fuelgauged self:capability dac_override;

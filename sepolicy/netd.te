@@ -1,0 +1,9 @@
+# Wifi
+allow netd wmtWifi_device:chr_file w_file_perms;
+
+allow netd self:capability sys_module;
+
+# wlan0 hostap
+allow netd dhcp_data_file:dir setattr;
+allow netd wifi_data_file:dir { setattr create };
+allow netd wifi_data_file:sock_file { setattr create unlink };

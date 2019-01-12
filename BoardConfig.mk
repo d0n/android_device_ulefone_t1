@@ -76,7 +76,7 @@ SIM_COUNT ?= 2
 #TARGET_INCLUDE_FINGERPRINT_SYMBOLS ?= true
 TARGET_PROVIDES_INIT_RC ?= true
 TARGET_OTA_ASSERT_DEVICE ?= t1,p15v57c2k_gq_tee,,
-#TARGET_KMODULES ?= true
+TARGET_KMODULES ?= true
 TARGET_SYSTEM_PROP ?= $(DEVICE_PATH)/system.prop
 #TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/init.recovery.mt6757.rc
 #TARGET_USES_OVERLAY ?= true
@@ -149,20 +149,29 @@ TARGET_KERNEL_ARCH ?= arm64
 BOARD_KERNEL_IMAGE_NAME ?= Image.gz
 TARGET_KERNEL_CROSS_COMPILE_PREFIX ?= aarch64-linux-android-
 
+# Sepolicy
+BOARD_SEPOLICY_DIRS := \
+  $(LOCAL_PATH)/sepolicy
+BOARD_SECCOMP_POLICY := \
+  $(LOCAL_PATH)/seccomp
+
+#BOARD_SEPOLICY_VERS 
+#PLATFORM_SEPOLICY_VERSION
+
 TARGET_NO_BOOTLOADER ?= true
 BOARD_CHARGER_SHOW_PERCENTAGE ?= true
 
 # Recovery
-RECOVERY_VARIANT ?= twrp
 #BOARD_BUILD_SYSTEM_ROOT_IMAGE ?= true
-BOARD_USES_FULL_RECOVERY_IMAGE ?= true
 #BOARD_USES_RECOVERY_AS_BOOT ?= true
+#BOARD_USES_FULL_RECOVERY_IMAGE ?= true
+DEVICE_RESOLUTION ?= 1080x1920
+RECOVERY_VARIANT ?= twrp
 TW_DEFAULT_EXTERNAL_STORAGE ?= true
 TARGET_RECOVERY_PIXEL_FORMAT ?= RGBA_8888
 BOARD_HAS_NO_SELECT_BUTTON ?= true
 BOARD_HAS_NO_REAL_SDCARD := true
 TARGET_RECOVERY_FSTAB ?= $(DEVICE_PATH)/recovery/etc/recovery.fstab
-DEVICE_RESOLUTION ?= 1080x1920
 DEVICE_SCREEN_WIDTH ?= 1080
 DEVICE_SCREEN_HEIGHT ?= 1920
 RECOVERY_SDCARD_ON_DATA ?= true
@@ -186,7 +195,7 @@ TARGET_DISABLE_TRIPLE_BUFFERING ?= false
 TW_FLASH_FROM_STORAGE ?= true
 TW_NEW_ION_HEAP ?= true
 TWHAVE_SELINUX ?= true
-TW_USE_TOOLBOX := true
+#TW_USE_TOOLBOX := false
 
 WPA_SUPPLICANT_VERSION ?= VER_0_8_X
 BOARD_HOSTAPD_DRIVER ?= NL80211
@@ -199,7 +208,6 @@ WIFI_DRIVER_FW_PATH_AP ?= AP
 WIFI_DRIVER_FW_PATH_P2P ?= P2P
 
 PRODUCT_PROPERTY_OVERRIDES ?= \
-  ro.sf.hwrotation=180 \
   com.mediatek.log.modem.enabled=true \
   dalvik.vm.dex2oat-Xms=64m \
   dalvik.vm.dex2oat-Xmx=64m \
@@ -1342,7 +1350,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES ?= \
   ro.sdcard_support=yes \
   ro.secure=0 \
   ro.setupwizard.mode=OPTIONAL \
-  ro.sf.hwrotation=0 \
+  ro.sf.hwrotation=180 \
   ro.sf.lcd_density=480 \
   ro.short.cut.settings=false \
   ro.shortcut_flashlight=no \
@@ -1403,7 +1411,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES ?= \
   ro.modversion=15.1
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES ?= \
-  ro.sf.hwrotation=180 \
   com.mediatek.log.modem.enabled=true \
   dalvik.vm.dex2oat-Xms=64m \
   dalvik.vm.dex2oat-Xmx=64m \

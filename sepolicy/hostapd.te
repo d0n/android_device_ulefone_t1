@@ -1,0 +1,2 @@
+# wlan0 hostap
+allow hostapd wifi_data_file:sock_file write;
