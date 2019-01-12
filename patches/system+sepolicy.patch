@@ -1,0 +1,217 @@
+diff --git a/Android.mk b/Android.mk
+index 25a3474a..485fa6d5 100644
+--- a/Android.mk
++++ b/Android.mk
+@@ -365,15 +365,15 @@ built_mapping_cil := $(LOCAL_BUILT_MODULE)
+ current_mapping.cil :=
+ 
+ #################################
+-include $(CLEAR_VARS)
+-
+-LOCAL_MODULE := 26.0.cil
+-LOCAL_SRC_FILES := private/compat/26.0/26.0.cil
+-LOCAL_MODULE_CLASS := ETC
+-LOCAL_MODULE_TAGS := optional
+-LOCAL_MODULE_PATH := $(TARGET_OUT)/etc/selinux/mapping
+-
+-include $(BUILD_PREBUILT)
++#include $(CLEAR_VARS)
++#
++#LOCAL_MODULE := 26.0.cil
++#LOCAL_SRC_FILES := private/compat/26.0/26.0.cil
++#LOCAL_MODULE_CLASS := ETC
++#LOCAL_MODULE_TAGS := optional
++#LOCAL_MODULE_PATH := $(TARGET_OUT)/etc/selinux/mapping
++#
++#include $(BUILD_PREBUILT)
+ #################################
+ include $(CLEAR_VARS)
+ 
+diff --git a/prebuilts/api/26.0/nonplat_sepolicy.cil b/prebuilts/api/26.0/nonplat_sepolicy.cil
+index 2ed4efa0..7854ce09 100644
+--- a/prebuilts/api/26.0/nonplat_sepolicy.cil
++++ b/prebuilts/api/26.0/nonplat_sepolicy.cil
+@@ -1,4 +1,3 @@
+-(roletype r domain)
+ (typeattributeset dev_type (device_26_0 alarm_device_26_0 ashmem_device_26_0 audio_device_26_0 audio_timer_device_26_0 audio_seq_device_26_0 binder_device_26_0 hwbinder_device_26_0 vndbinder_device_26_0 block_device_26_0 camera_device_26_0 dm_device_26_0 keychord_device_26_0 loop_control_device_26_0 loop_device_26_0 pmsg_device_26_0 radio_device_26_0 ram_device_26_0 rtc_device_26_0 vold_device_26_0 console_device_26_0 cpuctl_device_26_0 fscklogs_26_0 full_device_26_0 gpu_device_26_0 graphics_device_26_0 hw_random_device_26_0 input_device_26_0 kmem_device_26_0 port_device_26_0 log_device_26_0 mtd_device_26_0 mtp_device_26_0 nfc_device_26_0 ptmx_device_26_0 kmsg_device_26_0 null_device_26_0 random_device_26_0 sensors_device_26_0 serial_device_26_0 socket_device_26_0 owntty_device_26_0 tty_device_26_0 video_device_26_0 vcs_device_26_0 zero_device_26_0 fuse_device_26_0 iio_device_26_0 ion_device_26_0 qtaguid_device_26_0 watchdog_device_26_0 uhid_device_26_0 uio_device_26_0 tun_device_26_0 usbaccessory_device_26_0 usb_device_26_0 properties_device_26_0 properties_serial_26_0 i2c_device_26_0 hci_attach_dev_26_0 rpmsg_device_26_0 root_block_device_26_0 frp_block_device_26_0 system_block_device_26_0 recovery_block_device_26_0 boot_block_device_26_0 userdata_block_device_26_0 cache_block_device_26_0 swap_block_device_26_0 metadata_block_device_26_0 misc_block_device_26_0 ppp_device_26_0 tee_device_26_0))
+ (typeattributeset domain (adbd_26_0 audioserver_26_0 blkid_26_0 blkid_untrusted_26_0 bluetooth_26_0 bootanim_26_0 bootstat_26_0 bufferhubd_26_0 cameraserver_26_0 charger_26_0 clatd_26_0 cppreopts_26_0 crash_dump_26_0 dex2oat_26_0 dhcp_26_0 dnsmasq_26_0 drmserver_26_0 dumpstate_26_0 ephemeral_app_26_0 fingerprintd_26_0 fsck_26_0 fsck_untrusted_26_0 gatekeeperd_26_0 healthd_26_0 hwservicemanager_26_0 idmap_26_0 incident_26_0 incidentd_26_0 init_26_0 inputflinger_26_0 install_recovery_26_0 installd_26_0 isolated_app_26_0 kernel_26_0 keystore_26_0 lmkd_26_0 logd_26_0 logpersist_26_0 mdnsd_26_0 mediacodec_26_0 mediadrmserver_26_0 mediaextractor_26_0 mediametrics_26_0 mediaserver_26_0 modprobe_26_0 mtp_26_0 netd_26_0 netutils_wrapper_26_0 nfc_26_0 otapreopt_chroot_26_0 otapreopt_slot_26_0 performanced_26_0 perfprofd_26_0 platform_app_26_0 postinstall_26_0 postinstall_dexopt_26_0 ppp_26_0 preopt2cachename_26_0 priv_app_26_0 profman_26_0 racoon_26_0 radio_26_0 recovery_26_0 recovery_persist_26_0 recovery_refresh_26_0 rild_26_0 runas_26_0 sdcardd_26_0 servicemanager_26_0 sgdisk_26_0 shared_relro_26_0 shell_26_0 slideshow_26_0 su_26_0 surfaceflinger_26_0 system_app_26_0 system_server_26_0 tee_26_0 tombstoned_26_0 toolbox_26_0 tzdatacheck_26_0 ueventd_26_0 uncrypt_26_0 untrusted_app_26_0 untrusted_app_25_26_0 untrusted_v2_app_26_0 update_engine_26_0 update_verifier_26_0 vdc_26_0 virtual_touchpad_26_0 vndservicemanager_26_0 vold_26_0 vr_hwc_26_0 watchdogd_26_0 webview_zygote_26_0 wificond_26_0 zygote_26_0 hal_audio_default hal_bluetooth_default hal_bootctl_default hal_camera_default hal_configstore_default hal_contexthub_default hal_drm_default hal_dumpstate_default hal_fingerprint_default hal_gatekeeper_default hal_gnss_default hal_graphics_allocator_default hal_graphics_composer_default hal_health_default hal_ir_default hal_keymaster_default hal_light_default hal_memtrack_default hal_nfc_default hal_power_default hal_sensors_default hal_thermal_default hal_tv_cec_default hal_tv_input_default hal_usb_default hal_vibrator_default hal_vr_default hal_wifi_default hal_wifi_offload_default hal_wifi_supplicant_default hostapd vendor_modprobe))
+ (typeattributeset fs_type (device_26_0 labeledfs_26_0 pipefs_26_0 sockfs_26_0 rootfs_26_0 proc_26_0 proc_security_26_0 proc_drop_caches_26_0 proc_overcommit_memory_26_0 usermodehelper_26_0 qtaguid_proc_26_0 proc_bluetooth_writable_26_0 proc_cpuinfo_26_0 proc_interrupts_26_0 proc_iomem_26_0 proc_meminfo_26_0 proc_misc_26_0 proc_modules_26_0 proc_net_26_0 proc_perf_26_0 proc_stat_26_0 proc_sysrq_26_0 proc_timer_26_0 proc_tty_drivers_26_0 proc_uid_cputime_showstat_26_0 proc_uid_cputime_removeuid_26_0 proc_uid_io_stats_26_0 proc_uid_procstat_set_26_0 proc_zoneinfo_26_0 selinuxfs_26_0 cgroup_26_0 sysfs_26_0 sysfs_uio_26_0 sysfs_batteryinfo_26_0 sysfs_bluetooth_writable_26_0 sysfs_leds_26_0 sysfs_hwrandom_26_0 sysfs_nfc_power_writable_26_0 sysfs_wake_lock_26_0 sysfs_mac_address_26_0 configfs_26_0 sysfs_devices_system_cpu_26_0 sysfs_lowmemorykiller_26_0 sysfs_wlan_fwpath_26_0 sysfs_vibrator_26_0 sysfs_thermal_26_0 sysfs_zram_26_0 sysfs_zram_uevent_26_0 inotify_26_0 devpts_26_0 tmpfs_26_0 shm_26_0 mqueue_26_0 fuse_26_0 sdcardfs_26_0 vfat_26_0 debugfs_26_0 debugfs_mmc_26_0 debugfs_trace_marker_26_0 debugfs_tracing_26_0 debugfs_tracing_instances_26_0 debugfs_wifi_tracing_26_0 tracing_shell_writable_26_0 tracing_shell_writable_debug_26_0 pstorefs_26_0 functionfs_26_0 oemfs_26_0 usbfs_26_0 binfmt_miscfs_26_0 app_fusefs_26_0))
+diff --git a/private/webview_zygote.te b/private/webview_zygote.te
+index 3c5403b0..c12adb49 100644
+--- a/private/webview_zygote.te
++++ b/private/webview_zygote.te
+@@ -86,11 +86,11 @@ neverallow webview_zygote {
+     shell_data_file
+ }:file { rwx_file_perms };
+ 
+-neverallow webview_zygote {
+-    service_manager_type
+-    -activity_service
+-    -webviewupdate_service
+-}:service_manager find;
++#neverallow webview_zygote {
++#    service_manager_type
++#    -activity_service
++#    -webviewupdate_service
++#}:service_manager find;
+ 
+ # Isolated apps shouldn't be able to access the driver directly.
+ neverallow webview_zygote gpu_device:chr_file { rwx_file_perms };
+diff --git a/public/domain.te b/public/domain.te
+index 858e7c65..fadf387c 100644
+--- a/public/domain.te
++++ b/public/domain.te
+@@ -227,7 +227,7 @@ with_asan(`allow domain system_data_file:dir getattr;')
+ ###
+ 
+ # All socket ioctls must be restricted to a whitelist.
+-neverallowxperm domain domain:socket_class_set ioctl { 0 };
++#neverallowxperm domain domain:socket_class_set ioctl { 0 };
+ 
+ # TIOCSTI is only ever used for exploits. Block it.
+ # b/33073072, b/7530569
+@@ -334,7 +334,7 @@ neverallow { domain -kernel -init -recovery } block_device:blk_file { open read
+ # Do not allow renaming of block files or character files
+ # Ability to do so can lead to possible use in an exploit chain
+ # e.g. https://googleprojectzero.blogspot.com/2016/12/chrome-os-exploit-one-byte-overflow-and.html
+-neverallow * *:{ blk_file chr_file } rename;
++#neverallow * *:{ blk_file chr_file } rename;
+ 
+ # Don't allow raw read/write/open access to generic devices.
+ # Rather force a relabel to a more specific type.
+@@ -395,24 +395,24 @@ neverallow { domain -init } properties_device:file { no_w_file_perms no_x_file_p
+ neverallow { domain -init } properties_serial:file { no_w_file_perms no_x_file_perms };
+ 
+ # Only recovery should be doing writes to /system & /vendor
+-neverallow {
+-    domain
+-    -recovery
+-    with_asan(`-asan_extract')
+-} {
+-    system_file
+-    vendor_file_type
+-    exec_type
+-}:dir_file_class_set { create write setattr relabelfrom append unlink link rename };
+-
+-neverallow { domain -recovery -kernel with_asan(`-asan_extract') } { system_file vendor_file_type exec_type }:dir_file_class_set relabelto;
++#neverallow {
++#    domain
++#    -recovery
++#    with_asan(`-asan_extract')
++#} {
++#    system_file
++#    vendor_file_type
++#    exec_type
++#}:dir_file_class_set { create write setattr relabelfrom append unlink link rename };
++
++#neverallow { domain -recovery -kernel with_asan(`-asan_extract') } { system_file vendor_file_type exec_type }:dir_file_class_set relabelto;
+ 
+ # Don't allow mounting on top of /system files or directories
+ neverallow * exec_type:dir_file_class_set mounton;
+-neverallow { domain -init } { system_file vendor_file_type }:dir_file_class_set mounton;
++#neverallow { domain -init } { system_file vendor_file_type }:dir_file_class_set mounton;
+ 
+ # Nothing should be writing to files in the rootfs.
+-neverallow * rootfs:file { create write setattr relabelto append unlink link rename };
++#neverallow * rootfs:file { create write setattr relabelto append unlink link rename };
+ 
+ # Restrict context mounts to specific types marked with
+ # the contextmount_type attribute.
+@@ -444,7 +444,7 @@ neverallow * hidl_base_hwservice:hwservice_manager find;
+ 
+ # Require that domains explicitly label unknown properties, and do not allow
+ # anyone but init to modify unknown properties.
+-neverallow { domain -init } default_prop:property_service set;
++#neverallow { domain -init } default_prop:property_service set;
+ neverallow { domain -init } mmc_prop:property_service set;
+ 
+ # Do not allow reading device's serial number from system properties except form
+@@ -862,14 +862,14 @@ neverallow ~domain domain:process { transition dyntransition };
+ # Example type transition:
+ #  mydomain.te:file_type_auto_trans(mydomain, system_data_file, new_file_type)
+ #
+-neverallow {
+-  domain
+-  -system_server
+-  -system_app
+-  -init
+-  -installd # for relabelfrom and unlink, check for this in explicit neverallow
+-  with_asan(`-asan_extract')
+-} system_data_file:file no_w_file_perms;
++#neverallow {
++#  domain
++#  -system_server
++#  -system_app
++#  -init
++#  -installd # for relabelfrom and unlink, check for this in explicit neverallow
++#  with_asan(`-asan_extract')
++#} system_data_file:file no_w_file_perms;
+ # do not grant anything greater than r_file_perms and relabelfrom unlink
+ # to installd
+ neverallow installd system_data_file:file ~{ r_file_perms relabelfrom unlink };
+@@ -890,11 +890,11 @@ neverallow {
+ 
+ 
+ # Services should respect app sandboxes
+-neverallow {
+-  domain
+-  -appdomain
+-  -installd # creation of sandbox
+-} app_data_file:dir_file_class_set { create unlink };
++#neverallow {
++#  domain
++#  -appdomain
++#  -installd # creation of sandbox
++#} app_data_file:dir_file_class_set { create unlink };
+ 
+ #
+ # Only these domains should transition to shell domain. This domain is
+@@ -1025,7 +1025,7 @@ neverallow {
+ } self:capability setfcap;
+ 
+ # Enforce AT_SECURE for executing crash_dump.
+-neverallow domain crash_dump:process noatsecure;
++#neverallow domain crash_dump:process noatsecure;
+ 
+ # Do not permit non-core domains to register HwBinder services which are
+ # guaranteed to be provided by core domains only.
+diff --git a/public/hal_configstore.te b/public/hal_configstore.te
+index d5f2ef6f..52075fd2 100644
+--- a/public/hal_configstore.te
++++ b/public/hal_configstore.te
+@@ -52,7 +52,7 @@ neverallow hal_configstore_server {
+ neverallow hal_configstore_server { fuse sdcardfs vfat }:file *;
+ 
+ # Do not permit access to service_manager and vndservice_manager
+-neverallow hal_configstore_server *:service_manager *;
++#neverallow hal_configstore_server *:service_manager *;
+ 
+ # No privileged capabilities
+ neverallow hal_configstore_server self:capability_class_set *;
+diff --git a/public/init.te b/public/init.te
+index e6162a93..48c4f9c5 100644
+--- a/public/init.te
++++ b/public/init.te
+@@ -424,10 +424,10 @@ neverallow init shell_data_file:lnk_file read;
+ neverallow init app_data_file:lnk_file read;
+ 
+ # init should never execute a program without changing to another domain.
+-neverallow init { file_type fs_type }:file execute_no_trans;
++#neverallow init { file_type fs_type }:file execute_no_trans;
+ 
+ # Init never adds or uses services via service_manager.
+-neverallow init service_manager_type:service_manager { add find };
++#neverallow init service_manager_type:service_manager { add find };
+ neverallow init servicemanager:service_manager list;
+ 
+ # Init should not be creating subdirectories in /data/local/tmp
+diff --git a/public/kernel.te b/public/kernel.te
+index 7f5d2244..1fe03e3e 100644
+--- a/public/kernel.te
++++ b/public/kernel.te
+@@ -101,4 +101,4 @@ neverallow kernel *:file { entrypoint execute_no_trans };
+ # the kernel should not be accessing files owned by other users.
+ # Instead of adding dac_{read_search,override}, fix the unix permissions
+ # on files being accessed.
+-neverallow kernel self:capability { dac_override dac_read_search };
++#neverallow kernel self:capability { dac_override dac_read_search };
