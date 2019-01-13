@@ -48,8 +48,6 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/rootdir/factory_init.connectivity.rc:root/factory_init.connectivity.rc \
   $(LOCAL_PATH)/rootdir/fstab.mt6757:root/fstab.mt6757 \
   $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
-  $(LOCAL_PATH)/rootdir/init.mal.rc:root/init.mal.rc \
-  $(LOCAL_PATH)/rootdir/init.wod.rc:root/init.wod.rc \
   $(LOCAL_PATH)/rootdir/init.aee.rc:root/init.aee.rc \
   $(LOCAL_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc \
   $(LOCAL_PATH)/rootdir/init.common_svc.rc:root/init.common_svc.rc \
@@ -64,12 +62,12 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/rootdir/init.trustkernel.rc:root/init.trustkernel.rc \
   $(LOCAL_PATH)/rootdir/init.volte.rc:root/init.volte.rc \
   $(LOCAL_PATH)/rootdir/ueventd.mt6757.rc:root/ueventd.mt6757.rc \
-  $(LOCAL_PATH)/recovery/init.recovery.mt6757.rc:root/init.recovery.mt6757.rc \
+  $(LOCAL_PATH)/recovery/init.recovery.mt6757.rc:recovery/root/init.recovery.mt6757.rc \
   $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # TWRP
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab
+PRODUCT_COPY_FILES += \
+  $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Fingerprint
 PRODUCT_PACKAGES += \
