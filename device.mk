@@ -8,9 +8,6 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_AAPT_CONFIG := xxxhdpi xxhdpi xhdpi normal
 PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1080
-
 # Manifest
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/manifest.xml:system/vendor/manifest.xml
@@ -34,10 +31,9 @@ PRODUCT_COPY_FILES += \
 
 # Recovery
 PRODUCT_COPY_FILES += \
+  $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab \
   $(LOCAL_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
-  $(LOCAL_PATH)/rootdir/disableswap.sh:root/disableswap.sh \
   $(LOCAL_PATH)/rootdir/mkshrc:root/etc/mkshrc \
-  $(LOCAL_PATH)/rootdir/mtkshim.sh:root/mtkshim.sh \
   $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
   $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
   $(LOCAL_PATH)/rootdir/meta_init.connectivity.rc:root/meta_init.connectivity.rc \
@@ -62,12 +58,10 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/rootdir/init.trustkernel.rc:root/init.trustkernel.rc \
   $(LOCAL_PATH)/rootdir/init.volte.rc:root/init.volte.rc \
   $(LOCAL_PATH)/rootdir/ueventd.mt6757.rc:root/ueventd.mt6757.rc \
-  $(LOCAL_PATH)/recovery/init.recovery.mt6757.rc:recovery/root/init.recovery.mt6757.rc \
-  $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # TWRP
-PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -76,8 +70,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
 
-GAPPS_VARIANT := nano
+# Dalvik/HWUI
+$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
 
+# Common stuff
+$(call inherit-product, vendor/mediatek/config/common.mk)
+
+# Vendor
+$(call inherit-product, vendor/ulefone/t1/t1-vendor.mk)
+GAPPS_VARIANT := nano
 APPS_PRODUCT_PACKAGES += \
   CMAudioFX \
   CMParts \
@@ -479,12 +480,3 @@ PRODUCT_PACKAGES += \
   libtinycompress \
   libtinyxml \
   tinymix
-
-# Dalvik/HWUI
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
-
-# Common stuff
-$(call inherit-product, vendor/mediatek/config/common.mk)
-
-# Vendor
-$(call inherit-product, vendor/ulefone/t1/t1-vendor.mk)
