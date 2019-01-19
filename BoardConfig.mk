@@ -77,7 +77,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH ?= /sys/devices/soc/11270000.usb3/musb-hdrc/gadg
 #TARGET_OTA_ASSERT_DEVICE ?= t1,p15v57c2k_gq_tee,,
 #TARGET_KMODULES ?= true
 #TARGET_SYSTEM_PROP ?= $(DEVICE_PATH)/system.prop
-TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/init.rc
+TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/init.recovery.mt6757.rc
 #TARGET_USES_OVERLAY ?= true
 
 # MTK audio
