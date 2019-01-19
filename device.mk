@@ -31,8 +31,6 @@ PRODUCT_COPY_FILES += \
 
 # Recovery
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/twrp.fstab \
-  $(LOCAL_PATH)/recovery/init.recovery.mt6757.rc:recovery/root/init.recovery.mt6757.rc \
   $(LOCAL_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
   $(LOCAL_PATH)/rootdir/mkshrc:root/etc/mkshrc \
   $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
@@ -62,7 +60,9 @@ PRODUCT_COPY_FILES += \
 
 # TWRP
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab
+  $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/twrp.fstab \
+  $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab \
+  $(LOCAL_PATH)/rootdir/mkshrc:recovery/root/etc/mkshrc
 
 # Fingerprint
 PRODUCT_PACKAGES += \
