@@ -59,9 +59,8 @@ PRODUCT_COPY_FILES += \
 # TWRP
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/twrp.fstab \
-  $(LOCAL_PATH)/recovery/init.recovery.usb.rc:recovery/root/init.recovery.usb.rc \
+  $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab \
   $(LOCAL_PATH)/rootdir/mkshrc:recovery/root/etc/mkshrc
-  #$(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
