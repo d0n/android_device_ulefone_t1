@@ -606,4 +606,4 @@ ro.lineage.build.version.plat.sdk=27
 ro.lineage.build.version.plat.rev=181205.001
 ro.modversion=15.1
 ro.debuggable=1
-service.adb.root=1
+lineage.service.adb.root=1

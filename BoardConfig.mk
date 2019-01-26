@@ -27,53 +27,53 @@ BOARD_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 BOARD_GLOBAL_CFLAGS += \
   -DMTK_HARDWARE \
   -DNO_SECURE_DISCARD \
-  -DDISABLE_HW_ID_MATCH_CHECK
+  -DDISABLE_HW_ID_MATCH_CHECK \
   -DDISABLE_ASHMEM_TRACKING
 
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
 LINEAGE_VERSION := 15.1
-#PRODUCT_GMS_CLIENTID_BASE ?= android-agold
-#MTK_HARDWARE ?= true
-#BACKLIGHT_PATH ?= /sys/class/leds/lcd-backlight/brightness
+PRODUCT_GMS_CLIENTID_BASE ?= android-agold
+MTK_HARDWARE ?= true
+BACKLIGHT_PATH ?= /sys/class/leds/lcd-backlight/brightness
 WITH_SU ?= true
-#BOARD_EGL_NEEDS_FNW ?= true
-#BOARD_EGL_NEEDS_HANDLE_VALUE ?= true
-#BOARD_VENDOR ?= MediaTek
-#BOARD_GPS_LIBRARIES ?= true
-#BOARD_MEDIATEK_USES_GPS ?= true
+BOARD_EGL_NEEDS_FNW ?= true
+BOARD_EGL_NEEDS_HANDLE_VALUE ?= true
+BOARD_VENDOR ?= MediaTek
+BOARD_GPS_LIBRARIES ?= true
+BOARD_MEDIATEK_USES_GPS ?= true
 #BOARD_USES_CYANOGEN_HARDWARE ?= true
 BLOCK_BASED_OTA ?= false
 #BOARD_PROVIDES_RILD ?= true
 BOARD_HAS_FLIPPED_SCREEN := true
 #BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/cmhw
-#BOARD_USES_MTK_AUDIO ?= true
+BOARD_USES_MTK_AUDIO ?= true
 #BOARD_RIL_CLASS ?= ../../../device/ulefone/t1/ril
 BOARD_CONNECTIVITY_VENDOR ?= MediaTek
 BOARD_CONNECTIVITY_MODULE ?= conn_soc
 BOARD_HAS_MTK_HARDWARE ?= true
 BOARD_USES_MTK_HARDWARE ?= true
 MTK_HARDWARE ?= true
-#BOARD_USES_METADATA_PARTITION ?= true
-#MTK_MMPROFILE_SUPPORT ?= true
+BOARD_USES_METADATA_PARTITION ?= true
+MTK_MMPROFILE_SUPPORT ?= true
 #USE_LEGACY_AUDIO_POLICY ?= 1
 #USE_XML_AUDIO_POLICY_CONF ?= 1
-#PRODUCT_TAGS += dalvik.gc.type-precise
+PRODUCT_TAGS += dalvik.gc.type-precise
 #WITH_DEXPREOPT_PIC ?= true
-#USE_MINIKIN ?= true
-#MALLOC_SVELTE ?= true
-#CONFIG_NR_CPUS ?= 8
-#MTK_HARDWARE ?= true
+USE_MINIKIN ?= true
+MALLOC_SVELTE ?= true
+CONFIG_NR_CPUS ?= 8
+MTK_HARDWARE ?= true
 SIM_COUNT ?= 2
-#USE_LIBC_SYSTEM_PROPERTIES ?= false
-#TARGET_USE_CUSTOM_LUN_FILE_PATH ?= /sys/devices/soc/11270000.usb3/musb-hdrc/gadget/lun%d/file
+USE_LIBC_SYSTEM_PROPERTIES ?= false
+TARGET_USE_CUSTOM_LUN_FILE_PATH ?= /sys/devices/soc/11270000.usb3/musb-hdrc/gadget/lun%d/file
 #TARGET_BOOTANIMATION_PRELOAD ?= true
 #TARGET_BOOTANIMATION_TEXTURE_CACHE ?= true
-#TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE ?= true
-#TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS ?= true
-#TARGET_PROVIDES_LIBLIGHT ?= true
+TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE ?= true
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS ?= true
+TARGET_PROVIDES_LIBLIGHT ?= true
 #TARGET_INCLUDE_PBBUILDER_SYMBOLS ?= true
 #TARGET_INCLUDE_VTMAL_SYMBOLS ?= true
-#TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK ?= true
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK ?= true
 #TARGET_INCLUDE_FINGERPRINT_SYMBOLS ?= true
 TARGET_PROVIDES_INIT_RC ?= true
 TARGET_OTA_ASSERT_DEVICE ?= t1,p15v57c2k_gq_tee,,
@@ -129,9 +129,9 @@ BOARD_GPS_LIBRARIES ?= true
 BOARD_MEDIATEK_USES_GPS ?= true
 
 # Kernel
-BOARD_KERNEL_CMDLINE ?= bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
+#BOARD_KERNEL_CMDLINE ?= bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
 #BOARD_KERNEL_CMDLINE ?= bootopt=64S3,32N2,64N2 androidboot.selinux=enforcing
-#BOARD_KERNEL_CMDLINE ?= bootopt=64S3,32N2,64N2
+BOARD_KERNEL_CMDLINE ?= bootopt=64S3,32N2,64N2
 BOARD_KERNEL_PAGESIZE ?= 2048
 BOARD_NAME ?= 1509953733
 BOARD_KERNEL_BASE ?= 0x40078000
@@ -177,23 +177,23 @@ TW_INTERNAL_STORAGE_PATH ?= /data/media
 TW_INTERNAL_STORAGE_MOUNT_POINT ?= data
 TW_EXTERNAL_STORAGE_PATH ?= /external_sd
 TW_EXTERNAL_STORAGE_MOUNT_POINT ?= external_sd
-#TARGET_USE_CUSTOM_LUN_FILE_PATH ?= /sys/devices/platform/11270000.usb3/musb-hdrc/gadget/lun0/file
-#TARGET_RECOVERY_LCD_BACKLIGHT_PATH ?= /sys/class/leds/lcd-backlight/brightness
-#TW_CUSTOM_CPU_TEMP_PATH ?= /sys/devices/virtual/thermal/thermal_zone1/temp
+TARGET_USE_CUSTOM_LUN_FILE_PATH ?= /sys/devices/platform/11270000.usb3/musb-hdrc/gadget/lun0/file
+TARGET_RECOVERY_LCD_BACKLIGHT_PATH ?= /sys/class/leds/lcd-backlight/brightness
+TW_CUSTOM_CPU_TEMP_PATH ?= /sys/devices/virtual/thermal/thermal_zone1/temp
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID ?= true
 RECOVERY_GRAPHICS_USE_LINELENGTH ?= true
 BOARD_SUPPRESS_SECURE_ERASE ?= true
 TW_INCLUDE_CRYPTO ?= true
 TW_MAX_BRIGHTNESS ?= 255
 TW_DEFAULT_BRIGHTNESS ?= 80
-#TW_BRIGHTNESS_PATH ?= /sys/class/leds/lcd-backlight/brightness
+TW_BRIGHTNESS_PATH ?= /sys/class/leds/lcd-backlight/brightness
 TW_NO_USB_STORAGE ?= true
 BOARD_USE_FRAMEBUFFER_ALPHA_CHANNEL ?= true
 TARGET_DISABLE_TRIPLE_BUFFERING ?= false
 TW_FLASH_FROM_STORAGE ?= true
 TW_NEW_ION_HEAP ?= true
 TWHAVE_SELINUX ?= true
-TW_USE_TOOLBOX := false
+TW_USE_TOOLBOX := true
 
 WPA_SUPPLICANT_VERSION ?= VER_0_8_X
 BOARD_HOSTAPD_DRIVER ?= NL80211
@@ -805,7 +805,9 @@ PRODUCT_PROPERTY_OVERRIDES ?= \
   ro.lineage.build.version=OPM7 \
   ro.lineage.build.version.plat.sdk=27 \
   ro.lineage.build.version.plat.rev=181205.001 \
-  ro.modversion=15.1
+  ro.modversion=15.1 \
+  lineage.service.adb.root=1
+
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES ?= \
   ro.sf.hwrotation=180 \
@@ -2009,4 +2011,5 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES ?= \
   ro.lineage.build.version=OPM7 \
   ro.lineage.build.version.plat.sdk=27 \
   ro.lineage.build.version.plat.rev=181205.001 \
-  ro.modversion=15.1
+  ro.modversion=15.1 \
+  lineage.service.adb.root=1
