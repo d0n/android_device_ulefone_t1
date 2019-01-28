@@ -1,4 +1,0 @@
-type pq_service, service_manager_type;
-type tkcore_service, service_manager_type;
-type guiext-server_service, service_manager_type;
-type nvram_agent_service, service_manager_type;
